@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Habuild — Response Sheet</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(160deg,#FFF5F0 0%,#F0EDFF 30%,#E8F5E9 60%,#FFF8E1 100%);color:#2D2D3A;min-height:100vh;padding:20px}
+
+.container{max-width:1100px;margin:0 auto}
+
+.header{background:#fff;border-radius:16px;padding:24px 28px;margin-bottom:20px;box-shadow:0 4px 20px rgba(124,111,232,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.header h1{font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,#7C6FE8,#FF8A80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header .stats{display:flex;gap:20px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat .num{font-size:1.5rem;font-weight:800;color:#7C6FE8;display:block}
+.stat .lbl{font-size:.72rem;color:#7E8590}
+
+.actions{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.act-btn{padding:10px 20px;border-radius:12px;border:none;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.act-primary{background:linear-gradient(135deg,#7C6FE8,#B388FF);color:#fff;box-shadow:0 3px 10px rgba(124,111,232,.2)}
+.act-primary:hover{transform:translateY(-1px)}
+.act-secondary{background:#fff;color:#7C6FE8;border:2px solid #E8E6F0}
+.act-secondary:hover{background:#F0EDFF}
+.act-danger{background:#fff;color:#EF5350;border:2px solid #FFCDD2}
+.act-danger:hover{background:#FFEBEE}
+
+.search-bar{background:#fff;border-radius:12px;padding:10px 16px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.04);display:flex;gap:10px;align-items:center}
+.search-bar input{flex:1;border:none;outline:none;font-size:.9rem;padding:6px 0}
+.search-bar select{border:1px solid #E8E6F0;border-radius:8px;padding:6px 10px;font-size:.82rem}
+
+.table-wrap{background:#fff;border-radius:16px;box-shadow:0 4px 20px rgba(124,111,232,.06);overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+thead{background:linear-gradient(135deg,#F0EDFF,#FFF5F0)}
+th{padding:14px 16px;text-align:left;font-weight:700;font-size:.78rem;color:#7C6FE8;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;border-bottom:2px solid #E8E6F0}
+td{padding:12px 16px;border-bottom:1px solid #F0F0F0;vertical-align:middle}
+tr:hover{background:#FAFAFE}
+tr:last-child td{border-bottom:none}
+
+.score-badge{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;font-weight:800;font-size:.85rem;color:#fff}
+.sb-low{background:linear-gradient(135deg,#FF8A80,#EF5350)}
+.sb-mid{background:linear-gradient(135deg,#FFD54F,#FFB74D)}
+.sb-hi{background:linear-gradient(135deg,#81C784,#66BB6A)}
+
+.phone-link{color:#7C6FE8;text-decoration:none;font-weight:600}
+.date-cell{color:#7E8590;font-size:.78rem}
+
+.empty{text-align:center;padding:60px 20px;color:#7E8590}
+.empty h3{font-size:1.2rem;margin-bottom:8px;color:#2D2D3A}
+
+.back-link{display:inline-block;margin-bottom:16px;color:#7C6FE8;text-decoration:none;font-size:.85rem;font-weight:600}
+.back-link:hover{text-decoration:underline}
+
+@media(max-width:600px){
+  body{padding:10px}
+  .header{padding:16px}
+  .header h1{font-size:1.1rem}
+  th,td{padding:8px 10px;font-size:.78rem}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="index.html">&larr; Back to Quiz</a>
+
+  <div class="header">
+    <h1>Habuild — Response Sheet</h1>
+    <div class="stats">
+      <div class="stat"><span class="num" id="totalCount">0</span><span class="lbl">Total Responses</span></div>
+      <div class="stat"><span class="num" id="avgScore">0</span><span class="lbl">Avg Score</span></div>
+      <div class="stat"><span class="num" id="todayCount">0</span><span class="lbl">Today</span></div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="act-btn act-primary" onclick="exportCSV()">Export CSV</button>
+    <button class="act-btn act-secondary" onclick="exportJSON()">Export JSON</button>
+    <button class="act-btn act-secondary" onclick="location.reload()">Refresh</button>
+    <button class="act-btn act-danger" onclick="clearAll()">Clear All Data</button>
+  </div>
+
+  <div class="search-bar">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7E8590" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="text" id="searchInput" placeholder="Search by name or phone..." oninput="renderTable()">
+    <select id="scoreFilter" onchange="renderTable()">
+      <option value="">All Scores</option>
+      <option value="0-2">0 – 2 (Low)</option>
+      <option value="3">3 (Mid)</option>
+      <option value="4-5">4 – 5 (High)</option>
+    </select>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Score</th>
+          <th>Date</th>
+          <th>Answers</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+      </tbody>
+    </table>
+    <div class="empty" id="emptyState" style="display:none">
+      <h3>No responses yet</h3>
+      <p>Responses will appear here as people take the quiz.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function getLeads(){return JSON.parse(localStorage.getItem('hb_leads')||'[]')}
+
+function renderTable(){
+  const leads=getLeads();
+  const search=document.getElementById('searchInput').value.toLowerCase();
+  const scoreFilter=document.getElementById('scoreFilter').value;
+
+  let filtered=leads.filter(l=>{
+    if(search&&!l.name?.toLowerCase().includes(search)&&!l.phone?.includes(search))return false;
+    if(scoreFilter){
+      const s=l.score??-1;
+      if(scoreFilter==='0-2'&&s>2)return false;
+      if(scoreFilter==='3'&&s!==3)return false;
+      if(scoreFilter==='4-5'&&s<4)return false;
+    }
+    return true;
+  });
+
+  // Sort newest first
+  filtered.sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));
+
+  const tbody=document.getElementById('tableBody');
+  const empty=document.getElementById('emptyState');
+
+  if(filtered.length===0){
+    tbody.innerHTML='';
+    empty.style.display='block';
+    return;
+  }
+  empty.style.display='none';
+
+  const qLabels=['Wake','Water','Exercise','Screen','Energy','Yoga','Nutrition','Stress','Routine','Habit'];
+
+  tbody.innerHTML=filtered.map((l,i)=>{
+    const score=l.score??'—';
+    const cls=score<=2?'sb-low':score<=3?'sb-mid':'sb-hi';
+    const d=l.date?new Date(l.date):null;
+    const dateStr=d?d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})+' '+d.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}):'—';
+    const phone=l.cc&&l.phone?l.cc+' '+l.phone:(l.phone||'—');
+    const answers=l.answers?l.answers.map((a,j)=>`${qLabels[j]||'Q'+(j+1)}:${a??'—'}`).join(', '):'—';
+    return `<tr>
+      <td>${i+1}</td>
+      <td><strong>${l.name||'—'}</strong></td>
+      <td><a class="phone-link" href="https://wa.me/${(l.cc||'+91').replace('+','')}${l.phone}" target="_blank">${phone}</a></td>
+      <td><span class="score-badge ${cls}">${score}</span></td>
+      <td class="date-cell">${dateStr}</td>
+      <td style="font-size:.75rem;color:#7E8590;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${answers}">${answers}</td>
+    </tr>`;
+  }).join('');
+
+  // Stats
+  const all=getLeads();
+  document.getElementById('totalCount').textContent=all.length;
+  const scored=all.filter(l=>l.score!=null);
+  document.getElementById('avgScore').textContent=scored.length?(scored.reduce((s,l)=>s+l.score,0)/scored.length).toFixed(1):'—';
+  const today=new Date().toDateString();
+  document.getElementById('todayCount').textContent=all.filter(l=>l.date&&new Date(l.date).toDateString()===today).length;
+}
+
+function exportCSV(){
+  const leads=getLeads();
+  if(!leads.length){alert('No data to export');return}
+  const headers=['Name','Country Code','Phone','Score','Date','Answers'];
+  const rows=leads.map(l=>[
+    l.name||'',l.cc||'',l.phone||'',l.score??'',l.date||'',
+    l.answers?l.answers.join(';'):''
+  ]);
+  let csv=headers.join(',')+'\n';
+  rows.forEach(r=>{csv+=r.map(v=>'"'+(v+'').replace(/"/g,'""')+'"').join(',')+'\n'});
+  const blob=new Blob([csv],{type:'text/csv'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='habuild-responses-'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+
+function exportJSON(){
+  const leads=getLeads();
+  if(!leads.length){alert('No data to export');return}
+  const blob=new Blob([JSON.stringify(leads,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='habuild-responses-'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();
+}
+
+function clearAll(){
+  if(!confirm('Are you sure you want to delete ALL responses? This cannot be undone.'))return;
+  if(!confirm('This will permanently delete all data. Confirm again?'))return;
+  localStorage.removeItem('hb_leads');
+  renderTable();
+}
+
+// Init
+renderTable();
+</script>
+</body>
+</html>

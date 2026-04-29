@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Habuild Admin — Editor</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(160deg,#FFF5F0 0%,#F0EDFF 30%,#E8F5E9 60%,#FFF8E1 100%);color:#2D2D3A;min-height:100vh;padding:20px}
+.container{max-width:800px;margin:0 auto}
+
+/* ─── Login ─── */
+.login-card{background:#fff;border-radius:20px;padding:40px 32px;max-width:400px;margin:80px auto;text-align:center;box-shadow:0 8px 32px rgba(124,111,232,.1)}
+.login-card h2{font-size:1.4rem;margin-bottom:8px;background:linear-gradient(135deg,#7C6FE8,#FF8A80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.login-card p{color:#7E8590;font-size:.85rem;margin-bottom:20px}
+.login-card input{width:100%;padding:14px;border-radius:12px;border:2px solid #E8E6F0;font-size:1rem;text-align:center;margin-bottom:12px}
+.login-card input:focus{outline:none;border-color:#7C6FE8;box-shadow:0 0 0 3px rgba(124,111,232,.1)}
+.login-card button{width:100%;padding:14px;border:none;border-radius:12px;font-size:1rem;font-weight:700;color:#fff;background:linear-gradient(135deg,#7C6FE8,#B388FF);cursor:pointer;transition:all .2s}
+.login-card button:hover{transform:translateY(-1px)}
+.login-error{color:#EF5350;font-size:.82rem;margin-top:8px;display:none}
+
+/* ─── Dashboard ─── */
+.dashboard{display:none}
+.header{background:#fff;border-radius:16px;padding:20px 24px;margin-bottom:20px;box-shadow:0 4px 20px rgba(124,111,232,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.header h1{font-size:1.3rem;font-weight:900;background:linear-gradient(135deg,#7C6FE8,#FF8A80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header-btns{display:flex;gap:8px;flex-wrap:wrap}
+.hbtn{padding:8px 18px;border-radius:10px;border:none;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s}
+.hbtn-p{background:linear-gradient(135deg,#7C6FE8,#B388FF);color:#fff}
+.hbtn-s{background:#fff;color:#7C6FE8;border:2px solid #E8E6F0}
+.hbtn-d{background:#fff;color:#EF5350;border:2px solid #FFCDD2}
+
+.tabs{display:flex;gap:8px;margin-bottom:20px}
+.tab{padding:10px 20px;border-radius:12px;border:none;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s;background:#fff;color:#7E8590;border:2px solid #E8E6F0}
+.tab.active{background:#F0EDFF;color:#7C6FE8;border-color:#7C6FE8}
+
+.panel{display:none;background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(124,111,232,.06)}
+.panel.active{display:block}
+.panel h3{font-size:1.05rem;font-weight:700;margin-bottom:16px;color:#7C6FE8}
+
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.84rem;font-weight:600;margin-bottom:5px;color:#2D2D3A}
+.field input,.field textarea{width:100%;padding:12px 14px;border-radius:12px;border:2px solid #E8E6F0;font-size:.9rem;font-family:inherit;transition:all .2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:#7C6FE8;box-shadow:0 0 0 3px rgba(124,111,232,.1)}
+.field textarea{resize:vertical;min-height:80px}
+.field small{color:#7E8590;font-size:.72rem;margin-top:3px;display:block}
+
+.save-btn{padding:12px 32px;border:none;border-radius:12px;font-size:.95rem;font-weight:700;color:#fff;background:linear-gradient(135deg,#66BB6A,#81C784);cursor:pointer;transition:all .2s;box-shadow:0 3px 10px rgba(102,187,106,.2)}
+.save-btn:hover{transform:translateY(-1px)}
+.saved-msg{color:#66BB6A;font-size:.85rem;font-weight:600;margin-left:10px;display:none}
+
+/* ─── Response Table ─── */
+.stats-row{display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.stat-card{background:#F0EDFF;border-radius:12px;padding:14px 20px;text-align:center;flex:1;min-width:100px}
+.stat-card .num{font-size:1.5rem;font-weight:800;color:#7C6FE8;display:block}
+.stat-card .lbl{font-size:.72rem;color:#7E8590}
+
+.search-bar{display:flex;gap:10px;margin-bottom:14px;align-items:center}
+.search-bar input{flex:1;padding:10px 14px;border-radius:10px;border:2px solid #E8E6F0;font-size:.88rem}
+.search-bar input:focus{outline:none;border-color:#7C6FE8}
+
+.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid #E8E6F0}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+thead{background:#F0EDFF}
+th{padding:12px 14px;text-align:left;font-weight:700;font-size:.76rem;color:#7C6FE8;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+td{padding:10px 14px;border-top:1px solid #F0F0F0;vertical-align:middle}
+tr:hover{background:#FAFAFE}
+.sb{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:800;font-size:.8rem;color:#fff}
+.sb-l{background:linear-gradient(135deg,#FF8A80,#EF5350)}.sb-m{background:linear-gradient(135deg,#FFD54F,#FFB74D)}.sb-h{background:linear-gradient(135deg,#81C784,#66BB6A)}
+.phone-link{color:#7C6FE8;text-decoration:none;font-weight:600}
+
+.empty-state{text-align:center;padding:40px;color:#7E8590}
+
+@media(max-width:600px){
+  body{padding:10px}
+  .header{padding:14px}
+  th,td{padding:8px 10px;font-size:.76rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Login Screen -->
+<div class="login-card" id="loginCard">
+  <h2>Habuild Admin</h2>
+  <p>Enter your password to access the editor</p>
+  <input type="password" id="loginPass" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()">
+  <button onclick="doLogin()">Login</button>
+  <div class="login-error" id="loginError">Wrong password. Try again.</div>
+</div>
+
+<!-- Dashboard -->
+<div class="container dashboard" id="dashboard">
+  <div class="header">
+    <h1>Habuild Admin</h1>
+    <div class="header-btns">
+      <a class="hbtn hbtn-p" href="index.html" target="_blank">View Live Quiz</a>
+      <button class="hbtn hbtn-s" onclick="doLogout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('edit')">Edit Quiz</button>
+    <button class="tab" onclick="showTab('responses')">Responses</button>
+    <button class="tab" onclick="showTab('settings')">Settings</button>
+  </div>
+
+  <!-- Edit Panel -->
+  <div class="panel active" id="panel-edit">
+    <h3>Customize Your Quiz Page</h3>
+    <p style="color:#7E8590;font-size:.82rem;margin-bottom:18px">Changes here will instantly show on the live quiz page (same browser). For cross-device, use the Google Sheet URL below.</p>
+
+    <div class="field">
+      <label>Logo Image URL</label>
+      <input type="text" id="aLogo" placeholder="https://... (paste logo image URL)">
+      <small>Leave empty for default "H" icon</small>
+    </div>
+    <div class="field">
+      <label>Brand Name</label>
+      <input type="text" id="aBrand" placeholder="Habuild">
+    </div>
+    <div class="field">
+      <label>Tagline</label>
+      <input type="text" id="aTagline" placeholder="Build Better Habits, One Day at a Time">
+    </div>
+    <div class="field">
+      <label>Hero Heading (Main Script)</label>
+      <textarea id="aHeroScript" placeholder="How healthy is your daily routine — really?"></textarea>
+    </div>
+    <div class="field">
+      <label>Hero Subtitle</label>
+      <textarea id="aHeroSub" placeholder="After your score, you can register for Saurabh Bothra's FREE 21-Day June Challenge."></textarea>
+      <small>Use &lt;br&gt; for line breaks</small>
+    </div>
+    <div class="field">
+      <label>Poster/Banner Image URL</label>
+      <input type="text" id="aPoster" placeholder="https://... (optional poster image on hero)">
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px;margin-top:20px">
+      <button class="save-btn" onclick="saveSettings()">Save Changes</button>
+      <span class="saved-msg" id="savedMsg">Saved!</span>
+    </div>
+  </div>
+
+  <!-- Responses Panel -->
+  <div class="panel" id="panel-responses">
+    <h3>Quiz Responses</h3>
+    <div class="stats-row">
+      <div class="stat-card"><span class="num" id="totalCount">0</span><span class="lbl">Total</span></div>
+      <div class="stat-card"><span class="num" id="avgScore">—</span><span class="lbl">Avg Score</span></div>
+      <div class="stat-card"><span class="num" id="todayCount">0</span><span class="lbl">Today</span></div>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+      <button class="hbtn hbtn-p" onclick="exportCSV()">Export CSV</button>
+      <button class="hbtn hbtn-s" onclick="exportJSON()">Export JSON</button>
+      <button class="hbtn hbtn-s" onclick="renderResponses()">Refresh</button>
+      <button class="hbtn hbtn-d" onclick="clearAll()">Clear All</button>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search by name or phone..." oninput="renderResponses()">
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Score</th><th>Date</th></tr></thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+      <div class="empty-state" id="emptyState" style="display:none">
+        <p>No responses yet. They'll appear as people take the quiz.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Panel -->
+  <div class="panel" id="panel-settings">
+    <h3>Settings</h3>
+    <div class="field">
+      <label>Google Apps Script URL (for response collection)</label>
+      <input type="text" id="aSheetUrl" placeholder="https://script.google.com/macros/s/...">
+      <small>Responses will be POST-ed to this URL. <a href="#" onclick="showSheetHelp();return false" style="color:#7C6FE8">How to set up?</a></small>
+    </div>
+    <div class="field">
+      <label>Share URL (used when sharing on social media)</label>
+      <input type="text" id="aShareUrl" placeholder="https://habuild.in (your live quiz URL)">
+      <small>If left empty, shares will show "habuild.in" instead of localhost</small>
+    </div>
+    <div class="field">
+      <label>Admin Password</label>
+      <input type="text" id="aPassword" placeholder="Enter new password">
+      <small>Default: habuild2024</small>
+    </div>
+    <div style="margin-top:16px">
+      <button class="save-btn" onclick="saveAppSettings()">Save Settings</button>
+      <span class="saved-msg" id="savedMsg2">Saved!</span>
+    </div>
+
+    <div id="sheetHelp" style="display:none;margin-top:20px;background:#F0EDFF;border-radius:12px;padding:18px">
+      <h4 style="font-size:.9rem;color:#7C6FE8;margin-bottom:10px">Google Sheet Setup (5 minutes)</h4>
+      <ol style="font-size:.82rem;color:#2D2D3A;line-height:1.8;padding-left:20px">
+        <li>Create a new Google Sheet</li>
+        <li>Add headers in row 1: <strong>Name | Phone | Score | Date | Answers | ID</strong></li>
+        <li>Go to <strong>Extensions → Apps Script</strong></li>
+        <li>Replace the code with:
+          <pre style="background:#fff;padding:10px;border-radius:8px;font-size:.75rem;margin:8px 0;overflow-x:auto">function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+  sheet.appendRow([
+    data.name || '',
+    (data.cc||'') + (data.phone||''),
+    data.score != null ? data.score : '',
+    data.date || '',
+    data.answers ? data.answers.join(';') : '',
+    data.id || ''
+  ]);
+  return ContentService.createTextOutput('OK');
+}</pre>
+        </li>
+        <li>Click <strong>Deploy → New deployment → Web app</strong></li>
+        <li>Set "Execute as" = <strong>Me</strong>, "Who has access" = <strong>Anyone</strong></li>
+        <li>Copy the URL and paste it above</li>
+        <li>Share the Google Sheet with your email for edit access</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<script>
+const DEFAULT_PASS='habuild2024';
+
+function getPass(){return localStorage.getItem('hb_admin_pass')||DEFAULT_PASS}
+function doLogin(){
+  const p=document.getElementById('loginPass').value;
+  if(p===getPass()){
+    sessionStorage.setItem('hb_admin','1');
+    document.getElementById('loginCard').style.display='none';
+    document.getElementById('dashboard').style.display='block';
+    loadEditor();renderResponses();
+  }else{
+    document.getElementById('loginError').style.display='block';
+  }
+}
+function doLogout(){sessionStorage.removeItem('hb_admin');location.reload()}
+
+// Auto-login if session exists
+if(sessionStorage.getItem('hb_admin')==='1'){
+  document.getElementById('loginCard').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  setTimeout(()=>{loadEditor();renderResponses()},0);
+}
+
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('panel-'+name).classList.add('active');
+  if(name==='responses')renderResponses();
+}
+
+function loadEditor(){
+  try{
+    const s=JSON.parse(localStorage.getItem('hb_admin_settings')||'{}');
+    document.getElementById('aLogo').value=s.logo||'';
+    document.getElementById('aBrand').value=s.brandName||'';
+    document.getElementById('aTagline').value=s.tagline||'';
+    document.getElementById('aHeroScript').value=s.heroScript||'';
+    document.getElementById('aHeroSub').value=s.heroSub||'';
+    document.getElementById('aPoster').value=s.poster||'';
+    document.getElementById('aSheetUrl').value=localStorage.getItem('hb_sheet_url')||'';
+    document.getElementById('aShareUrl').value=localStorage.getItem('hb_share_url')||'';
+  }catch(e){}
+}
+
+function saveSettings(){
+  const s={
+    logo:document.getElementById('aLogo').value.trim(),
+    brandName:document.getElementById('aBrand').value.trim(),
+    tagline:document.getElementById('aTagline').value.trim(),
+    heroScript:document.getElementById('aHeroScript').value.trim(),
+    heroSub:document.getElementById('aHeroSub').value.trim(),
+    poster:document.getElementById('aPoster').value.trim()
+  };
+  localStorage.setItem('hb_admin_settings',JSON.stringify(s));
+  const msg=document.getElementById('savedMsg');
+  msg.style.display='inline';setTimeout(()=>msg.style.display='none',2000);
+}
+
+function saveAppSettings(){
+  const url=document.getElementById('aSheetUrl').value.trim();
+  const shareUrl=document.getElementById('aShareUrl').value.trim();
+  const pass=document.getElementById('aPassword').value.trim();
+  if(url)localStorage.setItem('hb_sheet_url',url);
+  if(shareUrl)localStorage.setItem('hb_share_url',shareUrl);else localStorage.removeItem('hb_share_url');
+  if(pass)localStorage.setItem('hb_admin_pass',pass);
+  const msg=document.getElementById('savedMsg2');
+  msg.style.display='inline';setTimeout(()=>msg.style.display='none',2000);
+}
+
+function showSheetHelp(){document.getElementById('sheetHelp').style.display=document.getElementById('sheetHelp').style.display==='none'?'block':'none'}
+
+/* ─── Responses ─── */
+function getLeads(){return JSON.parse(localStorage.getItem('hb_leads')||'[]')}
+
+function renderResponses(){
+  const leads=getLeads();
+  const search=document.getElementById('searchInput').value.toLowerCase();
+  let filtered=leads.filter(l=>{
+    if(search&&!l.name?.toLowerCase().includes(search)&&!l.phone?.includes(search))return false;
+    return true;
+  });
+  filtered.sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));
+
+  const tbody=document.getElementById('tableBody');
+  const empty=document.getElementById('emptyState');
+
+  if(filtered.length===0){tbody.innerHTML='';empty.style.display='block';return}
+  empty.style.display='none';
+
+  tbody.innerHTML=filtered.map((l,i)=>{
+    const score=l.score??'—';
+    const cls=score<=2?'sb-l':score<=3?'sb-m':'sb-h';
+    const d=l.date?new Date(l.date):null;
+    const dateStr=d?d.toLocaleDateString('en-IN',{day:'2-digit',month:'short'})+' '+d.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}):'—';
+    const phone=l.cc&&l.phone?l.cc+' '+l.phone:(l.phone||'—');
+    return `<tr><td>${i+1}</td><td><strong>${l.name||'—'}</strong></td><td><a class="phone-link" href="https://api.whatsapp.com/send?phone=${(l.cc||'+91').replace('+','')}${l.phone}" target="_blank">${phone}</a></td><td><span class="sb ${cls}">${score}</span></td><td style="color:#7E8590;font-size:.78rem">${dateStr}</td></tr>`;
+  }).join('');
+
+  // Stats
+  document.getElementById('totalCount').textContent=leads.length;
+  const scored=leads.filter(l=>l.score!=null);
+  document.getElementById('avgScore').textContent=scored.length?(scored.reduce((s,l)=>s+l.score,0)/scored.length).toFixed(1):'—';
+  const today=new Date().toDateString();
+  document.getElementById('todayCount').textContent=leads.filter(l=>l.date&&new Date(l.date).toDateString()===today).length;
+}
+
+function exportCSV(){
+  const leads=getLeads();
+  if(!leads.length){alert('No data');return}
+  let csv='Name,Phone,Score,Date,Answers\n';
+  leads.forEach(l=>{csv+=`"${l.name||''}","${(l.cc||'')+l.phone}","${l.score??''}","${l.date||''}","${l.answers?l.answers.join(';'):''}"\n`});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  a.download='habuild-responses-'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+function exportJSON(){
+  const leads=getLeads();
+  if(!leads.length){alert('No data');return}
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(leads,null,2)],{type:'application/json'}));
+  a.download='habuild-responses-'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();
+}
+function clearAll(){
+  if(!confirm('Delete ALL responses? This cannot be undone.'))return;
+  if(!confirm('Confirm again to delete.'))return;
+  localStorage.removeItem('hb_leads');renderResponses();
+}
+</script>
+</body>
+</html>
