@@ -186,6 +186,15 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .quote-card p{font-size:.88rem;color:var(--sub);font-style:italic;line-height:1.6}
 .quote-card .chain{font-style:normal;font-weight:700;color:var(--p);margin-top:8px;display:block;font-size:.9rem}
 
+/* EXPLORE TABS */
+.explore-tabs{display:flex;gap:6px;margin:18px 0 14px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.explore-tabs::-webkit-scrollbar{display:none}
+.ex-tab{padding:10px 16px;border-radius:12px;border:2px solid var(--border);font-size:.78rem;font-weight:600;cursor:pointer;white-space:nowrap;background:#fff;color:var(--sub);transition:all .15s;display:flex;align-items:center;gap:5px;flex-shrink:0}
+.ex-tab.active{background:var(--pl);border-color:var(--p);color:var(--p)}
+.ex-tab:hover{border-color:var(--p)}
+.ex-panel{display:none;animation:fadeUp .3s ease}
+.ex-panel.active{display:block}
+
 .foot{text-align:center;padding:24px 0 8px;font-size:.72rem;color:var(--sub)}
 .foot a{color:var(--p);text-decoration:none;font-weight:600}
 #confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}
@@ -330,77 +339,86 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
     <div class="result-card" id="resMsg"></div>
 
     <div class="share-cta" onclick="openShare()">
-      <h3>&#128153; अच्छी आदतों की ऊर्जा फैलाएं!</h3>
-      <p>&#128107; अपने दोस्तों और परिवार के साथ शेयर करें।<br>उन्हें भी अपना Habit Score जानने और अपनी यात्रा शुरू करने में मदद करें &#127793;</p>
+      <h3>&#128156; अच्छी आदतों की ऊर्जा फैलाएं!</h3>
+      <p>दोस्तों और परिवार के साथ शेयर करें &#127793;</p>
       <button class="sbtn">शेयर करने के लिए क्लिक करें</button>
     </div>
 
-    <div class="breath-card">
-      <p style="background:linear-gradient(135deg,#F0EDFF,#FFF5F0);padding:12px 16px;border-radius:12px;font-size:.84rem;color:var(--p);font-weight:600;margin-bottom:16px;line-height:1.5">&#127793; जब तक आपको हमारे फ्री ऑनलाइन 21-Day योग चैलेंज का अपडेट मिले, तब तक बॉक्स ब्रीदिंग से अपना मन शांत करें</p>
-      <h3>&#129495;&#8205;&#9794;&#65039; बॉक्स ब्रीदिंग (4-4-4-4)</h3>
-      <p class="sub">4 सेकंड श्वास लें &#8594; 4 सेकंड रोकें &#8594; 4 सेकंड छोड़ें &#8594; 4 सेकंड रोकें<br>मन शांत करें। ऊर्जा रीसेट करें।</p>
-      <div class="breath-label" id="brLabel">शुरू करें</div>
-      <div class="breath-box" id="brBox"><div class="bb-dot" id="brDot" style="top:10px;left:10px"></div></div>
-      <div class="breath-timer" id="brTimer">4</div>
-      <button class="breath-start" id="brBtn" onclick="toggleBreathing()">श्वास शुरू करें</button>
-      <div class="breath-cycles" id="brCycles"></div>
-      <div class="breath-hint">आंखें बंद करें और आवाज़ का पालन करें</div>
+    <!-- Explore Tabs -->
+    <p style="text-align:center;font-size:.82rem;color:var(--p);font-weight:700;margin-top:18px">&#128071; और जानें</p>
+    <div class="explore-tabs">
+      <button class="ex-tab active" onclick="showExTab(0,this)">&#129495; श्वास</button>
+      <button class="ex-tab" onclick="showExTab(1,this)">&#127909; वीडियो</button>
+      <button class="ex-tab" onclick="showExTab(2,this)">&#129504; माइंड गेम</button>
+      <button class="ex-tab" onclick="showExTab(3,this)">&#128214; हैंडबुक</button>
+      <button class="ex-tab" onclick="showExTab(4,this)">&#127909; YouTube</button>
     </div>
 
-    <div class="practice-card">
-      <h3>&#127807; रोज़ अभ्यास करें — आज से शुरू करें</h3>
-      <p class="sub">अपनी आदत बनाने के लिए यह गाइडेड सेशन देखें।</p>
-      <div class="vid-wrap" style="background:linear-gradient(135deg,#E8F5E9,#F0EDFF)">
-        <h4>&#128704; श्वास व्यायाम</h4>
-        <div class="yt-thumb" onclick="playVid(this,'I77hh5I69gA')">
-          <img src="https://img.youtube.com/vi/I77hh5I69gA/hqdefault.jpg" alt="Breathing Exercise" style="width:100%;border-radius:12px;display:block">
-          <div class="yt-play">&#9654;</div>
+    <div class="ex-panel active" id="exP0">
+      <div class="breath-card">
+        <p style="background:linear-gradient(135deg,#F0EDFF,#FFF5F0);padding:12px 16px;border-radius:12px;font-size:.84rem;color:var(--p);font-weight:600;margin-bottom:16px;line-height:1.5">&#127793; जब तक आपको हमारे फ्री ऑनलाइन 21-Day योग चैलेंज का अपडेट मिले, तब तक बॉक्स ब्रीदिंग से मन शांत करें</p>
+        <h3>&#129495;&#8205;&#9794;&#65039; बॉक्स ब्रीदिंग (4-4-4-4)</h3>
+        <p class="sub">4 सेकंड श्वास लें &#8594; 4 सेकंड रोकें &#8594; 4 सेकंड छोड़ें &#8594; 4 सेकंड रोकें</p>
+        <div class="breath-label" id="brLabel">शुरू करें</div>
+        <div class="breath-box" id="brBox"><div class="bb-dot" id="brDot" style="top:10px;left:10px"></div></div>
+        <div class="breath-timer" id="brTimer">4</div>
+        <button class="breath-start" id="brBtn" onclick="toggleBreathing()">श्वास शुरू करें</button>
+        <div class="breath-cycles" id="brCycles"></div>
+        <div class="breath-hint">आंखें बंद करें और आवाज़ का पालन करें</div>
+      </div>
+    </div>
+
+    <div class="ex-panel" id="exP1">
+      <div class="practice-card">
+        <h3>&#127807; रोज़ अभ्यास करें</h3>
+        <p class="sub">गाइडेड सेशन देखें।</p>
+        <div class="vid-wrap" style="background:linear-gradient(135deg,#E8F5E9,#F0EDFF)">
+          <h4>&#128704; श्वास व्यायाम</h4>
+          <div class="yt-thumb" onclick="playVid(this,'I77hh5I69gA')"><img src="https://img.youtube.com/vi/I77hh5I69gA/hqdefault.jpg" alt="Breathing" style="width:100%;border-radius:12px;display:block"><div class="yt-play">&#9654;</div></div>
+          <a class="yt-link" href="https://www.youtube.com/watch?v=I77hh5I69gA" target="_blank" rel="noopener">&#9654; YouTube पर देखें</a>
         </div>
-        <a class="yt-link" href="https://www.youtube.com/watch?v=I77hh5I69gA" target="_blank" rel="noopener">&#9654; YouTube पर देखें</a>
-      </div>
-      <div class="vid-wrap" style="background:linear-gradient(135deg,#FFF8E1,#FFF5F0)">
-        <h4>&#127908; गाइडेड श्वास सत्र</h4>
-        <div class="yt-thumb" onclick="playVid(this,'LCyP3F7gRC4')">
-          <img src="https://img.youtube.com/vi/LCyP3F7gRC4/hqdefault.jpg" alt="Guided Breathing" style="width:100%;border-radius:12px;display:block">
-          <div class="yt-play">&#9654;</div>
+        <div class="vid-wrap" style="background:linear-gradient(135deg,#FFF8E1,#FFF5F0)">
+          <h4>&#127908; गाइडेड श्वास सत्र</h4>
+          <div class="yt-thumb" onclick="playVid(this,'LCyP3F7gRC4')"><img src="https://img.youtube.com/vi/LCyP3F7gRC4/hqdefault.jpg" alt="Guided" style="width:100%;border-radius:12px;display:block"><div class="yt-play">&#9654;</div></div>
+          <a class="yt-link" href="https://www.youtube.com/watch?v=LCyP3F7gRC4" target="_blank" rel="noopener">&#9654; YouTube पर देखें</a>
         </div>
-        <a class="yt-link" href="https://www.youtube.com/watch?v=LCyP3F7gRC4" target="_blank" rel="noopener">&#9654; YouTube पर देखें</a>
       </div>
     </div>
 
-    <div class="yt-card">
-      <div style="font-size:1.8rem;margin-bottom:6px">&#127909;</div>
-      <h3>सौरभ बोथरा</h3>
-      <p>और सेशन, टिप्स और रोज़ की प्रेरणा</p>
-      <a class="yt-btn" href="https://www.youtube.com/channel/UCZ1_MhfxMAotGs8fzZM1f7A" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        और देखें — यहाँ क्लिक करें
-      </a>
-    </div>
-
-    <!-- Mind Game -->
-    <div class="practice-card" id="mindGameCard">
-      <div style="font-size:2rem;margin-bottom:6px">&#129504;</div>
-      <h3>माइंड गेम</h3>
-      <p class="sub">अपने दिमाग को तेज़ करें! रंग के नाम पर टैप करें, जिस रंग में लिखा है उस पर नहीं।</p>
-      <div id="mgArea" style="min-height:140px">
-        <div id="mgWord" style="font-size:2rem;font-weight:900;margin-bottom:16px;min-height:48px"></div>
-        <div id="mgOpts" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"></div>
+    <div class="ex-panel" id="exP2">
+      <div class="practice-card">
+        <div style="font-size:2rem;margin-bottom:6px">&#129504;</div>
+        <h3>माइंड गेम</h3>
+        <p class="sub">रंग के नाम पर टैप करें, जिस रंग में लिखा है उस पर नहीं।</p>
+        <div id="mgArea" style="min-height:140px"><div id="mgWord" style="font-size:2rem;font-weight:900;margin-bottom:16px;min-height:48px"></div><div id="mgOpts" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"></div></div>
+        <div id="mgScore" style="font-size:.85rem;color:var(--sub);margin-top:10px"></div>
+        <div id="mgResult" style="font-size:.9rem;font-weight:700;margin-top:8px;min-height:24px"></div>
+        <button class="breath-start" onclick="startMindGame()" id="mgBtn" style="margin-top:10px">अभी खेलें</button>
       </div>
-      <div id="mgScore" style="font-size:.85rem;color:var(--sub);margin-top:10px"></div>
-      <div id="mgResult" style="font-size:.9rem;font-weight:700;margin-top:8px;min-height:24px"></div>
-      <button class="breath-start" onclick="startMindGame()" id="mgBtn" style="margin-top:10px">अभी खेलें</button>
     </div>
 
-    <!-- Yoga Handbook -->
-    <div style="background:linear-gradient(135deg,#E8F5E9,#C8E6C9);border-radius:var(--r);padding:22px;text-align:center;margin:14px 0;box-shadow:var(--sh)">
-      <div style="font-size:2rem;margin-bottom:6px">&#128214;</div>
-      <h3 style="font-size:1.05rem;margin-bottom:6px">Habuild योग हैंडबुक</h3>
-      <p style="color:var(--sub);font-size:.84rem;margin-bottom:14px;line-height:1.5">सभी ज़रूरी योग आसन, श्वास तकनीक और दैनिक दिनचर्या की फ्री गाइड। शुरुआती और अभ्यासकर्ताओं के लिए उत्तम।</p>
-      <a href="https://assets.habit.yoga/memberapp/Habuild%20Yoga%20Handbook.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--g);padding:12px 24px;border-radius:12px;font-size:.9rem;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(102,187,106,.15);transition:all .2s">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        फ्री हैंडबुक डाउनलोड करें (PDF)
-      </a>
+    <div class="ex-panel" id="exP3">
+      <div style="background:linear-gradient(135deg,#E8F5E9,#C8E6C9);border-radius:var(--r);padding:22px;text-align:center;box-shadow:var(--sh)">
+        <div style="font-size:2rem;margin-bottom:6px">&#128214;</div>
+        <h3 style="font-size:1.05rem;margin-bottom:6px">Habuild योग हैंडबुक</h3>
+        <p style="color:var(--sub);font-size:.84rem;margin-bottom:14px;line-height:1.5">सभी ज़रूरी योग आसन, श्वास तकनीक और दैनिक दिनचर्या की फ्री गाइड।</p>
+        <a href="https://assets.habit.yoga/memberapp/Habuild%20Yoga%20Handbook.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--g);padding:12px 24px;border-radius:12px;font-size:.9rem;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(102,187,106,.15)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          फ्री हैंडबुक डाउनलोड करें (PDF)
+        </a>
+      </div>
+    </div>
+
+    <div class="ex-panel" id="exP4">
+      <div class="yt-card">
+        <div style="font-size:1.8rem;margin-bottom:6px">&#127909;</div>
+        <h3>सौरभ बोथरा</h3>
+        <p>और सेशन, टिप्स और रोज़ की प्रेरणा</p>
+        <a class="yt-btn" href="https://www.youtube.com/channel/UCZ1_MhfxMAotGs8fzZM1f7A" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          और देखें — यहाँ क्लिक करें
+        </a>
+      </div>
     </div>
 
     <div class="quote-card">
@@ -495,18 +513,15 @@ function doCopy(t,msg){
 function fallbackCopy(t,msg){const i=document.createElement('textarea');i.value=t;i.style.position='fixed';i.style.left='-9999px';document.body.appendChild(i);i.select();try{document.execCommand('copy');alert(msg||'कॉपी हो गया!')}catch(e){prompt('यह कॉपी करें:',t)}document.body.removeChild(i)}
 function shareToStatus(platform){
   const url=getShareUrl();const s=document.getElementById('scoreNum').textContent;
-  const storyText=`आपकी दैनिक दिनचर्या कितनी स्वस्थ है — सच में?\n\nमैंने अभी *${s}/10* स्कोर किया Habuild Habit Score क्विज़ में!\n\nफ्री क्विज़ लें और अपना स्कोर जानें:\n${url}\n\nबेहतर आदतें = बेहतर जीवनशैली`;
+  const storyText=`\u2728 आपकी दैनिक दिनचर्या कितनी स्वस्थ है \u2014 सच में?\n\n\uD83C\uDFAF मैंने अभी *${s}/10* स्कोर किया Habuild Habit Score क्विज़ में!\n\n\uD83D\uDD17 फ्री क्विज़ लें:\n${url}\n\n\u26A1 बेहतर आदतें \u2192 बेहतर जीवनशैली \uD83C\uDF3F`;
   if(platform==='wa'){
-    doCopy(storyText,'टेक्स्ट कॉपी हो गया! WhatsApp खुल रहा है...');
-    setTimeout(()=>window.open('whatsapp://','_blank'),400);
+    window.open('https://api.whatsapp.com/send?text='+encodeURIComponent(storyText),'_blank');
   }else if(platform==='ig'){
-    doCopy(storyText,'कैप्शन कॉपी हो गया! Instagram खुल रहा है...');
-    setTimeout(()=>window.open('instagram://story-camera','_blank'),400);
-    setTimeout(()=>window.open('https://www.instagram.com/','_blank'),800);
+    doCopy(storyText,'\u2705 कैप्शन कॉपी हो गया! Instagram \u2192 Story \u2192 पेस्ट करें');
+    setTimeout(()=>window.open('https://www.instagram.com/','_blank'),500);
   }else if(platform==='fb'){
-    doCopy(storyText,'टेक्स्ट कॉपी हो गया! Facebook खुल रहा है...');
-    setTimeout(()=>window.open('fb://story','_blank'),400);
-    setTimeout(()=>window.open('https://www.facebook.com/stories/create','_blank'),800);
+    doCopy(storyText,'\u2705 टेक्स्ट कॉपी हो गया! Facebook \u2192 Story \u2192 पेस्ट करें');
+    setTimeout(()=>window.open('https://www.facebook.com/stories/create','_blank'),500);
   }
 }
 
@@ -586,6 +601,14 @@ function showResult(score){
   }
 }
 function retake(){ans=Array(TQ).fill(null);cq=0;lead={};document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));document.getElementById('rName').value='';document.getElementById('rPhone').value='';goTo('sec-hero')}
+
+/* Explore Tabs */
+function showExTab(idx,btn){
+  document.querySelectorAll('.ex-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.ex-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('exP'+idx).classList.add('active');
+}
 
 /* Box Breathing with soothing ambient + voice */
 let brRunning=false,brInterval=null,brCycle=0,audioCtx=null,ambOscs=[];

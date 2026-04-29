@@ -186,6 +186,15 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .quote-card p{font-size:.88rem;color:var(--sub);font-style:italic;line-height:1.6}
 .quote-card .chain{font-style:normal;font-weight:700;color:var(--p);margin-top:8px;display:block;font-size:.9rem}
 
+/* EXPLORE TABS */
+.explore-tabs{display:flex;gap:6px;margin:18px 0 14px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.explore-tabs::-webkit-scrollbar{display:none}
+.ex-tab{padding:10px 16px;border-radius:12px;border:2px solid var(--border);font-size:.78rem;font-weight:600;cursor:pointer;white-space:nowrap;background:#fff;color:var(--sub);transition:all .15s;display:flex;align-items:center;gap:5px;flex-shrink:0}
+.ex-tab.active{background:var(--pl);border-color:var(--p);color:var(--p)}
+.ex-tab:hover{border-color:var(--p)}
+.ex-panel{display:none;animation:fadeUp .3s ease}
+.ex-panel.active{display:block}
+
 .foot{text-align:center;padding:24px 0 8px;font-size:.72rem;color:var(--sub)}
 .foot a{color:var(--p);text-decoration:none;font-weight:600}
 #confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}
@@ -330,77 +339,100 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
     <div class="result-card" id="resMsg"></div>
 
     <div class="share-cta" onclick="openShare()">
-      <h3>&#128153; Spread the good habit energy!</h3>
-      <p>&#128107; Share this with your friends & family.<br>Help them discover their Habit Score and start their journey too &#127793;</p>
+      <h3>&#128156; Spread the good habit energy!</h3>
+      <p>Share with friends & family &#127793;</p>
       <button class="sbtn">Click Here to Share</button>
     </div>
 
-    <div class="breath-card">
-      <p style="background:linear-gradient(135deg,#F0EDFF,#FFF5F0);padding:12px 16px;border-radius:12px;font-size:.84rem;color:var(--p);font-weight:600;margin-bottom:16px;line-height:1.5">&#127793; While you receive the update for our free online 21-Day Yoga Challenge, calm your mind with Box Breathing</p>
-      <h3>&#129495;&#8205;&#9794;&#65039; Box Breathing (4-4-4-4)</h3>
-      <p class="sub">Inhale 4 sec &#8594; Hold 4 sec &#8594; Exhale 4 sec &#8594; Hold 4 sec<br>Calm your mind. Reset your energy.</p>
-      <div class="breath-label" id="brLabel">Press Start</div>
-      <div class="breath-box" id="brBox"><div class="bb-dot" id="brDot" style="top:10px;left:10px"></div></div>
-      <div class="breath-timer" id="brTimer">4</div>
-      <button class="breath-start" id="brBtn" onclick="toggleBreathing()">Start Breathing</button>
-      <div class="breath-cycles" id="brCycles"></div>
-      <div class="breath-hint">Close your eyes and follow the sounds</div>
+    <!-- Explore Tabs -->
+    <p style="text-align:center;font-size:.82rem;color:var(--p);font-weight:700;margin-top:18px">&#128071; Explore More</p>
+    <div class="explore-tabs">
+      <button class="ex-tab active" onclick="showExTab(0,this)">&#129495; Breathing</button>
+      <button class="ex-tab" onclick="showExTab(1,this)">&#127909; Videos</button>
+      <button class="ex-tab" onclick="showExTab(2,this)">&#129504; Mind Game</button>
+      <button class="ex-tab" onclick="showExTab(3,this)">&#128214; Handbook</button>
+      <button class="ex-tab" onclick="showExTab(4,this)">&#127909; YouTube</button>
     </div>
 
-    <div class="practice-card">
-      <h3>&#127807; Practice Daily — Start Today</h3>
-      <p class="sub">Here are guided sessions to build your habit.</p>
-      <div class="vid-wrap" style="background:linear-gradient(135deg,#E8F5E9,#F0EDFF)">
-        <h4>&#128704; Breathing Exercise</h4>
-        <div class="yt-thumb" onclick="playVid(this,'I77hh5I69gA')">
-          <img src="https://img.youtube.com/vi/I77hh5I69gA/hqdefault.jpg" alt="Breathing Exercise" style="width:100%;border-radius:12px;display:block">
-          <div class="yt-play">&#9654;</div>
+    <!-- Panel: Breathing -->
+    <div class="ex-panel active" id="exP0">
+      <div class="breath-card">
+        <p style="background:linear-gradient(135deg,#F0EDFF,#FFF5F0);padding:12px 16px;border-radius:12px;font-size:.84rem;color:var(--p);font-weight:600;margin-bottom:16px;line-height:1.5">&#127793; While you receive the update for our free online 21-Day Yoga Challenge, calm your mind with Box Breathing</p>
+        <h3>&#129495;&#8205;&#9794;&#65039; Box Breathing (4-4-4-4)</h3>
+        <p class="sub">Inhale 4 sec &#8594; Hold 4 sec &#8594; Exhale 4 sec &#8594; Hold 4 sec<br>Calm your mind. Reset your energy.</p>
+        <div class="breath-label" id="brLabel">Press Start</div>
+        <div class="breath-box" id="brBox"><div class="bb-dot" id="brDot" style="top:10px;left:10px"></div></div>
+        <div class="breath-timer" id="brTimer">4</div>
+        <button class="breath-start" id="brBtn" onclick="toggleBreathing()">Start Breathing</button>
+        <div class="breath-cycles" id="brCycles"></div>
+        <div class="breath-hint">Close your eyes and follow the sounds</div>
+      </div>
+    </div>
+
+    <!-- Panel: Videos -->
+    <div class="ex-panel" id="exP1">
+      <div class="practice-card">
+        <h3>&#127807; Practice Daily — Start Today</h3>
+        <p class="sub">Guided sessions to build your habit.</p>
+        <div class="vid-wrap" style="background:linear-gradient(135deg,#E8F5E9,#F0EDFF)">
+          <h4>&#128704; Breathing Exercise</h4>
+          <div class="yt-thumb" onclick="playVid(this,'I77hh5I69gA')">
+            <img src="https://img.youtube.com/vi/I77hh5I69gA/hqdefault.jpg" alt="Breathing Exercise" style="width:100%;border-radius:12px;display:block">
+            <div class="yt-play">&#9654;</div>
+          </div>
+          <a class="yt-link" href="https://www.youtube.com/watch?v=I77hh5I69gA" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
-        <a class="yt-link" href="https://www.youtube.com/watch?v=I77hh5I69gA" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-      </div>
-      <div class="vid-wrap" style="background:linear-gradient(135deg,#FFF8E1,#FFF5F0)">
-        <h4>&#127908; Guided Breathing Session</h4>
-        <div class="yt-thumb" onclick="playVid(this,'LCyP3F7gRC4')">
-          <img src="https://img.youtube.com/vi/LCyP3F7gRC4/hqdefault.jpg" alt="Guided Breathing" style="width:100%;border-radius:12px;display:block">
-          <div class="yt-play">&#9654;</div>
+        <div class="vid-wrap" style="background:linear-gradient(135deg,#FFF8E1,#FFF5F0)">
+          <h4>&#127908; Guided Breathing Session</h4>
+          <div class="yt-thumb" onclick="playVid(this,'LCyP3F7gRC4')">
+            <img src="https://img.youtube.com/vi/LCyP3F7gRC4/hqdefault.jpg" alt="Guided Breathing" style="width:100%;border-radius:12px;display:block">
+            <div class="yt-play">&#9654;</div>
+          </div>
+          <a class="yt-link" href="https://www.youtube.com/watch?v=LCyP3F7gRC4" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
-        <a class="yt-link" href="https://www.youtube.com/watch?v=LCyP3F7gRC4" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
       </div>
     </div>
 
-    <div class="yt-card">
-      <div style="font-size:1.8rem;margin-bottom:6px">&#127909;</div>
-      <h3>Saurabh Bothra</h3>
-      <p>More sessions, tips & daily motivation</p>
-      <a class="yt-btn" href="https://www.youtube.com/channel/UCZ1_MhfxMAotGs8fzZM1f7A" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        Explore More — Click Here
-      </a>
-    </div>
-
-    <!-- Mind Game -->
-    <div class="practice-card" id="mindGameCard">
-      <div style="font-size:2rem;margin-bottom:6px">&#129504;</div>
-      <h3>Quick Mind Game</h3>
-      <p class="sub">Train your brain! Tap the correct color name, not the color it's written in.</p>
-      <div id="mgArea" style="min-height:140px">
-        <div id="mgWord" style="font-size:2rem;font-weight:900;margin-bottom:16px;min-height:48px"></div>
-        <div id="mgOpts" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"></div>
+    <!-- Panel: Mind Game -->
+    <div class="ex-panel" id="exP2">
+      <div class="practice-card">
+        <div style="font-size:2rem;margin-bottom:6px">&#129504;</div>
+        <h3>Quick Mind Game</h3>
+        <p class="sub">Train your brain! Tap the correct color name, not the color it's written in.</p>
+        <div id="mgArea" style="min-height:140px">
+          <div id="mgWord" style="font-size:2rem;font-weight:900;margin-bottom:16px;min-height:48px"></div>
+          <div id="mgOpts" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"></div>
+        </div>
+        <div id="mgScore" style="font-size:.85rem;color:var(--sub);margin-top:10px"></div>
+        <div id="mgResult" style="font-size:.9rem;font-weight:700;margin-top:8px;min-height:24px"></div>
+        <button class="breath-start" onclick="startMindGame()" id="mgBtn" style="margin-top:10px">Play Now</button>
       </div>
-      <div id="mgScore" style="font-size:.85rem;color:var(--sub);margin-top:10px"></div>
-      <div id="mgResult" style="font-size:.9rem;font-weight:700;margin-top:8px;min-height:24px"></div>
-      <button class="breath-start" onclick="startMindGame()" id="mgBtn" style="margin-top:10px">Play Now</button>
     </div>
 
-    <!-- Yoga Handbook -->
-    <div style="background:linear-gradient(135deg,#E8F5E9,#C8E6C9);border-radius:var(--r);padding:22px;text-align:center;margin:14px 0;box-shadow:var(--sh)">
-      <div style="font-size:2rem;margin-bottom:6px">&#128214;</div>
-      <h3 style="font-size:1.05rem;margin-bottom:6px">Habuild Yoga Handbook</h3>
-      <p style="color:var(--sub);font-size:.84rem;margin-bottom:14px;line-height:1.5">Free guide with all essential yoga poses, breathing techniques, and daily routines. Perfect for beginners and practitioners.</p>
-      <a href="https://assets.habit.yoga/memberapp/Habuild%20Yoga%20Handbook.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--g);padding:12px 24px;border-radius:12px;font-size:.9rem;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(102,187,106,.15);transition:all .2s">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        Download Free Handbook (PDF)
-      </a>
+    <!-- Panel: Handbook -->
+    <div class="ex-panel" id="exP3">
+      <div style="background:linear-gradient(135deg,#E8F5E9,#C8E6C9);border-radius:var(--r);padding:22px;text-align:center;box-shadow:var(--sh)">
+        <div style="font-size:2rem;margin-bottom:6px">&#128214;</div>
+        <h3 style="font-size:1.05rem;margin-bottom:6px">Habuild Yoga Handbook</h3>
+        <p style="color:var(--sub);font-size:.84rem;margin-bottom:14px;line-height:1.5">Free guide with all essential yoga poses, breathing techniques, and daily routines.</p>
+        <a href="https://assets.habit.yoga/memberapp/Habuild%20Yoga%20Handbook.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--g);padding:12px 24px;border-radius:12px;font-size:.9rem;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(102,187,106,.15)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download Free Handbook (PDF)
+        </a>
+      </div>
+    </div>
+
+    <!-- Panel: YouTube -->
+    <div class="ex-panel" id="exP4">
+      <div class="yt-card">
+        <div style="font-size:1.8rem;margin-bottom:6px">&#127909;</div>
+        <h3>Saurabh Bothra</h3>
+        <p>More sessions, tips & daily motivation</p>
+        <a class="yt-btn" href="https://www.youtube.com/channel/UCZ1_MhfxMAotGs8fzZM1f7A" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Explore More — Click Here
+        </a>
+      </div>
     </div>
 
     <div class="quote-card">
@@ -471,7 +503,7 @@ function getShareUrl(){
 function getShareMsg(){
   const url=getShareUrl();
   const s=document.getElementById('scoreNum').textContent;
-  return `How healthy is your daily routine — really?\n\nI just checked mine and scored *${s}/10* on the Habuild Habit Score quiz!\n\nTake the free quiz and find your score:\n${url}\n\nBetter habits = Better lifestyle`;
+  return `\u2728 How healthy is your daily routine \u2014 really?\n\n\uD83C\uDFAF I scored *${s}/10* on the Habuild Habit Score quiz!\n\n\uD83D\uDD17 Take the free quiz:\n${url}\n\n\u26A1 Better habits \u2192 Better lifestyle \uD83C\uDF3F`;
 }
 function openShare(){
   const url=getShareUrl();
@@ -505,18 +537,16 @@ function fallbackCopy(t,alertMsg){const i=document.createElement('textarea');i.v
 function shareToStatus(platform){
   const url=getShareUrl();
   const s=document.getElementById('scoreNum').textContent;
-  const storyText=`How healthy is your daily routine — really?\n\nI just scored *${s}/10* on the Habuild Habit Score quiz!\n\nTake the free quiz and find YOUR score:\n${url}\n\nBetter habits = Better lifestyle`;
+  const storyText=`\u2728 How healthy is your daily routine \u2014 really?\n\n\uD83C\uDFAF I just scored *${s}/10* on the Habuild Habit Score quiz!\n\n\uD83D\uDD17 Take the free quiz and find YOUR score:\n${url}\n\n\u26A1 Better habits \u2192 Better lifestyle \uD83C\uDF3F`;
   if(platform==='wa'){
-    doCopy(storyText,'Text copied! Opening WhatsApp...');
-    setTimeout(()=>window.open('whatsapp://','_blank'),400);
+    // WhatsApp: open with pre-filled text (works on both Android/iOS)
+    window.open('https://api.whatsapp.com/send?text='+encodeURIComponent(storyText),'_blank');
   }else if(platform==='ig'){
-    doCopy(storyText,'Caption copied! Opening Instagram...');
-    setTimeout(()=>window.open('instagram://story-camera','_blank'),400);
-    setTimeout(()=>window.open('https://www.instagram.com/','_blank'),800);
+    doCopy(storyText,'\u2705 Caption copied! Open Instagram \u2192 Story \u2192 Paste text');
+    setTimeout(()=>window.open('https://www.instagram.com/','_blank'),500);
   }else if(platform==='fb'){
-    doCopy(storyText,'Text copied! Opening Facebook...');
-    setTimeout(()=>window.open('fb://story','_blank'),400);
-    setTimeout(()=>window.open('https://www.facebook.com/stories/create','_blank'),800);
+    doCopy(storyText,'\u2705 Text copied! Open Facebook \u2192 Create Story \u2192 Paste');
+    setTimeout(()=>window.open('https://www.facebook.com/stories/create','_blank'),500);
   }
 }
 
@@ -597,6 +627,14 @@ function showResult(score){
   }
 }
 function retake(){ans=Array(TQ).fill(null);cq=0;lead={};document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));document.getElementById('rName').value='';document.getElementById('rPhone').value='';goTo('sec-hero')}
+
+/* Explore Tabs */
+function showExTab(idx,btn){
+  document.querySelectorAll('.ex-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.ex-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('exP'+idx).classList.add('active');
+}
 
 /* Box Breathing with soothing ambient + voice */
 let brRunning=false,brInterval=null,brCycle=0,audioCtx=null,ambOscs=[];
