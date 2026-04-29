@@ -2,80 +2,86 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5">
 <title>Habuild — What's Your Habit Score?</title>
-<meta name="description" content="How healthy is your daily routine — really? Take the Habit Score quiz and find out.">
-<meta property="og:title" content="Habuild — What's Your Habit Score Out of 5?">
-<meta property="og:description" content="How healthy is your daily routine — really? Take the quiz. Join the free 21-Day June Challenge.">
-<meta property="og:image" content="">
+<meta name="description" content="How healthy is your daily routine — really? Take the free Habit Score quiz out of 10 and find out where you stand.">
+<!-- OG / Social Share -->
+<meta property="og:title" content="Habuild — What's Your Habit Score Out of 10?">
+<meta property="og:description" content="How healthy is your daily routine — really? Take this quick quiz, get your score out of 10, and discover how to improve your habits.">
+<meta property="og:image" content="https://img.youtube.com/vi/I77hh5I69gA/hqdefault.jpg">
+<meta property="og:url" content="">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Habuild">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Habuild — What's Your Habit Score Out of 10?">
+<meta name="twitter:description" content="How healthy is your daily routine — really? Take the quiz and find out.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--p:#7C6FE8;--pd:#5D4FCF;--pl:#F0EDFF;--a:#FF8A80;--ad:#E57373;--g:#66BB6A;--gd:#43A047;--bg:linear-gradient(160deg,#FFF5F0 0%,#F0EDFF 30%,#E8F5E9 60%,#FFF8E1 100%);--card:#fff;--text:#2D2D3A;--sub:#7E8590;--border:#E8E6F0;--r:20px;--sh:0 4px 24px rgba(124,111,232,.06)}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-
-/* ─── Background shadow icons (yoga, diet, habit, consistency) ─── */
+:root{--p:#7C6FE8;--pd:#5D4FCF;--pl:#F0EDFF;--a:#FF8A80;--g:#66BB6A;--bg:linear-gradient(160deg,#FFF5F0 0%,#F0EDFF 30%,#E8F5E9 60%,#FFF8E1 100%);--card:#fff;--text:#2D2D3A;--sub:#7E8590;--border:#E8E6F0;--r:20px;--sh:0 4px 24px rgba(124,111,232,.06)}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
 body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 24 24' fill='none' stroke='%237C6FE818' stroke-width='1'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 24 24' fill='%23FF8A8010' stroke='none'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='85' height='85' viewBox='0 0 24 24' fill='%2366BB6A10' stroke='none'%3E%3Cpath d='M17.21 9l-4.38-6.56c-.19-.28-.51-.42-.83-.42-.32 0-.64.14-.83.43L6.79 9H2c-.55 0-1 .45-1 1 0 .09.01.18.04.27l2.54 9.27c.23.84 1 1.46 1.92 1.46h13c.92 0 1.69-.62 1.93-1.46l2.54-9.27L23 10c0-.55-.45-1-1-1h-4.79zM9 9l3-4.4L15 9H9zm3 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75' viewBox='0 0 24 24' fill='%23FFB74D10' stroke='none'%3E%3Cpath d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='95' height='95' viewBox='0 0 24 24' fill='%23B388FF0C' stroke='none'%3E%3Cpath d='M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 24 24' fill='%23EA80FC0C' stroke='none'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 24 24' fill='%23FF8A8010'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='85' height='85' viewBox='0 0 24 24' fill='%2366BB6A10'%3E%3Cpath d='M17.21 9l-4.38-6.56c-.19-.28-.51-.42-.83-.42-.32 0-.64.14-.83.43L6.79 9H2c-.55 0-1 .45-1 1 0 .09.01.18.04.27l2.54 9.27c.23.84 1 1.46 1.92 1.46h13c.92 0 1.69-.62 1.93-1.46l2.54-9.27L23 10c0-.55-.45-1-1-1h-4.79zM9 9l3-4.4L15 9H9zm3 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75' viewBox='0 0 24 24' fill='%23FFB74D10'%3E%3Cpath d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='95' height='95' viewBox='0 0 24 24' fill='%23B388FF0C'%3E%3Cpath d='M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 24 24' fill='%23EA80FC0C'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z'/%3E%3C/svg%3E");
   background-position:3% 6%,88% 12%,8% 40%,82% 48%,45% 80%,70% 75%;
-  background-repeat:no-repeat;
-  background-size:100px,110px,95px,90px,120px,80px;
-  opacity:1}
-
+  background-repeat:no-repeat;background-size:100px,110px,95px,90px,120px,80px;opacity:1}
 .wrap{max-width:640px;margin:0 auto;padding:16px 16px 60px;position:relative;z-index:1}
 
-/* ─── BRAND ─── */
-.brand{text-align:center;padding:24px 0 8px}
+/* LANG SWITCH */
+.lang-bar{text-align:center;margin-bottom:8px}
+.lang-btn{padding:6px 16px;border-radius:20px;border:2px solid var(--border);font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s;background:#fff;color:var(--sub);margin:0 3px}
+.lang-btn.active{background:var(--pl);border-color:var(--p);color:var(--p)}
+
+/* BRAND */
+.brand{text-align:center;padding:16px 0 8px}
 .brand-row{display:inline-flex;align-items:center;gap:10px}
 .brand-icon{width:48px;height:48px;border-radius:13px;background:linear-gradient(135deg,#FF8A80,#FF80AB,#EA80FC);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#fff;font-weight:900;box-shadow:0 4px 16px rgba(255,138,128,.3);overflow:hidden}
 .brand-icon img{width:100%;height:100%;object-fit:cover}
 .brand-name{font-size:1.7rem;font-weight:900;background:linear-gradient(135deg,#7C6FE8,#FF8A80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .brand-tag{color:var(--sub);font-size:.82rem;margin-top:4px}
-.sep{display:flex;align-items:center;gap:10px;margin:18px 0}
+.sep{display:flex;align-items:center;gap:10px;margin:14px 0}
 .sep-line{flex:1;height:2px;background:linear-gradient(90deg,transparent,#FF8A80,#7C6FE8,transparent);opacity:.18}
 .sep-dot{width:5px;height:5px;border-radius:50%;background:var(--a)}
 
-/* ─── HERO ─── */
-.hero{background:linear-gradient(135deg,#FF8A80 0%,#FF80AB 30%,#EA80FC 60%,#B388FF 100%);color:#fff;border-radius:var(--r);padding:36px 28px 32px;text-align:center;position:relative;overflow:hidden;box-shadow:0 8px 40px rgba(255,138,128,.2);margin-bottom:20px}
+/* HERO */
+.hero{background:linear-gradient(135deg,#FF8A80 0%,#FF80AB 30%,#EA80FC 60%,#B388FF 100%);color:#fff;border-radius:var(--r);padding:36px 24px 32px;text-align:center;position:relative;overflow:hidden;box-shadow:0 8px 40px rgba(255,138,128,.2);margin-bottom:20px}
 .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.08)}
 .hero::after{content:'';position:absolute;bottom:-40px;left:-40px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.06)}
 .hero *{position:relative;z-index:1}
 .hero-badge{display:inline-block;background:rgba(255,255,255,.2);padding:5px 16px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:1px;margin-bottom:14px;backdrop-filter:blur(4px)}
-.hero h1{font-size:1.65rem;font-weight:900;line-height:1.3;margin-bottom:14px}
-.hero p{font-size:.9rem;line-height:1.7;opacity:.93;max-width:440px;margin:0 auto 18px}
-.hero-btn{display:inline-block;background:#fff;color:#FF8A80;padding:16px 44px;border-radius:50px;font-size:1.05rem;font-weight:800;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.12);transition:all .25s}
-.hero-btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 8px 28px rgba(0,0,0,.18)}
+.hero h1{font-size:1.55rem;font-weight:900;line-height:1.3;margin-bottom:14px}
+.hero p{font-size:.88rem;line-height:1.7;opacity:.93;max-width:440px;margin:0 auto 18px}
 .poster-img{width:100%;border-radius:14px;margin:14px 0}
+.hero-btn{display:inline-block;background:#fff;color:#FF8A80;padding:16px 44px;border-radius:50px;font-size:1.05rem;font-weight:800;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.12);transition:all .25s}
+.hero-btn:hover,.hero-btn:active{transform:translateY(-2px) scale(1.02);box-shadow:0 8px 28px rgba(0,0,0,.18)}
 
-/* ─── HABIT CYCLE ─── */
-.cycle-strip{display:flex;justify-content:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
-.cycle-item{display:flex;flex-direction:column;align-items:center;gap:4px;background:var(--card);padding:12px 14px;border-radius:14px;box-shadow:var(--sh);min-width:80px;border:1px solid rgba(124,111,232,.05)}
-.cycle-icon{font-size:1.4rem}
-.cycle-label{font-size:.68rem;font-weight:700;color:var(--p);text-transform:uppercase;letter-spacing:.3px}
-.cycle-arrow{align-self:center;color:var(--a);font-size:1rem;font-weight:700}
+/* CYCLE */
+.cycle-strip{display:flex;justify-content:center;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.cycle-item{display:flex;flex-direction:column;align-items:center;gap:4px;background:var(--card);padding:10px 12px;border-radius:14px;box-shadow:var(--sh);min-width:65px;border:1px solid rgba(124,111,232,.05)}
+.cycle-icon{font-size:1.3rem}
+.cycle-label{font-size:.62rem;font-weight:700;color:var(--p);text-transform:uppercase;letter-spacing:.3px}
+.cycle-arrow{align-self:center;color:var(--a);font-size:.9rem;font-weight:700}
 
-/* ─── TRUST BAR ─── */
+/* TRUST */
 .trust{display:flex;justify-content:center;gap:24px;margin-bottom:24px;flex-wrap:wrap}
 .trust-item{text-align:center;font-size:.75rem;color:var(--sub)}
-.trust-item .num{font-size:1.2rem;font-weight:800;color:var(--p);display:block}
+.trust-item .num{font-size:1.1rem;font-weight:800;color:var(--p);display:block}
 
-/* ─── SECTIONS ─── */
+/* SECTIONS */
 .section{display:none}
 .section.active{display:block;animation:fadeUp .4s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .card{background:var(--card);border-radius:var(--r);padding:28px 24px;box-shadow:var(--sh);border:1px solid rgba(124,111,232,.06);position:relative;overflow:hidden}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF8A80,#EA80FC,#B388FF)}
-.card h2{font-size:1.2rem;font-weight:800;margin-bottom:6px}
+.card h2{font-size:1.15rem;font-weight:800;margin-bottom:6px}
 .card .sub{color:var(--sub);font-size:.85rem;margin-bottom:20px;line-height:1.5}
 
-/* ─── FORM ─── */
+/* FORM */
 .field{margin-bottom:16px}
 .field label{display:block;font-size:.84rem;font-weight:600;margin-bottom:5px}
 .field input{width:100%;padding:12px 14px;border-radius:12px;border:2px solid var(--border);font-size:.93rem;transition:all .2s;background:#FAFAFA}
@@ -83,24 +89,22 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .field-row{display:flex;gap:10px}
 .field-row .field{flex:1}
 .submit-btn{width:100%;padding:14px;border-radius:14px;border:none;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;margin-top:8px;color:#fff;background:linear-gradient(135deg,#FF8A80,#EA80FC);box-shadow:0 4px 16px rgba(255,138,128,.2)}
-.submit-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,138,128,.3)}
+.submit-btn:hover{transform:translateY(-1px)}
 
-/* ─── QUIZ ─── */
+/* QUIZ */
 .progress-wrap{margin-bottom:24px}
 .prog-bar{background:#E8E6F0;border-radius:20px;height:8px;overflow:hidden}
 .prog-bar .fill{background:linear-gradient(90deg,#FF8A80,#EA80FC,#B388FF);height:100%;border-radius:20px;transition:width .4s;width:0}
-.prog-text{text-align:center;font-size:.75rem;color:var(--sub);margin-top:6px}
 .q-card{background:var(--card);border-radius:var(--r);padding:26px 22px;box-shadow:var(--sh);border:1px solid rgba(124,111,232,.06);display:none;position:relative;overflow:hidden}
 .q-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF8A80,#EA80FC,#B388FF)}
 .q-card.active{display:block;animation:fadeUp .3s ease}
-.q-num{font-size:.7rem;font-weight:700;color:var(--p);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
-.q-tag{display:inline-block;background:var(--pl);color:var(--p);padding:2px 8px;border-radius:5px;font-size:.62rem;font-weight:700}
-.q-card h3{font-size:1.1rem;font-weight:700;margin-bottom:18px;line-height:1.4}
+.q-tag{display:inline-block;background:var(--pl);color:var(--p);padding:3px 10px;border-radius:6px;font-size:.68rem;font-weight:700;margin-bottom:10px}
+.q-card h3{font-size:1.05rem;font-weight:700;margin-bottom:18px;line-height:1.4}
 .opts{display:flex;flex-direction:column;gap:9px}
-.opt{display:flex;align-items:center;gap:11px;padding:13px 15px;border-radius:13px;border:2px solid var(--border);cursor:pointer;transition:all .2s;font-size:.9rem;background:#FAFAFA}
-.opt:hover{border-color:var(--p);background:var(--pl)}
+.opt{display:flex;align-items:center;gap:11px;padding:13px 15px;border-radius:13px;border:2px solid var(--border);cursor:pointer;transition:all .15s;font-size:.88rem;background:#FAFAFA;-webkit-tap-highlight-color:transparent}
+.opt:hover,.opt:active{border-color:var(--p);background:var(--pl)}
 .opt.sel{border-color:var(--p);background:var(--pl);font-weight:600;box-shadow:0 2px 10px rgba(124,111,232,.1)}
-.opt .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.opt .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .opt.sel .dot{border-color:var(--p);background:var(--p)}
 .opt.sel .dot::after{content:'';width:7px;height:7px;border-radius:50%;background:#fff}
 .q-nav{display:flex;gap:12px;margin-top:18px;justify-content:space-between}
@@ -109,88 +113,99 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .btn-p:hover{transform:translateY(-1px)}
 .btn-o{background:transparent;color:var(--p);border:2px solid var(--p)}
 .btn-o:hover{background:var(--pl)}
-.btn:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.btn:disabled{opacity:.35;cursor:not-allowed}
 
-/* ─── RESULT ─── */
+/* RESULT */
 .congrats{background:linear-gradient(135deg,#FF8A80,#EA80FC,#B388FF);color:#fff;border-radius:var(--r);padding:28px 24px 22px;text-align:center;margin-bottom:18px;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(234,128,252,.2)}
 .congrats::before{content:'';position:absolute;top:-50px;right:-50px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.07)}
-.congrats h2{font-size:1.4rem;font-weight:900;margin-bottom:5px}
-.congrats p{opacity:.9;font-size:.88rem}
-.score-ring{width:150px;height:150px;border-radius:50%;margin:0 auto 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(0,0,0,.12)}
+.congrats h2{font-size:1.3rem;font-weight:900;margin-bottom:5px}
+.congrats p{opacity:.9;font-size:.86rem}
+.score-ring{width:140px;height:140px;border-radius:50%;margin:0 auto 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(0,0,0,.12);position:relative}
 .score-ring::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:3px dashed rgba(255,255,255,.25)}
-.score-ring .sn{font-size:3rem;font-weight:900;color:#fff;line-height:1}
-.score-ring .sl{font-size:.78rem;color:rgba(255,255,255,.8);margin-top:2px}
+.score-ring .sn{font-size:2.8rem;font-weight:900;color:#fff;line-height:1}
+.score-ring .sl{font-size:.75rem;color:rgba(255,255,255,.8);margin-top:2px}
 .s-low{background:linear-gradient(135deg,#FF8A80,#EF5350)}
 .s-mid{background:linear-gradient(135deg,#FFD54F,#FFB74D)}
 .s-hi{background:linear-gradient(135deg,#81C784,#66BB6A)}
-.result-card{background:var(--card);border-radius:var(--r);padding:22px;box-shadow:var(--sh);border:1px solid rgba(124,111,232,.06);text-align:left;margin:14px 0;position:relative;overflow:hidden}
+.result-card{background:var(--card);border-radius:var(--r);padding:22px;box-shadow:var(--sh);border:1px solid rgba(124,111,232,.06);text-align:left;margin:14px 0;position:relative;overflow:hidden;line-height:1.7;font-size:.88rem}
 .result-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF8A80,#EA80FC)}
-.result-card h3{margin-bottom:8px;font-size:1rem}
-.result-card p{color:var(--sub);line-height:1.7;font-size:.88rem}
 
-/* ─── SHARE CTA ─── */
+/* SHARE */
 .share-cta{background:linear-gradient(135deg,#B388FF,#7C6FE8);color:#fff;border-radius:var(--r);padding:22px;text-align:center;margin:14px 0;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(124,111,232,.2)}
-.share-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,111,232,.3)}
+.share-cta:hover{transform:translateY(-2px)}
 .share-cta h3{font-size:1rem;margin-bottom:6px}
-.share-cta p{font-size:.85rem;opacity:.9}
-.share-cta .share-btn-inner{display:inline-block;background:#fff;color:var(--p);padding:10px 28px;border-radius:50px;font-size:.9rem;font-weight:700;margin-top:10px;border:none;cursor:pointer}
-
-/* ─── SHARE MODAL ─── */
+.share-cta p{font-size:.84rem;opacity:.9}
+.share-cta .sbtn{display:inline-block;background:#fff;color:var(--p);padding:10px 28px;border-radius:50px;font-size:.88rem;font-weight:700;margin-top:10px;border:none;cursor:pointer}
 .share-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:9998;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
 .share-modal.show{display:flex}
-.share-modal-content{background:#fff;border-radius:var(--r);padding:28px 24px;max-width:420px;width:90%;text-align:center;position:relative;box-shadow:0 16px 48px rgba(0,0,0,.2)}
-.share-modal-content h3{font-size:1.1rem;margin-bottom:16px}
-.share-modal-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--sub)}
-.soc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;max-width:400px;margin:0 auto}
-.soc{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 8px;border-radius:11px;font-size:.78rem;font-weight:600;text-decoration:none;color:#fff;border:none;cursor:pointer;transition:all .2s}
+.share-modal-content{background:#fff;border-radius:var(--r);padding:28px 24px;max-width:400px;width:90%;text-align:center;position:relative;box-shadow:0 16px 48px rgba(0,0,0,.2)}
+.share-modal-content h3{font-size:1.05rem;margin-bottom:14px}
+.share-close{position:absolute;top:10px;right:14px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--sub)}
+.soc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;max-width:360px;margin:0 auto}
+.soc{display:flex;align-items:center;justify-content:center;gap:5px;padding:10px 8px;border-radius:11px;font-size:.76rem;font-weight:600;text-decoration:none;color:#fff;border:none;cursor:pointer;transition:all .15s}
 .soc:hover{transform:translateY(-2px);filter:brightness(1.1)}
-.soc svg{width:16px;height:16px;flex-shrink:0}
-.s-wa{background:#25D366}.s-fb{background:#1877F2}.s-tw{background:#000}.s-li{background:#0A66C2}.s-tg{background:#229ED9}
-.s-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
-.s-cp{background:var(--p)}.s-share{background:linear-gradient(135deg,#FF8A80,#EA80FC)}
+.soc svg{width:15px;height:15px;flex-shrink:0}
+.s-wa{background:#25D366}.s-fb{background:#1877F2}.s-tw{background:#000}.s-tg{background:#229ED9}.s-cp{background:var(--p)}.s-ns{background:linear-gradient(135deg,#FF8A80,#EA80FC)}
 
-/* ─── BOX BREATHING ─── */
+/* BREATHING */
 .breath-card{background:var(--card);border-radius:var(--r);padding:24px;box-shadow:var(--sh);border:1px solid rgba(124,111,232,.06);text-align:center;margin:14px 0}
 .breath-card h3{font-size:1rem;margin-bottom:4px}
 .breath-card .sub{font-size:.82rem;color:var(--sub);margin-bottom:16px}
-.breath-box{width:140px;height:140px;margin:0 auto 12px;border:4px solid var(--p);border-radius:16px;display:flex;align-items:center;justify-content:center;position:relative;transition:all 4s ease}
-.breath-box .bb-dot{width:16px;height:16px;border-radius:50%;background:var(--p);position:absolute;transition:all 4s ease}
-.breath-label{font-size:1.1rem;font-weight:700;color:var(--p);margin-bottom:8px;min-height:28px}
-.breath-timer{font-size:2rem;font-weight:900;color:var(--text);margin-bottom:6px}
-.breath-start{background:var(--p);color:#fff;border:none;padding:10px 28px;border-radius:12px;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s}
+.breath-box{width:130px;height:130px;margin:0 auto 12px;border:4px solid var(--p);border-radius:16px;display:flex;align-items:center;justify-content:center;position:relative}
+.breath-box .bb-dot{width:14px;height:14px;border-radius:50%;background:var(--p);position:absolute;transition:all 4s ease}
+.breath-label{font-size:1rem;font-weight:700;color:var(--p);margin-bottom:6px;min-height:26px}
+.breath-timer{font-size:1.8rem;font-weight:900;margin-bottom:6px}
+.breath-start{background:var(--p);color:#fff;border:none;padding:10px 28px;border-radius:12px;font-size:.88rem;font-weight:600;cursor:pointer}
 .breath-start:hover{background:var(--pd)}
-.breath-cycles{font-size:.75rem;color:var(--sub);margin-top:8px}
-.breath-hint{font-size:.75rem;color:var(--sub);margin-top:6px;font-style:italic}
+.breath-cycles{font-size:.72rem;color:var(--sub);margin-top:6px}
+.breath-hint{font-size:.72rem;color:var(--sub);margin-top:5px;font-style:italic}
 
-/* ─── DAILY PRACTICE / YT ─── */
+/* VIDEO */
 .practice-card{background:var(--card);border-radius:var(--r);padding:24px;box-shadow:var(--sh);border:1px solid rgba(124,111,232,.06);text-align:center;margin:14px 0}
 .practice-card h3{font-size:1rem;font-weight:800;margin-bottom:6px}
-.practice-card .sub{font-size:.82rem;color:var(--sub);margin-bottom:16px;line-height:1.5}
-.practice-video{width:100%;aspect-ratio:16/9;border-radius:12px;border:none;margin-bottom:14px}
+.practice-card .sub{font-size:.82rem;color:var(--sub);margin-bottom:14px;line-height:1.5}
+.vid-wrap{border-radius:14px;padding:14px;margin-bottom:14px}
+.vid-wrap h4{font-size:.88rem;font-weight:700;color:var(--p);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.practice-video{width:100%;aspect-ratio:16/9;border-radius:12px;border:none}
+.yt-link{display:inline-block;margin-top:8px;color:var(--p);font-size:.78rem;font-weight:600;text-decoration:none}
+.yt-link:hover{text-decoration:underline}
+.yt-thumb{position:relative;cursor:pointer;border-radius:12px;overflow:hidden}
+.yt-thumb img{transition:transform .2s}
+.yt-thumb:hover img{transform:scale(1.02)}
+.yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:42px;background:rgba(255,0,0,.85);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+
+/* YT CHANNEL CARD */
+.yt-card{background:#fff;border-radius:var(--r);padding:22px;text-align:center;margin:14px 0;box-shadow:var(--sh);border:1px solid rgba(124,111,232,.06)}
+.yt-card h3{font-size:1.05rem;margin-bottom:4px}
+.yt-card p{color:var(--sub);font-size:.82rem;margin-bottom:14px}
 .yt-btn{display:inline-flex;align-items:center;gap:8px;background:#FF0000;color:#fff;padding:12px 24px;border-radius:12px;font-size:.88rem;font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 12px rgba(255,0,0,.15)}
 .yt-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(255,0,0,.25)}
-.yt-btn svg{width:20px;height:20px;flex-shrink:0}
-.practice-quote{font-size:.85rem;color:var(--sub);font-style:italic;margin-top:14px;line-height:1.6;padding:12px;background:var(--pl);border-radius:10px}
-.video-section{margin-bottom:18px}
-.video-section h4{font-size:.9rem;font-weight:700;color:var(--p);margin-bottom:10px}
+.yt-btn svg{width:18px;height:18px;flex-shrink:0}
 
-/* ─── FOOTER ─── */
+.quote-card{background:linear-gradient(135deg,#F0EDFF,#FFF5F0);border-radius:var(--r);padding:20px;margin:14px 0;text-align:center;box-shadow:var(--sh)}
+.quote-card p{font-size:.88rem;color:var(--sub);font-style:italic;line-height:1.6}
+.quote-card .chain{font-style:normal;font-weight:700;color:var(--p);margin-top:8px;display:block;font-size:.9rem}
+
 .foot{text-align:center;padding:24px 0 8px;font-size:.72rem;color:var(--sub)}
 .foot a{color:var(--p);text-decoration:none;font-weight:600}
 #confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999}
 
 @media(max-width:480px){
   .wrap{padding:10px 10px 40px}
-  .hero{padding:28px 18px 24px}
-  .hero h1{font-size:1.35rem}
-  .card,.q-card{padding:20px 16px}
-  .score-ring{width:130px;height:130px}
-  .score-ring .sn{font-size:2.5rem}
-  .cycle-strip{gap:6px}
-  .cycle-item{padding:8px 10px;min-width:60px}
+  .hero{padding:24px 16px 24px}
+  .hero h1{font-size:1.3rem}
+  .card,.q-card{padding:18px 14px}
+  .score-ring{width:120px;height:120px}
+  .score-ring .sn{font-size:2.3rem}
+  .cycle-item{padding:8px 8px;min-width:55px}
   .cycle-icon{font-size:1.1rem}
-  .cycle-label{font-size:.6rem}
-  .cycle-arrow{font-size:.8rem}
+  .cycle-label{font-size:.55rem}
+  .cycle-arrow{font-size:.7rem}
+  .soc-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(min-width:768px){
+  .hero h1{font-size:1.8rem}
+  .hero{padding:44px 36px 38px}
 }
 </style>
 </head>
@@ -198,30 +213,36 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 <canvas id="confetti"></canvas>
 
 <!-- Share Modal -->
-<div class="share-modal" id="shareModal" onclick="if(event.target===this)closeShareModal()">
+<div class="share-modal" id="shareModal" onclick="if(event.target===this)closeShare()">
   <div class="share-modal-content">
-    <button class="share-modal-close" onclick="closeShareModal()">&times;</button>
+    <button class="share-close" onclick="closeShare()">&times;</button>
     <h3>Share with Friends & Family</h3>
-    <p style="color:var(--sub);font-size:.85rem;margin-bottom:16px">Help them discover their habit score too!</p>
+    <p style="color:var(--sub);font-size:.82rem;margin-bottom:14px">Help them discover their habit score too!</p>
     <div class="soc-grid">
-      <button class="soc s-share" onclick="nativeShare()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>Share</button>
+      <button class="soc s-ns" onclick="nativeShare()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>Share</button>
       <a class="soc s-wa" id="sh-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a>
       <a class="soc s-fb" id="sh-fb" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</a>
       <a class="soc s-tw" id="sh-tw" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X</a>
       <a class="soc s-tg" id="sh-tg" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram</a>
-      <button class="soc s-cp" onclick="copyLnk()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy Link</button>
+      <button class="soc s-cp" onclick="copyLnk()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy</button>
     </div>
   </div>
 </div>
 
 <div class="wrap">
+  <!-- Language Switch -->
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="window.location.href='index.html'">English</button>
+    <button class="lang-btn" onclick="window.location.href='hi.html'">हिंदी</button>
+  </div>
+
   <div class="brand">
     <div class="brand-row"><div class="brand-icon" id="brandIcon">H</div><div class="brand-name" id="brandName">Habuild</div></div>
     <div class="brand-tag" id="brandTag">Build Better Habits, One Day at a Time</div>
   </div>
   <div class="sep"><div class="sep-line"></div><div class="sep-dot"></div><div class="sep-line"></div></div>
 
-  <!-- ═══ STEP 1: HERO ═══ -->
+  <!-- HERO -->
   <div class="section active" id="sec-hero">
     <div class="hero">
       <div class="hero-badge">HABIT ASSESSMENT</div>
@@ -230,8 +251,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
       <div id="posterWrap"></div>
       <button class="hero-btn" onclick="goTo('sec-register')">Take the Quiz</button>
     </div>
-
-    <!-- Habit Cycle Strip -->
     <div class="cycle-strip">
       <div class="cycle-item"><div class="cycle-icon">&#9728;</div><div class="cycle-label">Wake Early</div></div>
       <div class="cycle-arrow">&#8594;</div>
@@ -243,7 +262,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
       <div class="cycle-arrow">&#8594;</div>
       <div class="cycle-item"><div class="cycle-icon">&#128170;</div><div class="cycle-label">Repeat</div></div>
     </div>
-
     <div class="trust">
       <div class="trust-item"><span class="num">10K+</span>Quizzes Taken</div>
       <div class="trust-item"><span class="num">21 Days</span>Free Challenge</div>
@@ -251,182 +269,106 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
     </div>
   </div>
 
-  <!-- ═══ STEP 2: REGISTER ═══ -->
+  <!-- REGISTER -->
   <div class="section" id="sec-register">
     <div class="card">
       <h2>Enter Your Details</h2>
       <p class="sub">We'll share your Habit Score after the quiz.</p>
       <div class="field">
         <label>Full Name *</label>
-        <input type="text" id="rName" placeholder="Your full name">
+        <input type="text" id="rName" placeholder="Your full name" autocomplete="name">
       </div>
       <div class="field-row">
         <div class="field" style="max-width:110px">
-          <label>Country Code *</label>
-          <input type="text" id="rCC" value="+91" placeholder="+91">
+          <label>Code *</label>
+          <select id="rCC" style="width:100%;padding:12px 6px;border-radius:12px;border:2px solid var(--border);font-size:.88rem;background:#FAFAFA"></select>
         </div>
         <div class="field">
           <label>Phone Number (WhatsApp) *</label>
-          <input type="tel" id="rPhone" placeholder="9876543210">
+          <input type="tel" id="rPhone" placeholder="9876543210" autocomplete="tel">
         </div>
       </div>
       <button class="submit-btn" onclick="registerAndStart()">Continue to Quiz</button>
     </div>
   </div>
 
-  <!-- ═══ STEP 3: QUIZ (7 questions) ═══ -->
+  <!-- QUIZ -->
   <div class="section" id="sec-quiz">
     <div class="progress-wrap">
       <div class="prog-bar"><div class="fill" id="progFill"></div></div>
-      <div class="prog-text" id="progText"></div>
     </div>
-
-    <div class="q-card" id="q0">
-      <div class="q-num"><span class="q-tag">Lifestyle</span></div>
-      <h3>What time do you usually wake up?</h3>
-      <div class="opts">
-        <div class="opt" data-q="0" data-v="4" onclick="pick(this)"><div class="dot"></div>Before 6 AM</div>
-        <div class="opt" data-q="0" data-v="3" onclick="pick(this)"><div class="dot"></div>6 – 8 AM</div>
-        <div class="opt" data-q="0" data-v="1" onclick="pick(this)"><div class="dot"></div>After 8 AM</div>
-        <div class="opt" data-q="0" data-v="0" onclick="pick(this)"><div class="dot"></div>No fixed time</div>
-      </div>
-    </div>
-    <div class="q-card" id="q1">
-      <div class="q-num"><span class="q-tag">Hydration</span></div>
-      <h3>How much water do you drink daily?</h3>
-      <div class="opts">
-        <div class="opt" data-q="1" data-v="3" onclick="pick(this)"><div class="dot"></div>8+ glasses</div>
-        <div class="opt" data-q="1" data-v="2" onclick="pick(this)"><div class="dot"></div>5 – 7 glasses</div>
-        <div class="opt" data-q="1" data-v="1" onclick="pick(this)"><div class="dot"></div>3 – 4 glasses</div>
-        <div class="opt" data-q="1" data-v="0" onclick="pick(this)"><div class="dot"></div>Mostly tea or coffee</div>
-      </div>
-    </div>
-    <div class="q-card" id="q2">
-      <div class="q-num"><span class="q-tag">Fitness</span></div>
-      <h3>How often do you exercise?</h3>
-      <div class="opts">
-        <div class="opt" data-q="2" data-v="4" onclick="pick(this)"><div class="dot"></div>Daily</div>
-        <div class="opt" data-q="2" data-v="3" onclick="pick(this)"><div class="dot"></div>3 – 4 times a week</div>
-        <div class="opt" data-q="2" data-v="1" onclick="pick(this)"><div class="dot"></div>Occasionally</div>
-        <div class="opt" data-q="2" data-v="0" onclick="pick(this)"><div class="dot"></div>Almost never</div>
-      </div>
-    </div>
-    <div class="q-card" id="q3">
-      <div class="q-num"><span class="q-tag">Sleep</span></div>
-      <h3>How much screen time before sleeping?</h3>
-      <div class="opts">
-        <div class="opt" data-q="3" data-v="3" onclick="pick(this)"><div class="dot"></div>None</div>
-        <div class="opt" data-q="3" data-v="2" onclick="pick(this)"><div class="dot"></div>Under 30 minutes</div>
-        <div class="opt" data-q="3" data-v="1" onclick="pick(this)"><div class="dot"></div>1 – 2 hours</div>
-        <div class="opt" data-q="3" data-v="0" onclick="pick(this)"><div class="dot"></div>More than 2 hours</div>
-      </div>
-    </div>
-    <div class="q-card" id="q4">
-      <div class="q-num"><span class="q-tag">Energy</span></div>
-      <h3>How do you feel by midday?</h3>
-      <div class="opts">
-        <div class="opt" data-q="4" data-v="3" onclick="pick(this)"><div class="dot"></div>Clear and focused</div>
-        <div class="opt" data-q="4" data-v="2" onclick="pick(this)"><div class="dot"></div>Sometimes tired</div>
-        <div class="opt" data-q="4" data-v="1" onclick="pick(this)"><div class="dot"></div>Often drained</div>
-        <div class="opt" data-q="4" data-v="0" onclick="pick(this)"><div class="dot"></div>Exhausted every day</div>
-      </div>
-    </div>
-    <div class="q-card" id="q5">
-      <div class="q-num"><span class="q-tag">Nutrition</span></div>
-      <h3>How would you describe your eating habits?</h3>
-      <div class="opts">
-        <div class="opt" data-q="5" data-v="3" onclick="pick(this)"><div class="dot"></div>Balanced home-cooked meals</div>
-        <div class="opt" data-q="5" data-v="2" onclick="pick(this)"><div class="dot"></div>Mostly healthy with occasional junk</div>
-        <div class="opt" data-q="5" data-v="1" onclick="pick(this)"><div class="dot"></div>Irregular meals, lots of outside food</div>
-        <div class="opt" data-q="5" data-v="0" onclick="pick(this)"><div class="dot"></div>Mostly junk / skip meals often</div>
-      </div>
-    </div>
-    <div class="q-card" id="q6">
-      <div class="q-num"><span class="q-tag">Consistency</span></div>
-      <h3>How long can you stick to a new habit?</h3>
-      <div class="opts">
-        <div class="opt" data-q="6" data-v="3" onclick="pick(this)"><div class="dot"></div>More than 21 days easily</div>
-        <div class="opt" data-q="6" data-v="2" onclick="pick(this)"><div class="dot"></div>About 1 – 2 weeks</div>
-        <div class="opt" data-q="6" data-v="1" onclick="pick(this)"><div class="dot"></div>A few days then I quit</div>
-        <div class="opt" data-q="6" data-v="0" onclick="pick(this)"><div class="dot"></div>I can't seem to start at all</div>
-      </div>
-    </div>
+    <div class="q-card" id="q0"><div class="q-tag">Lifestyle</div><h3>What time do you usually wake up?</h3><div class="opts"><div class="opt" data-q="0" data-v="4" onclick="pick(this)"><div class="dot"></div>Before 6 AM</div><div class="opt" data-q="0" data-v="3" onclick="pick(this)"><div class="dot"></div>6 – 8 AM</div><div class="opt" data-q="0" data-v="1" onclick="pick(this)"><div class="dot"></div>After 8 AM</div><div class="opt" data-q="0" data-v="0" onclick="pick(this)"><div class="dot"></div>No fixed time</div></div></div>
+    <div class="q-card" id="q1"><div class="q-tag">Hydration</div><h3>How much water do you drink daily?</h3><div class="opts"><div class="opt" data-q="1" data-v="3" onclick="pick(this)"><div class="dot"></div>8+ glasses</div><div class="opt" data-q="1" data-v="2" onclick="pick(this)"><div class="dot"></div>5 – 7 glasses</div><div class="opt" data-q="1" data-v="1" onclick="pick(this)"><div class="dot"></div>3 – 4 glasses</div><div class="opt" data-q="1" data-v="0" onclick="pick(this)"><div class="dot"></div>Mostly tea or coffee</div></div></div>
+    <div class="q-card" id="q2"><div class="q-tag">Fitness</div><h3>How often do you exercise?</h3><div class="opts"><div class="opt" data-q="2" data-v="4" onclick="pick(this)"><div class="dot"></div>Daily</div><div class="opt" data-q="2" data-v="3" onclick="pick(this)"><div class="dot"></div>3 – 4 times a week</div><div class="opt" data-q="2" data-v="1" onclick="pick(this)"><div class="dot"></div>Occasionally</div><div class="opt" data-q="2" data-v="0" onclick="pick(this)"><div class="dot"></div>Almost never</div></div></div>
+    <div class="q-card" id="q3"><div class="q-tag">Sleep</div><h3>How much screen time before sleeping?</h3><div class="opts"><div class="opt" data-q="3" data-v="3" onclick="pick(this)"><div class="dot"></div>None</div><div class="opt" data-q="3" data-v="2" onclick="pick(this)"><div class="dot"></div>Under 30 minutes</div><div class="opt" data-q="3" data-v="1" onclick="pick(this)"><div class="dot"></div>1 – 2 hours</div><div class="opt" data-q="3" data-v="0" onclick="pick(this)"><div class="dot"></div>More than 2 hours</div></div></div>
+    <div class="q-card" id="q4"><div class="q-tag">Energy</div><h3>How do you feel by midday?</h3><div class="opts"><div class="opt" data-q="4" data-v="3" onclick="pick(this)"><div class="dot"></div>Clear and focused</div><div class="opt" data-q="4" data-v="2" onclick="pick(this)"><div class="dot"></div>Sometimes tired</div><div class="opt" data-q="4" data-v="1" onclick="pick(this)"><div class="dot"></div>Often drained</div><div class="opt" data-q="4" data-v="0" onclick="pick(this)"><div class="dot"></div>Exhausted every day</div></div></div>
+    <div class="q-card" id="q5"><div class="q-tag">Nutrition</div><h3>How would you describe your eating habits?</h3><div class="opts"><div class="opt" data-q="5" data-v="3" onclick="pick(this)"><div class="dot"></div>Balanced home-cooked meals</div><div class="opt" data-q="5" data-v="2" onclick="pick(this)"><div class="dot"></div>Mostly healthy with occasional junk</div><div class="opt" data-q="5" data-v="1" onclick="pick(this)"><div class="dot"></div>Irregular meals, lots of outside food</div><div class="opt" data-q="5" data-v="0" onclick="pick(this)"><div class="dot"></div>Mostly junk / skip meals often</div></div></div>
+    <div class="q-card" id="q6"><div class="q-tag">Consistency</div><h3>How long can you stick to a new habit?</h3><div class="opts"><div class="opt" data-q="6" data-v="3" onclick="pick(this)"><div class="dot"></div>More than 21 days easily</div><div class="opt" data-q="6" data-v="2" onclick="pick(this)"><div class="dot"></div>About 1 – 2 weeks</div><div class="opt" data-q="6" data-v="1" onclick="pick(this)"><div class="dot"></div>A few days then I quit</div><div class="opt" data-q="6" data-v="0" onclick="pick(this)"><div class="dot"></div>I can't seem to start at all</div></div></div>
     <div class="q-nav">
       <button class="btn btn-o" id="prevBtn" onclick="prevQ()" disabled>Back</button>
       <button class="btn btn-p" id="nextBtn" onclick="nextQ()">Next</button>
     </div>
   </div>
 
-  <!-- ═══ STEP 4: RESULT ═══ -->
+  <!-- RESULT -->
   <div class="section" id="sec-result">
-    <div class="congrats">
-      <h2>Quiz Complete!</h2>
-      <p>Here's your Habit Score</p>
-    </div>
-    <div class="score-ring" id="scoreRing" style="position:relative">
-      <div class="sn" id="scoreNum">0</div>
-      <div class="sl">out of 5</div>
-    </div>
-    <h2 id="resTitle" style="text-align:center;margin:6px 0 3px;font-size:1.3rem"></h2>
-    <p id="resSub" style="text-align:center;color:var(--sub);font-size:.85rem;margin-bottom:10px"></p>
+    <div class="congrats"><h2>Quiz Complete!</h2><p>Here's your Habit Score</p></div>
+    <div class="score-ring" id="scoreRing"><div class="sn" id="scoreNum">0</div><div class="sl">out of 10</div></div>
+    <h2 id="resTitle" style="text-align:center;margin:6px 0 3px;font-size:1.2rem"></h2>
+    <p id="resSub" style="text-align:center;color:var(--sub);font-size:.84rem;margin-bottom:10px"></p>
     <div class="result-card" id="resMsg"></div>
 
-    <!-- Share CTA -->
-    <div class="share-cta" onclick="openShareModal()">
-      <h3>Spread this with your friends or family!</h3>
-      <p>Help them discover their habit score too</p>
-      <button class="share-btn-inner">Click Here to Share</button>
+    <div class="share-cta" onclick="openShare()">
+      <h3>&#128153; Spread the good habit energy!</h3>
+      <p>&#128107; Share this with your friends & family.<br>Help them discover their Habit Score and start their journey too &#127793;</p>
+      <button class="sbtn">Click Here to Share</button>
     </div>
 
-    <!-- Box Breathing with Sound -->
     <div class="breath-card">
-      <h3>Try Box Breathing</h3>
-      <p class="sub">A simple 4-4-4-4 technique to calm the mind. Close your eyes and follow the sound.</p>
+      <h3>&#129495;&#8205;&#9794;&#65039; Try Box Breathing (4-4-4-4)</h3>
+      <p class="sub">Inhale 4 sec &#8594; Hold 4 sec &#8594; Exhale 4 sec &#8594; Hold 4 sec<br>Calm your mind. Reset your energy.</p>
       <div class="breath-label" id="brLabel">Press Start</div>
-      <div class="breath-box" id="brBox">
-        <div class="bb-dot" id="brDot" style="top:10px;left:10px"></div>
-      </div>
+      <div class="breath-box" id="brBox"><div class="bb-dot" id="brDot" style="top:10px;left:10px"></div></div>
       <div class="breath-timer" id="brTimer">4</div>
       <button class="breath-start" id="brBtn" onclick="toggleBreathing()">Start Breathing</button>
       <div class="breath-cycles" id="brCycles"></div>
       <div class="breath-hint">Close your eyes and follow the sounds</div>
     </div>
 
-    <!-- Daily Practice Videos -->
     <div class="practice-card">
-      <div style="font-size:2rem;margin-bottom:8px">&#127807;</div>
-      <h3>Practice Daily — Start Today</h3>
-      <p class="sub">Here are guided sessions to help you build your habit.</p>
-
-      <div class="video-section" style="background:linear-gradient(135deg,#E8F5E9,#F0EDFF);border-radius:14px;padding:16px;margin-bottom:16px">
-        <h4 style="display:flex;align-items:center;gap:6px">&#128704; Breathing Exercise</h4>
-        <iframe class="practice-video" src="https://www.youtube.com/embed/I77hh5I69gA" title="Breathing Exercise" allowfullscreen></iframe>
+      <h3>&#127807; Practice Daily — Start Today</h3>
+      <p class="sub">Here are guided sessions to build your habit.</p>
+      <div class="vid-wrap" style="background:linear-gradient(135deg,#E8F5E9,#F0EDFF)">
+        <h4>&#128704; Breathing Exercise</h4>
+        <div class="yt-thumb" onclick="playVid(this,'I77hh5I69gA')">
+          <img src="https://img.youtube.com/vi/I77hh5I69gA/hqdefault.jpg" alt="Breathing Exercise" style="width:100%;border-radius:12px;display:block">
+          <div class="yt-play">&#9654;</div>
+        </div>
+        <a class="yt-link" href="https://www.youtube.com/watch?v=I77hh5I69gA" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
       </div>
-
-      <div class="video-section" style="background:linear-gradient(135deg,#FFF8E1,#FFF5F0);border-radius:14px;padding:16px;margin-bottom:16px">
-        <h4 style="display:flex;align-items:center;gap:6px">&#127908; Guided Breathing Session</h4>
-        <iframe class="practice-video" src="https://www.youtube.com/embed/LCyP3F7gRC4" title="Guided Breathing" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-section" id="exerciseVideoWrap" style="display:none;background:linear-gradient(135deg,#FCE4EC,#F3E5F5);border-radius:14px;padding:16px;margin-bottom:16px">
-        <h4 style="display:flex;align-items:center;gap:6px">&#127939; Daily Exercise</h4>
+      <div class="vid-wrap" style="background:linear-gradient(135deg,#FFF8E1,#FFF5F0)">
+        <h4>&#127908; Guided Breathing Session</h4>
+        <div class="yt-thumb" onclick="playVid(this,'LCyP3F7gRC4')">
+          <img src="https://img.youtube.com/vi/LCyP3F7gRC4/hqdefault.jpg" alt="Guided Breathing" style="width:100%;border-radius:12px;display:block">
+          <div class="yt-play">&#9654;</div>
+        </div>
+        <a class="yt-link" href="https://www.youtube.com/watch?v=LCyP3F7gRC4" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
       </div>
     </div>
 
-    <!-- YouTube Channel Card -->
-    <div style="background:linear-gradient(135deg,#F0EDFF,#FFF5F0);border-radius:var(--r);padding:22px;text-align:center;margin:14px 0;box-shadow:var(--sh);border:1px solid rgba(124,111,232,.08);position:relative;overflow:hidden">
-      <div style="position:absolute;top:-20px;right:-20px;width:60px;height:60px;border-radius:50%;background:rgba(124,111,232,.05)"></div>
-      <div style="font-size:2rem;margin-bottom:6px;position:relative;z-index:1">&#127909;</div>
-      <h3 style="color:var(--text);font-size:1.05rem;margin-bottom:4px;position:relative;z-index:1">Saurabh Bothra</h3>
-      <p style="color:var(--sub);font-size:.82rem;margin-bottom:14px;position:relative;z-index:1">More sessions, tips & daily motivation</p>
-      <a href="https://www.youtube.com/channel/UCZ1_MhfxMAotGs8fzZM1f7A" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--p),#B388FF);color:#fff;padding:12px 24px;border-radius:12px;font-size:.88rem;font-weight:700;text-decoration:none;transition:all .2s;box-shadow:0 4px 12px rgba(124,111,232,.2)">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="width:18px;height:18px;flex-shrink:0"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    <div class="yt-card">
+      <div style="font-size:1.8rem;margin-bottom:6px">&#127909;</div>
+      <h3>Saurabh Bothra</h3>
+      <p>More sessions, tips & daily motivation</p>
+      <a class="yt-btn" href="https://www.youtube.com/channel/UCZ1_MhfxMAotGs8fzZM1f7A" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         Explore More — Click Here
       </a>
     </div>
 
-    <div class="practice-card" style="background:linear-gradient(135deg,#F0EDFF,#FFF5F0);border:none">
-      <div class="practice-quote" style="background:rgba(255,255,255,.7);font-size:.9rem">"Your body is your most priceless possession. Take care of it."<br><br><span style="font-style:normal;font-weight:700;color:var(--p)">Better Habits &#8594; Better Energy &#8594; Better Life</span></div>
+    <div class="quote-card">
+      <p>"Your body is your most priceless possession. Take care of it."</p>
+      <span class="chain">&#9889; Small habits &#8594; Big transformation &#127793;<br>Let's grow together</span>
     </div>
 
     <div style="text-align:center;margin-top:12px">
@@ -438,92 +380,118 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 </div>
 
 <script>
-const TQ=7, QMAX=[4,3,4,3,3,3,3], TMAX=QMAX.reduce((a,b)=>a+b,0);
-let cq=0, ans=Array(TQ).fill(null), lead={};
+const TQ=7,QMAX=[4,3,4,3,3,3,3],TMAX=QMAX.reduce((a,b)=>a+b,0);
+let cq=0,ans=Array(TQ).fill(null),lead={};
 
-/* ─── Load admin settings ─── */
-(function loadSettings(){
-  try{
-    const s=JSON.parse(localStorage.getItem('hb_admin_settings')||'{}');
-    if(s.logo){const ic=document.getElementById('brandIcon');ic.innerHTML=`<img src="${s.logo}" alt="Logo">`}
-    if(s.brandName)document.getElementById('brandName').textContent=s.brandName;
-    if(s.tagline)document.getElementById('brandTag').textContent=s.tagline;
-    if(s.heroScript)document.getElementById('heroHeading').textContent=s.heroScript;
-    if(s.heroSub)document.getElementById('heroSubtext').innerHTML=s.heroSub;
-    if(s.poster)document.getElementById('posterWrap').innerHTML=`<img class="poster-img" src="${s.poster}" alt="Poster">`;
-  }catch(e){}
+/* Country codes with auto-detect */
+const ccList=[
+  {c:'+91',n:'IN',l:'India'},{c:'+1',n:'US',l:'USA'},{c:'+44',n:'GB',l:'UK'},
+  {c:'+971',n:'AE',l:'UAE'},{c:'+966',n:'SA',l:'Saudi'},{c:'+61',n:'AU',l:'Australia'},
+  {c:'+65',n:'SG',l:'Singapore'},{c:'+60',n:'MY',l:'Malaysia'},{c:'+977',n:'NP',l:'Nepal'},
+  {c:'+880',n:'BD',l:'Bangladesh'},{c:'+94',n:'LK',l:'Sri Lanka'},{c:'+92',n:'PK',l:'Pakistan'},
+  {c:'+49',n:'DE',l:'Germany'},{c:'+33',n:'FR',l:'France'},{c:'+81',n:'JP',l:'Japan'},
+  {c:'+86',n:'CN',l:'China'},{c:'+82',n:'KR',l:'S. Korea'},{c:'+55',n:'BR',l:'Brazil'},
+  {c:'+27',n:'ZA',l:'South Africa'},{c:'+234',n:'NG',l:'Nigeria'},{c:'+254',n:'KE',l:'Kenya'},
+  {c:'+62',n:'ID',l:'Indonesia'},{c:'+66',n:'TH',l:'Thailand'},{c:'+84',n:'VN',l:'Vietnam'},
+  {c:'+63',n:'PH',l:'Philippines'},{c:'+7',n:'RU',l:'Russia'},{c:'+39',n:'IT',l:'Italy'},
+  {c:'+34',n:'ES',l:'Spain'},{c:'+31',n:'NL',l:'Netherlands'},{c:'+46',n:'SE',l:'Sweden'},
+  {c:'+41',n:'CH',l:'Switzerland'},{c:'+353',n:'IE',l:'Ireland'},{c:'+64',n:'NZ',l:'New Zealand'},
+  {c:'+974',n:'QA',l:'Qatar'},{c:'+968',n:'OM',l:'Oman'},{c:'+973',n:'BH',l:'Bahrain'},
+  {c:'+965',n:'KW',l:'Kuwait'},{c:'+52',n:'MX',l:'Mexico'},{c:'+1',n:'CA',l:'Canada'}
+];
+(function initCC(){
+  const sel=document.getElementById('rCC');
+  ccList.forEach(c=>{const o=document.createElement('option');o.value=c.c;o.textContent=`${c.c} ${c.l}`;sel.appendChild(o)});
+  sel.value='+91';
+  // Auto-detect country
+  fetch('https://ipapi.co/json/',{mode:'cors'}).then(r=>r.json()).then(d=>{
+    if(d.country_calling_code)sel.value=d.country_calling_code;
+  }).catch(()=>{});
 })();
 
-/* ─── Navigation ─── */
+/* Load admin settings */
+(function(){try{
+  const s=JSON.parse(localStorage.getItem('hb_admin_settings')||'{}');
+  if(s.logo){document.getElementById('brandIcon').innerHTML=`<img src="${s.logo}" alt="Logo">`}
+  if(s.brandName)document.getElementById('brandName').textContent=s.brandName;
+  if(s.tagline)document.getElementById('brandTag').textContent=s.tagline;
+  if(s.heroScript)document.getElementById('heroHeading').textContent=s.heroScript;
+  if(s.heroSub)document.getElementById('heroSubtext').innerHTML=s.heroSub;
+  if(s.poster)document.getElementById('posterWrap').innerHTML=`<img class="poster-img" src="${s.poster}" alt="">`;
+}catch(e){}})();
+
+/* Nav */
 function goTo(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
 
-/* ─── Share ─── */
+/* Share */
 function getShareUrl(){
-  // Use custom URL from admin settings, or fallback to current URL but never show localhost
   const custom=localStorage.getItem('hb_share_url')||'';
   if(custom)return custom;
   const u=window.location.href;
-  if(u.includes('localhost')||u.includes('127.0.0.1')||u.includes('file:'))return 'https://habuild-habit-building.vercel.app';
+  if(u.includes('localhost')||u.includes('127.0.0.1')||u.includes('file:'))return 'https://habuild-habit-building.github.io';
   return u;
 }
-function openShareModal(){
+function getShareMsg(){
   const url=getShareUrl();
-  const score=document.getElementById('scoreNum').textContent;
-  const txt=`I scored ${score}/5 on the Habuild Habit Score quiz! Find your score too:`;
-  const full=`I just took the Habuild Habit Score quiz and scored ${score}/5!\n\nFind your score: ${url}`;
-  document.getElementById('sh-wa').href=`https://api.whatsapp.com/send?text=${encodeURIComponent(full)}`;
-  document.getElementById('sh-fb').href=`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(txt)}`;
-  document.getElementById('sh-tw').href=`https://twitter.com/intent/tweet?text=${encodeURIComponent(txt)}&url=${encodeURIComponent(url)}`;
+  const s=document.getElementById('scoreNum').textContent;
+  return `How healthy is your daily routine — really?\n\nI just checked mine and scored *${s}/10* on the Habuild Habit Score quiz!\n\nTake the free quiz and find your score:\n${url}\n\nBetter habits = Better lifestyle`;
+}
+function openShare(){
+  const url=getShareUrl();
+  const txt=getShareMsg();
+  const s=document.getElementById('scoreNum').textContent;
+  document.getElementById('sh-wa').href=`https://api.whatsapp.com/send?text=${encodeURIComponent(txt)}`;
+  document.getElementById('sh-fb').href=`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+  document.getElementById('sh-tw').href=`https://twitter.com/intent/tweet?text=${encodeURIComponent(`I scored ${s}/10 on the Habuild Habit Score quiz! How healthy is YOUR routine?`)}&url=${encodeURIComponent(url)}`;
   document.getElementById('sh-tg').href=`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(txt)}`;
   document.getElementById('shareModal').classList.add('show');
 }
-function closeShareModal(){document.getElementById('shareModal').classList.remove('show')}
+function closeShare(){document.getElementById('shareModal').classList.remove('show')}
 function nativeShare(){
-  const url=getShareUrl();
-  const score=document.getElementById('scoreNum').textContent;
-  if(navigator.share){
-    navigator.share({title:'Habuild Habit Score Quiz',text:`I scored ${score}/5! Find your score:`,url:url}).catch(()=>{});
-  }else{copyLnk()}
+  const url=getShareUrl();const s=document.getElementById('scoreNum').textContent;
+  if(navigator.share){navigator.share({title:'Habuild — What\'s Your Habit Score?',text:`How healthy is YOUR daily routine? I scored ${s}/10! Take the quiz:`,url:url}).then(()=>closeShare()).catch(()=>{})}
+  else{copyMsg()}
 }
 function copyLnk(){
   const url=getShareUrl();
-  if(navigator.clipboard){navigator.clipboard.writeText(url).then(()=>alert('Link copied!')).catch(()=>prompt('Copy this link:',url))}
-  else{prompt('Copy this link:',url)}
+  doCopy(url,'Link copied! Paste it anywhere to share.');
 }
+function copyMsg(){
+  const msg=getShareMsg();
+  doCopy(msg,'Message with link copied! Paste it anywhere to share.');
+}
+function doCopy(t,alertMsg){
+  if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>alert(alertMsg)).catch(()=>fallbackCopy(t,alertMsg))}
+  else{fallbackCopy(t,alertMsg)}
+}
+function fallbackCopy(t,alertMsg){const i=document.createElement('textarea');i.value=t;i.style.position='fixed';i.style.left='-9999px';document.body.appendChild(i);i.select();try{document.execCommand('copy');alert(alertMsg||'Copied!')}catch(e){prompt('Copy this:',t)}document.body.removeChild(i)}
 
-/* ─── Register ─── */
+/* Register */
 function registerAndStart(){
   const n=document.getElementById('rName').value.trim();
-  const cc=document.getElementById('rCC').value.trim();
+  const cc=document.getElementById('rCC').value;
   const ph=document.getElementById('rPhone').value.trim();
   if(!n){alert('Please enter your name');return}
   if(!ph){alert('Please enter your phone number');return}
-  lead={name:n,cc,phone:ph,date:new Date().toISOString(),id:Date.now().toString(36)};
-  saveLead(lead);
-  goTo('sec-quiz');showQ(0);
+  lead={name:n,cc,phone:ph,date:new Date().toISOString(),id:Date.now().toString(36),lang:'en'};
+  saveLead(lead);goTo('sec-quiz');showQ(0);
 }
 function saveLead(l){
   const all=JSON.parse(localStorage.getItem('hb_leads')||'[]');
-  const idx=all.findIndex(x=>x.id===l.id);
-  if(idx>=0)all[idx]=l;else all.push(l);
+  const idx=all.findIndex(x=>x.id===l.id);if(idx>=0)all[idx]=l;else all.push(l);
   localStorage.setItem('hb_leads',JSON.stringify(all));
-  postToGoogleSheet(l);
+  postToSheet(l);
 }
-function postToGoogleSheet(data){
-  // PASTE YOUR GOOGLE APPS SCRIPT URL BELOW (between the quotes)
-  const HARDCODED_URL='https://script.google.com/macros/s/AKfycbyE7oa0sscyGvVnN2YJXIEUK_jqOumzqp3I69uu3eNrhQjuy0MDccM_HYa68cdgQhQ0sw/exec';
-  const SHEET_URL=HARDCODED_URL||localStorage.getItem('hb_sheet_url')||'';
-  if(!SHEET_URL)return;
-  fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(()=>{});
+function postToSheet(data){
+  const URL='https://script.google.com/macros/s/AKfycbyE7oa0sscyGvVnN2YJXIEUK_jqOumzqp3I69uu3eNrhQjuy0MDccM_HYa68cdgQhQ0sw/exec';
+  fetch(URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(()=>{});
 }
 
-/* ─── Quiz ─── */
+/* Quiz */
 function showQ(i){
   document.querySelectorAll('.q-card').forEach(c=>c.classList.remove('active'));
-  document.getElementById('q'+i)?.classList.add('active');
-  cq=i;
+  document.getElementById('q'+i)?.classList.add('active');cq=i;
   document.getElementById('progFill').style.width=((i+1)/TQ*100)+'%';
-  document.getElementById('progText').textContent='';
   document.getElementById('prevBtn').disabled=i===0;
   document.getElementById('nextBtn').textContent=i===TQ-1?'See My Score':'Next';
 }
@@ -540,141 +508,70 @@ function nextQ(){
 function prevQ(){if(cq>0)showQ(cq-1)}
 function finishQuiz(){
   const raw=ans.reduce((s,v)=>s+(v||0),0);
-  const score=Math.round((raw/TMAX)*5);
-  lead.score=score;lead.answers=[...ans];
-  saveLead(lead);showResult(score);
+  const score=Math.round((raw/TMAX)*10);
+  lead.score=score;lead.answers=[...ans];saveLead(lead);showResult(score);
 }
 
-/* ─── Result ─── */
+/* Result */
 function showResult(score){
   goTo('sec-result');launchConfetti();
-  const ring=document.getElementById('scoreRing');
-  const numEl=document.getElementById('scoreNum');
-  ring.className='score-ring';
-  ring.classList.add(score<=2?'s-low':score<=3?'s-mid':'s-hi');
-  let c=0;const t=setInterval(()=>{c++;numEl.textContent=c;if(c>=score)clearInterval(t)},120);
-  const title=document.getElementById('resTitle');
-  const sub=document.getElementById('resSub');
-  const msg=document.getElementById('resMsg');
-  if(score<=2){
+  const ring=document.getElementById('scoreRing'),numEl=document.getElementById('scoreNum');
+  ring.className='score-ring';ring.classList.add(score<=4?'s-low':score<=7?'s-mid':'s-hi');
+  let c=0;const t=setInterval(()=>{c++;numEl.textContent=c;if(c>=score)clearInterval(t)},80);
+  const title=document.getElementById('resTitle'),sub=document.getElementById('resSub'),msg=document.getElementById('resMsg');
+  const name=lead.name||'Friend';
+  if(score<=4){
     title.textContent='Fresh Start Ahead!';
-    sub.textContent='Your routine needs a reset — the challenge is built for this.';
-    msg.innerHTML=`<h3>Hi ${lead.name}!</h3><p>Your Habuild Habit Score is <strong>${score}/5</strong>.</p><p>The 21-Day June Challenge is built for people like you — to help build healthy habits from scratch.</p><p style="margin-top:10px;font-weight:600;color:var(--p)">You'll receive a WhatsApp update when the challenge registration opens.</p>`;
-  }else if(score<=3){
+    sub.textContent='Your routine needs a reset — that\'s exactly what the challenge is for.';
+    msg.innerHTML=`<p>&#10024; <strong>${name}!</strong></p><p>&#127919; Your Habuild Habit Score: <strong>${score}/10</strong></p><p>Your journey to better habits starts now! The FREE 21-Day June Challenge will help you build a solid foundation from scratch &#128170;</p><p>&#128233; You'll receive a WhatsApp update soon when registrations open — stay tuned!</p><p style="margin-top:12px;color:var(--sub);font-size:.82rem">&#9889; Small habits &#8594; Big transformation<br>Let's grow together &#127793;</p>`;
+  }else if(score<=7){
     title.textContent='Building Momentum!';
     sub.textContent='You\'re on track — 21 days of consistency will make it permanent.';
-    msg.innerHTML=`<h3>Hi ${lead.name}!</h3><p>Your Habuild Habit Score is <strong>${score}/5</strong>.</p><p>You're building great momentum! 21 days with Saurabh Sir will lock in these habits and take you to the next level.</p><p style="margin-top:10px;font-weight:600;color:var(--p)">You'll receive a WhatsApp update when the challenge registration opens.</p>`;
+    msg.innerHTML=`<p>&#10024; <strong>${name}!</strong></p><p>&#127919; Your Habuild Habit Score: <strong>${score}/10</strong></p><p>&#128293; You're building great momentum already — not everyone reaches here!</p><p>&#128640; Now it's time to level up... The FREE 21-Day June Challenge will help you lock in these habits and take them to the next level &#128170;&#129495;&#8205;&#9792;&#65039;</p><p>&#128233; You'll receive a WhatsApp update soon when registrations open — stay tuned!</p><p style="margin-top:12px;color:var(--sub);font-size:.82rem">&#9889; Small habits &#8594; Big transformation<br>Let's grow together &#127793;</p>`;
   }else{
     title.textContent='Strong Foundation!';
     sub.textContent='You\'re already ahead — the challenge will make your routine unshakable.';
-    msg.innerHTML=`<h3>Hi ${lead.name}!</h3><p>Your Habuild Habit Score is <strong>${score}/5</strong>.</p><p>You have a strong foundation. The 21-Day June Challenge will make your routine truly unshakable.</p><p style="margin-top:10px;font-weight:600;color:var(--p)">You'll receive a WhatsApp update when the challenge registration opens.</p>`;
+    msg.innerHTML=`<p>&#10024; <strong>${name}!</strong></p><p>&#127919; Your Habuild Habit Score: <strong>${score}/10</strong></p><p>&#128293; You've built a strong foundation already — not everyone reaches here!</p><p>&#128640; The FREE 21-Day June Challenge will make your routine truly unshakable &#128170;&#129495;&#8205;&#9792;&#65039;</p><p>&#128233; You'll receive a WhatsApp update soon when registrations open — stay tuned!</p><p style="margin-top:12px;color:var(--sub);font-size:.82rem">&#9889; Small habits &#8594; Big transformation<br>Let's grow together &#127793;</p>`;
   }
 }
 function retake(){ans=Array(TQ).fill(null);cq=0;lead={};document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));document.getElementById('rName').value='';document.getElementById('rPhone').value='';goTo('sec-hero')}
 
-/* ─── Box Breathing with Voice Count + Ambient Sound ─── */
-let brRunning=false,brInterval=null,brCycle=0,audioCtx=null,ambientOsc=null,ambientGain=null;
-function initAudio(){
-  if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-  if(audioCtx.state==='suspended')audioCtx.resume();
-}
-function playTone(freq,dur,vol){
-  try{initAudio();
-    const osc=audioCtx.createOscillator();const g=audioCtx.createGain();
-    osc.type='sine';osc.frequency.value=freq;
-    g.gain.setValueAtTime(vol||0.25,audioCtx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.01,audioCtx.currentTime+dur);
-    osc.connect(g);g.connect(audioCtx.destination);
-    osc.start();osc.stop(audioCtx.currentTime+dur);
-  }catch(e){}
-}
-function speakCount(text){
+/* Box Breathing with soothing ambient + voice */
+let brRunning=false,brInterval=null,brCycle=0,audioCtx=null,ambOscs=[];
+function initAudio(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume()}
+function playTone(f,d,v){try{initAudio();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(v||.15,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+d);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+d)}catch(e){}}
+function speakCount(t){try{const u=new SpeechSynthesisUtterance(t);u.rate=.82;u.pitch=.85;u.volume=.9;u.lang='en-IN';speechSynthesis.speak(u)}catch(e){}}
+function startAmbient(){try{initAudio();
+  [174,285,396].forEach(f=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0,audioCtx.currentTime);g.gain.linearRampToValueAtTime(f===174?.05:.02,audioCtx.currentTime+3);o.connect(g);g.connect(audioCtx.destination);o.start();ambOscs.push({o,g})});
+}catch(e){}}
+function stopAmbient(){ambOscs.forEach(x=>{try{x.g.gain.linearRampToValueAtTime(.001,audioCtx.currentTime+1)}catch(e){}});setTimeout(()=>{ambOscs.forEach(x=>{try{x.o.stop()}catch(e){}});ambOscs=[]},1200)}
+function toggleBreathing(){if(brRunning){stopBreathing();return}brRunning=true;brCycle=0;initAudio();startAmbient();document.getElementById('brBtn').textContent='Stop';runBreathCycle()}
+function stopBreathing(){brRunning=false;clearTimeout(brInterval);stopAmbient();try{speechSynthesis.cancel()}catch(e){}document.getElementById('brBtn').textContent='Start Breathing';document.getElementById('brLabel').textContent='Press Start';document.getElementById('brTimer').textContent='4';document.getElementById('brCycles').textContent='';const d=document.getElementById('brDot');d.style.transition='none';d.style.top='10px';d.style.left='10px'}
+function runBreathCycle(){if(!brRunning)return;const ph=['Breathe In','Hold','Breathe Out','Hold'],sp=['Breathe in','Hold','Breathe out','Hold'],fr=[396,528,396,528],pos=[{top:'10px',left:'100px'},{top:'100px',left:'100px'},{top:'100px',left:'10px'},{top:'10px',left:'10px'}],dot=document.getElementById('brDot');let p=0;
+  function doP(){if(!brRunning||p>=4)return;document.getElementById('brLabel').textContent=ph[p];dot.style.transition='all 4s linear';dot.style.top=pos[p].top;dot.style.left=pos[p].left;let s=4;document.getElementById('brTimer').textContent=s;speakCount(sp[p]);playTone(fr[p],.5,.12);
+    const ct=setInterval(()=>{s--;if(s<=0)clearInterval(ct);else{document.getElementById('brTimer').textContent=s;playTone(fr[p],.15,.06);speakCount(String(s))}},1000);
+    brInterval=setTimeout(()=>{p++;if(p<4)doP();else{brCycle++;document.getElementById('brCycles').textContent=`Cycle ${brCycle} complete`;playTone(523,.5,.15);setTimeout(()=>runBreathCycle(),800)}},4000)}
+  doP()}
+
+/* Play YouTube video - click thumbnail to embed or open YT on mobile */
+function playVid(el,id){
+  // Try embedding first
   try{
-    const u=new SpeechSynthesisUtterance(text);
-    u.rate=0.85;u.pitch=0.9;u.volume=0.8;
-    u.lang='en-IN';
-    speechSynthesis.speak(u);
-  }catch(e){}
-}
-function startAmbient(){
-  try{initAudio();
-    ambientOsc=audioCtx.createOscillator();ambientGain=audioCtx.createGain();
-    ambientOsc.type='sine';ambientOsc.frequency.value=174; // solfeggio healing freq
-    ambientGain.gain.setValueAtTime(0,audioCtx.currentTime);
-    ambientGain.gain.linearRampToValueAtTime(0.06,audioCtx.currentTime+2);
-    ambientOsc.connect(ambientGain);ambientGain.connect(audioCtx.destination);
-    ambientOsc.start();
-    // Add a second harmonic
-    const osc2=audioCtx.createOscillator();const g2=audioCtx.createGain();
-    osc2.type='sine';osc2.frequency.value=285;
-    g2.gain.setValueAtTime(0,audioCtx.currentTime);
-    g2.gain.linearRampToValueAtTime(0.03,audioCtx.currentTime+2);
-    osc2.connect(g2);g2.connect(audioCtx.destination);
-    osc2.start();
-    ambientOsc._osc2=osc2;ambientOsc._g2=g2;
-  }catch(e){}
-}
-function stopAmbient(){
-  try{
-    if(ambientGain){ambientGain.gain.linearRampToValueAtTime(0.001,audioCtx.currentTime+1)}
-    setTimeout(()=>{try{ambientOsc?.stop();ambientOsc?._osc2?.stop()}catch(e){}},1200);
-  }catch(e){}
-}
-function toggleBreathing(){
-  if(brRunning){stopBreathing();return}
-  brRunning=true;brCycle=0;
-  initAudio();startAmbient();
-  document.getElementById('brBtn').textContent='Stop';
-  runBreathCycle();
-}
-function stopBreathing(){
-  brRunning=false;clearTimeout(brInterval);
-  stopAmbient();speechSynthesis.cancel();
-  document.getElementById('brBtn').textContent='Start Breathing';
-  document.getElementById('brLabel').textContent='Press Start';
-  document.getElementById('brTimer').textContent='4';
-  document.getElementById('brCycles').textContent='';
-  const dot=document.getElementById('brDot');dot.style.transition='none';dot.style.top='10px';dot.style.left='10px';
-}
-function runBreathCycle(){
-  if(!brRunning)return;
-  const phases=['Breathe In','Hold','Breathe Out','Hold'];
-  const phrasesSpeak=['Breathe in','Hold','Breathe out','Hold'];
-  const freqs=[396,528,396,528];
-  const positions=[{top:'10px',left:'110px'},{top:'110px',left:'110px'},{top:'110px',left:'10px'},{top:'10px',left:'10px'}];
-  const dot=document.getElementById('brDot');
-  let phase=0;
-  function doPhase(){
-    if(!brRunning||phase>=4)return;
-    document.getElementById('brLabel').textContent=phases[phase];
-    dot.style.transition='all 4s linear';
-    dot.style.top=positions[phase].top;
-    dot.style.left=positions[phase].left;
-    let sec=4;
-    document.getElementById('brTimer').textContent=sec;
-    speakCount(phrasesSpeak[phase]);
-    playTone(freqs[phase],.6,.2);
-    const ct=setInterval(()=>{
-      sec--;
-      if(sec<=0){clearInterval(ct)}
-      else{
-        document.getElementById('brTimer').textContent=sec;
-        playTone(freqs[phase],.2,.1);
-        if(sec>0)speakCount(String(sec));
-      }
-    },1000);
-    brInterval=setTimeout(()=>{phase++;if(phase<4)doPhase();else{brCycle++;document.getElementById('brCycles').textContent=`Cycle ${brCycle} complete`;playTone(523,.6,.25);setTimeout(()=>runBreathCycle(),800)}},4000);
+    el.innerHTML=`<iframe style="width:100%;aspect-ratio:16/9;border-radius:12px;border:none" src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" title="Video" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe>`;
+  }catch(e){
+    // Fallback: open YouTube directly
+    window.open('https://www.youtube.com/watch?v='+id,'_blank');
   }
-  doPhase();
 }
 
-/* ─── Confetti ─── */
-function launchConfetti(){
-  const cv=document.getElementById('confetti'),cx=cv.getContext('2d');cv.width=innerWidth;cv.height=innerHeight;
-  const cols=['#FF8A80','#EA80FC','#B388FF','#81C784','#FFD54F','#80DEEA','#FF80AB','#A5D6A7'];
-  const ps=[];for(let i=0;i<100;i++)ps.push({x:Math.random()*cv.width,y:Math.random()*cv.height-cv.height,w:Math.random()*8+3,h:Math.random()*5+2,c:cols[Math.floor(Math.random()*cols.length)],vx:(Math.random()-.5)*4,vy:Math.random()*3+2,r:Math.random()*360,vr:(Math.random()-.5)*8});
-  let f=0;(function d(){cx.clearRect(0,0,cv.width,cv.height);let alive=false;ps.forEach(p=>{if(p.y<cv.height+20)alive=true;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.vy+=.05;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r*Math.PI/180);cx.fillStyle=p.c;cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore()});f++;if(alive&&f<180)requestAnimationFrame(d);else cx.clearRect(0,0,cv.width,cv.height)})();
-}
+/* Set OG URL dynamically */
+(function(){
+  const ogUrl=document.querySelector('meta[property="og:url"]');
+  if(ogUrl)ogUrl.content=window.location.href;
+})();
+
+/* Confetti */
+function launchConfetti(){const cv=document.getElementById('confetti'),cx=cv.getContext('2d');cv.width=innerWidth;cv.height=innerHeight;const cs=['#FF8A80','#EA80FC','#B388FF','#81C784','#FFD54F','#80DEEA','#FF80AB','#A5D6A7'];const ps=[];for(let i=0;i<100;i++)ps.push({x:Math.random()*cv.width,y:Math.random()*cv.height-cv.height,w:Math.random()*8+3,h:Math.random()*5+2,c:cs[~~(Math.random()*cs.length)],vx:(Math.random()-.5)*4,vy:Math.random()*3+2,r:Math.random()*360,vr:(Math.random()-.5)*8});let f=0;(function d(){cx.clearRect(0,0,cv.width,cv.height);let a=false;ps.forEach(p=>{if(p.y<cv.height+20)a=true;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.vy+=.05;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r*Math.PI/180);cx.fillStyle=p.c;cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore()});f++;if(a&&f<180)requestAnimationFrame(d);else cx.clearRect(0,0,cv.width,cv.height)})()}
 document.head.appendChild(Object.assign(document.createElement('style'),{textContent:'@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}'}));
 </script>
 </body>
