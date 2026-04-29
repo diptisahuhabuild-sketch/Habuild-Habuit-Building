@@ -150,10 +150,12 @@ tr:hover{background:#FAFAFE}
       <div class="stat-card"><span class="num" id="avgScore">—</span><span class="lbl">Avg Score</span></div>
       <div class="stat-card"><span class="num" id="todayCount">0</span><span class="lbl">Today</span></div>
     </div>
+    <p style="color:#7E8590;font-size:.78rem;margin-bottom:10px;background:#FFF8E1;padding:10px;border-radius:8px">&#128161; Responses here show data from this browser only. For ALL responses from the live site, check your <strong>Google Sheet</strong> directly. Both store the same data.</p>
     <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
       <button class="hbtn hbtn-p" onclick="exportCSV()">Export CSV</button>
       <button class="hbtn hbtn-s" onclick="exportJSON()">Export JSON</button>
       <button class="hbtn hbtn-s" onclick="renderResponses()">Refresh</button>
+      <a class="hbtn hbtn-s" href="https://docs.google.com/spreadsheets" target="_blank" style="text-decoration:none">Open Google Sheets</a>
       <button class="hbtn hbtn-d" onclick="clearAll()">Clear All</button>
     </div>
     <div class="search-bar">
@@ -316,7 +318,7 @@ function renderResponses(){
 
   tbody.innerHTML=filtered.map((l,i)=>{
     const score=l.score??'—';
-    const cls=score<=2?'sb-l':score<=3?'sb-m':'sb-h';
+    const cls=score<=4?'sb-l':score<=7?'sb-m':'sb-h';
     const d=l.date?new Date(l.date):null;
     const dateStr=d?d.toLocaleDateString('en-IN',{day:'2-digit',month:'short'})+' '+d.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}):'—';
     const phone=l.cc&&l.phone?l.cc+' '+l.phone:(l.phone||'—');

@@ -8,7 +8,7 @@
 <!-- OG / Social Share -->
 <meta property="og:title" content="Habuild — आपका Habit Score 10 में से कितना है?">
 <meta property="og:description" content="आपकी दैनिक दिनचर्या कितनी स्वस्थ है — सच में? यह क्विज़ लें, 10 में से अपना स्कोर पाएं।">
-<meta property="og:image" content="https://img.youtube.com/vi/I77hh5I69gA/hqdefault.jpg">
+<meta property="og:image" content="https://diptisahuhabuild-sketch.github.io/Habuild-Habuit-Building/og-image.png">
 <meta property="og:url" content="">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Habuild">
@@ -366,6 +366,31 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
       </a>
     </div>
 
+    <!-- Mind Game -->
+    <div class="practice-card" id="mindGameCard">
+      <div style="font-size:2rem;margin-bottom:6px">&#129504;</div>
+      <h3>माइंड गेम</h3>
+      <p class="sub">अपने दिमाग को तेज़ करें! रंग के नाम पर टैप करें, जिस रंग में लिखा है उस पर नहीं।</p>
+      <div id="mgArea" style="min-height:140px">
+        <div id="mgWord" style="font-size:2rem;font-weight:900;margin-bottom:16px;min-height:48px"></div>
+        <div id="mgOpts" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"></div>
+      </div>
+      <div id="mgScore" style="font-size:.85rem;color:var(--sub);margin-top:10px"></div>
+      <div id="mgResult" style="font-size:.9rem;font-weight:700;margin-top:8px;min-height:24px"></div>
+      <button class="breath-start" onclick="startMindGame()" id="mgBtn" style="margin-top:10px">अभी खेलें</button>
+    </div>
+
+    <!-- Yoga Handbook -->
+    <div style="background:linear-gradient(135deg,#E8F5E9,#C8E6C9);border-radius:var(--r);padding:22px;text-align:center;margin:14px 0;box-shadow:var(--sh)">
+      <div style="font-size:2rem;margin-bottom:6px">&#128214;</div>
+      <h3 style="font-size:1.05rem;margin-bottom:6px">Habuild योग हैंडबुक</h3>
+      <p style="color:var(--sub);font-size:.84rem;margin-bottom:14px;line-height:1.5">सभी ज़रूरी योग आसन, श्वास तकनीक और दैनिक दिनचर्या की फ्री गाइड। शुरुआती और अभ्यासकर्ताओं के लिए उत्तम।</p>
+      <a href="https://assets.habit.yoga/memberapp/Habuild%20Yoga%20Handbook.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--g);padding:12px 24px;border-radius:12px;font-size:.9rem;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(102,187,106,.15);transition:all .2s">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        फ्री हैंडबुक डाउनलोड करें (PDF)
+      </a>
+    </div>
+
     <div class="quote-card">
       <p>"आपका शरीर आपकी सबसे अनमोल संपत्ति है। इसकी देखभाल करें।"</p>
       <span class="chain">&#9889; छोटी आदतें &#8594; बड़ा बदलाव &#127793;<br>साथ मिलकर आगे बढ़ें</span>
@@ -428,7 +453,7 @@ function getShareUrl(){
   const custom=localStorage.getItem('hb_share_url')||'';
   if(custom)return custom;
   const u=window.location.href;
-  if(u.includes('localhost')||u.includes('127.0.0.1')||u.includes('file:'))return 'https://habuild-habit-building.github.io';
+  if(u.includes('localhost')||u.includes('127.0.0.1')||u.includes('file:'))return 'https://diptisahuhabuild-sketch.github.io/Habuild-Habuit-Building/hi.html';
   return u;
 }
 function getShareMsg(){
@@ -461,15 +486,20 @@ function fallbackCopy(t,msg){const i=document.createElement('textarea');i.value=
 function registerAndStart(){
   const n=document.getElementById('rName').value.trim();
   const cc=document.getElementById('rCC').value;
-  const ph=document.getElementById('rPhone').value.trim();
-  if(!n){alert('कृपया अपना नाम दर्ज करें');return}
-  if(!ph){alert('कृपया अपना फ़ोन नंबर दर्ज करें');return}
+  const ph=document.getElementById('rPhone').value.trim().replace(/[^0-9]/g,'');
+  if(!n){alert('कृपया अपना नाम दर्ज करें');document.getElementById('rName').focus();return}
+  if(!ph||ph.length<7){alert('कृपया एक वैध फ़ोन नंबर दर्ज करें (कम से कम 7 अंक)');document.getElementById('rPhone').focus();return}
+  if(ph.length>15){alert('फ़ोन नंबर बहुत लंबा है');document.getElementById('rPhone').focus();return}
   lead={name:n,cc,phone:ph,date:new Date().toISOString(),id:Date.now().toString(36),lang:'hi'};
   saveLead(lead);goTo('sec-quiz');showQ(0);
 }
 function saveLead(l){
   const all=JSON.parse(localStorage.getItem('hb_leads')||'[]');
-  const idx=all.findIndex(x=>x.id===l.id);if(idx>=0)all[idx]=l;else all.push(l);
+  const phoneIdx=all.findIndex(x=>x.phone===l.phone&&x.cc===l.cc);
+  const idIdx=all.findIndex(x=>x.id===l.id);
+  if(phoneIdx>=0){all[phoneIdx]={...all[phoneIdx],...l}}
+  else if(idIdx>=0){all[idIdx]=l}
+  else{all.push(l)}
   localStorage.setItem('hb_leads',JSON.stringify(all));
   postToSheet(l);
 }
@@ -543,6 +573,52 @@ function runBreathCycle(){if(!brRunning)return;const ph=['श्वास ले
     const ct=setInterval(()=>{s--;if(s<=0)clearInterval(ct);else{document.getElementById('brTimer').textContent=s;playTone(fr[p],.15,.06);speakCount(String(s))}},1000);
     brInterval=setTimeout(()=>{p++;if(p<4)doP();else{brCycle++;document.getElementById('brCycles').textContent=`चक्र ${brCycle} पूरा`;playTone(523,.5,.15);setTimeout(()=>runBreathCycle(),800)}},4000)}
   doP()}
+
+/* Mind Game - Stroop Color Test */
+const mgColors=[{name:'Red',hex:'#EF5350'},{name:'Blue',hex:'#42A5F5'},{name:'Green',hex:'#66BB6A'},{name:'Yellow',hex:'#FDD835'},{name:'Purple',hex:'#AB47BC'},{name:'Orange',hex:'#FF7043'}];
+let mgRound=0,mgCorrect=0,mgTotal=8,mgActive=false;
+function startMindGame(){
+  mgRound=0;mgCorrect=0;mgActive=true;
+  document.getElementById('mgBtn').style.display='none';
+  document.getElementById('mgResult').textContent='';
+  nextMgRound();
+}
+function nextMgRound(){
+  if(mgRound>=mgTotal){endMindGame();return}
+  mgRound++;
+  document.getElementById('mgScore').textContent=`राउंड ${mgRound}/${mgTotal} | सही: ${mgCorrect}`;
+  const wordColor=mgColors[~~(Math.random()*mgColors.length)];
+  let displayColor;
+  do{displayColor=mgColors[~~(Math.random()*mgColors.length)]}while(displayColor.name===wordColor.name);
+  const wordEl=document.getElementById('mgWord');
+  wordEl.textContent=wordColor.name;
+  wordEl.style.color=displayColor.hex;
+  const correct=wordColor.name;
+  const opts=new Set([correct]);
+  while(opts.size<3){opts.add(mgColors[~~(Math.random()*mgColors.length)].name)}
+  const arr=[...opts].sort(()=>Math.random()-.5);
+  document.getElementById('mgOpts').innerHTML=arr.map(n=>{
+    const c=mgColors.find(x=>x.name===n);
+    return `<button onclick="mgPick('${n}','${correct}')" style="padding:10px 20px;border-radius:10px;border:2px solid ${c.hex};background:#fff;color:${c.hex};font-weight:700;font-size:.88rem;cursor:pointer;min-width:80px">${n}</button>`;
+  }).join('');
+}
+function mgPick(picked,correct){
+  if(!mgActive)return;
+  if(picked===correct){mgCorrect++;document.getElementById('mgResult').innerHTML='<span style="color:var(--g)">सही!</span>'}
+  else{document.getElementById('mgResult').innerHTML=`<span style="color:var(--a)">गलत! सही जवाब: ${correct}</span>`}
+  setTimeout(nextMgRound,600);
+}
+function endMindGame(){
+  mgActive=false;
+  document.getElementById('mgWord').textContent='';
+  document.getElementById('mgOpts').innerHTML='';
+  document.getElementById('mgScore').textContent=`अंतिम स्कोर: ${mgCorrect}/${mgTotal}`;
+  const pct=Math.round(mgCorrect/mgTotal*100);
+  let msg=pct>=80?'शानदार फोकस!':pct>=50?'अच्छा प्रयास! अभ्यास जारी रखें।':'आपके दिमाग को ट्रेनिंग चाहिए — योग और श्वास आज़माएं!';
+  document.getElementById('mgResult').innerHTML=`<span style="color:var(--p)">${msg}</span>`;
+  document.getElementById('mgBtn').style.display='inline-block';
+  document.getElementById('mgBtn').textContent='फिर से खेलें';
+}
 
 /* Play YouTube video */
 function playVid(el,id){
