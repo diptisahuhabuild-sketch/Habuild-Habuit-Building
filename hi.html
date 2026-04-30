@@ -187,11 +187,11 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .quote-card .chain{font-style:normal;font-weight:700;color:var(--p);margin-top:8px;display:block;font-size:.9rem}
 
 /* EXPLORE TABS */
-.explore-tabs{display:flex;gap:6px;margin:18px 0 14px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.explore-tabs{display:flex;gap:8px;margin:10px 0 14px;overflow-x:auto;padding:4px 0 8px;-webkit-overflow-scrolling:touch}
 .explore-tabs::-webkit-scrollbar{display:none}
-.ex-tab{padding:10px 16px;border-radius:12px;border:2px solid var(--border);font-size:.78rem;font-weight:600;cursor:pointer;white-space:nowrap;background:#fff;color:var(--sub);transition:all .15s;display:flex;align-items:center;gap:5px;flex-shrink:0}
-.ex-tab.active{background:var(--pl);border-color:var(--p);color:var(--p)}
-.ex-tab:hover{border-color:var(--p)}
+.ex-tab{padding:12px 18px;border-radius:14px;border:none;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;background:#fff;color:var(--sub);transition:all .2s;display:flex;align-items:center;gap:6px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.ex-tab.active{background:linear-gradient(135deg,var(--pl),#FFF5F0);color:var(--p);box-shadow:0 3px 12px rgba(124,111,232,.12);transform:translateY(-1px)}
+.ex-tab:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.08)}
 .ex-panel{display:none;animation:fadeUp .3s ease}
 .ex-panel.active{display:block}
 
@@ -317,13 +317,13 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
     <div class="progress-wrap">
       <div class="prog-bar"><div class="fill" id="progFill"></div></div>
     </div>
-    <div class="q-card" id="q0"><div class="q-tag">जीवनशैली</div><h3>आप आमतौर पर कितने बजे उठते हैं?</h3><div class="opts"><div class="opt" data-q="0" data-v="4" onclick="pick(this)"><div class="dot"></div>सुबह 6 बजे से पहले</div><div class="opt" data-q="0" data-v="3" onclick="pick(this)"><div class="dot"></div>6 – 8 बजे</div><div class="opt" data-q="0" data-v="1" onclick="pick(this)"><div class="dot"></div>8 बजे के बाद</div><div class="opt" data-q="0" data-v="0" onclick="pick(this)"><div class="dot"></div>कोई निश्चित समय नहीं</div></div></div>
-    <div class="q-card" id="q1"><div class="q-tag">पानी</div><h3>आप रोज़ कितना पानी पीते हैं?</h3><div class="opts"><div class="opt" data-q="1" data-v="3" onclick="pick(this)"><div class="dot"></div>8+ गिलास</div><div class="opt" data-q="1" data-v="2" onclick="pick(this)"><div class="dot"></div>5 – 7 गिलास</div><div class="opt" data-q="1" data-v="1" onclick="pick(this)"><div class="dot"></div>3 – 4 गिलास</div><div class="opt" data-q="1" data-v="0" onclick="pick(this)"><div class="dot"></div>ज़्यादातर चाय या कॉफ़ी</div></div></div>
-    <div class="q-card" id="q2"><div class="q-tag">फिटनेस</div><h3>आप कितनी बार व्यायाम करते हैं?</h3><div class="opts"><div class="opt" data-q="2" data-v="4" onclick="pick(this)"><div class="dot"></div>रोज़</div><div class="opt" data-q="2" data-v="3" onclick="pick(this)"><div class="dot"></div>हफ़्ते में 3 – 4 बार</div><div class="opt" data-q="2" data-v="1" onclick="pick(this)"><div class="dot"></div>कभी-कभी</div><div class="opt" data-q="2" data-v="0" onclick="pick(this)"><div class="dot"></div>लगभग कभी नहीं</div></div></div>
-    <div class="q-card" id="q3"><div class="q-tag">नींद</div><h3>सोने से पहले कितना स्क्रीन टाइम?</h3><div class="opts"><div class="opt" data-q="3" data-v="3" onclick="pick(this)"><div class="dot"></div>बिल्कुल नहीं</div><div class="opt" data-q="3" data-v="2" onclick="pick(this)"><div class="dot"></div>30 मिनट से कम</div><div class="opt" data-q="3" data-v="1" onclick="pick(this)"><div class="dot"></div>1 – 2 घंटे</div><div class="opt" data-q="3" data-v="0" onclick="pick(this)"><div class="dot"></div>2 घंटे से ज़्यादा</div></div></div>
-    <div class="q-card" id="q4"><div class="q-tag">ऊर्जा</div><h3>दोपहर तक आप कैसा महसूस करते हैं?</h3><div class="opts"><div class="opt" data-q="4" data-v="3" onclick="pick(this)"><div class="dot"></div>स्पष्ट और केंद्रित</div><div class="opt" data-q="4" data-v="2" onclick="pick(this)"><div class="dot"></div>कभी-कभी थका हुआ</div><div class="opt" data-q="4" data-v="1" onclick="pick(this)"><div class="dot"></div>अक्सर थका हुआ</div><div class="opt" data-q="4" data-v="0" onclick="pick(this)"><div class="dot"></div>हर दिन थका हुआ</div></div></div>
-    <div class="q-card" id="q5"><div class="q-tag">पोषण</div><h3>आपकी खाने की आदतें कैसी हैं?</h3><div class="opts"><div class="opt" data-q="5" data-v="3" onclick="pick(this)"><div class="dot"></div>संतुलित घर का खाना</div><div class="opt" data-q="5" data-v="2" onclick="pick(this)"><div class="dot"></div>ज़्यादातर स्वस्थ, कभी-कभी जंक</div><div class="opt" data-q="5" data-v="1" onclick="pick(this)"><div class="dot"></div>अनियमित खाना, बाहर का ज़्यादा</div><div class="opt" data-q="5" data-v="0" onclick="pick(this)"><div class="dot"></div>ज़्यादातर जंक / खाना छोड़ देते हैं</div></div></div>
-    <div class="q-card" id="q6"><div class="q-tag">निरंतरता</div><h3>आप कितने दिन तक नई आदत निभा पाते हैं?</h3><div class="opts"><div class="opt" data-q="6" data-v="3" onclick="pick(this)"><div class="dot"></div>21 दिन से ज़्यादा आसानी से</div><div class="opt" data-q="6" data-v="2" onclick="pick(this)"><div class="dot"></div>1 – 2 हफ़्ते</div><div class="opt" data-q="6" data-v="1" onclick="pick(this)"><div class="dot"></div>कुछ दिन फिर छोड़ देता हूँ</div><div class="opt" data-q="6" data-v="0" onclick="pick(this)"><div class="dot"></div>शुरू ही नहीं कर पाता</div></div></div>
+    <div class="q-card" id="q0"><div class="q-tag">&#9728;&#65039; जीवनशैली</div><h3>&#127748; आप आमतौर पर कितने बजे उठते हैं?</h3><div class="opts"><div class="opt" data-q="0" data-v="4" onclick="pick(this)"><div class="dot"></div>सुबह 6 बजे से पहले</div><div class="opt" data-q="0" data-v="3" onclick="pick(this)"><div class="dot"></div>6 – 8 बजे</div><div class="opt" data-q="0" data-v="1" onclick="pick(this)"><div class="dot"></div>8 बजे के बाद</div><div class="opt" data-q="0" data-v="0" onclick="pick(this)"><div class="dot"></div>कोई निश्चित समय नहीं</div></div></div>
+    <div class="q-card" id="q1"><div class="q-tag">&#128167; पानी</div><h3>&#128166; आप रोज़ कितना पानी पीते हैं?</h3><div class="opts"><div class="opt" data-q="1" data-v="3" onclick="pick(this)"><div class="dot"></div>8+ गिलास</div><div class="opt" data-q="1" data-v="2" onclick="pick(this)"><div class="dot"></div>5 – 7 गिलास</div><div class="opt" data-q="1" data-v="1" onclick="pick(this)"><div class="dot"></div>3 – 4 गिलास</div><div class="opt" data-q="1" data-v="0" onclick="pick(this)"><div class="dot"></div>ज़्यादातर चाय या कॉफ़ी</div></div></div>
+    <div class="q-card" id="q2"><div class="q-tag">&#127939; फिटनेस</div><h3>&#128170; आप कितनी बार व्यायाम करते हैं?</h3><div class="opts"><div class="opt" data-q="2" data-v="4" onclick="pick(this)"><div class="dot"></div>रोज़</div><div class="opt" data-q="2" data-v="3" onclick="pick(this)"><div class="dot"></div>हफ़्ते में 3 – 4 बार</div><div class="opt" data-q="2" data-v="1" onclick="pick(this)"><div class="dot"></div>कभी-कभी</div><div class="opt" data-q="2" data-v="0" onclick="pick(this)"><div class="dot"></div>लगभग कभी नहीं</div></div></div>
+    <div class="q-card" id="q3"><div class="q-tag">&#128164; नींद</div><h3>&#128241; सोने से पहले कितना स्क्रीन टाइम?</h3><div class="opts"><div class="opt" data-q="3" data-v="3" onclick="pick(this)"><div class="dot"></div>बिल्कुल नहीं</div><div class="opt" data-q="3" data-v="2" onclick="pick(this)"><div class="dot"></div>30 मिनट से कम</div><div class="opt" data-q="3" data-v="1" onclick="pick(this)"><div class="dot"></div>1 – 2 घंटे</div><div class="opt" data-q="3" data-v="0" onclick="pick(this)"><div class="dot"></div>2 घंटे से ज़्यादा</div></div></div>
+    <div class="q-card" id="q4"><div class="q-tag">&#9889; ऊर्जा</div><h3>&#9749; दोपहर तक आप कैसा महसूस करते हैं?</h3><div class="opts"><div class="opt" data-q="4" data-v="3" onclick="pick(this)"><div class="dot"></div>स्पष्ट और केंद्रित</div><div class="opt" data-q="4" data-v="2" onclick="pick(this)"><div class="dot"></div>कभी-कभी थका हुआ</div><div class="opt" data-q="4" data-v="1" onclick="pick(this)"><div class="dot"></div>अक्सर थका हुआ</div><div class="opt" data-q="4" data-v="0" onclick="pick(this)"><div class="dot"></div>हर दिन थका हुआ</div></div></div>
+    <div class="q-card" id="q5"><div class="q-tag">&#127823; पोषण</div><h3>&#127858; आपकी खाने की आदतें कैसी हैं?</h3><div class="opts"><div class="opt" data-q="5" data-v="3" onclick="pick(this)"><div class="dot"></div>संतुलित घर का खाना</div><div class="opt" data-q="5" data-v="2" onclick="pick(this)"><div class="dot"></div>ज़्यादातर स्वस्थ, कभी-कभी जंक</div><div class="opt" data-q="5" data-v="1" onclick="pick(this)"><div class="dot"></div>अनियमित खाना, बाहर का ज़्यादा</div><div class="opt" data-q="5" data-v="0" onclick="pick(this)"><div class="dot"></div>ज़्यादातर जंक / खाना छोड़ देते हैं</div></div></div>
+    <div class="q-card" id="q6"><div class="q-tag">&#128293; निरंतरता</div><h3>&#127919; आप कितने दिन तक नई आदत निभा पाते हैं?</h3><div class="opts"><div class="opt" data-q="6" data-v="3" onclick="pick(this)"><div class="dot"></div>21 दिन से ज़्यादा आसानी से</div><div class="opt" data-q="6" data-v="2" onclick="pick(this)"><div class="dot"></div>1 – 2 हफ़्ते</div><div class="opt" data-q="6" data-v="1" onclick="pick(this)"><div class="dot"></div>कुछ दिन फिर छोड़ देता हूँ</div><div class="opt" data-q="6" data-v="0" onclick="pick(this)"><div class="dot"></div>शुरू ही नहीं कर पाता</div></div></div>
     <div class="q-nav">
       <button class="btn btn-o" id="prevBtn" onclick="prevQ()" disabled>पीछे</button>
       <button class="btn btn-p" id="nextBtn" onclick="nextQ()">आगे</button>
@@ -344,14 +344,16 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
       <button class="sbtn">शेयर करने के लिए क्लिक करें</button>
     </div>
 
-    <!-- Explore Tabs -->
-    <p style="text-align:center;font-size:.82rem;color:var(--p);font-weight:700;margin-top:18px">&#128071; और जानें</p>
+    <!-- Explore Section -->
+    <div style="text-align:center;margin-top:20px;margin-bottom:4px">
+      <p style="font-size:.95rem;font-weight:800;color:var(--text)">आपकी वेलनेस यात्रा यहाँ नहीं रुकती</p>
+      <p style="font-size:.8rem;color:var(--sub);margin-top:2px">नीचे टैप करें और जानें</p>
+    </div>
     <div class="explore-tabs">
-      <button class="ex-tab active" onclick="showExTab(0,this)">&#129495; श्वास</button>
-      <button class="ex-tab" onclick="showExTab(1,this)">&#127909; वीडियो</button>
-      <button class="ex-tab" onclick="showExTab(2,this)">&#129504; माइंड गेम</button>
-      <button class="ex-tab" onclick="showExTab(3,this)">&#128214; हैंडबुक</button>
-      <button class="ex-tab" onclick="showExTab(4,this)">&#127909; YouTube</button>
+      <button class="ex-tab active" onclick="showExTab(0,this)">&#129495; मन शांत करें</button>
+      <button class="ex-tab" onclick="showExTab(1,this)">&#127909; रोज़ का अभ्यास</button>
+      <button class="ex-tab" onclick="showExTab(2,this)">&#129504; दिमाग की कसरत</button>
+      <button class="ex-tab" onclick="showExTab(3,this)">&#128214; योग गाइड</button>
     </div>
 
     <div class="ex-panel active" id="exP0">
@@ -382,14 +384,22 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
           <div class="yt-thumb" onclick="playVid(this,'LCyP3F7gRC4')"><img src="https://img.youtube.com/vi/LCyP3F7gRC4/hqdefault.jpg" alt="Guided" style="width:100%;border-radius:12px;display:block"><div class="yt-play">&#9654;</div></div>
           <a class="yt-link" href="https://www.youtube.com/watch?v=LCyP3F7gRC4" target="_blank" rel="noopener">&#9654; YouTube पर देखें</a>
         </div>
+        <div style="margin-top:18px;padding:16px;background:linear-gradient(135deg,#FFF5F0,#F0EDFF);border-radius:14px;text-align:center">
+          <p style="font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:4px">&#127793; स्वस्थ जीवनशैली की और टिप्स चाहिए?</p>
+          <p style="font-size:.78rem;color:var(--sub);margin-bottom:12px">सौरभ बोथरा का चैनल देखें</p>
+          <a class="yt-btn" href="https://www.youtube.com/channel/UCZ1_MhfxMAotGs8fzZM1f7A" target="_blank" rel="noopener" style="font-size:.82rem">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            और देखें YouTube पर
+          </a>
+        </div>
       </div>
     </div>
 
     <div class="ex-panel" id="exP2">
       <div class="practice-card">
         <div style="font-size:2rem;margin-bottom:6px">&#129504;</div>
-        <h3>माइंड गेम</h3>
-        <p class="sub">रंग के नाम पर टैप करें, जिस रंग में लिखा है उस पर नहीं।</p>
+        <h3>ब्रेन ट्रेनिंग — 3 लेवल</h3>
+        <p class="sub">&#127912; रंग पहचान &#8594; &#10133; तेज़ गणित &#8594; &#129504; याददाश्त<br>आपका दिमाग कितना तेज़ है?</p>
         <div id="mgArea" style="min-height:140px"><div id="mgWord" style="font-size:2rem;font-weight:900;margin-bottom:16px;min-height:48px"></div><div id="mgOpts" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"></div></div>
         <div id="mgScore" style="font-size:.85rem;color:var(--sub);margin-top:10px"></div>
         <div id="mgResult" style="font-size:.9rem;font-weight:700;margin-top:8px;min-height:24px"></div>
@@ -405,18 +415,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
         <a href="https://assets.habit.yoga/memberapp/Habuild%20Yoga%20Handbook.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--g);padding:12px 24px;border-radius:12px;font-size:.9rem;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(102,187,106,.15)">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
           फ्री हैंडबुक डाउनलोड करें (PDF)
-        </a>
-      </div>
-    </div>
-
-    <div class="ex-panel" id="exP4">
-      <div class="yt-card">
-        <div style="font-size:1.8rem;margin-bottom:6px">&#127909;</div>
-        <h3>सौरभ बोथरा</h3>
-        <p>और सेशन, टिप्स और रोज़ की प्रेरणा</p>
-        <a class="yt-btn" href="https://www.youtube.com/channel/UCZ1_MhfxMAotGs8fzZM1f7A" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          और देखें — यहाँ क्लिक करें
         </a>
       </div>
     </div>
@@ -639,50 +637,94 @@ function runBreathCycle(){if(!brRunning)return;const ph=['श्वास ले
     brInterval=setTimeout(()=>{p++;if(p<4)doP();else{brCycle++;document.getElementById('brCycles').textContent=`चक्र ${brCycle} पूरा`;playTone(523,.5,.15);setTimeout(()=>runBreathCycle(),800)}},4000)}
   doP()}
 
-/* Mind Game - Stroop Color Test */
+/* Mind Games - Multi-Level */
 const mgColors=[{name:'Red',hex:'#EF5350'},{name:'Blue',hex:'#42A5F5'},{name:'Green',hex:'#66BB6A'},{name:'Yellow',hex:'#FDD835'},{name:'Purple',hex:'#AB47BC'},{name:'Orange',hex:'#FF7043'}];
-let mgRound=0,mgCorrect=0,mgTotal=8,mgActive=false;
+let mgLevel=1,mgRound=0,mgCorrect=0,mgTotal=6,mgActive=false,mgTarget=0;
+const mgLevels=[
+  {name:'Level 1: \u0930\u0902\u0917 \u092A\u0939\u091A\u093E\u0928',desc:'Color Match',icon:'\uD83C\uDFA8',rounds:6},
+  {name:'Level 2: \u0924\u0947\u091C\u093C \u0917\u0923\u093F\u0924',desc:'Quick Math',icon:'\u2795',rounds:6},
+  {name:'Level 3: \u092F\u093E\u0926\u0926\u093E\u0936\u094D\u0924',desc:'Memory Flash',icon:'\uD83E\uDDE0',rounds:5}
+];
 function startMindGame(){
-  mgRound=0;mgCorrect=0;mgActive=true;
+  mgRound=0;mgCorrect=0;mgActive=true;mgTotal=mgLevels[mgLevel-1].rounds;
   document.getElementById('mgBtn').style.display='none';
   document.getElementById('mgResult').textContent='';
-  nextMgRound();
+  document.getElementById('mgScore').innerHTML=`<span style="color:var(--p);font-weight:700">${mgLevels[mgLevel-1].icon} ${mgLevels[mgLevel-1].name}</span>`;
+  setTimeout(nextMgRound,400);
 }
 function nextMgRound(){
   if(mgRound>=mgTotal){endMindGame();return}
   mgRound++;
-  document.getElementById('mgScore').textContent=`राउंड ${mgRound}/${mgTotal} | सही: ${mgCorrect}`;
-  const wordColor=mgColors[~~(Math.random()*mgColors.length)];
-  let displayColor;
-  do{displayColor=mgColors[~~(Math.random()*mgColors.length)]}while(displayColor.name===wordColor.name);
-  const wordEl=document.getElementById('mgWord');
-  wordEl.textContent=wordColor.name;
-  wordEl.style.color=displayColor.hex;
-  const correct=wordColor.name;
-  const opts=new Set([correct]);
-  while(opts.size<3){opts.add(mgColors[~~(Math.random()*mgColors.length)].name)}
+  const info=`\u0930\u093E\u0909\u0902\u0921 ${mgRound}/${mgTotal} | \u0938\u094D\u0915\u094B\u0930: ${mgCorrect}`;
+  if(mgLevel===1)doStroop(info);
+  else if(mgLevel===2)doMath(info);
+  else doMemory(info);
+}
+function doStroop(info){
+  document.getElementById('mgScore').innerHTML=`<span style="color:var(--p);font-weight:700">\uD83C\uDFA8 ${mgLevels[0].name}</span><br><span style="font-size:.78rem;color:var(--sub)">${info}</span>`;
+  const w=mgColors[~~(Math.random()*mgColors.length)];
+  let d;do{d=mgColors[~~(Math.random()*mgColors.length)]}while(d.name===w.name);
+  document.getElementById('mgWord').innerHTML=`<span style="color:${d.hex}">${w.name}</span>`;
+  const correct=w.name;const opts=new Set([correct]);
+  while(opts.size<3)opts.add(mgColors[~~(Math.random()*mgColors.length)].name);
   const arr=[...opts].sort(()=>Math.random()-.5);
   document.getElementById('mgOpts').innerHTML=arr.map(n=>{
     const c=mgColors.find(x=>x.name===n);
     return `<button onclick="mgPick('${n}','${correct}')" style="padding:10px 20px;border-radius:10px;border:2px solid ${c.hex};background:#fff;color:${c.hex};font-weight:700;font-size:.88rem;cursor:pointer;min-width:80px">${n}</button>`;
   }).join('');
 }
+function doMath(info){
+  document.getElementById('mgScore').innerHTML=`<span style="color:var(--p);font-weight:700">\u2795 ${mgLevels[1].name}</span><br><span style="font-size:.78rem;color:var(--sub)">${info}</span>`;
+  const ops=['+','-','\u00D7'];const op=ops[~~(Math.random()*3)];
+  let a,b,ans;
+  if(op==='+'){a=~~(Math.random()*50)+10;b=~~(Math.random()*30)+5;ans=a+b}
+  else if(op==='-'){a=~~(Math.random()*50)+20;b=~~(Math.random()*20)+1;ans=a-b}
+  else{a=~~(Math.random()*12)+2;b=~~(Math.random()*9)+2;ans=a*b}
+  document.getElementById('mgWord').innerHTML=`<span style="color:var(--p)">${a} ${op} ${b} = ?</span>`;
+  const correct=String(ans);const opts=new Set([correct]);
+  while(opts.size<3)opts.add(String(ans+~~(Math.random()*11)-5||ans+1));
+  const arr=[...opts].sort(()=>Math.random()-.5);
+  document.getElementById('mgOpts').innerHTML=arr.map(n=>`<button onclick="mgPick('${n}','${correct}')" style="padding:10px 24px;border-radius:10px;border:2px solid var(--p);background:#fff;color:var(--p);font-weight:700;font-size:1rem;cursor:pointer;min-width:70px">${n}</button>`).join('');
+}
+function doMemory(info){
+  document.getElementById('mgScore').innerHTML=`<span style="color:var(--p);font-weight:700">\uD83E\uDDE0 ${mgLevels[2].name}</span><br><span style="font-size:.78rem;color:var(--sub)">${info}</span>`;
+  const len=3+mgRound;const num=Array.from({length:len},()=>~~(Math.random()*10)).join('');
+  mgTarget=num;
+  document.getElementById('mgWord').innerHTML=`<span style="color:var(--a);font-size:2.5rem;letter-spacing:6px">${num}</span>`;
+  document.getElementById('mgOpts').innerHTML=`<p style="font-size:.78rem;color:var(--sub)">\u092F\u0939 \u0928\u0902\u092C\u0930 \u092F\u093E\u0926 \u0930\u0916\u0947\u0902...</p>`;
+  setTimeout(()=>{
+    if(!mgActive)return;
+    document.getElementById('mgWord').innerHTML=`<span style="color:var(--p)">\u0928\u0902\u092C\u0930 \u0915\u094D\u092F\u093E \u0925\u093E?</span>`;
+    const correct=num;const opts=new Set([correct]);
+    while(opts.size<3){const fake=num.split('');fake[~~(Math.random()*len)]=String(~~(Math.random()*10));opts.add(fake.join(''))}
+    const arr=[...opts].sort(()=>Math.random()-.5);
+    document.getElementById('mgOpts').innerHTML=arr.map(n=>`<button onclick="mgPick('${n}','${correct}')" style="padding:10px 20px;border-radius:10px;border:2px solid var(--p);background:#fff;color:var(--p);font-weight:700;font-size:1rem;cursor:pointer;min-width:80px;letter-spacing:3px">${n}</button>`).join('');
+  },1500);
+}
 function mgPick(picked,correct){
   if(!mgActive)return;
-  if(picked===correct){mgCorrect++;document.getElementById('mgResult').innerHTML='<span style="color:var(--g)">सही!</span>'}
-  else{document.getElementById('mgResult').innerHTML=`<span style="color:var(--a)">गलत! सही जवाब: ${correct}</span>`}
-  setTimeout(nextMgRound,600);
+  if(picked===correct){mgCorrect++;document.getElementById('mgResult').innerHTML='<span style="color:var(--g)">\u2705 \u0938\u0939\u0940!</span>'}
+  else{document.getElementById('mgResult').innerHTML=`<span style="color:var(--a)">\u274C \u091C\u0935\u093E\u092C: ${correct}</span>`}
+  setTimeout(nextMgRound,700);
 }
 function endMindGame(){
   mgActive=false;
   document.getElementById('mgWord').textContent='';
   document.getElementById('mgOpts').innerHTML='';
-  document.getElementById('mgScore').textContent=`अंतिम स्कोर: ${mgCorrect}/${mgTotal}`;
   const pct=Math.round(mgCorrect/mgTotal*100);
-  let msg=pct>=80?'शानदार फोकस!':pct>=50?'अच्छा प्रयास! अभ्यास जारी रखें।':'आपके दिमाग को ट्रेनिंग चाहिए — योग और श्वास आज़माएं!';
-  document.getElementById('mgResult').innerHTML=`<span style="color:var(--p)">${msg}</span>`;
+  let msg,emoji;
+  if(pct>=80){msg='\u0936\u093E\u0928\u0926\u093E\u0930 \u092B\u094B\u0915\u0938!';emoji='\uD83C\uDF1F'}
+  else if(pct>=50){msg='\u0905\u091A\u094D\u091B\u093E \u092A\u094D\u0930\u092F\u093E\u0938! \u0905\u092D\u094D\u092F\u093E\u0938 \u091C\u093E\u0930\u0940 \u0930\u0916\u0947\u0902\u0964';emoji='\uD83D\uDCAA'}
+  else{msg='\u0906\u0917\u0947 \u092C\u0922\u093C\u0947\u0902! \u0905\u092D\u094D\u092F\u093E\u0938 \u0938\u0947 \u0938\u092C \u0939\u094B\u0924\u093E \u0939\u0948\u0964';emoji='\uD83C\uDF31'}
+  document.getElementById('mgScore').textContent=`${mgLevels[mgLevel-1].icon} ${mgLevels[mgLevel-1].name} \u2014 \u0938\u094D\u0915\u094B\u0930: ${mgCorrect}/${mgTotal}`;
+  let nextHtml=`<span style="color:var(--p)">${emoji} ${msg}</span>`;
+  if(mgLevel<3&&pct>=50){
+    nextHtml+=`<br><button onclick="mgLevel++;startMindGame()" style="margin-top:10px;padding:8px 20px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--p),#B388FF);color:#fff;font-weight:600;font-size:.82rem;cursor:pointer">\u27A1\uFE0F \u0905\u0917\u0932\u093E Level: ${mgLevels[mgLevel].name}</button>`;
+  }
+  document.getElementById('mgResult').innerHTML=nextHtml;
   document.getElementById('mgBtn').style.display='inline-block';
-  document.getElementById('mgBtn').textContent='फिर से खेलें';
+  document.getElementById('mgBtn').textContent=mgLevel>=3?'\u092B\u093F\u0930 \u0938\u0947 \u0916\u0947\u0932\u0947\u0902 (Level 1)':'\u092F\u0939 Level \u0926\u094B\u092C\u093E\u0930\u093E';
+  if(mgLevel>=3)document.getElementById('mgBtn').onclick=function(){mgLevel=1;startMindGame()};
 }
 
 /* Play YouTube video */

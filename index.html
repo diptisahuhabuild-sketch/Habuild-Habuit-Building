@@ -187,11 +187,11 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .quote-card .chain{font-style:normal;font-weight:700;color:var(--p);margin-top:8px;display:block;font-size:.9rem}
 
 /* EXPLORE TABS */
-.explore-tabs{display:flex;gap:6px;margin:18px 0 14px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.explore-tabs{display:flex;gap:8px;margin:10px 0 14px;overflow-x:auto;padding:4px 0 8px;-webkit-overflow-scrolling:touch}
 .explore-tabs::-webkit-scrollbar{display:none}
-.ex-tab{padding:10px 16px;border-radius:12px;border:2px solid var(--border);font-size:.78rem;font-weight:600;cursor:pointer;white-space:nowrap;background:#fff;color:var(--sub);transition:all .15s;display:flex;align-items:center;gap:5px;flex-shrink:0}
-.ex-tab.active{background:var(--pl);border-color:var(--p);color:var(--p)}
-.ex-tab:hover{border-color:var(--p)}
+.ex-tab{padding:12px 18px;border-radius:14px;border:none;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;background:#fff;color:var(--sub);transition:all .2s;display:flex;align-items:center;gap:6px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.ex-tab.active{background:linear-gradient(135deg,var(--pl),#FFF5F0);color:var(--p);box-shadow:0 3px 12px rgba(124,111,232,.12);transform:translateY(-1px)}
+.ex-tab:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.08)}
 .ex-panel{display:none;animation:fadeUp .3s ease}
 .ex-panel.active{display:block}
 
@@ -317,13 +317,13 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
     <div class="progress-wrap">
       <div class="prog-bar"><div class="fill" id="progFill"></div></div>
     </div>
-    <div class="q-card" id="q0"><div class="q-tag">Lifestyle</div><h3>What time do you usually wake up?</h3><div class="opts"><div class="opt" data-q="0" data-v="4" onclick="pick(this)"><div class="dot"></div>Before 6 AM</div><div class="opt" data-q="0" data-v="3" onclick="pick(this)"><div class="dot"></div>6 – 8 AM</div><div class="opt" data-q="0" data-v="1" onclick="pick(this)"><div class="dot"></div>After 8 AM</div><div class="opt" data-q="0" data-v="0" onclick="pick(this)"><div class="dot"></div>No fixed time</div></div></div>
-    <div class="q-card" id="q1"><div class="q-tag">Hydration</div><h3>How much water do you drink daily?</h3><div class="opts"><div class="opt" data-q="1" data-v="3" onclick="pick(this)"><div class="dot"></div>8+ glasses</div><div class="opt" data-q="1" data-v="2" onclick="pick(this)"><div class="dot"></div>5 – 7 glasses</div><div class="opt" data-q="1" data-v="1" onclick="pick(this)"><div class="dot"></div>3 – 4 glasses</div><div class="opt" data-q="1" data-v="0" onclick="pick(this)"><div class="dot"></div>Mostly tea or coffee</div></div></div>
-    <div class="q-card" id="q2"><div class="q-tag">Fitness</div><h3>How often do you exercise?</h3><div class="opts"><div class="opt" data-q="2" data-v="4" onclick="pick(this)"><div class="dot"></div>Daily</div><div class="opt" data-q="2" data-v="3" onclick="pick(this)"><div class="dot"></div>3 – 4 times a week</div><div class="opt" data-q="2" data-v="1" onclick="pick(this)"><div class="dot"></div>Occasionally</div><div class="opt" data-q="2" data-v="0" onclick="pick(this)"><div class="dot"></div>Almost never</div></div></div>
-    <div class="q-card" id="q3"><div class="q-tag">Sleep</div><h3>How much screen time before sleeping?</h3><div class="opts"><div class="opt" data-q="3" data-v="3" onclick="pick(this)"><div class="dot"></div>None</div><div class="opt" data-q="3" data-v="2" onclick="pick(this)"><div class="dot"></div>Under 30 minutes</div><div class="opt" data-q="3" data-v="1" onclick="pick(this)"><div class="dot"></div>1 – 2 hours</div><div class="opt" data-q="3" data-v="0" onclick="pick(this)"><div class="dot"></div>More than 2 hours</div></div></div>
-    <div class="q-card" id="q4"><div class="q-tag">Energy</div><h3>How do you feel by midday?</h3><div class="opts"><div class="opt" data-q="4" data-v="3" onclick="pick(this)"><div class="dot"></div>Clear and focused</div><div class="opt" data-q="4" data-v="2" onclick="pick(this)"><div class="dot"></div>Sometimes tired</div><div class="opt" data-q="4" data-v="1" onclick="pick(this)"><div class="dot"></div>Often drained</div><div class="opt" data-q="4" data-v="0" onclick="pick(this)"><div class="dot"></div>Exhausted every day</div></div></div>
-    <div class="q-card" id="q5"><div class="q-tag">Nutrition</div><h3>How would you describe your eating habits?</h3><div class="opts"><div class="opt" data-q="5" data-v="3" onclick="pick(this)"><div class="dot"></div>Balanced home-cooked meals</div><div class="opt" data-q="5" data-v="2" onclick="pick(this)"><div class="dot"></div>Mostly healthy with occasional junk</div><div class="opt" data-q="5" data-v="1" onclick="pick(this)"><div class="dot"></div>Irregular meals, lots of outside food</div><div class="opt" data-q="5" data-v="0" onclick="pick(this)"><div class="dot"></div>Mostly junk / skip meals often</div></div></div>
-    <div class="q-card" id="q6"><div class="q-tag">Consistency</div><h3>How long can you stick to a new habit?</h3><div class="opts"><div class="opt" data-q="6" data-v="3" onclick="pick(this)"><div class="dot"></div>More than 21 days easily</div><div class="opt" data-q="6" data-v="2" onclick="pick(this)"><div class="dot"></div>About 1 – 2 weeks</div><div class="opt" data-q="6" data-v="1" onclick="pick(this)"><div class="dot"></div>A few days then I quit</div><div class="opt" data-q="6" data-v="0" onclick="pick(this)"><div class="dot"></div>I can't seem to start at all</div></div></div>
+    <div class="q-card" id="q0"><div class="q-tag">&#9728;&#65039; Lifestyle</div><h3>&#127748; What time do you usually wake up?</h3><div class="opts"><div class="opt" data-q="0" data-v="4" onclick="pick(this)"><div class="dot"></div>Before 6 AM</div><div class="opt" data-q="0" data-v="3" onclick="pick(this)"><div class="dot"></div>6 – 8 AM</div><div class="opt" data-q="0" data-v="1" onclick="pick(this)"><div class="dot"></div>After 8 AM</div><div class="opt" data-q="0" data-v="0" onclick="pick(this)"><div class="dot"></div>No fixed time</div></div></div>
+    <div class="q-card" id="q1"><div class="q-tag">&#128167; Hydration</div><h3>&#128166; How much water do you drink daily?</h3><div class="opts"><div class="opt" data-q="1" data-v="3" onclick="pick(this)"><div class="dot"></div>8+ glasses</div><div class="opt" data-q="1" data-v="2" onclick="pick(this)"><div class="dot"></div>5 – 7 glasses</div><div class="opt" data-q="1" data-v="1" onclick="pick(this)"><div class="dot"></div>3 – 4 glasses</div><div class="opt" data-q="1" data-v="0" onclick="pick(this)"><div class="dot"></div>Mostly tea or coffee</div></div></div>
+    <div class="q-card" id="q2"><div class="q-tag">&#127939; Fitness</div><h3>&#128170; How often do you exercise?</h3><div class="opts"><div class="opt" data-q="2" data-v="4" onclick="pick(this)"><div class="dot"></div>Daily</div><div class="opt" data-q="2" data-v="3" onclick="pick(this)"><div class="dot"></div>3 – 4 times a week</div><div class="opt" data-q="2" data-v="1" onclick="pick(this)"><div class="dot"></div>Occasionally</div><div class="opt" data-q="2" data-v="0" onclick="pick(this)"><div class="dot"></div>Almost never</div></div></div>
+    <div class="q-card" id="q3"><div class="q-tag">&#128164; Sleep</div><h3>&#128241; How much screen time before sleeping?</h3><div class="opts"><div class="opt" data-q="3" data-v="3" onclick="pick(this)"><div class="dot"></div>None</div><div class="opt" data-q="3" data-v="2" onclick="pick(this)"><div class="dot"></div>Under 30 minutes</div><div class="opt" data-q="3" data-v="1" onclick="pick(this)"><div class="dot"></div>1 – 2 hours</div><div class="opt" data-q="3" data-v="0" onclick="pick(this)"><div class="dot"></div>More than 2 hours</div></div></div>
+    <div class="q-card" id="q4"><div class="q-tag">&#9889; Energy</div><h3>&#9749; How do you feel by midday?</h3><div class="opts"><div class="opt" data-q="4" data-v="3" onclick="pick(this)"><div class="dot"></div>Clear and focused</div><div class="opt" data-q="4" data-v="2" onclick="pick(this)"><div class="dot"></div>Sometimes tired</div><div class="opt" data-q="4" data-v="1" onclick="pick(this)"><div class="dot"></div>Often drained</div><div class="opt" data-q="4" data-v="0" onclick="pick(this)"><div class="dot"></div>Exhausted every day</div></div></div>
+    <div class="q-card" id="q5"><div class="q-tag">&#127823; Nutrition</div><h3>&#127858; How would you describe your eating habits?</h3><div class="opts"><div class="opt" data-q="5" data-v="3" onclick="pick(this)"><div class="dot"></div>Balanced home-cooked meals</div><div class="opt" data-q="5" data-v="2" onclick="pick(this)"><div class="dot"></div>Mostly healthy with occasional junk</div><div class="opt" data-q="5" data-v="1" onclick="pick(this)"><div class="dot"></div>Irregular meals, lots of outside food</div><div class="opt" data-q="5" data-v="0" onclick="pick(this)"><div class="dot"></div>Mostly junk / skip meals often</div></div></div>
+    <div class="q-card" id="q6"><div class="q-tag">&#128293; Consistency</div><h3>&#127919; How long can you stick to a new habit?</h3><div class="opts"><div class="opt" data-q="6" data-v="3" onclick="pick(this)"><div class="dot"></div>More than 21 days easily</div><div class="opt" data-q="6" data-v="2" onclick="pick(this)"><div class="dot"></div>About 1 – 2 weeks</div><div class="opt" data-q="6" data-v="1" onclick="pick(this)"><div class="dot"></div>A few days then I quit</div><div class="opt" data-q="6" data-v="0" onclick="pick(this)"><div class="dot"></div>I can't seem to start at all</div></div></div>
     <div class="q-nav">
       <button class="btn btn-o" id="prevBtn" onclick="prevQ()" disabled>Back</button>
       <button class="btn btn-p" id="nextBtn" onclick="nextQ()">Next</button>
@@ -344,14 +344,16 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
       <button class="sbtn">Click Here to Share</button>
     </div>
 
-    <!-- Explore Tabs -->
-    <p style="text-align:center;font-size:.82rem;color:var(--p);font-weight:700;margin-top:18px">&#128071; Explore More</p>
+    <!-- Explore Section -->
+    <div style="text-align:center;margin-top:20px;margin-bottom:4px">
+      <p style="font-size:.95rem;font-weight:800;color:var(--text)">Your wellness journey doesn't stop here</p>
+      <p style="font-size:.8rem;color:var(--sub);margin-top:2px">Tap below to explore</p>
+    </div>
     <div class="explore-tabs">
-      <button class="ex-tab active" onclick="showExTab(0,this)">&#129495; Breathing</button>
-      <button class="ex-tab" onclick="showExTab(1,this)">&#127909; Videos</button>
-      <button class="ex-tab" onclick="showExTab(2,this)">&#129504; Mind Game</button>
-      <button class="ex-tab" onclick="showExTab(3,this)">&#128214; Handbook</button>
-      <button class="ex-tab" onclick="showExTab(4,this)">&#127909; YouTube</button>
+      <button class="ex-tab active" onclick="showExTab(0,this)">&#129495; Calm Your Mind</button>
+      <button class="ex-tab" onclick="showExTab(1,this)">&#127909; Daily Practice</button>
+      <button class="ex-tab" onclick="showExTab(2,this)">&#129504; Brain Training</button>
+      <button class="ex-tab" onclick="showExTab(3,this)">&#128214; Yoga Guide</button>
     </div>
 
     <!-- Panel: Breathing -->
@@ -369,7 +371,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
       </div>
     </div>
 
-    <!-- Panel: Videos -->
+    <!-- Panel: Videos + YouTube -->
     <div class="ex-panel" id="exP1">
       <div class="practice-card">
         <h3>&#127807; Practice Daily — Start Today</h3>
@@ -390,6 +392,14 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
           </div>
           <a class="yt-link" href="https://www.youtube.com/watch?v=LCyP3F7gRC4" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
+        <div style="margin-top:18px;padding:16px;background:linear-gradient(135deg,#FFF5F0,#F0EDFF);border-radius:14px;text-align:center">
+          <p style="font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:4px">&#127793; Want more healthy lifestyle tips & videos?</p>
+          <p style="font-size:.78rem;color:var(--sub);margin-bottom:12px">Explore Saurabh Bothra's channel for daily motivation</p>
+          <a class="yt-btn" href="https://www.youtube.com/channel/UCZ1_MhfxMAotGs8fzZM1f7A" target="_blank" rel="noopener" style="font-size:.82rem">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            Explore More on YouTube
+          </a>
+        </div>
       </div>
     </div>
 
@@ -397,8 +407,8 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
     <div class="ex-panel" id="exP2">
       <div class="practice-card">
         <div style="font-size:2rem;margin-bottom:6px">&#129504;</div>
-        <h3>Quick Mind Game</h3>
-        <p class="sub">Train your brain! Tap the correct color name, not the color it's written in.</p>
+        <h3>Brain Training — 3 Levels</h3>
+        <p class="sub">&#127912; Color Match &#8594; &#10133; Quick Math &#8594; &#129504; Memory Flash<br>How sharp is your mind?</p>
         <div id="mgArea" style="min-height:140px">
           <div id="mgWord" style="font-size:2rem;font-weight:900;margin-bottom:16px;min-height:48px"></div>
           <div id="mgOpts" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"></div>
@@ -422,18 +432,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
       </div>
     </div>
 
-    <!-- Panel: YouTube -->
-    <div class="ex-panel" id="exP4">
-      <div class="yt-card">
-        <div style="font-size:1.8rem;margin-bottom:6px">&#127909;</div>
-        <h3>Saurabh Bothra</h3>
-        <p>More sessions, tips & daily motivation</p>
-        <a class="yt-btn" href="https://www.youtube.com/channel/UCZ1_MhfxMAotGs8fzZM1f7A" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          Explore More — Click Here
-        </a>
-      </div>
-    </div>
 
     <div class="quote-card">
       <p>"Your body is your most priceless possession. Take care of it."</p>
@@ -667,53 +665,94 @@ function runBreathCycle(){if(!brRunning)return;const ph=['Breathe In','Hold','Br
     brInterval=setTimeout(()=>{p++;if(p<4)doP();else{brCycle++;document.getElementById('brCycles').textContent=`Cycle ${brCycle} complete`;playTone(523,.5,.15);setTimeout(()=>runBreathCycle(),800)}},4000)}
   doP()}
 
-/* Mind Game - Stroop Color Test */
+/* Mind Games - Multi-Level */
 const mgColors=[{name:'Red',hex:'#EF5350'},{name:'Blue',hex:'#42A5F5'},{name:'Green',hex:'#66BB6A'},{name:'Yellow',hex:'#FDD835'},{name:'Purple',hex:'#AB47BC'},{name:'Orange',hex:'#FF7043'}];
-let mgRound=0,mgCorrect=0,mgTotal=8,mgActive=false;
+let mgLevel=1,mgRound=0,mgCorrect=0,mgTotal=6,mgActive=false,mgTarget=0;
+const mgLevels=[
+  {name:'Level 1: Color Match',desc:'Tap the COLOR NAME written, not the color you see',icon:'\uD83C\uDFA8',rounds:6},
+  {name:'Level 2: Quick Math',desc:'Solve the math before time runs out!',icon:'\u2795',rounds:6},
+  {name:'Level 3: Memory Flash',desc:'Remember the number that flashes on screen',icon:'\uD83E\uDDE0',rounds:5}
+];
 function startMindGame(){
-  mgRound=0;mgCorrect=0;mgActive=true;
+  mgRound=0;mgCorrect=0;mgActive=true;mgTotal=mgLevels[mgLevel-1].rounds;
   document.getElementById('mgBtn').style.display='none';
   document.getElementById('mgResult').textContent='';
-  nextMgRound();
+  document.getElementById('mgScore').innerHTML=`<span style="color:var(--p);font-weight:700">${mgLevels[mgLevel-1].icon} ${mgLevels[mgLevel-1].name}</span>`;
+  setTimeout(nextMgRound,400);
 }
 function nextMgRound(){
   if(mgRound>=mgTotal){endMindGame();return}
   mgRound++;
-  document.getElementById('mgScore').textContent=`Round ${mgRound}/${mgTotal} | Correct: ${mgCorrect}`;
-  // Pick random word and random display color (different from word)
-  const wordColor=mgColors[~~(Math.random()*mgColors.length)];
-  let displayColor;
-  do{displayColor=mgColors[~~(Math.random()*mgColors.length)]}while(displayColor.name===wordColor.name);
-  const wordEl=document.getElementById('mgWord');
-  wordEl.textContent=wordColor.name;
-  wordEl.style.color=displayColor.hex;
-  // Create 3 options: correct answer + 2 random
-  const correct=wordColor.name;
-  const opts=new Set([correct]);
-  while(opts.size<3){opts.add(mgColors[~~(Math.random()*mgColors.length)].name)}
+  const info=`Round ${mgRound}/${mgTotal} | Score: ${mgCorrect}`;
+  if(mgLevel===1)doStroop(info);
+  else if(mgLevel===2)doMath(info);
+  else doMemory(info);
+}
+function doStroop(info){
+  document.getElementById('mgScore').innerHTML=`<span style="color:var(--p);font-weight:700">\uD83C\uDFA8 Level 1: Color Match</span><br><span style="font-size:.78rem;color:var(--sub)">${info}</span>`;
+  const w=mgColors[~~(Math.random()*mgColors.length)];
+  let d;do{d=mgColors[~~(Math.random()*mgColors.length)]}while(d.name===w.name);
+  document.getElementById('mgWord').innerHTML=`<span style="color:${d.hex}">${w.name}</span>`;
+  const correct=w.name;const opts=new Set([correct]);
+  while(opts.size<3)opts.add(mgColors[~~(Math.random()*mgColors.length)].name);
   const arr=[...opts].sort(()=>Math.random()-.5);
-  const optsEl=document.getElementById('mgOpts');
-  optsEl.innerHTML=arr.map(n=>{
+  document.getElementById('mgOpts').innerHTML=arr.map(n=>{
     const c=mgColors.find(x=>x.name===n);
-    return `<button onclick="mgPick('${n}','${correct}')" style="padding:10px 20px;border-radius:10px;border:2px solid ${c.hex};background:#fff;color:${c.hex};font-weight:700;font-size:.88rem;cursor:pointer;transition:all .15s;min-width:80px">${n}</button>`;
+    return `<button onclick="mgPick('${n}','${correct}')" style="padding:10px 20px;border-radius:10px;border:2px solid ${c.hex};background:#fff;color:${c.hex};font-weight:700;font-size:.88rem;cursor:pointer;min-width:80px">${n}</button>`;
   }).join('');
+}
+function doMath(info){
+  document.getElementById('mgScore').innerHTML=`<span style="color:var(--p);font-weight:700">\u2795 Level 2: Quick Math</span><br><span style="font-size:.78rem;color:var(--sub)">${info}</span>`;
+  const ops=['+','-','×'];const op=ops[~~(Math.random()*3)];
+  let a,b,ans;
+  if(op==='+'){a=~~(Math.random()*50)+10;b=~~(Math.random()*30)+5;ans=a+b}
+  else if(op==='-'){a=~~(Math.random()*50)+20;b=~~(Math.random()*20)+1;ans=a-b}
+  else{a=~~(Math.random()*12)+2;b=~~(Math.random()*9)+2;ans=a*b}
+  document.getElementById('mgWord').innerHTML=`<span style="color:var(--p)">${a} ${op} ${b} = ?</span>`;
+  const correct=String(ans);const opts=new Set([correct]);
+  while(opts.size<3)opts.add(String(ans+~~(Math.random()*11)-5||ans+1));
+  const arr=[...opts].sort(()=>Math.random()-.5);
+  document.getElementById('mgOpts').innerHTML=arr.map(n=>`<button onclick="mgPick('${n}','${correct}')" style="padding:10px 24px;border-radius:10px;border:2px solid var(--p);background:#fff;color:var(--p);font-weight:700;font-size:1rem;cursor:pointer;min-width:70px">${n}</button>`).join('');
+}
+function doMemory(info){
+  document.getElementById('mgScore').innerHTML=`<span style="color:var(--p);font-weight:700">\uD83E\uDDE0 Level 3: Memory Flash</span><br><span style="font-size:.78rem;color:var(--sub)">${info}</span>`;
+  const len=3+mgRound;const num=Array.from({length:len},()=>~~(Math.random()*10)).join('');
+  mgTarget=num;
+  document.getElementById('mgWord').innerHTML=`<span style="color:var(--a);font-size:2.5rem;letter-spacing:6px">${num}</span>`;
+  document.getElementById('mgOpts').innerHTML=`<p style="font-size:.78rem;color:var(--sub)">Remember this number...</p>`;
+  setTimeout(()=>{
+    if(!mgActive)return;
+    document.getElementById('mgWord').innerHTML=`<span style="color:var(--p)">What was the number?</span>`;
+    const correct=num;const opts=new Set([correct]);
+    while(opts.size<3){const fake=num.split('');fake[~~(Math.random()*len)]=String(~~(Math.random()*10));opts.add(fake.join(''))}
+    const arr=[...opts].sort(()=>Math.random()-.5);
+    document.getElementById('mgOpts').innerHTML=arr.map(n=>`<button onclick="mgPick('${n}','${correct}')" style="padding:10px 20px;border-radius:10px;border:2px solid var(--p);background:#fff;color:var(--p);font-weight:700;font-size:1rem;cursor:pointer;min-width:80px;letter-spacing:3px">${n}</button>`).join('');
+  },1500);
 }
 function mgPick(picked,correct){
   if(!mgActive)return;
-  if(picked===correct){mgCorrect++;document.getElementById('mgResult').innerHTML='<span style="color:var(--g)">Correct!</span>'}
-  else{document.getElementById('mgResult').innerHTML=`<span style="color:var(--a)">Nope! It was ${correct}</span>`}
-  setTimeout(nextMgRound,600);
+  if(picked===correct){mgCorrect++;document.getElementById('mgResult').innerHTML='<span style="color:var(--g)">\u2705 Correct!</span>'}
+  else{document.getElementById('mgResult').innerHTML=`<span style="color:var(--a)">\u274C Answer: ${correct}</span>`}
+  setTimeout(nextMgRound,700);
 }
 function endMindGame(){
   mgActive=false;
   document.getElementById('mgWord').textContent='';
   document.getElementById('mgOpts').innerHTML='';
-  document.getElementById('mgScore').textContent=`Final Score: ${mgCorrect}/${mgTotal}`;
   const pct=Math.round(mgCorrect/mgTotal*100);
-  let msg=pct>=80?'Amazing focus!':pct>=50?'Good effort! Keep practicing.':'Your mind needs some training — try yoga & breathing!';
-  document.getElementById('mgResult').innerHTML=`<span style="color:var(--p)">${msg}</span>`;
+  let msg,emoji;
+  if(pct>=80){msg='Amazing focus!';emoji='\uD83C\uDF1F'}
+  else if(pct>=50){msg='Good effort! Keep training.';emoji='\uD83D\uDCAA'}
+  else{msg='Keep going! Practice makes perfect.';emoji='\uD83C\uDF31'}
+  document.getElementById('mgScore').textContent=`${mgLevels[mgLevel-1].icon} ${mgLevels[mgLevel-1].name} — Score: ${mgCorrect}/${mgTotal}`;
+  let nextHtml=`<span style="color:var(--p)">${emoji} ${msg}</span>`;
+  if(mgLevel<3&&pct>=50){
+    nextHtml+=`<br><button onclick="mgLevel++;startMindGame()" style="margin-top:10px;padding:8px 20px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--p),#B388FF);color:#fff;font-weight:600;font-size:.82rem;cursor:pointer">\u27A1\uFE0F Next Level: ${mgLevels[mgLevel].name}</button>`;
+  }
+  document.getElementById('mgResult').innerHTML=nextHtml;
   document.getElementById('mgBtn').style.display='inline-block';
-  document.getElementById('mgBtn').textContent='Play Again';
+  document.getElementById('mgBtn').textContent=mgLevel>=3?'Play Again (Level 1)':'Replay This Level';
+  if(mgLevel>=3)document.getElementById('mgBtn').onclick=function(){mgLevel=1;startMindGame()};
 }
 
 /* Play YouTube video - click thumbnail to embed or open YT on mobile */
