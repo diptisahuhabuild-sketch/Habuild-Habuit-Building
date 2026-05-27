@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Habuild — Typing Speed Test</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--p:#7C6FE8;--pd:#5D4FCF;--pl:#F0EDFF;--a:#FF8A80;--g:#66BB6A;--bg:#f5f3ff;--card:#fff;--text:#2D2D3A;--sub:#7E8590;--border:#E8E6F0;--r:16px}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.wrap{max-width:800px;margin:0 auto;padding:20px 16px}
+
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#FF8A80,#EA80FC);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:1.1rem}
+.logo-text{font-size:1.2rem;font-weight:800;color:var(--p)}
+.role-badge{padding:6px 14px;border-radius:20px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.role-intern{background:#E8F5E9;color:#2E7D32}
+.role-admin{background:#FFF3E0;color:#E65100}
+.role-responder{background:var(--pl);color:var(--p)}
+.logout-btn{padding:6px 14px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--sub);font-size:.78rem;cursor:pointer}
+.logout-btn:hover{background:#f5f5f5}
+
+/* Screen */
+.screen{display:none}
+.screen.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* Role Selection */
+.role-screen{text-align:center;padding:60px 20px}
+.role-screen h1{font-size:1.8rem;font-weight:900;margin-bottom:8px}
+.role-screen p{color:var(--sub);margin-bottom:40px}
+.role-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:660px;margin:0 auto}
+.role-card{background:var(--card);border-radius:var(--r);padding:28px 20px;box-shadow:0 4px 20px rgba(124,111,232,.08);border:2px solid transparent;cursor:pointer;transition:all .2s}
+.role-card:hover{border-color:var(--p);transform:translateY(-3px);box-shadow:0 8px 30px rgba(124,111,232,.15)}
+.role-card .icon{font-size:2.5rem;margin-bottom:12px}
+.role-card h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
+.role-card p{font-size:.82rem;color:var(--sub);line-height:1.5}
+
+/* Tabs */
+.tabs{display:flex;gap:6px;margin-bottom:20px;border-bottom:2px solid var(--border);padding-bottom:0}
+.tab{padding:10px 20px;border:none;background:none;font-size:.88rem;font-weight:600;color:var(--sub);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s}
+.tab.active{color:var(--p);border-bottom-color:var(--p)}
+.tab:hover{color:var(--p)}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fadeIn .2s ease}
+
+/* Card */
+.card{background:var(--card);border-radius:var(--r);padding:24px;box-shadow:0 2px 16px rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.05);margin-bottom:16px}
+.card h2{font-size:1.1rem;font-weight:700;margin-bottom:4px}
+.card .sub{color:var(--sub);font-size:.84rem;margin-bottom:16px}
+
+/* Typing Area */
+.test-config{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.test-config select,.test-config input{padding:8px 12px;border-radius:8px;border:2px solid var(--border);font-size:.85rem;background:#fff}
+.test-config select:focus,.test-config input:focus{border-color:var(--p);outline:none}
+.test-config label{font-size:.82rem;font-weight:600;color:var(--sub)}
+
+.passage-display{background:#FAFAFA;border:2px solid var(--border);border-radius:12px;padding:20px;font-size:1.05rem;line-height:1.9;margin-bottom:16px;min-height:120px;position:relative;user-select:none}
+.passage-display .char{transition:color .1s}
+.char-correct{color:var(--g);font-weight:500}
+.char-wrong{color:#EF5350;background:#FFEBEE;border-radius:2px}
+.char-current{border-bottom:2px solid var(--p);color:var(--p);font-weight:600}
+.char-pending{color:#9E9E9E}
+
+.typing-input{width:100%;padding:14px;border-radius:12px;border:2px solid var(--border);font-size:1rem;font-family:inherit;resize:none;transition:border-color .2s}
+.typing-input:focus{border-color:var(--p);outline:none;box-shadow:0 0 0 3px rgba(124,111,232,.1)}
+.typing-input:disabled{background:#f0f0f0;cursor:not-allowed}
+
+/* Stats */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.stat-box{background:var(--pl);border-radius:12px;padding:14px;text-align:center}
+.stat-box .num{font-size:1.6rem;font-weight:800;color:var(--p)}
+.stat-box .label{font-size:.72rem;color:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+
+.btn{padding:10px 24px;border-radius:10px;border:none;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:linear-gradient(135deg,#7C6FE8,#B388FF);color:#fff;box-shadow:0 3px 12px rgba(124,111,232,.2)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-secondary{background:#fff;color:var(--p);border:2px solid var(--p)}
+.btn-danger{background:#EF5350;color:#fff}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* Timer */
+.timer-bar{background:#E8E6F0;border-radius:20px;height:8px;overflow:hidden;margin-bottom:16px}
+.timer-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--g),#81C784);transition:width 1s linear}
+.timer-fill.warning{background:linear-gradient(90deg,#FFB74D,#FF9800)}
+.timer-fill.danger{background:linear-gradient(90deg,#EF5350,#F44336)}
+
+/* Results */
+.result-big{text-align:center;padding:30px;margin-bottom:16px}
+.result-ring{width:130px;height:130px;border-radius:50%;margin:0 auto 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-weight:900;box-shadow:0 8px 30px rgba(0,0,0,.12)}
+.result-ring .big{font-size:2.4rem;line-height:1}
+.result-ring .unit{font-size:.8rem;opacity:.85;margin-top:2px}
+.grade-excellent{background:linear-gradient(135deg,#66BB6A,#43A047)}
+.grade-good{background:linear-gradient(135deg,#42A5F5,#1E88E5)}
+.grade-average{background:linear-gradient(135deg,#FFB74D,#FF9800)}
+.grade-poor{background:linear-gradient(135deg,#EF5350,#E53935)}
+
+/* Score History Table */
+.score-table{width:100%;border-collapse:collapse;font-size:.84rem}
+.score-table th{background:var(--pl);color:var(--p);padding:10px;text-align:left;font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.5px}
+.score-table td{padding:10px;border-bottom:1px solid var(--border)}
+.score-table tr:hover{background:#FAFAFA}
+
+/* Settings */
+.setting-group{margin-bottom:20px}
+.setting-group h3{font-size:.92rem;font-weight:700;margin-bottom:10px;color:var(--p)}
+.setting-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.setting-row label{font-size:.84rem;font-weight:600;min-width:120px}
+.setting-row input,.setting-row select,.setting-row textarea{flex:1;padding:8px 12px;border-radius:8px;border:2px solid var(--border);font-size:.85rem;font-family:inherit}
+.setting-row textarea{min-height:80px;resize:vertical}
+.setting-row input:focus,.setting-row select:focus,.setting-row textarea:focus{border-color:var(--p);outline:none}
+
+.passage-item{display:flex;align-items:flex-start;gap:10px;padding:12px;background:#FAFAFA;border-radius:10px;margin-bottom:8px}
+.passage-item p{flex:1;font-size:.84rem;line-height:1.5}
+.passage-item .actions{display:flex;gap:6px}
+.passage-item button{padding:4px 10px;border-radius:6px;border:none;font-size:.75rem;cursor:pointer}
+
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:12px 24px;border-radius:10px;font-size:.88rem;font-weight:600;z-index:999;display:none;animation:fadeIn .3s ease}
+
+@media(max-width:600px){
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .role-cards{grid-template-columns:1fr}
+  .setting-row{flex-direction:column;align-items:flex-start}
+  .setting-row label{min-width:auto}
+}
+</style>
+</head>
+<body>
+<div id="toast" class="toast"></div>
+
+<div class="wrap">
+  <!-- HEADER -->
+  <div class="header" id="appHeader" style="display:none">
+    <div class="logo">
+      <div class="logo-icon">H</div>
+      <div class="logo-text">Typing Test</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="role-badge" id="roleBadge"></span>
+      <span id="userName" style="font-size:.84rem;font-weight:600"></span>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- ROLE SELECTION -->
+  <div class="screen active" id="scr-role">
+    <div class="role-screen">
+      <h1>Habuild Typing Test</h1>
+      <p>Select your role to continue</p>
+      <div class="role-cards">
+        <div class="role-card" onclick="selectRole('intern')">
+          <div class="icon">&#128187;</div>
+          <h3>Intern</h3>
+          <p>Take the typing speed test and track your progress</p>
+        </div>
+        <div class="role-card" onclick="selectRole('responder')">
+          <div class="icon">&#128221;</div>
+          <h3>Responder</h3>
+          <p>Take the test and view your response scores</p>
+        </div>
+        <div class="role-card" onclick="selectRole('admin')">
+          <div class="icon">&#9881;&#65039;</div>
+          <h3>Admin</h3>
+          <p>Full access — manage tests, passages, and view all scores</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGIN -->
+  <div class="screen" id="scr-login">
+    <div style="max-width:400px;margin:60px auto;text-align:center">
+      <h2 style="margin-bottom:4px" id="loginTitle">Login</h2>
+      <p style="color:var(--sub);margin-bottom:24px;font-size:.85rem" id="loginSub">Enter your details</p>
+      <div class="card">
+        <div style="margin-bottom:12px">
+          <input type="text" id="loginName" placeholder="Your Name" style="width:100%;padding:12px;border-radius:10px;border:2px solid var(--border);font-size:.95rem">
+        </div>
+        <div id="adminPassField" style="margin-bottom:12px;display:none">
+          <input type="password" id="loginPass" placeholder="Admin Password" style="width:100%;padding:12px;border-radius:10px;border:2px solid var(--border);font-size:.95rem">
+        </div>
+        <button class="btn btn-primary" style="width:100%" onclick="doLogin()">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERN SCREEN -->
+  <div class="screen" id="scr-intern">
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('intern',0,this)">Take Test</button>
+      <button class="tab" onclick="showTab('intern',1,this)">My Scores</button>
+    </div>
+    <div class="tab-panel active" id="intern-tab-0">
+      <!-- Test area -->
+      <div class="card">
+        <h2>Live Typing Test</h2>
+        <p class="sub">Type the passage below as fast and accurately as you can</p>
+        <div class="test-config">
+          <div>
+            <label>Duration</label><br>
+            <select id="testDuration">
+              <option value="60">1 minute</option>
+              <option value="120" selected>2 minutes</option>
+              <option value="180">3 minutes</option>
+              <option value="300">5 minutes</option>
+            </select>
+          </div>
+          <div>
+            <label>Difficulty</label><br>
+            <select id="testDifficulty" onchange="loadPassage()">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="timer-bar"><div class="timer-fill" id="timerFill" style="width:100%"></div></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:.8rem;color:var(--sub)" id="timerText">Time: Ready</span>
+          <span style="font-size:.8rem;color:var(--sub)" id="liveWpm">WPM: 0</span>
+        </div>
+
+        <div class="passage-display" id="passageDisplay">Click "Start Test" to begin...</div>
+        <textarea class="typing-input" id="typingInput" rows="3" placeholder="Start typing here..." disabled></textarea>
+
+        <div class="stats-row" style="margin-top:16px" id="liveStats">
+          <div class="stat-box"><div class="num" id="statWpm">0</div><div class="label">WPM</div></div>
+          <div class="stat-box"><div class="num" id="statAcc">0%</div><div class="label">Accuracy</div></div>
+          <div class="stat-box"><div class="num" id="statChars">0</div><div class="label">Characters</div></div>
+          <div class="stat-box"><div class="num" id="statErrors">0</div><div class="label">Errors</div></div>
+        </div>
+
+        <div style="display:flex;gap:10px;justify-content:center;margin-top:10px">
+          <button class="btn btn-primary" id="startBtn" onclick="startTest()">Start Test</button>
+          <button class="btn btn-secondary" id="resetBtn" onclick="resetTest()" style="display:none">Reset</button>
+        </div>
+      </div>
+
+      <!-- Result after test -->
+      <div class="card" id="resultCard" style="display:none">
+        <div class="result-big">
+          <div class="result-ring" id="resultRing">
+            <div class="big" id="resultWpm">0</div>
+            <div class="unit">WPM</div>
+          </div>
+          <h2 id="resultTitle">Great Job!</h2>
+          <p style="color:var(--sub);font-size:.88rem" id="resultMsg"></p>
+        </div>
+        <div class="stats-row">
+          <div class="stat-box"><div class="num" id="rAcc">0%</div><div class="label">Accuracy</div></div>
+          <div class="stat-box"><div class="num" id="rChars">0</div><div class="label">Characters</div></div>
+          <div class="stat-box"><div class="num" id="rErrors">0</div><div class="label">Errors</div></div>
+          <div class="stat-box"><div class="num" id="rTime">0s</div><div class="label">Time</div></div>
+        </div>
+        <div style="text-align:center;margin-top:12px">
+          <button class="btn btn-primary" onclick="resetTest()">Take Another Test</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Scores Tab -->
+    <div class="tab-panel" id="intern-tab-1">
+      <div class="card">
+        <h2>My Score History</h2>
+        <p class="sub">Track your typing progress over time</p>
+        <div id="myScoresTable"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESPONDER SCREEN -->
+  <div class="screen" id="scr-responder">
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('responder',0,this)">Take Test</button>
+      <button class="tab" onclick="showTab('responder',1,this)">My Scores</button>
+    </div>
+    <div class="tab-panel active" id="responder-tab-0">
+      <!-- Same test area, reused -->
+      <div class="card">
+        <h2>Live Typing Test</h2>
+        <p class="sub">Type accurately and fast — your score will be recorded</p>
+        <div class="test-config">
+          <div>
+            <label>Duration</label><br>
+            <select id="testDuration2">
+              <option value="60">1 minute</option>
+              <option value="120" selected>2 minutes</option>
+              <option value="180">3 minutes</option>
+            </select>
+          </div>
+        </div>
+        <div class="timer-bar"><div class="timer-fill" id="timerFill2" style="width:100%"></div></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:.8rem;color:var(--sub)" id="timerText2">Time: Ready</span>
+          <span style="font-size:.8rem;color:var(--sub)" id="liveWpm2">WPM: 0</span>
+        </div>
+        <div class="passage-display" id="passageDisplay2">Click "Start Test" to begin...</div>
+        <textarea class="typing-input" id="typingInput2" rows="3" placeholder="Start typing here..." disabled></textarea>
+        <div class="stats-row" style="margin-top:16px">
+          <div class="stat-box"><div class="num" id="statWpm2">0</div><div class="label">WPM</div></div>
+          <div class="stat-box"><div class="num" id="statAcc2">0</div><div class="label">Accuracy</div></div>
+          <div class="stat-box"><div class="num" id="statChars2">0</div><div class="label">Characters</div></div>
+          <div class="stat-box"><div class="num" id="statErrors2">0</div><div class="label">Errors</div></div>
+        </div>
+        <div style="display:flex;gap:10px;justify-content:center;margin-top:10px">
+          <button class="btn btn-primary" id="startBtn2" onclick="startTest()">Start Test</button>
+          <button class="btn btn-secondary" id="resetBtn2" onclick="resetTest()" style="display:none">Reset</button>
+        </div>
+      </div>
+      <div class="card" id="resultCard2" style="display:none">
+        <div class="result-big">
+          <div class="result-ring" id="resultRing2">
+            <div class="big" id="resultWpm2">0</div>
+            <div class="unit">WPM</div>
+          </div>
+          <h2 id="resultTitle2">Great Job!</h2>
+          <p style="color:var(--sub);font-size:.88rem" id="resultMsg2"></p>
+        </div>
+        <div class="stats-row">
+          <div class="stat-box"><div class="num" id="rAcc2">0%</div><div class="label">Accuracy</div></div>
+          <div class="stat-box"><div class="num" id="rChars2">0</div><div class="label">Characters</div></div>
+          <div class="stat-box"><div class="num" id="rErrors2">0</div><div class="label">Errors</div></div>
+          <div class="stat-box"><div class="num" id="rTime2">0s</div><div class="label">Time</div></div>
+        </div>
+        <div style="text-align:center;margin-top:12px">
+          <button class="btn btn-primary" onclick="resetTest()">Take Another Test</button>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="responder-tab-1">
+      <div class="card">
+        <h2>My Response Scores</h2>
+        <p class="sub">Your typing test results</p>
+        <div id="responderScoresTable"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN SCREEN -->
+  <div class="screen" id="scr-admin">
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('admin',0,this)">All Scores</button>
+      <button class="tab" onclick="showTab('admin',1,this)">Manage Passages</button>
+      <button class="tab" onclick="showTab('admin',2,this)">Settings</button>
+      <button class="tab" onclick="showTab('admin',3,this)">Take Test</button>
+    </div>
+
+    <!-- All Scores -->
+    <div class="tab-panel active" id="admin-tab-0">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <div>
+            <h2>All Scores</h2>
+            <p class="sub" style="margin-bottom:0">View all intern and responder test results</p>
+          </div>
+          <div style="display:flex;gap:8px">
+            <select id="filterRole" onchange="renderAllScores()" style="padding:6px 10px;border-radius:8px;border:2px solid var(--border);font-size:.82rem">
+              <option value="all">All Roles</option>
+              <option value="intern">Interns</option>
+              <option value="responder">Responders</option>
+            </select>
+            <button class="btn btn-secondary" style="font-size:.78rem;padding:6px 14px" onclick="exportScores()">Export CSV</button>
+          </div>
+        </div>
+        <!-- Summary Cards -->
+        <div class="stats-row" id="adminSummary">
+          <div class="stat-box"><div class="num" id="totalTests">0</div><div class="label">Total Tests</div></div>
+          <div class="stat-box"><div class="num" id="avgWpm">0</div><div class="label">Avg WPM</div></div>
+          <div class="stat-box"><div class="num" id="avgAcc">0%</div><div class="label">Avg Accuracy</div></div>
+          <div class="stat-box"><div class="num" id="topWpm">0</div><div class="label">Top WPM</div></div>
+        </div>
+        <div id="allScoresTable"></div>
+      </div>
+    </div>
+
+    <!-- Manage Passages -->
+    <div class="tab-panel" id="admin-tab-1">
+      <div class="card">
+        <h2>Manage Passages</h2>
+        <p class="sub">Add, edit, or remove typing test passages</p>
+        <div class="setting-group">
+          <h3>Add New Passage</h3>
+          <div class="setting-row">
+            <label>Difficulty</label>
+            <select id="newPassDiff">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+          <div class="setting-row">
+            <label>Passage Text</label>
+            <textarea id="newPassText" placeholder="Type the passage text here..."></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="addPassage()">Add Passage</button>
+        </div>
+        <div class="setting-group">
+          <h3>Existing Passages</h3>
+          <div id="passageList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div class="tab-panel" id="admin-tab-2">
+      <div class="card">
+        <h2>Test Settings</h2>
+        <p class="sub">Configure typing test behavior</p>
+        <div class="setting-group">
+          <h3>General</h3>
+          <div class="setting-row">
+            <label>Admin Password</label>
+            <input type="password" id="setAdminPass" placeholder="Set admin password">
+          </div>
+          <div class="setting-row">
+            <label>Default Duration</label>
+            <select id="setDefaultDuration">
+              <option value="60">1 minute</option>
+              <option value="120">2 minutes</option>
+              <option value="180">3 minutes</option>
+              <option value="300">5 minutes</option>
+            </select>
+          </div>
+          <div class="setting-row">
+            <label>Min WPM Target</label>
+            <input type="number" id="setMinWpm" value="25" min="0" max="200">
+          </div>
+          <div class="setting-row">
+            <label>Min Accuracy Target</label>
+            <input type="number" id="setMinAcc" value="90" min="0" max="100">
+          </div>
+        </div>
+        <div class="setting-group">
+          <h3>Display</h3>
+          <div class="setting-row">
+            <label>Show Live WPM</label>
+            <select id="setShowLiveWpm">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div class="setting-row">
+            <label>Allow Retakes</label>
+            <select id="setRetakes">
+              <option value="unlimited">Unlimited</option>
+              <option value="3">3 per day</option>
+              <option value="5">5 per day</option>
+              <option value="1">1 per day</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+        <button class="btn btn-danger" style="margin-left:10px" onclick="if(confirm('Clear ALL scores?')){localStorage.removeItem('hb_typing_scores');renderAllScores();showToast('All scores cleared')}">Clear All Scores</button>
+      </div>
+    </div>
+
+    <!-- Admin Take Test -->
+    <div class="tab-panel" id="admin-tab-3">
+      <div class="card">
+        <h2>Test Preview</h2>
+        <p class="sub">Take the test yourself to preview the experience</p>
+        <p style="font-size:.84rem;color:var(--sub);margin-bottom:12px">Use the intern view above to take the test. Admin scores are also saved.</p>
+        <button class="btn btn-primary" onclick="selectRole('intern')">Open Intern View</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== DATA =====
+const DEFAULT_PASSAGES = {
+  easy: [
+    "The sun rises in the east and sets in the west. Birds sing in the morning. The sky is blue and the grass is green. Water flows in the river. Trees give us shade and fresh air. Nature is beautiful and peaceful.",
+    "I like to read books every day. Reading makes me happy and smart. My favorite book is about a cat who loves to play. The cat runs and jumps all day long. At night the cat sleeps on a soft bed.",
+    "Yoga is good for your body and mind. It helps you stay calm and strong. You can do yoga at home or in a park. Just take a deep breath and relax. Every day is a chance to feel better."
+  ],
+  medium: [
+    "Building healthy habits is the foundation of a good lifestyle. When you wake up early, drink water, and exercise daily, your body responds with more energy and focus. Consistency is the key to lasting change. Small steps every day lead to big transformations over time.",
+    "Technology has changed the way we work and communicate. With smartphones and the internet, we can connect with people across the world in seconds. However, it is important to use technology wisely and not let it control our daily routines. Balance is essential for a healthy digital life.",
+    "Customer service is about understanding what people need and helping them with a positive attitude. When you listen carefully and respond quickly, customers feel valued. Good communication skills and patience are the most important qualities of a great customer service representative."
+  ],
+  hard: [
+    "The pharmaceutical industry has witnessed unprecedented growth in biotechnology applications, particularly in the development of monoclonal antibodies and gene therapies. These sophisticated therapeutic approaches require rigorous clinical trials and regulatory compliance before they can be administered to patients, necessitating a comprehensive understanding of molecular biology, pharmacokinetics, and statistical analysis.",
+    "Artificial intelligence and machine learning algorithms have revolutionized data processing capabilities across multiple industries. From natural language processing to computer vision, these technologies leverage neural networks and deep learning architectures to identify complex patterns within large datasets, enabling predictive analytics and automated decision-making processes that were previously inconceivable.",
+    "The intersection of behavioral psychology and organizational management has produced fascinating insights into workplace productivity and employee satisfaction. Research demonstrates that intrinsic motivation, characterized by autonomy, mastery, and purpose, consistently outperforms extrinsic motivational strategies in knowledge-based professional environments."
+  ]
+};
+
+let currentRole = null;
+let currentUser = '';
+let testRunning = false;
+let testTimer = null;
+let testStartTime = null;
+let testDuration = 120;
+let currentPassage = '';
+let charIndex = 0;
+let totalCharsTyped = 0;
+let correctChars = 0;
+let errorCount = 0;
+let timeLeft = 0;
+
+// ===== STORAGE =====
+function getPassages() {
+  const saved = localStorage.getItem('hb_typing_passages');
+  return saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(DEFAULT_PASSAGES));
+}
+function savePassages(p) { localStorage.setItem('hb_typing_passages', JSON.stringify(p)); }
+function getScores() { return JSON.parse(localStorage.getItem('hb_typing_scores') || '[]'); }
+function saveScore(s) { const all = getScores(); all.unshift(s); localStorage.setItem('hb_typing_scores', JSON.stringify(all)); }
+function getSettings() { return JSON.parse(localStorage.getItem('hb_typing_settings') || '{}'); }
+function saveSettingsData(s) { localStorage.setItem('hb_typing_settings', JSON.stringify(s)); }
+
+// ===== NAVIGATION =====
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('scr-' + id).classList.add('active');
+  document.getElementById('appHeader').style.display = id === 'role' ? 'none' : 'flex';
+}
+
+function selectRole(role) {
+  currentRole = role;
+  showScreen('login');
+  const title = document.getElementById('loginTitle');
+  const sub = document.getElementById('loginSub');
+  const passField = document.getElementById('adminPassField');
+
+  if (role === 'admin') {
+    title.textContent = 'Admin Login';
+    sub.textContent = 'Enter your name and admin password';
+    passField.style.display = 'block';
+  } else if (role === 'responder') {
+    title.textContent = 'Responder Login';
+    sub.textContent = 'Enter your name to continue';
+    passField.style.display = 'none';
+  } else {
+    title.textContent = 'Intern Login';
+    sub.textContent = 'Enter your name to start the typing test';
+    passField.style.display = 'none';
+  }
+}
+
+function doLogin() {
+  const name = document.getElementById('loginName').value.trim();
+  if (!name) { alert('Please enter your name'); return; }
+
+  if (currentRole === 'admin') {
+    const pass = document.getElementById('loginPass').value;
+    const settings = getSettings();
+    const adminPass = settings.adminPass || 'habuild123';
+    if (pass !== adminPass) { alert('Wrong password! Default: habuild123'); return; }
+  }
+
+  currentUser = name;
+  const badge = document.getElementById('roleBadge');
+  badge.textContent = currentRole.charAt(0).toUpperCase() + currentRole.slice(1);
+  badge.className = 'role-badge role-' + currentRole;
+  document.getElementById('userName').textContent = name;
+
+  showScreen(currentRole);
+
+  if (currentRole === 'intern') {
+    loadPassage();
+    renderMyScores();
+  } else if (currentRole === 'responder') {
+    loadPassageForResponder();
+    renderResponderScores();
+  } else if (currentRole === 'admin') {
+    renderAllScores();
+    renderPassageList();
+    loadSettingsUI();
+  }
+}
+
+function logout() {
+  resetTest();
+  currentRole = null;
+  currentUser = '';
+  document.getElementById('loginName').value = '';
+  document.getElementById('loginPass').value = '';
+  showScreen('role');
+}
+
+function showTab(screen, idx, btn) {
+  const parent = document.getElementById('scr-' + screen);
+  parent.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  parent.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(screen + '-tab-' + idx).classList.add('active');
+
+  if (screen === 'intern' && idx === 1) renderMyScores();
+  if (screen === 'responder' && idx === 1) renderResponderScores();
+  if (screen === 'admin' && idx === 0) renderAllScores();
+  if (screen === 'admin' && idx === 1) renderPassageList();
+}
+
+// ===== TYPING TEST =====
+function getEls() {
+  const isResp = currentRole === 'responder';
+  return {
+    display: document.getElementById(isResp ? 'passageDisplay2' : 'passageDisplay'),
+    input: document.getElementById(isResp ? 'typingInput2' : 'typingInput'),
+    timerFill: document.getElementById(isResp ? 'timerFill2' : 'timerFill'),
+    timerText: document.getElementById(isResp ? 'timerText2' : 'timerText'),
+    liveWpm: document.getElementById(isResp ? 'liveWpm2' : 'liveWpm'),
+    startBtn: document.getElementById(isResp ? 'startBtn2' : 'startBtn'),
+    resetBtn: document.getElementById(isResp ? 'resetBtn2' : 'resetBtn'),
+    resultCard: document.getElementById(isResp ? 'resultCard2' : 'resultCard'),
+    durationSel: document.getElementById(isResp ? 'testDuration2' : 'testDuration'),
+    statWpm: document.getElementById(isResp ? 'statWpm2' : 'statWpm'),
+    statAcc: document.getElementById(isResp ? 'statAcc2' : 'statAcc'),
+    statChars: document.getElementById(isResp ? 'statChars2' : 'statChars'),
+    statErrors: document.getElementById(isResp ? 'statErrors2' : 'statErrors'),
+    resultRing: document.getElementById(isResp ? 'resultRing2' : 'resultRing'),
+    resultWpm: document.getElementById(isResp ? 'resultWpm2' : 'resultWpm'),
+    resultTitle: document.getElementById(isResp ? 'resultTitle2' : 'resultTitle'),
+    resultMsg: document.getElementById(isResp ? 'resultMsg2' : 'resultMsg'),
+    rAcc: document.getElementById(isResp ? 'rAcc2' : 'rAcc'),
+    rChars: document.getElementById(isResp ? 'rChars2' : 'rChars'),
+    rErrors: document.getElementById(isResp ? 'rErrors2' : 'rErrors'),
+    rTime: document.getElementById(isResp ? 'rTime2' : 'rTime'),
+  };
+}
+
+function loadPassage() {
+  const passages = getPassages();
+  const diff = document.getElementById('testDifficulty')?.value || 'medium';
+  const pool = passages[diff] || passages.medium;
+  currentPassage = pool[Math.floor(Math.random() * pool.length)];
+  renderPassage();
+}
+
+function loadPassageForResponder() {
+  const passages = getPassages();
+  const pool = passages.medium || DEFAULT_PASSAGES.medium;
+  currentPassage = pool[Math.floor(Math.random() * pool.length)];
+  renderPassageForResponder();
+}
+
+function renderPassage() {
+  const el = document.getElementById('passageDisplay');
+  el.innerHTML = currentPassage.split('').map((ch, i) =>
+    `<span class="char char-pending" id="ch${i}">${ch}</span>`
+  ).join('');
+}
+
+function renderPassageForResponder() {
+  const el = document.getElementById('passageDisplay2');
+  el.innerHTML = currentPassage.split('').map((ch, i) =>
+    `<span class="char char-pending" id="rch${i}">${ch}</span>`
+  ).join('');
+}
+
+function startTest() {
+  const els = getEls();
+  if (currentRole === 'responder') {
+    if (!currentPassage) loadPassageForResponder();
+  } else {
+    if (!currentPassage) loadPassage();
+  }
+
+  testDuration = parseInt(els.durationSel.value);
+  timeLeft = testDuration;
+  charIndex = 0;
+  totalCharsTyped = 0;
+  correctChars = 0;
+  errorCount = 0;
+  testRunning = true;
+  testStartTime = Date.now();
+
+  els.input.disabled = false;
+  els.input.value = '';
+  els.input.focus();
+  els.startBtn.style.display = 'none';
+  els.resetBtn.style.display = 'inline-block';
+  els.resultCard.style.display = 'none';
+
+  // Highlight first char
+  const prefix = currentRole === 'responder' ? 'rch' : 'ch';
+  const firstChar = document.getElementById(prefix + '0');
+  if (firstChar) firstChar.className = 'char char-current';
+
+  // Setup input handler
+  els.input.oninput = function() { handleTyping(this); };
+
+  // Timer
+  updateTimer(els);
+  testTimer = setInterval(() => {
+    timeLeft--;
+    updateTimer(els);
+    updateLiveStats(els);
+    if (timeLeft <= 0) {
+      finishTest();
+    }
+  }, 1000);
+}
+
+function handleTyping(inputEl) {
+  if (!testRunning) return;
+  const typed = inputEl.value;
+  const prefix = currentRole === 'responder' ? 'rch' : 'ch';
+
+  // Compare each character
+  charIndex = typed.length;
+  totalCharsTyped = typed.length;
+  correctChars = 0;
+  errorCount = 0;
+
+  for (let i = 0; i < currentPassage.length; i++) {
+    const charEl = document.getElementById(prefix + i);
+    if (!charEl) continue;
+
+    if (i < typed.length) {
+      if (typed[i] === currentPassage[i]) {
+        charEl.className = 'char char-correct';
+        correctChars++;
+      } else {
+        charEl.className = 'char char-wrong';
+        errorCount++;
+      }
+    } else if (i === typed.length) {
+      charEl.className = 'char char-current';
+    } else {
+      charEl.className = 'char char-pending';
+    }
+  }
+
+  // Auto-finish if typed everything
+  if (typed.length >= currentPassage.length) {
+    finishTest();
+  }
+}
+
+function updateTimer(els) {
+  const pct = (timeLeft / testDuration) * 100;
+  els.timerFill.style.width = pct + '%';
+  els.timerFill.className = 'timer-fill' + (pct < 20 ? ' danger' : pct < 40 ? ' warning' : '');
+
+  const min = Math.floor(timeLeft / 60);
+  const sec = timeLeft % 60;
+  els.timerText.textContent = `Time: ${min}:${sec.toString().padStart(2, '0')}`;
+}
+
+function updateLiveStats(els) {
+  const elapsed = (Date.now() - testStartTime) / 60000; // minutes
+  const wpm = elapsed > 0 ? Math.round(correctChars / 5 / elapsed) : 0;
+  const acc = totalCharsTyped > 0 ? Math.round((correctChars / totalCharsTyped) * 100) : 0;
+
+  els.statWpm.textContent = wpm;
+  els.statAcc.textContent = acc + '%';
+  els.statChars.textContent = totalCharsTyped;
+  els.statErrors.textContent = errorCount;
+  els.liveWpm.textContent = 'WPM: ' + wpm;
+}
+
+function finishTest() {
+  testRunning = false;
+  clearInterval(testTimer);
+
+  const els = getEls();
+  els.input.disabled = true;
+
+  const elapsed = (Date.now() - testStartTime) / 60000;
+  const wpm = elapsed > 0 ? Math.round(correctChars / 5 / elapsed) : 0;
+  const acc = totalCharsTyped > 0 ? Math.round((correctChars / totalCharsTyped) * 100) : 0;
+  const timeTaken = Math.round((Date.now() - testStartTime) / 1000);
+
+  // Grade
+  let grade, title, msg;
+  if (wpm >= 60 && acc >= 95) {
+    grade = 'excellent'; title = 'Excellent!'; msg = 'Outstanding speed and accuracy!';
+  } else if (wpm >= 40 && acc >= 90) {
+    grade = 'good'; title = 'Great Job!'; msg = 'You have good typing skills!';
+  } else if (wpm >= 25 && acc >= 80) {
+    grade = 'average'; title = 'Good Effort!'; msg = 'Keep practicing to improve your speed.';
+  } else {
+    grade = 'poor'; title = 'Keep Practicing!'; msg = 'Regular practice will help you improve quickly.';
+  }
+
+  // Show result
+  els.resultCard.style.display = 'block';
+  els.resultRing.className = 'result-ring grade-' + grade;
+  els.resultWpm.textContent = wpm;
+  els.resultTitle.textContent = title;
+  els.resultMsg.textContent = msg;
+  els.rAcc.textContent = acc + '%';
+  els.rChars.textContent = totalCharsTyped;
+  els.rErrors.textContent = errorCount;
+  els.rTime.textContent = timeTaken + 's';
+
+  // Save score
+  saveScore({
+    name: currentUser,
+    role: currentRole,
+    wpm: wpm,
+    accuracy: acc,
+    chars: totalCharsTyped,
+    errors: errorCount,
+    duration: timeTaken,
+    difficulty: document.getElementById('testDifficulty')?.value || 'medium',
+    date: new Date().toISOString(),
+    grade: grade
+  });
+
+  els.resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function resetTest() {
+  testRunning = false;
+  clearInterval(testTimer);
+
+  const els = getEls();
+  els.input.disabled = true;
+  els.input.value = '';
+  els.startBtn.style.display = 'inline-block';
+  els.resetBtn.style.display = 'none';
+  els.resultCard.style.display = 'none';
+  els.timerFill.style.width = '100%';
+  els.timerFill.className = 'timer-fill';
+  els.timerText.textContent = 'Time: Ready';
+  els.liveWpm.textContent = 'WPM: 0';
+  els.statWpm.textContent = '0';
+  els.statAcc.textContent = '0%';
+  els.statChars.textContent = '0';
+  els.statErrors.textContent = '0';
+
+  charIndex = 0;
+  totalCharsTyped = 0;
+  correctChars = 0;
+  errorCount = 0;
+
+  if (currentRole === 'responder') {
+    loadPassageForResponder();
+  } else {
+    loadPassage();
+  }
+}
+
+// ===== SCORE TABLES =====
+function renderMyScores() {
+  const scores = getScores().filter(s => s.name === currentUser);
+  const el = document.getElementById('myScoresTable');
+  if (!scores.length) { el.innerHTML = '<p style="color:var(--sub);text-align:center;padding:20px">No tests taken yet. Take your first test!</p>'; return; }
+
+  el.innerHTML = `<table class="score-table">
+    <tr><th>#</th><th>Date</th><th>WPM</th><th>Accuracy</th><th>Errors</th><th>Time</th><th>Grade</th></tr>
+    ${scores.map((s, i) => `<tr>
+      <td>${i + 1}</td>
+      <td>${new Date(s.date).toLocaleDateString()}</td>
+      <td><strong>${s.wpm}</strong></td>
+      <td>${s.accuracy}%</td>
+      <td>${s.errors}</td>
+      <td>${s.duration}s</td>
+      <td><span style="color:${gradeColor(s.grade)};font-weight:700">${(s.grade || 'N/A').toUpperCase()}</span></td>
+    </tr>`).join('')}
+  </table>`;
+}
+
+function renderResponderScores() {
+  const scores = getScores().filter(s => s.name === currentUser && s.role === 'responder');
+  const el = document.getElementById('responderScoresTable');
+  if (!scores.length) { el.innerHTML = '<p style="color:var(--sub);text-align:center;padding:20px">No tests taken yet.</p>'; return; }
+
+  el.innerHTML = `<table class="score-table">
+    <tr><th>#</th><th>Date</th><th>WPM</th><th>Accuracy</th><th>Errors</th><th>Time</th><th>Grade</th></tr>
+    ${scores.map((s, i) => `<tr>
+      <td>${i + 1}</td>
+      <td>${new Date(s.date).toLocaleDateString()}</td>
+      <td><strong>${s.wpm}</strong></td>
+      <td>${s.accuracy}%</td>
+      <td>${s.errors}</td>
+      <td>${s.duration}s</td>
+      <td><span style="color:${gradeColor(s.grade)};font-weight:700">${(s.grade || 'N/A').toUpperCase()}</span></td>
+    </tr>`).join('')}
+  </table>`;
+}
+
+function renderAllScores() {
+  const filter = document.getElementById('filterRole')?.value || 'all';
+  let scores = getScores();
+  if (filter !== 'all') scores = scores.filter(s => s.role === filter);
+
+  // Summary
+  const total = scores.length;
+  const avgW = total ? Math.round(scores.reduce((a, s) => a + s.wpm, 0) / total) : 0;
+  const avgA = total ? Math.round(scores.reduce((a, s) => a + s.accuracy, 0) / total) : 0;
+  const topW = total ? Math.max(...scores.map(s => s.wpm)) : 0;
+
+  document.getElementById('totalTests').textContent = total;
+  document.getElementById('avgWpm').textContent = avgW;
+  document.getElementById('avgAcc').textContent = avgA + '%';
+  document.getElementById('topWpm').textContent = topW;
+
+  const el = document.getElementById('allScoresTable');
+  if (!scores.length) { el.innerHTML = '<p style="color:var(--sub);text-align:center;padding:20px">No scores yet.</p>'; return; }
+
+  el.innerHTML = `<table class="score-table">
+    <tr><th>#</th><th>Name</th><th>Role</th><th>Date</th><th>WPM</th><th>Accuracy</th><th>Errors</th><th>Grade</th></tr>
+    ${scores.map((s, i) => `<tr>
+      <td>${i + 1}</td>
+      <td><strong>${s.name}</strong></td>
+      <td>${s.role || '-'}</td>
+      <td>${new Date(s.date).toLocaleDateString()}</td>
+      <td><strong>${s.wpm}</strong></td>
+      <td>${s.accuracy}%</td>
+      <td>${s.errors}</td>
+      <td><span style="color:${gradeColor(s.grade)};font-weight:700">${(s.grade || 'N/A').toUpperCase()}</span></td>
+    </tr>`).join('')}
+  </table>`;
+}
+
+function gradeColor(g) {
+  if (g === 'excellent') return '#43A047';
+  if (g === 'good') return '#1E88E5';
+  if (g === 'average') return '#FF9800';
+  return '#E53935';
+}
+
+function exportScores() {
+  const scores = getScores();
+  if (!scores.length) { alert('No scores to export'); return; }
+  let csv = 'Name,Role,Date,WPM,Accuracy,Errors,Duration,Difficulty,Grade\n';
+  scores.forEach(s => {
+    csv += `"${s.name}","${s.role}","${new Date(s.date).toLocaleString()}",${s.wpm},${s.accuracy}%,${s.errors},${s.duration}s,"${s.difficulty || ''}","${s.grade || ''}"\n`;
+  });
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'typing-scores.csv'; a.click();
+  URL.revokeObjectURL(url);
+  showToast('CSV exported!');
+}
+
+// ===== PASSAGES MANAGEMENT =====
+function renderPassageList() {
+  const passages = getPassages();
+  const el = document.getElementById('passageList');
+  let html = '';
+  ['easy', 'medium', 'hard'].forEach(diff => {
+    html += `<h4 style="font-size:.82rem;color:var(--p);margin:12px 0 6px;text-transform:uppercase">${diff} (${(passages[diff] || []).length})</h4>`;
+    (passages[diff] || []).forEach((p, i) => {
+      html += `<div class="passage-item">
+        <p>${p.substring(0, 100)}${p.length > 100 ? '...' : ''}</p>
+        <div class="actions">
+          <button style="background:#EF5350;color:#fff" onclick="removePassage('${diff}',${i})">Delete</button>
+        </div>
+      </div>`;
+    });
+  });
+  el.innerHTML = html;
+}
+
+function addPassage() {
+  const diff = document.getElementById('newPassDiff').value;
+  const text = document.getElementById('newPassText').value.trim();
+  if (!text || text.length < 20) { alert('Passage must be at least 20 characters'); return; }
+
+  const passages = getPassages();
+  if (!passages[diff]) passages[diff] = [];
+  passages[diff].push(text);
+  savePassages(passages);
+  document.getElementById('newPassText').value = '';
+  renderPassageList();
+  showToast('Passage added!');
+}
+
+function removePassage(diff, idx) {
+  if (!confirm('Delete this passage?')) return;
+  const passages = getPassages();
+  passages[diff].splice(idx, 1);
+  savePassages(passages);
+  renderPassageList();
+  showToast('Passage removed');
+}
+
+// ===== SETTINGS =====
+function loadSettingsUI() {
+  const s = getSettings();
+  if (s.adminPass) document.getElementById('setAdminPass').value = s.adminPass;
+  if (s.defaultDuration) document.getElementById('setDefaultDuration').value = s.defaultDuration;
+  if (s.minWpm) document.getElementById('setMinWpm').value = s.minWpm;
+  if (s.minAcc) document.getElementById('setMinAcc').value = s.minAcc;
+  if (s.showLiveWpm) document.getElementById('setShowLiveWpm').value = s.showLiveWpm;
+  if (s.retakes) document.getElementById('setRetakes').value = s.retakes;
+}
+
+function saveSettings() {
+  const s = {
+    adminPass: document.getElementById('setAdminPass').value || 'habuild123',
+    defaultDuration: document.getElementById('setDefaultDuration').value,
+    minWpm: document.getElementById('setMinWpm').value,
+    minAcc: document.getElementById('setMinAcc').value,
+    showLiveWpm: document.getElementById('setShowLiveWpm').value,
+    retakes: document.getElementById('setRetakes').value
+  };
+  saveSettingsData(s);
+  showToast('Settings saved!');
+}
+
+// ===== UTILS =====
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => { t.style.display = 'none'; }, 2500);
+}
+</script>
+</body>
+</html>
