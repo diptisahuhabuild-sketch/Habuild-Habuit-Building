@@ -6,191 +6,202 @@
 <title>Habuild Intern Training — Complete Guide</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap');
-
-:root{
-  --bg1:#FFF9F5;--bg2:#FFF0E8;--bg3:#F5F0FF;
-  --accent:#7C3AED;--accent2:#9333EA;--accent3:#6D28D9;
-  --green:#059669;--teal:#0D9488;--pink:#DB2777;--amber:#D97706;--rose:#E11D48;--blue:#2563EB;
-  --orange:#EA580C;
-  --text:#1E293B;--sub:#64748B;--card:rgba(255,255,255,0.85);--border:rgba(124,58,237,0.12);
-  --shadow:0 4px 24px rgba(124,58,237,0.08),0 1px 4px rgba(0,0,0,0.04);
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 body{
-  font-family:'Inter',system-ui,sans-serif;
-  background:var(--bg1);color:var(--text);
+  font-family:'Poppins',sans-serif;
   overflow:hidden;width:100vw;height:100vh;
+  color:#2D1B4E;
 }
 
 .slideshow{width:100vw;height:100vh;position:relative}
+
 .slide{
   position:absolute;top:0;left:0;width:100%;height:100%;
   display:none;flex-direction:column;
-  padding:48px 64px;
-  background:linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 40%,var(--bg3) 100%);
+  padding:40px 56px;
   overflow:hidden;
 }
-.slide.active{display:flex;animation:slideIn .5s ease}
-@keyframes slideIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes scaleIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.slide.active{display:flex;animation:slideIn .45s ease}
 
-/* Decorative blobs */
+/* HABUILD BACKGROUND — warm peach-orange gradient with decorative shapes */
 .slide::before{
-  content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;
-  border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.06) 0%,transparent 70%);
-  pointer-events:none;
+  content:'';position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 600px 400px at 90% 10%, rgba(255,154,76,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 500px at 10% 85%, rgba(168,85,247,0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 50% 50%, rgba(255,200,150,0.08) 0%, transparent 70%),
+    linear-gradient(160deg, #FFF7F0 0%, #FFF0E5 25%, #FFE8D6 50%, #FFF2EC 75%, #FEF3FF 100%);
 }
+
+/* Decorative circles */
 .slide::after{
-  content:'';position:absolute;bottom:-150px;left:-150px;width:400px;height:400px;
-  border-radius:50%;background:radial-gradient(circle,rgba(219,39,119,.05) 0%,transparent 70%);
-  pointer-events:none;
+  content:'';position:absolute;z-index:0;
+  top:-80px;right:-80px;width:280px;height:280px;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(255,154,76,0.12),rgba(255,107,53,0.06));
+  border:2px solid rgba(255,154,76,0.08);
 }
 
-/* Habuild logo watermark */
-.habuild-watermark{
-  position:absolute;bottom:20px;right:30px;
-  font-family:'Playfair Display',serif;font-size:18px;font-weight:700;
-  color:rgba(124,58,237,0.15);letter-spacing:2px;
+.slide>*{position:relative;z-index:1}
+
+/* Decorative bottom-left circle */
+.deco-bl{
+  position:absolute;z-index:0;bottom:-60px;left:-60px;
+  width:200px;height:200px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(168,85,247,0.08),rgba(236,72,153,0.05));
+  border:2px solid rgba(168,85,247,0.06);
 }
 
-/* Section badge */
-.badge{
+@keyframes slideIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+/* Habuild brand bar at top */
+.brand-bar{
+  position:absolute;top:0;left:0;right:0;height:5px;z-index:2;
+  background:linear-gradient(90deg,#FF6B35,#FF9A4C,#A855F7,#EC4899);
+}
+
+/* Habuild logo */
+.habuild-logo{
+  position:absolute;top:14px;right:24px;z-index:2;
+  font-family:'Poppins',sans-serif;font-weight:800;font-size:16px;
+  letter-spacing:2px;
+  background:linear-gradient(135deg,#FF6B35,#A855F7);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  opacity:0.6;
+}
+
+/* Section label */
+.section-label{
   display:inline-flex;align-items:center;gap:8px;
-  padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;
-  letter-spacing:1px;text-transform:uppercase;
-  background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(219,39,119,0.08));
-  color:var(--accent);border:1px solid var(--border);
-  animation:fadeUp .5s ease .1s both;
+  padding:6px 18px;border-radius:24px;font-size:11px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  background:linear-gradient(135deg,#FF6B35,#FF9A4C);
+  color:#fff;
+  box-shadow:0 2px 12px rgba(255,107,53,0.25);
+  animation:fadeUp .4s ease .1s both;
 }
 
 h1{
-  font-family:'Playfair Display',serif;
-  font-size:42px;font-weight:700;line-height:1.15;
-  margin:16px 0 12px;
-  background:linear-gradient(135deg,var(--accent) 0%,var(--pink) 100%);
+  font-size:40px;font-weight:800;line-height:1.15;
+  margin:14px 0 8px;color:#2D1B4E;
+  animation:fadeUp .4s ease .2s both;
+}
+h1 .highlight{
+  background:linear-gradient(135deg,#FF6B35,#EC4899);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  animation:fadeUp .5s ease .2s both;
 }
-h2{
-  font-size:22px;font-weight:700;color:var(--text);
-  margin-bottom:8px;animation:fadeUp .5s ease .15s both;
-}
+h2{font-size:18px;font-weight:700;color:#2D1B4E;margin-bottom:6px}
 .subtitle{
-  font-size:17px;color:var(--sub);line-height:1.5;max-width:700px;
-  animation:fadeUp .5s ease .3s both;
+  font-size:15px;color:#6B5B7B;line-height:1.6;max-width:680px;
+  animation:fadeUp .4s ease .3s both;
 }
 
 /* Cards */
 .card{
-  background:var(--card);backdrop-filter:blur(12px);
-  border:1px solid var(--border);border-radius:16px;
-  padding:24px;box-shadow:var(--shadow);
-  animation:fadeUp .5s ease both;
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,154,76,0.15);
+  border-radius:16px;padding:20px;
+  box-shadow:0 4px 20px rgba(45,27,78,0.06),0 1px 3px rgba(0,0,0,0.03);
+  animation:fadeUp .4s ease both;
   transition:transform .2s,box-shadow .2s;
 }
-.card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,58,237,0.12)}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,53,0.1)}
 
-/* Grid layouts */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1;margin-top:16px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;flex:1;margin-top:16px}
-.grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;flex:1;margin-top:16px}
+/* Grids */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1;margin-top:14px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;flex:1;margin-top:14px}
 
-/* Icon circles */
-.icon-circle{
-  width:44px;height:44px;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:20px;margin-bottom:12px;
-  background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(124,58,237,0.05));
-  border:1px solid var(--border);
-}
-
-/* Tags */
-.tag{
-  display:inline-block;padding:3px 10px;border-radius:8px;
-  font-size:11px;font-weight:600;
-}
-.tag-purple{background:rgba(124,58,237,0.1);color:var(--accent)}
-.tag-green{background:rgba(5,150,105,0.1);color:var(--green)}
-.tag-pink{background:rgba(219,39,119,0.1);color:var(--pink)}
-.tag-amber{background:rgba(217,119,6,0.1);color:var(--amber)}
-.tag-blue{background:rgba(37,99,235,0.1);color:var(--blue)}
-.tag-orange{background:rgba(234,88,12,0.1);color:var(--orange)}
-
-/* Steps */
-.step-num{
-  width:32px;height:32px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:14px;font-weight:700;color:#fff;
-  background:linear-gradient(135deg,var(--accent),var(--pink));
+/* Icon */
+.icon-box{
+  width:42px;height:42px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  background:linear-gradient(135deg,rgba(255,107,53,0.12),rgba(255,154,76,0.08));
   flex-shrink:0;
 }
 
-/* Screenshot container */
+/* Step number */
+.step-num{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;color:#fff;
+  background:linear-gradient(135deg,#FF6B35,#EC4899);
+}
+
+/* Tags */
+.tag{display:inline-block;padding:3px 10px;border-radius:8px;font-size:10px;font-weight:700;letter-spacing:0.5px}
+.tag-orange{background:rgba(255,107,53,0.12);color:#FF6B35}
+.tag-green{background:rgba(16,185,129,0.12);color:#059669}
+.tag-purple{background:rgba(168,85,247,0.12);color:#A855F7}
+.tag-pink{background:rgba(236,72,153,0.12);color:#EC4899}
+.tag-blue{background:rgba(59,130,246,0.12);color:#3B82F6}
+.tag-amber{background:rgba(245,158,11,0.12);color:#D97706}
+
+/* Screenshot */
 .screenshot{
-  border-radius:12px;overflow:hidden;
-  border:2px solid var(--border);
-  box-shadow:var(--shadow);
+  border-radius:14px;overflow:hidden;
+  border:3px solid rgba(255,154,76,0.2);
+  box-shadow:0 8px 32px rgba(45,27,78,0.1);
   background:#fff;
 }
-.screenshot img{width:100%;height:100%;object-fit:cover;display:block}
+.screenshot img{width:100%;display:block}
+
+/* Split layout */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:28px;flex:1;align-items:center;margin-top:14px}
+
+/* Milestone */
+.milestone{
+  text-align:center;padding:18px 10px;
+  background:rgba(255,255,255,0.7);border:1px solid rgba(255,154,76,0.12);
+  border-radius:16px;box-shadow:0 4px 16px rgba(45,27,78,0.05);
+  animation:fadeUp .4s ease both;
+}
+.milestone-emoji{font-size:34px;display:block;margin-bottom:6px;animation:float 3s ease infinite}
+.milestone-day{font-size:12px;font-weight:800;color:#FF6B35;margin-bottom:2px;letter-spacing:1px}
 
 /* Navigation */
 .nav{
-  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
-  display:flex;align-items:center;gap:12px;z-index:100;
-  background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);
-  border:1px solid var(--border);border-radius:16px;
-  padding:8px 20px;box-shadow:var(--shadow);
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:100;
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,154,76,0.15);border-radius:16px;
+  padding:6px 18px;box-shadow:0 4px 20px rgba(45,27,78,0.08);
 }
 .nav button{
-  width:36px;height:36px;border-radius:10px;border:none;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff;font-size:16px;cursor:pointer;
+  width:34px;height:34px;border-radius:10px;border:none;
+  background:linear-gradient(135deg,#FF6B35,#FF9A4C);
+  color:#fff;font-size:15px;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
-  transition:transform .15s;
+  transition:transform .15s;font-weight:700;
 }
 .nav button:hover{transform:scale(1.08)}
 .nav button:disabled{opacity:.3;cursor:default;transform:none}
-.slide-counter{font-size:13px;font-weight:600;color:var(--sub);min-width:50px;text-align:center}
+.slide-counter{font-size:12px;font-weight:600;color:#6B5B7B;min-width:46px;text-align:center}
 
-/* Progress bar */
-.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--pink));z-index:100;transition:width .3s}
+/* Progress */
+.progress{position:fixed;top:0;left:0;height:4px;z-index:101;
+  background:linear-gradient(90deg,#FF6B35,#EC4899,#A855F7);transition:width .3s}
 
-/* Timeline */
-.timeline-item{display:flex;gap:16px;align-items:flex-start}
-.timeline-dot{
-  width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:6px;
-  background:linear-gradient(135deg,var(--accent),var(--pink));
-  box-shadow:0 0 0 4px rgba(124,58,237,0.15);
+/* Export button */
+.export-btn{
+  position:fixed;bottom:20px;right:24px;z-index:100;
+  padding:8px 18px;border-radius:12px;border:none;
+  background:linear-gradient(135deg,#A855F7,#EC4899);
+  color:#fff;font-size:12px;font-weight:600;font-family:'Poppins',sans-serif;
+  cursor:pointer;box-shadow:0 4px 16px rgba(168,85,247,0.25);
+  transition:transform .15s;
 }
-.timeline-line{
-  width:2px;background:linear-gradient(to bottom,var(--accent),var(--pink));
-  margin-left:5px;flex-shrink:0;
-}
+.export-btn:hover{transform:scale(1.05)}
 
-/* Milestone badges */
-.milestone{
-  text-align:center;padding:20px 12px;
-  background:var(--card);border:1px solid var(--border);
-  border-radius:16px;box-shadow:var(--shadow);
-  animation:fadeUp .5s ease both;
-}
-.milestone-emoji{font-size:36px;margin-bottom:8px;display:block;animation:float 3s ease infinite}
-.milestone-day{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:4px}
-.milestone-title{font-size:12px;color:var(--sub);line-height:1.3}
-
-/* Two-column with image */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:28px;flex:1;align-items:center;margin-top:16px}
-.split-text{display:flex;flex-direction:column;gap:12px}
-.split-img{display:flex;justify-content:center;align-items:center}
-
-/* Print / Export */
+/* Print / Canva export */
 @media print{
-  .nav,.progress{display:none!important}
+  .nav,.progress,.export-btn,.brand-bar,.habuild-logo{display:none!important}
   .slide{position:relative!important;display:flex!important;page-break-after:always;height:auto;min-height:100vh}
+  .slide::before{background:linear-gradient(160deg,#FFF7F0,#FFE8D6,#FEF3FF)!important}
 }
 </style>
 </head>
@@ -200,478 +211,437 @@ h2{
 
 <div class="slideshow" id="slideshow">
 
-<!-- SLIDE 1: Title -->
+<!-- ==================== SLIDE 1: TITLE ==================== -->
 <div class="slide active">
+  <div class="brand-bar"></div>
+  <div class="habuild-logo">HABUILD</div>
+  <div class="deco-bl"></div>
   <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
-    <div style="font-size:56px;margin-bottom:12px;animation:float 3s ease infinite">🧘</div>
-    <div class="badge">Intern Training Program</div>
-    <h1 style="font-size:52px;max-width:800px;margin:20px auto 16px">Habuild<br>Complete Training Guide</h1>
-    <p class="subtitle" style="max-width:600px;margin:0 auto;text-align:center">
-      Everything you need to know about how Habuild works — from user onboarding to daily engagement to milestone celebrations.
+    <div style="font-size:60px;margin-bottom:8px;animation:float 3s ease infinite">🧘‍♀️</div>
+    <div class="section-label" style="font-size:12px">Intern Training Program 2025</div>
+    <h1 style="font-size:52px;margin:20px 0 14px"><span class="highlight">Habuild</span><br>Complete Training Guide</h1>
+    <p class="subtitle" style="max-width:580px;margin:0 auto;text-align:center">
+      Everything you need to know — from user onboarding to daily engagement to milestone celebrations.
     </p>
-    <div style="display:flex;gap:12px;margin-top:28px;animation:fadeUp .5s ease .5s both">
-      <span class="tag tag-purple">WhatsApp First</span>
-      <span class="tag tag-green">14-Day Challenge</span>
-      <span class="tag tag-pink">Wellness Platform</span>
-      <span class="tag tag-amber">Community Driven</span>
+    <div style="display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;justify-content:center;animation:fadeUp .4s ease .5s both">
+      <span class="tag tag-orange" style="font-size:12px;padding:6px 14px;border-radius:10px">WhatsApp First</span>
+      <span class="tag tag-green" style="font-size:12px;padding:6px 14px;border-radius:10px">14-Day Challenge</span>
+      <span class="tag tag-purple" style="font-size:12px;padding:6px 14px;border-radius:10px">Wellness Platform</span>
+      <span class="tag tag-pink" style="font-size:12px;padding:6px 14px;border-radius:10px">Community Driven</span>
     </div>
-    <p style="margin-top:32px;font-size:13px;color:var(--sub);animation:fadeUp .5s ease .6s both">
-      Use <kbd style="background:rgba(124,58,237,0.1);padding:2px 8px;border-radius:6px;font-size:12px;border:1px solid var(--border)">&#8592;</kbd>
-      <kbd style="background:rgba(124,58,237,0.1);padding:2px 8px;border-radius:6px;font-size:12px;border:1px solid var(--border)">&#8594;</kbd> arrow keys to navigate
+    <p style="margin-top:28px;font-size:12px;color:#9B8BB0;animation:fadeUp .4s ease .6s both">
+      Use <kbd style="background:rgba(255,107,53,0.1);padding:3px 10px;border-radius:8px;font-size:11px;border:1px solid rgba(255,107,53,0.2);font-weight:600;color:#FF6B35">←</kbd>
+      <kbd style="background:rgba(255,107,53,0.1);padding:3px 10px;border-radius:8px;font-size:11px;border:1px solid rgba(255,107,53,0.2);font-weight:600;color:#FF6B35">→</kbd> to navigate
     </p>
   </div>
-  <div class="habuild-watermark">HABUILD</div>
 </div>
 
-<!-- SLIDE 2: How Users Discover & Join -->
+<!-- ==================== SLIDE 2: DISCOVERY ==================== -->
 <div class="slide">
-  <div class="badge">Step 1 &bull; Discovery</div>
-  <h1 style="font-size:36px">How Users Discover & Join Habuild</h1>
-  <p class="subtitle">Multiple organic and paid channels funnel users into our WhatsApp-first experience</p>
+  <div class="brand-bar"></div>
+  <div class="habuild-logo">HABUILD</div>
+  <div class="deco-bl"></div>
+  <div class="section-label">Step 1 — Discovery</div>
+  <h1 style="font-size:34px">How Users <span class="highlight">Discover & Join</span></h1>
+  <p class="subtitle">Multiple channels funnel users into our WhatsApp-first wellness experience</p>
   <div class="split">
-    <div class="split-text">
-      <div class="card" style="animation-delay:.3s">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-          <div class="icon-circle">📱</div>
-          <div>
-            <h2 style="font-size:16px;margin:0">Social Media Ads</h2>
-            <p style="font-size:12px;color:var(--sub)">Instagram, Facebook targeted campaigns</p>
-          </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="card" style="animation-delay:.25s">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+          <div class="icon-box">📱</div>
+          <div><h2 style="font-size:15px;margin:0">Social Media Ads</h2>
+          <p style="font-size:11px;color:#9B8BB0;margin-top:2px">Instagram & Facebook targeted campaigns</p></div>
         </div>
-        <p style="font-size:13px;color:var(--sub);line-height:1.5">User sees a "Free 14-Day Yoga Challenge" ad with a WhatsApp invite link. One tap to join.</p>
+        <p style="font-size:12px;color:#6B5B7B;line-height:1.5">User sees "Free 14-Day Yoga Challenge" ad with a WhatsApp invite link. One tap to join.</p>
       </div>
-      <div class="card" style="animation-delay:.4s">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-          <div class="icon-circle">🗣️</div>
-          <div>
-            <h2 style="font-size:16px;margin:0">Word of Mouth</h2>
-            <p style="font-size:12px;color:var(--sub)">Friends share the invite card</p>
-          </div>
+      <div class="card" style="animation-delay:.35s">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+          <div class="icon-box">🗣️</div>
+          <div><h2 style="font-size:15px;margin:0">Word of Mouth</h2>
+          <p style="font-size:11px;color:#9B8BB0;margin-top:2px">Friends & family share invite cards</p></div>
         </div>
-        <p style="font-size:13px;color:var(--sub);line-height:1.5">Existing participants share the WhatsApp invite poster with friends and family groups.</p>
+        <p style="font-size:12px;color:#6B5B7B;line-height:1.5">Existing participants share the WhatsApp poster with their social circles.</p>
       </div>
-      <div class="card" style="animation-delay:.5s">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-          <div class="icon-circle">🔗</div>
-          <div>
-            <h2 style="font-size:16px;margin:0">Direct Link / QR</h2>
-            <p style="font-size:12px;color:var(--sub)">Website, events, offline posters</p>
-          </div>
+      <div class="card" style="animation-delay:.45s">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+          <div class="icon-box">🔗</div>
+          <div><h2 style="font-size:15px;margin:0">Direct Link / QR</h2>
+          <p style="font-size:11px;color:#9B8BB0;margin-top:2px">Website, events, offline posters</p></div>
         </div>
-        <p style="font-size:13px;color:var(--sub);line-height:1.5">QR codes on posters, website CTAs, and event booths link directly to WhatsApp registration.</p>
+        <p style="font-size:12px;color:#6B5B7B;line-height:1.5">QR codes on posters and website CTAs link directly to WhatsApp registration.</p>
       </div>
     </div>
-    <div class="split-img">
-      <div class="screenshot" style="max-width:300px">
-        <img src="training-images/whatsapp-invite.jpg" alt="WhatsApp Invite Card">
-      </div>
-    </div>
-  </div>
-  <div class="habuild-watermark">HABUILD</div>
-</div>
-
-<!-- SLIDE 3: OTP Registration Flow -->
-<div class="slide">
-  <div class="badge">Step 2 &bull; Registration</div>
-  <h1 style="font-size:36px">OTP Registration on WhatsApp</h1>
-  <p class="subtitle">Seamless registration flow — entirely within WhatsApp, no app download needed</p>
-  <div class="split">
-    <div class="split-text">
-      <div style="display:flex;gap:14px;align-items:flex-start;animation:fadeUp .5s ease .3s both">
-        <div class="step-num">1</div>
-        <div class="card" style="flex:1;padding:16px 20px">
-          <h2 style="font-size:15px;margin:0">User Sends "Hi"</h2>
-          <p style="font-size:12px;color:var(--sub);margin-top:4px">Clicks invite link → opens WhatsApp → sends first message</p>
-        </div>
-      </div>
-      <div style="display:flex;gap:14px;align-items:flex-start;animation:fadeUp .5s ease .4s both">
-        <div class="step-num">2</div>
-        <div class="card" style="flex:1;padding:16px 20px">
-          <h2 style="font-size:15px;margin:0">Bot Asks for Name</h2>
-          <p style="font-size:12px;color:var(--sub);margin-top:4px">Chatbot greets and collects user's full name</p>
-        </div>
-      </div>
-      <div style="display:flex;gap:14px;align-items:flex-start;animation:fadeUp .5s ease .5s both">
-        <div class="step-num">3</div>
-        <div class="card" style="flex:1;padding:16px 20px">
-          <h2 style="font-size:15px;margin:0">OTP Verification</h2>
-          <p style="font-size:12px;color:var(--sub);margin-top:4px">4-digit OTP sent to verify the phone number</p>
-        </div>
-      </div>
-      <div style="display:flex;gap:14px;align-items:flex-start;animation:fadeUp .5s ease .6s both">
-        <div class="step-num">4</div>
-        <div class="card" style="flex:1;padding:16px 20px">
-          <h2 style="font-size:15px;margin:0">Registration Complete</h2>
-          <p style="font-size:12px;color:var(--sub);margin-top:4px">Welcome message + batch assignment + session details</p>
-        </div>
-      </div>
-    </div>
-    <div class="split-img">
+    <div style="display:flex;justify-content:center;align-items:center">
       <div class="screenshot" style="max-width:280px">
-        <img src="training-images/whatsapp-welcome.png" alt="WhatsApp Welcome & Registration">
+        <img src="training-images/whatsapp-invite.jpg" alt="WhatsApp Invite Card — Live Demo">
       </div>
     </div>
   </div>
-  <div class="habuild-watermark">HABUILD</div>
 </div>
 
-<!-- SLIDE 4: WhatsApp Onboarding -->
+<!-- ==================== SLIDE 3: REGISTRATION ==================== -->
 <div class="slide">
-  <div class="badge">Step 3 &bull; Onboarding</div>
-  <h1 style="font-size:36px">WhatsApp Onboarding Experience</h1>
-  <p class="subtitle">4-step guided onboarding right inside WhatsApp — batch timing, trainer intro, and first session prep</p>
-  <div class="grid-2" style="gap:24px">
-    <div style="display:flex;flex-direction:column;gap:14px">
-      <div class="card" style="animation-delay:.3s">
-        <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px">
-          <span class="step-num">1</span>
-          <h2 style="font-size:15px;margin:0">Welcome Message</h2>
-          <span class="tag tag-green">Automated</span>
+  <div class="brand-bar"></div>
+  <div class="habuild-logo">HABUILD</div>
+  <div class="deco-bl"></div>
+  <div class="section-label">Step 2 — Registration</div>
+  <h1 style="font-size:34px"><span class="highlight">OTP Registration</span> on WhatsApp</h1>
+  <p class="subtitle">Seamless sign-up flow — entirely within WhatsApp, no app download needed</p>
+  <div class="split">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;gap:12px;align-items:flex-start;animation:fadeUp .4s ease .25s both">
+        <div class="step-num">1</div>
+        <div class="card" style="flex:1;padding:14px 18px">
+          <h2 style="font-size:14px;margin:0">User Sends "Hi"</h2>
+          <p style="font-size:11px;color:#6B5B7B;margin-top:3px">Clicks invite link → opens WhatsApp → sends first message</p>
         </div>
-        <p style="font-size:13px;color:var(--sub)">Personalized greeting with user's name, explains the 14-day challenge format and what to expect.</p>
       </div>
-      <div class="card" style="animation-delay:.4s">
-        <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px">
+      <div style="display:flex;gap:12px;align-items:flex-start;animation:fadeUp .4s ease .35s both">
+        <div class="step-num">2</div>
+        <div class="card" style="flex:1;padding:14px 18px">
+          <h2 style="font-size:14px;margin:0">Bot Asks for Name</h2>
+          <p style="font-size:11px;color:#6B5B7B;margin-top:3px">Chatbot greets and collects user's full name</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;animation:fadeUp .4s ease .45s both">
+        <div class="step-num">3</div>
+        <div class="card" style="flex:1;padding:14px 18px">
+          <h2 style="font-size:14px;margin:0">OTP Verification</h2>
+          <p style="font-size:11px;color:#6B5B7B;margin-top:3px">4-digit OTP sent to verify the phone number</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;animation:fadeUp .4s ease .55s both">
+        <div class="step-num">4</div>
+        <div class="card" style="flex:1;padding:14px 18px">
+          <h2 style="font-size:14px;margin:0">Registration Complete ✅</h2>
+          <p style="font-size:11px;color:#6B5B7B;margin-top:3px">Welcome message + batch assignment + session details sent</p>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;align-items:center">
+      <div class="screenshot" style="max-width:260px">
+        <img src="training-images/whatsapp-welcome.png" alt="WhatsApp Registration — Live Demo">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 4: ONBOARDING ==================== -->
+<div class="slide">
+  <div class="brand-bar"></div>
+  <div class="habuild-logo">HABUILD</div>
+  <div class="deco-bl"></div>
+  <div class="section-label">Step 3 — Onboarding</div>
+  <h1 style="font-size:34px"><span class="highlight">WhatsApp Onboarding</span> Experience</h1>
+  <p class="subtitle">4-step guided onboarding — batch timing, trainer intro, and first session prep</p>
+  <div class="grid-2" style="gap:24px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="card" style="padding:16px;animation-delay:.25s">
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:6px">
+          <span class="step-num">1</span>
+          <h2 style="font-size:14px;margin:0">Welcome Message</h2>
+          <span class="tag tag-green">Auto</span>
+        </div>
+        <p style="font-size:12px;color:#6B5B7B">Personalized greeting, explains the 14-day challenge format.</p>
+      </div>
+      <div class="card" style="padding:16px;animation-delay:.35s">
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:6px">
           <span class="step-num">2</span>
-          <h2 style="font-size:15px;margin:0">Batch Selection</h2>
+          <h2 style="font-size:14px;margin:0">Batch Selection</h2>
           <span class="tag tag-purple">Interactive</span>
         </div>
-        <p style="font-size:13px;color:var(--sub)">User picks morning (6 AM / 7 AM) or evening (5 PM / 6 PM) batch. Each batch has a dedicated trainer.</p>
+        <p style="font-size:12px;color:#6B5B7B">Morning (6/7 AM) or evening (5/6 PM). Each batch has a trainer.</p>
       </div>
-      <div class="card" style="animation-delay:.5s">
-        <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px">
+      <div class="card" style="padding:16px;animation-delay:.45s">
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:6px">
           <span class="step-num">3</span>
-          <h2 style="font-size:15px;margin:0">Trainer Introduction</h2>
+          <h2 style="font-size:14px;margin:0">Trainer Introduction</h2>
           <span class="tag tag-pink">Personal</span>
         </div>
-        <p style="font-size:13px;color:var(--sub)">Short intro video/message from their assigned trainer, building a personal connection before Day 1.</p>
+        <p style="font-size:12px;color:#6B5B7B">Short intro from assigned trainer — builds personal connection.</p>
       </div>
-      <div class="card" style="animation-delay:.6s">
-        <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px">
+      <div class="card" style="padding:16px;animation-delay:.55s">
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:6px">
           <span class="step-num">4</span>
-          <h2 style="font-size:15px;margin:0">Invite Card Shared</h2>
-          <span class="tag tag-amber">Viral Loop</span>
+          <h2 style="font-size:14px;margin:0">Invite Card Shared</h2>
+          <span class="tag tag-orange">Viral</span>
         </div>
-        <p style="font-size:13px;color:var(--sub)">User receives a shareable invite card to send to friends — drives organic growth through referrals.</p>
+        <p style="font-size:12px;color:#6B5B7B">Shareable invite card to send to friends — organic growth loop.</p>
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:16px;justify-content:center;align-items:center">
-      <div class="screenshot" style="max-width:280px">
-        <img src="training-images/whatsapp-flow.jpg" alt="WhatsApp Onboarding Flow">
+    <div style="display:flex;flex-direction:column;gap:14px;justify-content:center;align-items:center">
+      <div class="screenshot" style="max-width:260px">
+        <img src="training-images/whatsapp-flow.jpg" alt="Onboarding Flow — Live Demo">
       </div>
-      <div class="screenshot" style="max-width:280px">
-        <img src="training-images/batch-selection.jpg" alt="Batch Selection">
+      <div class="screenshot" style="max-width:260px">
+        <img src="training-images/batch-selection.jpg" alt="Batch Selection — Live Demo">
       </div>
     </div>
   </div>
-  <div class="habuild-watermark">HABUILD</div>
 </div>
 
-<!-- SLIDE 5: MYT Sessions -->
+<!-- ==================== SLIDE 5: MYT SESSIONS ==================== -->
 <div class="slide">
-  <div class="badge">Step 4 &bull; Sessions</div>
-  <h1 style="font-size:36px">Meet Your Trainer (MYT) Sessions</h1>
-  <p class="subtitle">Daily live yoga sessions on Zoom — the core experience that keeps users coming back</p>
-  <div class="grid-2" style="gap:24px;margin-top:20px">
+  <div class="brand-bar"></div>
+  <div class="habuild-logo">HABUILD</div>
+  <div class="deco-bl"></div>
+  <div class="section-label">Step 4 — Sessions</div>
+  <h1 style="font-size:34px"><span class="highlight">Meet Your Trainer</span> (MYT) Sessions</h1>
+  <p class="subtitle">Daily live yoga on Zoom — the core experience that keeps users coming back</p>
+  <div class="grid-2" style="gap:24px;margin-top:16px">
     <div>
-      <h2 style="margin-bottom:14px"><span style="color:var(--accent)">Daily Schedule</span></h2>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div class="card" style="padding:16px 20px;display:flex;align-items:center;gap:14px;animation-delay:.3s">
-          <div style="font-size:24px">🌅</div>
-          <div style="flex:1">
-            <div style="font-size:14px;font-weight:700">6:00 AM Batch</div>
-            <div style="font-size:12px;color:var(--sub)">Early risers — Trainer A leads</div>
-          </div>
+      <h2 style="margin-bottom:12px;color:#FF6B35;font-size:16px">Daily Schedule</h2>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="card" style="padding:14px 18px;display:flex;align-items:center;gap:12px;animation-delay:.25s">
+          <span style="font-size:22px">🌅</span>
+          <div style="flex:1"><div style="font-size:13px;font-weight:700">6:00 AM</div><div style="font-size:11px;color:#9B8BB0">Early risers — Trainer A</div></div>
           <span class="tag tag-green">Morning</span>
         </div>
-        <div class="card" style="padding:16px 20px;display:flex;align-items:center;gap:14px;animation-delay:.35s">
-          <div style="font-size:24px">☀️</div>
-          <div style="flex:1">
-            <div style="font-size:14px;font-weight:700">7:00 AM Batch</div>
-            <div style="font-size:12px;color:var(--sub)">Standard morning — Trainer B leads</div>
-          </div>
+        <div class="card" style="padding:14px 18px;display:flex;align-items:center;gap:12px;animation-delay:.3s">
+          <span style="font-size:22px">☀️</span>
+          <div style="flex:1"><div style="font-size:13px;font-weight:700">7:00 AM</div><div style="font-size:11px;color:#9B8BB0">Standard morning — Trainer B</div></div>
           <span class="tag tag-green">Morning</span>
         </div>
-        <div class="card" style="padding:16px 20px;display:flex;align-items:center;gap:14px;animation-delay:.4s">
-          <div style="font-size:24px">🌇</div>
-          <div style="flex:1">
-            <div style="font-size:14px;font-weight:700">5:00 PM Batch</div>
-            <div style="font-size:12px;color:var(--sub)">Evening flex — Trainer C leads</div>
-          </div>
+        <div class="card" style="padding:14px 18px;display:flex;align-items:center;gap:12px;animation-delay:.35s">
+          <span style="font-size:22px">🌇</span>
+          <div style="flex:1"><div style="font-size:13px;font-weight:700">5:00 PM</div><div style="font-size:11px;color:#9B8BB0">Evening flex — Trainer C</div></div>
           <span class="tag tag-amber">Evening</span>
         </div>
-        <div class="card" style="padding:16px 20px;display:flex;align-items:center;gap:14px;animation-delay:.45s">
-          <div style="font-size:24px">🌙</div>
-          <div style="flex:1">
-            <div style="font-size:14px;font-weight:700">6:00 PM Batch</div>
-            <div style="font-size:12px;color:var(--sub)">Late evening — Trainer D leads</div>
-          </div>
+        <div class="card" style="padding:14px 18px;display:flex;align-items:center;gap:12px;animation-delay:.4s">
+          <span style="font-size:22px">🌙</span>
+          <div style="flex:1"><div style="font-size:13px;font-weight:700">6:00 PM</div><div style="font-size:11px;color:#9B8BB0">Late evening — Trainer D</div></div>
           <span class="tag tag-amber">Evening</span>
         </div>
       </div>
     </div>
     <div>
-      <h2 style="margin-bottom:14px"><span style="color:var(--pink)">How It Works</span></h2>
-      <div class="card" style="animation-delay:.5s">
+      <h2 style="margin-bottom:12px;color:#EC4899;font-size:16px">How It Works</h2>
+      <div class="card" style="animation-delay:.45s">
         <div style="display:flex;flex-direction:column;gap:14px">
-          <div style="display:flex;gap:10px;align-items:flex-start">
-            <div style="font-size:18px">📩</div>
-            <div>
-              <div style="font-size:14px;font-weight:600">Zoom Link via WhatsApp</div>
-              <div style="font-size:12px;color:var(--sub)">Sent 15 min before each session starts</div>
-            </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <span style="font-size:18px">📩</span>
+            <div><div style="font-size:13px;font-weight:600">Zoom Link via WhatsApp</div><div style="font-size:11px;color:#9B8BB0">Sent 15 min before session</div></div>
           </div>
-          <div style="display:flex;gap:10px;align-items:flex-start">
-            <div style="font-size:18px">🧘</div>
-            <div>
-              <div style="font-size:14px;font-weight:600">30-Min Live Session</div>
-              <div style="font-size:12px;color:var(--sub)">Guided yoga with real-time interaction</div>
-            </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <span style="font-size:18px">🧘</span>
+            <div><div style="font-size:13px;font-weight:600">30-Min Live Session</div><div style="font-size:11px;color:#9B8BB0">Guided yoga with real-time interaction</div></div>
           </div>
-          <div style="display:flex;gap:10px;align-items:flex-start">
-            <div style="font-size:18px">📋</div>
-            <div>
-              <div style="font-size:14px;font-weight:600">Attendance Tracked</div>
-              <div style="font-size:12px;color:var(--sub)">Zoom join data synced to backend automatically</div>
-            </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <span style="font-size:18px">📋</span>
+            <div><div style="font-size:13px;font-weight:600">Attendance Tracked</div><div style="font-size:11px;color:#9B8BB0">Zoom join data synced to backend</div></div>
           </div>
-          <div style="display:flex;gap:10px;align-items:flex-start">
-            <div style="font-size:18px">🏆</div>
-            <div>
-              <div style="font-size:14px;font-weight:600">Orientation Day</div>
-              <div style="font-size:12px;color:var(--sub)">Special intro session for new joiners every week</div>
-            </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <span style="font-size:18px">🏆</span>
+            <div><div style="font-size:13px;font-weight:600">Orientation Day</div><div style="font-size:11px;color:#9B8BB0">Special intro session for new joiners</div></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="habuild-watermark">HABUILD</div>
 </div>
 
-<!-- SLIDE 6: Daily Messages -->
+<!-- ==================== SLIDE 6: DAILY MESSAGES ==================== -->
 <div class="slide">
-  <div class="badge">Step 5 &bull; Engagement</div>
-  <h1 style="font-size:36px">Daily WhatsApp Messages</h1>
-  <p class="subtitle">6 carefully timed messages throughout the day to keep users engaged and motivated</p>
-  <div class="grid-3" style="margin-top:20px">
-    <div class="card" style="text-align:center;animation-delay:.2s">
-      <div style="font-size:28px;margin-bottom:8px">🌅</div>
-      <div style="font-size:13px;font-weight:700;color:var(--accent)">5:30 AM</div>
-      <div style="font-size:14px;font-weight:600;margin:6px 0 4px">Wake-Up Call</div>
-      <p style="font-size:12px;color:var(--sub)">"Good morning! Your yoga session starts in 30 minutes. Get your mat ready!"</p>
+  <div class="brand-bar"></div>
+  <div class="habuild-logo">HABUILD</div>
+  <div class="deco-bl"></div>
+  <div class="section-label">Step 5 — Engagement</div>
+  <h1 style="font-size:34px"><span class="highlight">6 Daily Messages</span> That Drive Retention</h1>
+  <p class="subtitle">Carefully timed WhatsApp messages keep users engaged and motivated throughout the day</p>
+  <div class="grid-3" style="margin-top:16px">
+    <div class="card" style="text-align:center;padding:18px 14px;animation-delay:.2s">
+      <div style="font-size:26px;margin-bottom:6px">🌅</div>
+      <div style="font-size:12px;font-weight:800;color:#FF6B35">5:30 AM</div>
+      <div style="font-size:14px;font-weight:700;margin:4px 0">Wake-Up Call</div>
+      <p style="font-size:11px;color:#6B5B7B;line-height:1.4">"Good morning! Session starts in 30 min. Get your mat ready!"</p>
     </div>
-    <div class="card" style="text-align:center;animation-delay:.3s">
-      <div style="font-size:28px;margin-bottom:8px">📎</div>
-      <div style="font-size:13px;font-weight:700;color:var(--accent)">5:45 AM</div>
-      <div style="font-size:14px;font-weight:600;margin:6px 0 4px">Zoom Link</div>
-      <p style="font-size:12px;color:var(--sub)">Session join link with one-tap access. Sent 15 min before start time.</p>
+    <div class="card" style="text-align:center;padding:18px 14px;animation-delay:.3s">
+      <div style="font-size:26px;margin-bottom:6px">📎</div>
+      <div style="font-size:12px;font-weight:800;color:#FF6B35">5:45 AM</div>
+      <div style="font-size:14px;font-weight:700;margin:4px 0">Zoom Link</div>
+      <p style="font-size:11px;color:#6B5B7B;line-height:1.4">One-tap join link sent 15 minutes before start time.</p>
     </div>
-    <div class="card" style="text-align:center;animation-delay:.4s">
-      <div style="font-size:28px;margin-bottom:8px">💪</div>
-      <div style="font-size:13px;font-weight:700;color:var(--green)">7:30 AM</div>
-      <div style="font-size:14px;font-weight:600;margin:6px 0 4px">Post-Session</div>
-      <p style="font-size:12px;color:var(--sub)">Motivational message + fun fact or wellness tip after the session ends.</p>
+    <div class="card" style="text-align:center;padding:18px 14px;animation-delay:.4s">
+      <div style="font-size:26px;margin-bottom:6px">💪</div>
+      <div style="font-size:12px;font-weight:800;color:#059669">7:30 AM</div>
+      <div style="font-size:14px;font-weight:700;margin:4px 0">Post-Session</div>
+      <p style="font-size:11px;color:#6B5B7B;line-height:1.4">Motivational message + wellness tip after session ends.</p>
     </div>
-    <div class="card" style="text-align:center;animation-delay:.5s">
-      <div style="font-size:28px;margin-bottom:8px">📊</div>
-      <div style="font-size:13px;font-weight:700;color:var(--amber)">12:00 PM</div>
-      <div style="font-size:14px;font-weight:600;margin:6px 0 4px">Midday Check-in</div>
-      <p style="font-size:12px;color:var(--sub)">Progress update — streak count, how many days completed so far.</p>
+    <div class="card" style="text-align:center;padding:18px 14px;animation-delay:.5s">
+      <div style="font-size:26px;margin-bottom:6px">📊</div>
+      <div style="font-size:12px;font-weight:800;color:#D97706">12:00 PM</div>
+      <div style="font-size:14px;font-weight:700;margin:4px 0">Midday Check-in</div>
+      <p style="font-size:11px;color:#6B5B7B;line-height:1.4">Progress update — streak count, days completed.</p>
     </div>
-    <div class="card" style="text-align:center;animation-delay:.6s">
-      <div style="font-size:28px;margin-bottom:8px">🎯</div>
-      <div style="font-size:13px;font-weight:700;color:var(--pink)">6:00 PM</div>
-      <div style="font-size:14px;font-weight:600;margin:6px 0 4px">Evening Reminder</div>
-      <p style="font-size:12px;color:var(--sub)">For evening batch users — session reminder with Zoom link.</p>
+    <div class="card" style="text-align:center;padding:18px 14px;animation-delay:.6s">
+      <div style="font-size:26px;margin-bottom:6px">🎯</div>
+      <div style="font-size:12px;font-weight:800;color:#EC4899">6:00 PM</div>
+      <div style="font-size:14px;font-weight:700;margin:4px 0">Evening Reminder</div>
+      <p style="font-size:11px;color:#6B5B7B;line-height:1.4">Evening batch — session reminder with Zoom link.</p>
     </div>
-    <div class="card" style="text-align:center;animation-delay:.7s">
-      <div style="font-size:28px;margin-bottom:8px">🌙</div>
-      <div style="font-size:13px;font-weight:700;color:var(--blue)">9:00 PM</div>
-      <div style="font-size:14px;font-weight:600;margin:6px 0 4px">Day Summary</div>
-      <p style="font-size:12px;color:var(--sub)">Attended vs Missed status. Different flows based on attendance.</p>
+    <div class="card" style="text-align:center;padding:18px 14px;animation-delay:.7s">
+      <div style="font-size:26px;margin-bottom:6px">🌙</div>
+      <div style="font-size:12px;font-weight:800;color:#3B82F6">9:00 PM</div>
+      <div style="font-size:14px;font-weight:700;margin:4px 0">Day Summary</div>
+      <p style="font-size:11px;color:#6B5B7B;line-height:1.4">Attended vs Missed — different flow for each.</p>
     </div>
   </div>
-  <div class="habuild-watermark">HABUILD</div>
 </div>
 
-<!-- SLIDE 7: Attended vs Missed Logic -->
+<!-- ==================== SLIDE 7: ATTENDED VS MISSED ==================== -->
 <div class="slide">
-  <div class="badge">Step 6 &bull; Retention</div>
-  <h1 style="font-size:36px">9 PM — Attended vs Missed Logic</h1>
-  <p class="subtitle">Smart engagement paths based on whether the user attended today's session</p>
-  <div class="grid-2" style="gap:28px;margin-top:20px">
-    <div class="card" style="border-left:4px solid var(--green);animation-delay:.3s">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-        <div style="font-size:32px">✅</div>
-        <div>
-          <h2 style="font-size:18px;margin:0;color:var(--green)">Attended Today</h2>
-          <span class="tag tag-green">Positive Reinforcement</span>
-        </div>
+  <div class="brand-bar"></div>
+  <div class="habuild-logo">HABUILD</div>
+  <div class="deco-bl"></div>
+  <div class="section-label">Step 6 — Retention</div>
+  <h1 style="font-size:34px">9 PM — <span class="highlight">Attended vs Missed</span> Logic</h1>
+  <p class="subtitle">Smart engagement paths based on today's attendance</p>
+  <div class="grid-2" style="gap:24px;margin-top:16px">
+    <div class="card" style="border-left:4px solid #059669;animation-delay:.25s">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <span style="font-size:28px">✅</span>
+        <div><h2 style="font-size:17px;margin:0;color:#059669">Attended Today</h2>
+        <span class="tag tag-green">Positive Reinforcement</span></div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="display:flex;gap:10px;align-items:center">
-          <span style="font-size:16px">🎉</span>
-          <span style="font-size:13px">Congratulations message with streak count</span>
-        </div>
-        <div style="display:flex;gap:10px;align-items:center">
-          <span style="font-size:16px">🔥</span>
-          <span style="font-size:13px">"You're on a X-day streak! Keep it going!"</span>
-        </div>
-        <div style="display:flex;gap:10px;align-items:center">
-          <span style="font-size:16px">📸</span>
-          <span style="font-size:13px">Shareable streak badge to post on social media</span>
-        </div>
-        <div style="display:flex;gap:10px;align-items:center">
-          <span style="font-size:16px">🎁</span>
-          <span style="font-size:13px">Milestone rewards at Day 3, 7, 14, 21</span>
-        </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:#6B5B7B">
+        <div style="display:flex;gap:8px;align-items:center">🎉 Congratulations + streak count</div>
+        <div style="display:flex;gap:8px;align-items:center">🔥 "X-day streak! Keep it going!"</div>
+        <div style="display:flex;gap:8px;align-items:center">📸 Shareable streak badge for social</div>
+        <div style="display:flex;gap:8px;align-items:center">🎁 Milestone rewards at Day 3, 7, 14, 21</div>
       </div>
     </div>
-    <div class="card" style="border-left:4px solid var(--rose);animation-delay:.4s">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-        <div style="font-size:32px">😢</div>
-        <div>
-          <h2 style="font-size:18px;margin:0;color:var(--rose)">Missed Today</h2>
-          <span class="tag tag-pink">Re-Engagement</span>
-        </div>
+    <div class="card" style="border-left:4px solid #E11D48;animation-delay:.35s">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <span style="font-size:28px">😢</span>
+        <div><h2 style="font-size:17px;margin:0;color:#E11D48">Missed Today</h2>
+        <span class="tag tag-pink">Re-Engagement</span></div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="display:flex;gap:10px;align-items:center">
-          <span style="font-size:16px">💬</span>
-          <span style="font-size:13px">Empathetic message — "We missed you today!"</span>
-        </div>
-        <div style="display:flex;gap:10px;align-items:center">
-          <span style="font-size:16px">📅</span>
-          <span style="font-size:13px">"Tomorrow's session is at [time]. See you there?"</span>
-        </div>
-        <div style="display:flex;gap:10px;align-items:center">
-          <span style="font-size:16px">🔄</span>
-          <span style="font-size:13px">Option to switch batch timing if schedule doesn't fit</span>
-        </div>
-        <div style="display:flex;gap:10px;align-items:center">
-          <span style="font-size:16px">📞</span>
-          <span style="font-size:13px">After 3 missed days — personal call from trainer</span>
-        </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:#6B5B7B">
+        <div style="display:flex;gap:8px;align-items:center">💬 "We missed you today!"</div>
+        <div style="display:flex;gap:8px;align-items:center">📅 Tomorrow's session time reminder</div>
+        <div style="display:flex;gap:8px;align-items:center">🔄 Option to switch batch timing</div>
+        <div style="display:flex;gap:8px;align-items:center">📞 After 3 missed → personal trainer call</div>
       </div>
     </div>
   </div>
-  <div style="margin-top:16px;text-align:center;animation:fadeUp .5s ease .6s both">
-    <div class="card" style="display:inline-flex;align-items:center;gap:16px;padding:14px 28px">
-      <span style="font-size:20px">💡</span>
-      <span style="font-size:14px;color:var(--sub)"><strong style="color:var(--text)">Key Insight:</strong> The 9 PM message is the most critical touchpoint — it determines next-day retention.</span>
+  <div style="margin-top:14px;text-align:center;animation:fadeUp .4s ease .5s both">
+    <div class="card" style="display:inline-flex;align-items:center;gap:14px;padding:12px 24px;background:linear-gradient(135deg,rgba(255,107,53,0.06),rgba(168,85,247,0.06))">
+      <span style="font-size:18px">💡</span>
+      <span style="font-size:13px;color:#6B5B7B"><strong style="color:#2D1B4E">Key Insight:</strong> The 9 PM message is the most critical touchpoint — it determines next-day retention.</span>
     </div>
   </div>
-  <div class="habuild-watermark">HABUILD</div>
 </div>
 
-<!-- SLIDE 8: Milestones & World Record -->
+<!-- ==================== SLIDE 8: MILESTONES ==================== -->
 <div class="slide">
-  <div class="badge">Step 7 &bull; Milestones</div>
-  <h1 style="font-size:36px">Milestones & Guinness World Record</h1>
-  <p class="subtitle">Gamified milestone badges keep users motivated throughout their journey</p>
-  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:24px">
+  <div class="brand-bar"></div>
+  <div class="habuild-logo">HABUILD</div>
+  <div class="deco-bl"></div>
+  <div class="section-label">Step 7 — Milestones</div>
+  <h1 style="font-size:34px"><span class="highlight">Milestones</span> & Guinness World Record</h1>
+  <p class="subtitle">Gamified badges keep users motivated throughout their journey</p>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px">
     <div class="milestone" style="animation-delay:.2s">
       <span class="milestone-emoji">🌱</span>
       <div class="milestone-day">DAY 1</div>
-      <div style="font-size:15px;font-weight:700;margin-bottom:4px">First Step</div>
-      <div class="milestone-title">Completed first session — the hardest part is showing up!</div>
+      <div style="font-size:14px;font-weight:700;margin-bottom:3px">First Step</div>
+      <div style="font-size:11px;color:#6B5B7B;line-height:1.3">The hardest part — showing up!</div>
     </div>
     <div class="milestone" style="animation-delay:.3s">
       <span class="milestone-emoji">🔥</span>
       <div class="milestone-day">DAY 3</div>
-      <div style="font-size:15px;font-weight:700;margin-bottom:4px">Getting Started</div>
-      <div class="milestone-title">3-day streak — building the habit foundation</div>
+      <div style="font-size:14px;font-weight:700;margin-bottom:3px">Getting Started</div>
+      <div style="font-size:11px;color:#6B5B7B;line-height:1.3">Building the habit foundation</div>
     </div>
     <div class="milestone" style="animation-delay:.4s">
       <span class="milestone-emoji">⭐</span>
       <div class="milestone-day">DAY 7</div>
-      <div style="font-size:15px;font-weight:700;margin-bottom:4px">One Week Strong</div>
-      <div class="milestone-title">Full week completed — habit is forming!</div>
+      <div style="font-size:14px;font-weight:700;margin-bottom:3px">One Week</div>
+      <div style="font-size:11px;color:#6B5B7B;line-height:1.3">Full week — habit is forming!</div>
     </div>
     <div class="milestone" style="animation-delay:.5s">
       <span class="milestone-emoji">🏆</span>
       <div class="milestone-day">DAY 14</div>
-      <div style="font-size:15px;font-weight:700;margin-bottom:4px">Challenge Complete</div>
-      <div class="milestone-title">14-day challenge done — officially a Habuild champion!</div>
+      <div style="font-size:14px;font-weight:700;margin-bottom:3px">Challenge Done</div>
+      <div style="font-size:11px;color:#6B5B7B;line-height:1.3">Officially a Habuild champion!</div>
     </div>
     <div class="milestone" style="animation-delay:.6s">
       <span class="milestone-emoji">👑</span>
       <div class="milestone-day">DAY 21</div>
-      <div style="font-size:15px;font-weight:700;margin-bottom:4px">Habit Master</div>
-      <div class="milestone-title">21 days — the habit is now part of your lifestyle</div>
+      <div style="font-size:14px;font-weight:700;margin-bottom:3px">Habit Master</div>
+      <div style="font-size:11px;color:#6B5B7B;line-height:1.3">Part of your lifestyle now</div>
     </div>
   </div>
-  <div class="card" style="margin-top:20px;animation-delay:.7s;background:linear-gradient(135deg,rgba(124,58,237,0.05),rgba(219,39,119,0.05));border:1px solid rgba(124,58,237,0.15)">
-    <div style="display:flex;align-items:center;gap:20px">
-      <div style="font-size:48px">🏅</div>
+  <div class="card" style="margin-top:16px;animation-delay:.7s;background:linear-gradient(135deg,rgba(255,107,53,0.06),rgba(168,85,247,0.06));border:1px solid rgba(255,107,53,0.15)">
+    <div style="display:flex;align-items:center;gap:18px">
+      <div style="font-size:44px;animation:pulse 2s ease infinite">🏅</div>
       <div style="flex:1">
-        <h2 style="font-size:20px;margin-bottom:6px;background:linear-gradient(135deg,var(--accent),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Guinness World Record</h2>
-        <p style="font-size:14px;color:var(--sub);line-height:1.5">
-          Habuild holds the <strong style="color:var(--text)">Guinness World Record</strong> for the largest online yoga class.
-          This achievement is a testament to our community's strength and the platform's ability to bring people together at scale.
+        <h2 style="font-size:18px;margin-bottom:4px"><span class="highlight">Guinness World Record</span></h2>
+        <p style="font-size:13px;color:#6B5B7B;line-height:1.5">
+          Habuild holds the <strong style="color:#2D1B4E">Guinness World Record</strong> for the largest online yoga class — a testament to our community's strength.
         </p>
       </div>
-      <div style="text-align:center;padding:12px 20px;background:rgba(124,58,237,0.08);border-radius:12px">
-        <div style="font-size:28px;font-weight:800;color:var(--accent)">150K+</div>
-        <div style="font-size:11px;color:var(--sub);font-weight:600">Participants</div>
+      <div style="text-align:center;padding:12px 20px;background:linear-gradient(135deg,rgba(255,107,53,0.1),rgba(255,154,76,0.08));border-radius:14px">
+        <div style="font-size:26px;font-weight:800;color:#FF6B35">150K+</div>
+        <div style="font-size:10px;color:#9B8BB0;font-weight:700">Participants</div>
       </div>
     </div>
   </div>
-  <div class="habuild-watermark">HABUILD</div>
 </div>
 
-<!-- SLIDE 9: Summary -->
+<!-- ==================== SLIDE 9: SUMMARY ==================== -->
 <div class="slide">
-  <div class="badge">Summary &bull; The Complete Journey</div>
-  <h1 style="font-size:36px">The Habuild User Journey</h1>
-  <p class="subtitle">From discovery to habit formation — every step is designed for engagement and retention</p>
-  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:24px;flex:1;align-items:start">
-    <div style="text-align:center;animation:fadeUp .5s ease .2s both">
-      <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#c084fc,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 10px;color:#fff">1</div>
-      <div style="font-size:13px;font-weight:700;margin-bottom:4px">Discover</div>
-      <div style="font-size:11px;color:var(--sub);line-height:1.3">Ads, referrals, or direct links</div>
+  <div class="brand-bar"></div>
+  <div class="habuild-logo">HABUILD</div>
+  <div class="deco-bl"></div>
+  <div class="section-label">Summary — The Complete Journey</div>
+  <h1 style="font-size:34px">The <span class="highlight">Habuild User Journey</span></h1>
+  <p class="subtitle">From discovery to habit formation — every step designed for engagement</p>
+  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:20px">
+    <div style="text-align:center;animation:fadeUp .4s ease .15s both">
+      <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#FF6B35,#FF9A4C);display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 8px;color:#fff;font-weight:800">1</div>
+      <div style="font-size:12px;font-weight:700">Discover</div>
+      <div style="font-size:10px;color:#9B8BB0;line-height:1.3;margin-top:2px">Ads, referrals, links</div>
     </div>
-    <div style="text-align:center;animation:fadeUp .5s ease .25s both">
-      <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#818cf8,#6366f1);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 10px;color:#fff">2</div>
-      <div style="font-size:13px;font-weight:700;margin-bottom:4px">Register</div>
-      <div style="font-size:11px;color:var(--sub);line-height:1.3">OTP via WhatsApp</div>
+    <div style="text-align:center;animation:fadeUp .4s ease .2s both">
+      <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#A855F7,#C084FC);display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 8px;color:#fff;font-weight:800">2</div>
+      <div style="font-size:12px;font-weight:700">Register</div>
+      <div style="font-size:10px;color:#9B8BB0;line-height:1.3;margin-top:2px">OTP via WhatsApp</div>
     </div>
-    <div style="text-align:center;animation:fadeUp .5s ease .3s both">
-      <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#06b6d4,#0891b2);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 10px;color:#fff">3</div>
-      <div style="font-size:13px;font-weight:700;margin-bottom:4px">Onboard</div>
-      <div style="font-size:11px;color:var(--sub);line-height:1.3">Batch + trainer assigned</div>
+    <div style="text-align:center;animation:fadeUp .4s ease .25s both">
+      <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#0891B2,#06B6D4);display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 8px;color:#fff;font-weight:800">3</div>
+      <div style="font-size:12px;font-weight:700">Onboard</div>
+      <div style="font-size:10px;color:#9B8BB0;line-height:1.3;margin-top:2px">Batch + trainer</div>
     </div>
-    <div style="text-align:center;animation:fadeUp .5s ease .35s both">
-      <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 10px;color:#fff">4</div>
-      <div style="font-size:13px;font-weight:700;margin-bottom:4px">Attend</div>
-      <div style="font-size:11px;color:var(--sub);line-height:1.3">Daily live yoga on Zoom</div>
+    <div style="text-align:center;animation:fadeUp .4s ease .3s both">
+      <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#059669,#10B981);display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 8px;color:#fff;font-weight:800">4</div>
+      <div style="font-size:12px;font-weight:700">Attend</div>
+      <div style="font-size:10px;color:#9B8BB0;line-height:1.3;margin-top:2px">Daily Zoom yoga</div>
     </div>
-    <div style="text-align:center;animation:fadeUp .5s ease .4s both">
-      <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 10px;color:#fff">5</div>
-      <div style="font-size:13px;font-weight:700;margin-bottom:4px">Engage</div>
-      <div style="font-size:11px;color:var(--sub);line-height:1.3">6 daily messages</div>
+    <div style="text-align:center;animation:fadeUp .4s ease .35s both">
+      <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#D97706,#F59E0B);display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 8px;color:#fff;font-weight:800">5</div>
+      <div style="font-size:12px;font-weight:700">Engage</div>
+      <div style="font-size:10px;color:#9B8BB0;line-height:1.3;margin-top:2px">6 daily messages</div>
     </div>
-    <div style="text-align:center;animation:fadeUp .5s ease .45s both">
-      <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#f472b6,#db2777);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 10px;color:#fff">6</div>
-      <div style="font-size:13px;font-weight:700;margin-bottom:4px">Retain</div>
-      <div style="font-size:11px;color:var(--sub);line-height:1.3">Attended vs missed logic</div>
+    <div style="text-align:center;animation:fadeUp .4s ease .4s both">
+      <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#EC4899,#F472B6);display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 8px;color:#fff;font-weight:800">6</div>
+      <div style="font-size:12px;font-weight:700">Retain</div>
+      <div style="font-size:10px;color:#9B8BB0;line-height:1.3;margin-top:2px">Attend vs miss logic</div>
     </div>
-    <div style="text-align:center;animation:fadeUp .5s ease .5s both">
-      <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#ef4444,#dc2626);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 10px;color:#fff">7</div>
-      <div style="font-size:13px;font-weight:700;margin-bottom:4px">Celebrate</div>
-      <div style="font-size:11px;color:var(--sub);line-height:1.3">Milestones & badges</div>
+    <div style="text-align:center;animation:fadeUp .4s ease .45s both">
+      <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#E11D48,#F43F5E);display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 8px;color:#fff;font-weight:800">7</div>
+      <div style="font-size:12px;font-weight:700">Celebrate</div>
+      <div style="font-size:10px;color:#9B8BB0;line-height:1.3;margin-top:2px">Milestones & badges</div>
     </div>
   </div>
-  <div class="card" style="margin-top:auto;animation-delay:.6s;text-align:center;padding:20px;background:linear-gradient(135deg,rgba(124,58,237,0.06),rgba(219,39,119,0.06))">
-    <p style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:4px">
-      Every Monday = New 14-Day Rolling Challenge Starts
+  <div class="card" style="margin-top:auto;animation-delay:.6s;text-align:center;padding:18px;background:linear-gradient(135deg,rgba(255,107,53,0.08),rgba(168,85,247,0.06));border:1px solid rgba(255,107,53,0.15)">
+    <p style="font-size:16px;font-weight:700;color:#2D1B4E;margin-bottom:4px">
+      Every Monday = New 14-Day Rolling Challenge Starts 🔄
     </p>
-    <p style="font-size:13px;color:var(--sub)">
+    <p style="font-size:12px;color:#6B5B7B">
       Users can join any Monday. The challenge is always rolling — there's never a "wrong" time to start.
     </p>
   </div>
-  <div class="habuild-watermark">HABUILD</div>
 </div>
 
 </div><!-- end slideshow -->
@@ -682,6 +652,9 @@ h2{
   <span class="slide-counter" id="counter">1 / 9</span>
   <button id="next" onclick="go(1)">&#8594;</button>
 </div>
+
+<!-- Export / Canva button -->
+<button class="export-btn" onclick="exportSlides()">📥 Export for Canva</button>
 
 <script>
 const slides=document.querySelectorAll('.slide');
@@ -703,6 +676,27 @@ document.addEventListener('keydown',e=>{
   if(e.key==='End')show(slides.length-1);
 });
 show(0);
+
+// Export for Canva — opens print dialog (save as PDF → upload to Canva)
+function exportSlides(){
+  // Show all slides for printing
+  const nav=document.querySelector('.nav');
+  const prog=document.querySelector('.progress');
+  const exp=document.querySelector('.export-btn');
+  nav.style.display='none';prog.style.display='none';exp.style.display='none';
+  slides.forEach(s=>{s.style.position='relative';s.style.display='flex';s.style.pageBreakAfter='always';s.style.minHeight='100vh'});
+  document.body.style.overflow='auto';document.body.style.height='auto';
+
+  alert('To use in Canva:\\n\\n1. Press Ctrl+P (Print)\\n2. Choose "Save as PDF"\\n3. Go to canva.com → Create Design → Import PDF\\n4. Edit freely in Canva!\\n\\nClick OK to open print dialog.');
+  window.print();
+
+  // Restore
+  setTimeout(()=>{
+    nav.style.display='';prog.style.display='';exp.style.display='';
+    document.body.style.overflow='hidden';document.body.style.height='100vh';
+    slides.forEach((s,i)=>{s.style.position='absolute';s.style.display=i===cur?'flex':'none';s.style.pageBreakAfter='';s.style.minHeight=''});
+  },500);
+}
 </script>
 </body>
 </html>
