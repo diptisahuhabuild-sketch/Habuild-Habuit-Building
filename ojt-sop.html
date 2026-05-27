@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OJT Team SOP — HaBuild Healthtech Pvt. Ltd.</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --orange:#FF6B35;--orange-light:#FFF3ED;--orange-border:#FFD4BC;
+  --purple:#7C3AED;--purple-light:#F3EEFF;--purple-border:#D4BFFF;
+  --green:#059669;--green-light:#ECFDF5;--green-border:#A7F3D0;
+  --blue:#2563EB;--blue-light:#EFF6FF;--blue-border:#BFDBFE;
+  --pink:#DB2777;--pink-light:#FDF2F8;--pink-border:#FBCFE8;
+  --amber:#D97706;--amber-light:#FFFBEB;--amber-border:#FDE68A;
+  --red:#DC2626;--red-light:#FEF2F2;--red-border:#FECACA;
+  --text:#1E1B2E;--sub:#5B5675;--muted:#8C85A0;
+  --bg:#FFFAF7;--card:#FFFFFF;
+  --shadow:0 2px 12px rgba(45,27,78,0.06);
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);color:var(--text);
+  line-height:1.7;font-size:14px;
+}
+
+/* ===== EDITABLE INDICATOR ===== */
+[contenteditable]:focus{
+  outline:2px dashed var(--orange);outline-offset:3px;
+  border-radius:4px;background:rgba(255,107,53,0.03);
+}
+.edit-banner{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:linear-gradient(135deg,#FF6B35,#7C3AED);
+  color:#fff;text-align:center;padding:8px;font-size:12px;font-weight:600;
+  letter-spacing:0.5px;
+}
+.edit-banner span{opacity:0.85;font-weight:400;margin-left:8px}
+
+/* ===== CONTAINER ===== */
+.container{
+  max-width:900px;margin:0 auto;padding:60px 40px 40px;
+}
+
+/* ===== PAGE SECTION (for print page breaks) ===== */
+.page{
+  background:var(--card);border-radius:16px;
+  padding:40px 44px;margin-bottom:28px;
+  box-shadow:var(--shadow);border:1px solid rgba(255,107,53,0.08);
+  position:relative;overflow:hidden;
+  page-break-inside:avoid;
+}
+.page::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,#FF6B35,#FF9A4C,#7C3AED,#DB2777);
+}
+
+/* ===== HABUILD LOGO ===== */
+.hb-logo{
+  position:absolute;top:16px;right:20px;
+  display:flex;align-items:center;gap:8px;
+}
+.hb-logo-icon{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,#FF6B35,#FF9A4C);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;color:#fff;font-weight:900;
+  box-shadow:0 4px 14px rgba(255,107,53,0.3);
+  font-family:'Poppins',sans-serif;
+}
+.hb-logo-text{
+  font-family:'Poppins',sans-serif;font-weight:800;font-size:15px;
+  letter-spacing:1.5px;
+  background:linear-gradient(135deg,#FF6B35,#7C3AED);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 4px rgba(255,107,53,0.2));
+}
+
+/* ===== COVER PAGE ===== */
+.cover{
+  text-align:center;padding:60px 44px;
+  background:linear-gradient(160deg,#FFFAF7 0%,#FFF0E5 30%,#FFE8D6 60%,#F3EEFF 100%);
+}
+.cover::after{
+  content:'';position:absolute;bottom:-60px;right:-60px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(124,58,237,0.06),transparent 70%);
+}
+.cover-logo{
+  width:80px;height:80px;border-radius:20px;
+  background:linear-gradient(135deg,#FF6B35,#FF9A4C);
+  display:flex;align-items:center;justify-content:center;
+  font-size:36px;color:#fff;font-weight:900;
+  box-shadow:0 8px 32px rgba(255,107,53,0.3);
+  margin:0 auto 20px;font-family:'Poppins',sans-serif;
+}
+.cover h1{
+  font-size:32px;font-weight:800;color:var(--text);margin-bottom:8px;
+}
+.cover h1 .hl{
+  background:linear-gradient(135deg,#FF6B35,#7C3AED);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.cover .doc-type{
+  font-size:18px;font-weight:600;color:var(--orange);
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;
+}
+.cover .company{font-size:14px;color:var(--sub);font-weight:500}
+.cover .meta{
+  display:inline-flex;gap:20px;margin-top:24px;padding:12px 28px;
+  background:rgba(255,255,255,0.7);border-radius:12px;
+  border:1px solid var(--orange-border);font-size:12px;color:var(--sub);
+}
+.cover .meta strong{color:var(--text)}
+
+/* ===== SECTION HEADERS ===== */
+.section-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:10px;
+  background:linear-gradient(135deg,#FF6B35,#FF9A4C);
+  color:#fff;font-size:14px;font-weight:800;
+  box-shadow:0 3px 10px rgba(255,107,53,0.25);
+  flex-shrink:0;
+}
+.section-header{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:18px;padding-bottom:14px;
+  border-bottom:2px solid var(--orange-border);
+}
+.section-header h2{font-size:20px;font-weight:700;color:var(--text)}
+
+/* ===== TABLES ===== */
+table{
+  width:100%;border-collapse:separate;border-spacing:0;
+  border-radius:12px;overflow:hidden;margin:14px 0;
+  border:1px solid #E8E0F0;
+  font-size:13px;
+}
+thead{background:linear-gradient(135deg,#FF6B35,#FF9A4C)}
+thead th{
+  color:#fff;font-weight:600;padding:12px 16px;text-align:left;
+  font-size:12px;letter-spacing:0.5px;text-transform:uppercase;
+  border:none;
+}
+tbody tr{transition:background .15s}
+tbody tr:nth-child(even){background:#FFF8F4}
+tbody tr:hover{background:#FFF0E5}
+tbody td{
+  padding:10px 16px;border-bottom:1px solid #F0E8F5;
+  vertical-align:top;
+}
+tbody tr:last-child td{border-bottom:none}
+
+/* Alternate table style - purple */
+table.purple thead{background:linear-gradient(135deg,#7C3AED,#A855F7)}
+table.purple tbody tr:nth-child(even){background:#F9F5FF}
+table.purple tbody tr:hover{background:#F3EEFF}
+table.purple tbody td{border-bottom-color:#EDE5F7}
+
+/* Alternate table style - green */
+table.green thead{background:linear-gradient(135deg,#059669,#10B981)}
+table.green tbody tr:nth-child(even){background:#F0FDF9}
+table.green tbody tr:hover{background:#ECFDF5}
+table.green tbody td{border-bottom-color:#D1FAE5}
+
+/* ===== INFO BOXES ===== */
+.info-box{
+  padding:16px 20px;border-radius:12px;margin:14px 0;
+  display:flex;gap:12px;align-items:flex-start;
+  font-size:13px;line-height:1.6;
+}
+.info-box .icon{font-size:20px;flex-shrink:0;margin-top:2px}
+.info-orange{background:var(--orange-light);border:1px solid var(--orange-border);color:#9A3412}
+.info-purple{background:var(--purple-light);border:1px solid var(--purple-border);color:#5B21B6}
+.info-green{background:var(--green-light);border:1px solid var(--green-border);color:#065F46}
+.info-blue{background:var(--blue-light);border:1px solid var(--blue-border);color:#1E40AF}
+.info-red{background:var(--red-light);border:1px solid var(--red-border);color:#991B1B}
+.info-amber{background:var(--amber-light);border:1px solid var(--amber-border);color:#92400E}
+
+/* ===== LISTS ===== */
+.check-list{list-style:none;padding:0;margin:10px 0}
+.check-list li{
+  padding:8px 12px 8px 36px;position:relative;
+  border-bottom:1px solid #F5F0FA;font-size:13px;
+}
+.check-list li:last-child{border-bottom:none}
+.check-list li::before{
+  content:'✓';position:absolute;left:10px;top:8px;
+  width:20px;height:20px;border-radius:6px;
+  background:var(--green-light);color:var(--green);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;
+}
+
+.bullet-list{list-style:none;padding:0;margin:10px 0}
+.bullet-list li{
+  padding:6px 12px 6px 28px;position:relative;font-size:13px;
+}
+.bullet-list li::before{
+  content:'';position:absolute;left:10px;top:14px;
+  width:8px;height:8px;border-radius:50%;
+  background:linear-gradient(135deg,var(--orange),var(--purple));
+}
+
+/* ===== FLOW DIAGRAM ===== */
+.flow{
+  display:flex;align-items:center;justify-content:center;
+  gap:0;margin:20px 0;flex-wrap:wrap;
+}
+.flow-step{
+  padding:10px 20px;border-radius:12px;
+  font-size:13px;font-weight:600;text-align:center;
+  color:#fff;min-width:120px;
+}
+.flow-arrow{
+  font-size:20px;color:var(--muted);margin:0 4px;
+  font-weight:300;
+}
+
+/* ===== GRID CARDS ===== */
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.card-grid.g3{grid-template-columns:1fr 1fr 1fr}
+.mini-card{
+  padding:16px;border-radius:12px;
+  border:1px solid #EDE5F0;background:#FEFCFF;
+  transition:transform .15s,box-shadow .15s;
+}
+.mini-card:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(124,58,237,0.08)}
+.mini-card h4{font-size:14px;font-weight:700;margin-bottom:6px;color:var(--text)}
+.mini-card p{font-size:12px;color:var(--sub);line-height:1.5}
+.mini-card .mc-icon{
+  font-size:24px;margin-bottom:8px;display:block;
+}
+
+/* ===== TAGS ===== */
+.tag{
+  display:inline-block;padding:3px 10px;border-radius:8px;
+  font-size:10px;font-weight:700;letter-spacing:0.5px;
+}
+.t-orange{background:rgba(255,107,53,0.1);color:#FF6B35}
+.t-green{background:rgba(5,150,105,0.1);color:#059669}
+.t-purple{background:rgba(124,58,237,0.1);color:#7C3AED}
+.t-pink{background:rgba(219,39,119,0.1);color:#DB2777}
+.t-blue{background:rgba(37,99,235,0.1);color:#2563EB}
+.t-red{background:rgba(220,38,38,0.1);color:#DC2626}
+
+/* ===== FOOTER ===== */
+.doc-footer{
+  text-align:center;padding:24px;margin-top:20px;
+  font-size:12px;color:var(--muted);
+}
+
+/* ===== PRINT ===== */
+@media print{
+  .edit-banner{display:none!important}
+  body{background:#fff}
+  .container{padding:0;max-width:100%}
+  .page{box-shadow:none;border:none;border-radius:0;margin-bottom:0;page-break-after:always}
+  .page::before{height:3px}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .container{padding:50px 12px 20px}
+  .page{padding:24px 20px;border-radius:12px}
+  .card-grid{grid-template-columns:1fr}
+  .card-grid.g3{grid-template-columns:1fr}
+  .flow{flex-direction:column}
+  .flow-arrow{transform:rotate(90deg)}
+  table{font-size:11px}
+  thead th,tbody td{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<div class="edit-banner">
+  ✏️ This document is editable — click any text to edit<span>| Ctrl+P to save as PDF | Upload PDF to Canva to customize</span>
+</div>
+
+<div class="container">
+
+<!-- ======================== COVER PAGE ======================== -->
+<div class="page cover">
+  <div class="hb-logo" style="top:20px;right:24px">
+    <div class="hb-logo-icon">H</div>
+    <div class="hb-logo-text">HABUILD</div>
+  </div>
+  <div class="cover-logo">H</div>
+  <div class="doc-type" contenteditable="true">Standard Operating Procedure</div>
+  <h1 contenteditable="true"><span class="hl">OJT Team</span> SOP</h1>
+  <p class="company" contenteditable="true">HaBuild Healthtech Pvt. Ltd.</p>
+  <div class="meta">
+    <div><strong>Prepared By:</strong> Dipti Sahu</div>
+    <div><strong>Role:</strong> Training & Development Lead</div>
+    <div><strong>Version:</strong> 1.0</div>
+  </div>
+</div>
+
+<!-- ======================== TABLE OF CONTENTS ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">📑</div>
+    <h2>Table of Contents</h2>
+  </div>
+  <table class="purple">
+    <thead><tr><th style="width:50px">#</th><th>Section</th><th style="width:120px">Page</th></tr></thead>
+    <tbody contenteditable="true">
+      <tr><td><strong>1</strong></td><td>Objective</td><td>Section 1</td></tr>
+      <tr><td><strong>2</strong></td><td>OJT Tracking Structure</td><td>Section 2</td></tr>
+      <tr><td><strong>3</strong></td><td>OJT Duration & Training Flow</td><td>Section 3</td></tr>
+      <tr><td><strong>4</strong></td><td>OJT Lead Responsibilities</td><td>Section 4</td></tr>
+      <tr><td><strong>5</strong></td><td>Daily Tracking Process</td><td>Section 5</td></tr>
+      <tr><td><strong>6</strong></td><td>Weekly Scorecard Format</td><td>Section 6</td></tr>
+      <tr><td><strong>7</strong></td><td>Final Review Sheet (After 45 Days)</td><td>Section 7</td></tr>
+      <tr><td><strong>8</strong></td><td>Performance Expectations</td><td>Section 8</td></tr>
+      <tr><td><strong>9</strong></td><td>Weekly Threshold Expectations</td><td>Section 9</td></tr>
+      <tr><td><strong>10</strong></td><td>QC & Audit Guidelines</td><td>Section 10</td></tr>
+      <tr><td><strong>11</strong></td><td>Daily OJT Reporting Requirements</td><td>Section 11</td></tr>
+      <tr><td><strong>12</strong></td><td>Training Lead Responsibilities</td><td>Section 12</td></tr>
+      <tr><td><strong>13</strong></td><td>Department Transition Guidelines</td><td>Section 13</td></tr>
+      <tr><td><strong>14</strong></td><td>Department Lead Responsibilities</td><td>Section 14</td></tr>
+      <tr><td><strong>15</strong></td><td>Productivity & Quality Alignment</td><td>Section 15</td></tr>
+      <tr><td><strong>16</strong></td><td>Attendance & Availability</td><td>Section 16</td></tr>
+      <tr><td><strong>17</strong></td><td>Refresher Sessions</td><td>Section 17</td></tr>
+      <tr><td><strong>18</strong></td><td>Escalation Handling</td><td>Section 18</td></tr>
+      <tr><td><strong>19</strong></td><td>Final Compilation & Reporting</td><td>Section 19</td></tr>
+      <tr><td><strong>20</strong></td><td>Operational Guidelines</td><td>Section 20</td></tr>
+      <tr><td><strong>21</strong></td><td>Additional Suggested Trackers</td><td>Section 21</td></tr>
+      <tr><td><strong>22</strong></td><td>Conclusion</td><td>Section 22</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ======================== SECTION 1: OBJECTIVE ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <h2 contenteditable="true">Objective</h2>
+  </div>
+  <p contenteditable="true" style="font-size:14px;color:var(--sub);margin-bottom:16px">
+    To ensure systematic, transparent, and performance-driven tracking of interns during their <strong style="color:var(--orange)">45-day OJT</strong> (On Job Training) period through:
+  </p>
+  <div class="card-grid" contenteditable="true">
+    <div class="mini-card">
+      <span class="mc-icon">📊</span>
+      <h4>Daily Monitoring</h4>
+      <p>Daily monitoring and updates by OJT Leads</p>
+    </div>
+    <div class="mini-card">
+      <span class="mc-icon">📋</span>
+      <h4>Weekly Scorecards</h4>
+      <p>Weekly scorecard tracking and structured feedback</p>
+    </div>
+    <div class="mini-card">
+      <span class="mc-icon">🤝</span>
+      <h4>Cross-Team Coordination</h4>
+      <p>Coordination between Training, OJT, QC, Calling, Support, and other departments</p>
+    </div>
+    <div class="mini-card">
+      <span class="mc-icon">🎯</span>
+      <h4>Final Review & Transition</h4>
+      <p>Final consolidated review and department transition process</p>
+    </div>
+  </div>
+  <div class="info-box info-orange" contenteditable="true">
+    <span class="icon">🏆</span>
+    <div><strong>Goal:</strong> Prepare interns to become <strong>95% ready</strong> for handling member queries independently while maintaining productivity and quality standards aligned with squad expectations.</div>
+  </div>
+</div>
+
+<!-- ======================== SECTION 2: TRACKING STRUCTURE ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <h2 contenteditable="true">OJT Tracking Structure</h2>
+  </div>
+  <div class="info-box info-purple" contenteditable="true">
+    <span class="icon">📁</span>
+    <div>All OJT-related tracking must be maintained under one consolidated workbook titled: <strong>"OJT Leads Reporting Tracker"</strong></div>
+  </div>
+  <p style="margin:12px 0 8px;font-weight:600;font-size:14px" contenteditable="true">Separate sheets must be created for every batch:</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin:8px 0" contenteditable="true">
+    <span class="tag t-orange" style="font-size:12px;padding:6px 14px">Batch 10</span>
+    <span class="tag t-purple" style="font-size:12px;padding:6px 14px">Batch 11</span>
+    <span class="tag t-green" style="font-size:12px;padding:6px 14px">Batch 12</span>
+    <span class="tag t-blue" style="font-size:12px;padding:6px 14px">Batch 13</span>
+    <span class="tag t-pink" style="font-size:12px;padding:6px 14px">Batch 14+</span>
+  </div>
+</div>
+
+<!-- ======================== SECTION 3: DURATION & FLOW ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <h2 contenteditable="true">OJT Duration & Training Flow</h2>
+  </div>
+  <table>
+    <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+    <tbody contenteditable="true">
+      <tr><td><strong>OJT Duration</strong></td><td>45 Days</td></tr>
+      <tr><td><strong>Training Flow</strong></td><td>Classroom Training → OJT → Department Transition</td></tr>
+      <tr><td><strong>Possible Outcomes</strong></td><td>Shifted to Department / Exit Based on Performance</td></tr>
+      <tr><td><strong>Departments</strong></td><td>Support / Calling / Other Teams</td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-weight:600;margin:16px 0 10px" contenteditable="true">Training Flow Visualization:</p>
+  <div class="flow">
+    <div class="flow-step" style="background:linear-gradient(135deg,#7C3AED,#A855F7)">📚 Classroom Training</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background:linear-gradient(135deg,#FF6B35,#FF9A4C)">🏋️ OJT (45 Days)</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="background:linear-gradient(135deg,#059669,#10B981)">✅ Department Transition</div>
+  </div>
+
+  <div class="info-box info-amber" contenteditable="true">
+    <span class="icon">⚠️</span>
+    <div>Interns may: <strong>Continue</strong> in the same department, <strong>Shift</strong> to another department based on operational requirements, or be <strong>Exited</strong> based on performance, discipline, or behavioral concerns.</div>
+  </div>
+</div>
+
+<!-- ======================== SECTION 4: OJT LEAD RESPONSIBILITIES ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <h2 contenteditable="true">OJT Lead Responsibilities</h2>
+  </div>
+  <ul class="check-list" contenteditable="true">
+    <li>Daily tracking of assigned interns</li>
+    <li>Reviewing chats and providing feedback</li>
+    <li>Tracking productivity and quality</li>
+    <li>Updating attendance and chat count</li>
+    <li>Conducting audits and refresher sessions</li>
+    <li>Escalation handling and coordination</li>
+    <li>Monitoring intern discipline and professionalism</li>
+    <li>Coordinating with Dipti (Training Lead) daily and whenever required</li>
+  </ul>
+</div>
+
+<!-- ======================== SECTION 5: DAILY TRACKING ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <h2 contenteditable="true">Daily Tracking Process</h2>
+  </div>
+  <h3 style="font-size:15px;color:var(--orange);margin-bottom:10px">Mandatory Daily Updates</h3>
+  <table class="green">
+    <thead><tr><th>Tracking Area</th><th>Update Location</th></tr></thead>
+    <tbody contenteditable="true">
+      <tr><td>📊 Daily Chat Count</td><td>Support Master Sheet</td></tr>
+      <tr><td>📅 Daily Attendance</td><td>HR Attendance Sheet</td></tr>
+      <tr><td>📋 Daily Audit Scorecard</td><td>OJT Lead Reporting Sheet</td></tr>
+      <tr><td>💬 Feedback / Observations</td><td>OJT Lead Personal Sheet</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ======================== SECTION 6: WEEKLY SCORECARD ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <h2 contenteditable="true">Weekly Scorecard Format</h2>
+  </div>
+  <p style="color:var(--sub);margin-bottom:12px" contenteditable="true">The following details must be maintained <strong>weekly</strong> for every intern:</p>
+  <table class="purple">
+    <thead><tr><th style="width:50px">#</th><th>Parameter</th><th style="width:140px">Category</th></tr></thead>
+    <tbody contenteditable="true">
+      <tr><td>1</td><td>Intern Name</td><td><span class="tag t-blue">Identity</span></td></tr>
+      <tr><td>2</td><td>OJT Lead Name</td><td><span class="tag t-blue">Identity</span></td></tr>
+      <tr><td>3</td><td>Shift</td><td><span class="tag t-purple">Schedule</span></td></tr>
+      <tr><td>4</td><td>Week</td><td><span class="tag t-purple">Schedule</span></td></tr>
+      <tr><td>5</td><td>Availability</td><td><span class="tag t-green">Attendance</span></td></tr>
+      <tr><td>6</td><td>AVG Chat Count</td><td><span class="tag t-orange">Productivity</span></td></tr>
+      <tr><td>7</td><td>Total Chat Count</td><td><span class="tag t-orange">Productivity</span></td></tr>
+      <tr><td>8</td><td>Total Chats Scanned</td><td><span class="tag t-orange">Productivity</span></td></tr>
+      <tr><td>9</td><td>Number of QCs</td><td><span class="tag t-pink">Quality</span></td></tr>
+      <tr><td>10</td><td>Error %</td><td><span class="tag t-red">Quality</span></td></tr>
+      <tr><td>11</td><td>Rating by OJT Lead</td><td><span class="tag t-pink">Quality</span></td></tr>
+      <tr><td>12</td><td>Rating by AI</td><td><span class="tag t-pink">Quality</span></td></tr>
+      <tr><td>13</td><td>ARST</td><td><span class="tag t-orange">Productivity</span></td></tr>
+      <tr><td>14</td><td>Trend</td><td><span class="tag t-green">Progress</span></td></tr>
+      <tr><td>15</td><td>Feedback</td><td><span class="tag t-purple">Review</span></td></tr>
+      <tr><td>16</td><td>Needs Improvement</td><td><span class="tag t-red">Review</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ======================== SECTION 7: FINAL REVIEW ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <h2 contenteditable="true">Final Review Sheet (After 45 Days)</h2>
+  </div>
+  <p style="color:var(--sub);margin-bottom:12px" contenteditable="true">At the end of the OJT cycle, a <strong>final consolidated review sheet</strong> must be prepared with all weekly parameters plus:</p>
+  <table>
+    <thead><tr><th>Additional Final Parameters</th><th>Description</th></tr></thead>
+    <tbody contenteditable="true">
+      <tr><td><strong>OJT Start Date</strong></td><td>Date when intern joined OJT</td></tr>
+      <tr><td><strong>OJT End Date</strong></td><td>Date when OJT cycle completed</td></tr>
+      <tr><td><strong>OJT Duration</strong></td><td>Total days spent in OJT</td></tr>
+      <tr><td><strong>Shifting Status</strong></td><td>Ready / Not Ready / Exited</td></tr>
+      <tr><td><strong>Squad Name</strong></td><td>Assigned squad for transition</td></tr>
+      <tr><td><strong>Final Department</strong></td><td>Support / Calling / Other</td></tr>
+    </tbody>
+  </table>
+  <div class="info-box info-green" contenteditable="true">
+    <span class="icon">✅</span>
+    <div>The final review sheet must include <strong>all 16 weekly parameters</strong> (from Section 6) plus the 6 additional parameters above for a complete 22-parameter review.</div>
+  </div>
+</div>
+
+<!-- ======================== SECTION 8: PERFORMANCE EXPECTATIONS ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">8</div>
+    <h2 contenteditable="true">Performance Expectations</h2>
+  </div>
+  <div class="card-grid" contenteditable="true">
+    <div class="mini-card" style="border-left:4px solid var(--orange)">
+      <span class="mc-icon">🎯</span>
+      <h4>95% Readiness</h4>
+      <p>Interns should be 95% ready before department transition</p>
+    </div>
+    <div class="mini-card" style="border-left:4px solid var(--green)">
+      <span class="mc-icon">📈</span>
+      <h4>Gradual Productivity</h4>
+      <p>Productivity should gradually match squad-level expectations</p>
+    </div>
+    <div class="mini-card" style="border-left:4px solid var(--purple)">
+      <span class="mc-icon">👤</span>
+      <h4>Behavior Tracking</h4>
+      <p>Behavioral concerns, professionalism, and communication tracked regularly</p>
+    </div>
+    <div class="mini-card" style="border-left:4px solid var(--red)">
+      <span class="mc-icon">🚨</span>
+      <h4>Attendance Gaps</h4>
+      <p>Attendance gaps and repeated concerns must be highlighted clearly in remarks</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SECTION 9: WEEKLY THRESHOLDS ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">9</div>
+    <h2 contenteditable="true">Weekly Threshold Expectations</h2>
+  </div>
+  <table>
+    <thead><tr><th>Week</th><th>Expected Chat Count</th><th>Expected Error %</th><th>Status</th></tr></thead>
+    <tbody contenteditable="true">
+      <tr><td><strong>Week 1</strong></td><td>Observation Phase</td><td>15–20% acceptable</td><td><span class="tag t-blue">Onboarding</span></td></tr>
+      <tr><td><strong>Week 2</strong></td><td>60–70 chats</td><td>~15%</td><td><span class="tag t-purple">Ramp Up</span></td></tr>
+      <tr><td><strong>Week 3</strong></td><td>80+ chats</td><td>~10%</td><td><span class="tag t-orange">Building</span></td></tr>
+      <tr><td><strong>Week 4</strong></td><td>100+ chats</td><td>~7–8%</td><td><span class="tag t-green">Growing</span></td></tr>
+      <tr><td><strong>Week 5</strong></td><td>120+ chats</td><td>~5%</td><td><span class="tag t-green">Strong</span></td></tr>
+      <tr><td><strong>Week 6</strong></td><td>120+ chats + Squad-level</td><td>Below 5%</td><td><span class="tag t-orange" style="background:rgba(5,150,105,0.15);color:#059669">Ready</span></td></tr>
+    </tbody>
+  </table>
+  <div class="info-box info-amber" contenteditable="true">
+    <span class="icon">📝</span>
+    <div><strong>Note:</strong> Thresholds may slightly vary based on current load, high/low queue flow, operational situations, and complexity of chats.</div>
+  </div>
+</div>
+
+<!-- ======================== SECTION 10: QC & AUDIT ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <h2 contenteditable="true">QC & Audit Guidelines</h2>
+  </div>
+  <table class="purple">
+    <thead><tr><th>Requirement</th><th>Criteria</th></tr></thead>
+    <tbody contenteditable="true">
+      <tr><td><strong>QC Frequency</strong></td><td>Minimum 3 times per week per intern</td></tr>
+      <tr><td><strong>Audit Coverage</strong></td><td>25–30% minimum of total chats</td></tr>
+      <tr><td><strong>Audit Responsibility</strong></td><td>OJT Leads + Calling Leads + QC Team Support</td></tr>
+    </tbody>
+  </table>
+  <h3 style="font-size:15px;color:var(--purple);margin:16px 0 10px">Audit Guidelines</h3>
+  <ul class="check-list" contenteditable="true">
+    <li>Daily audit scorecards must be maintained</li>
+    <li>Weekly consolidated scorecards must be updated</li>
+    <li>Feedback should be practical, actionable, and structured</li>
+    <li>Repeated errors should be tracked separately</li>
+    <li>Random re-audits may be conducted by Training Lead</li>
+  </ul>
+</div>
+
+<!-- ======================== SECTION 11: DAILY REPORTING ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <h2 contenteditable="true">Daily OJT Reporting Requirements</h2>
+  </div>
+  <div class="info-box info-red" contenteditable="true">
+    <span class="icon">🔴</span>
+    <div>Every OJT Lead must share a <strong>daily work report</strong> in the official OJT group <strong>without reminders</strong>.</div>
+  </div>
+  <h3 style="font-size:15px;color:var(--orange);margin:14px 0 10px">Daily Report Must Include:</h3>
+  <table class="green">
+    <thead><tr><th style="width:50px">#</th><th>Report Item</th><th style="width:120px">Priority</th></tr></thead>
+    <tbody contenteditable="true">
+      <tr><td>1</td><td>Team count</td><td><span class="tag t-red">Required</span></td></tr>
+      <tr><td>2</td><td>Chat count by team</td><td><span class="tag t-red">Required</span></td></tr>
+      <tr><td>3</td><td>Audit count</td><td><span class="tag t-red">Required</span></td></tr>
+      <tr><td>4</td><td>Refresher session conducted</td><td><span class="tag t-red">Required</span></td></tr>
+      <tr><td>5</td><td>1-line refresher feedback</td><td><span class="tag t-red">Required</span></td></tr>
+      <tr><td>6</td><td>Escalations handled</td><td><span class="tag t-orange">Important</span></td></tr>
+      <tr><td>7</td><td>Coordination updates</td><td><span class="tag t-orange">Important</span></td></tr>
+      <tr><td>8</td><td>Sheet updates completed</td><td><span class="tag t-red">Required</span></td></tr>
+      <tr><td>9</td><td>Availability concerns</td><td><span class="tag t-orange">Important</span></td></tr>
+      <tr><td>10</td><td>Productivity observations</td><td><span class="tag t-orange">Important</span></td></tr>
+    </tbody>
+  </table>
+  <div class="info-box info-amber" contenteditable="true">
+    <span class="icon">⚠️</span>
+    <div>If targets are low, <strong>proper remarks and reasons</strong> must be added in the report.</div>
+  </div>
+</div>
+
+<!-- ======================== SECTION 12: TRAINING LEAD ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">12</div>
+    <h2 contenteditable="true">Training Lead Responsibilities (Dipti)</h2>
+  </div>
+  <div class="card-grid g3" contenteditable="true">
+    <div class="mini-card" style="border-top:3px solid var(--orange)">
+      <span class="mc-icon">👥</span>
+      <h4>Team Management</h4>
+      <p>• Managing OJT operations<br>• Monitoring OJT Leads<br>• Daily hurdles<br>• Weekly feedback<br>• Leave approvals<br>• Task allocation</p>
+    </div>
+    <div class="mini-card" style="border-top:3px solid var(--purple)">
+      <span class="mc-icon">📊</span>
+      <h4>Performance Monitoring</h4>
+      <p>• Intern readiness tracking<br>• Scorecard reviews<br>• Daily updates review<br>• Login & breaks monitoring<br>• Gap identification<br>• Corrective actions</p>
+    </div>
+    <div class="mini-card" style="border-top:3px solid var(--green)">
+      <span class="mc-icon">✅</span>
+      <h4>Quality & Feedback</h4>
+      <p>• Re-auditing OJT audits<br>• Feedback to leads<br>• Refresher sessions<br>• 1-on-1 intern sessions<br>• Documentation</p>
+    </div>
+  </div>
+  <h3 style="font-size:15px;color:var(--blue);margin:16px 0 10px">Coordination Responsibilities</h3>
+  <ul class="check-list" contenteditable="true">
+    <li>Coordinating with HR for escalations and exits</li>
+    <li>Coordinating with squads for transitions</li>
+    <li>Coordinating department handovers</li>
+    <li>Managing ID creation and yoga subscriptions</li>
+    <li>Maintaining final review reports</li>
+    <li>Submitting weekly and final reports to management</li>
+  </ul>
+</div>
+
+<!-- ======================== SECTION 13: DEPT TRANSITION ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">13</div>
+    <h2 contenteditable="true">Department Transition Guidelines</h2>
+  </div>
+  <p style="color:var(--sub);margin-bottom:14px" contenteditable="true">If interns are shifted immediately after classroom training to Calling Team or any other department:</p>
+  <h3 style="font-size:15px;color:var(--orange);margin-bottom:10px">Mandatory Coordination Requirements</h3>
+  <ul class="check-list" contenteditable="true">
+    <li>OJT Team and Department Leads must coordinate continuously</li>
+    <li>All OJT parameters must continue to be maintained</li>
+    <li>Department attendance must be marked in the required sheets</li>
+    <li>Chat counts must be updated in the master sheets</li>
+    <li>Availability tracking must continue properly</li>
+    <li>Interns must attend all required refresher sessions and evaluations</li>
+    <li>Department Leads must connect with Training Lead weekly or whenever required</li>
+    <li>Escalations must immediately be highlighted to the Training Lead</li>
+  </ul>
+</div>
+
+<!-- ======================== SECTION 14: DEPT LEAD RESPONSIBILITIES ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">14</div>
+    <h2 contenteditable="true">Department Lead Responsibilities During OJT</h2>
+  </div>
+  <ul class="check-list" contenteditable="true">
+    <li>Supporting interns patiently and professionally</li>
+    <li>Helping interns with doubts and live handling</li>
+    <li>Ensuring no wrong influence or negative environment impacts interns</li>
+    <li>Maintaining gradual target progression as per OJT thresholds</li>
+    <li>Conducting audits wherever required</li>
+    <li>Coordinating with QC Team during the 15-day review process</li>
+    <li>Ensuring interns attend important refresher sessions</li>
+    <li>Ensuring all evaluations are completed properly</li>
+    <li>Maintaining proper professional communication</li>
+  </ul>
+  <div class="info-box info-red" contenteditable="true">
+    <span class="icon">⛔</span>
+    <div><strong>Important:</strong> Any action against interns must only be taken after proper stakeholder discussion and as per OJT criteria.</div>
+  </div>
+</div>
+
+<!-- ======================== SECTION 15: PRODUCTIVITY & QUALITY ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">15</div>
+    <h2 contenteditable="true">Productivity & Quality Alignment</h2>
+  </div>
+  <ul class="check-list" contenteditable="true">
+    <li>Chat count expectations should remain consistent across interns of the same batch</li>
+    <li>Quality improvement should be gradual and measurable</li>
+    <li>Productivity should improve week by week</li>
+    <li>Error trends should be tracked continuously</li>
+    <li>Interns must be prepared for real squad-level handling before transition</li>
+  </ul>
+</div>
+
+<!-- ======================== SECTION 16: ATTENDANCE ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">16</div>
+    <h2 contenteditable="true">Attendance & Availability Guidelines</h2>
+  </div>
+  <table>
+    <thead><tr><th>Requirement</th><th>Guidelines</th></tr></thead>
+    <tbody contenteditable="true">
+      <tr><td><strong>📅 Attendance Tracking</strong></td><td>Mandatory Daily</td></tr>
+      <tr><td><strong>📊 Availability Tracking</strong></td><td>Mandatory</td></tr>
+      <tr><td><strong>📉 Low Load Days</strong></td><td>Chat count still must be updated</td></tr>
+      <tr><td><strong>🏖️ Leave Coordination</strong></td><td>Must be informed and documented</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ======================== SECTION 17: REFRESHER ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">17</div>
+    <h2 contenteditable="true">Refresher Sessions</h2>
+  </div>
+  <p style="color:var(--sub);margin-bottom:12px" contenteditable="true">Refresher sessions must be conducted regularly based on:</p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px" contenteditable="true">
+    <span class="tag t-red" style="font-size:12px;padding:5px 12px">Error Trends</span>
+    <span class="tag t-orange" style="font-size:12px;padding:5px 12px">Productivity Concerns</span>
+    <span class="tag t-purple" style="font-size:12px;padding:5px 12px">Repeated Audit Issues</span>
+    <span class="tag t-pink" style="font-size:12px;padding:5px 12px">Escalation Observations</span>
+    <span class="tag t-blue" style="font-size:12px;padding:5px 12px">Dept-Specific Concerns</span>
+  </div>
+  <h3 style="font-size:15px;color:var(--green);margin-bottom:10px">Refresher Reports Must Include:</h3>
+  <table class="green">
+    <thead><tr><th>Report Item</th><th>Description</th></tr></thead>
+    <tbody contenteditable="true">
+      <tr><td><strong>Session Name</strong></td><td>Topic covered in the session</td></tr>
+      <tr><td><strong>Intern Attendance</strong></td><td>Who attended the session</td></tr>
+      <tr><td><strong>1-Line Feedback</strong></td><td>Quick summary of session quality</td></tr>
+      <tr><td><strong>Key Observations</strong></td><td>Important points noted during session</td></tr>
+      <tr><td><strong>Improvement Areas</strong></td><td>Areas identified for further work</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ======================== SECTION 18: ESCALATION ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">18</div>
+    <h2 contenteditable="true">Escalation Handling</h2>
+  </div>
+  <p style="color:var(--sub);margin-bottom:12px" contenteditable="true">Any major concern related to the following must be <strong>immediately escalated:</strong></p>
+  <div class="card-grid g3" contenteditable="true">
+    <div class="mini-card" style="text-align:center;border-left:3px solid var(--red)">
+      <span class="mc-icon">📉</span>
+      <h4>Performance</h4>
+    </div>
+    <div class="mini-card" style="text-align:center;border-left:3px solid var(--pink)">
+      <span class="mc-icon">🚫</span>
+      <h4>Behavior</h4>
+    </div>
+    <div class="mini-card" style="text-align:center;border-left:3px solid var(--amber)">
+      <span class="mc-icon">📅</span>
+      <h4>Attendance</h4>
+    </div>
+    <div class="mini-card" style="text-align:center;border-left:3px solid var(--purple)">
+      <span class="mc-icon">💼</span>
+      <h4>Professionalism</h4>
+    </div>
+    <div class="mini-card" style="text-align:center;border-left:3px solid var(--orange)">
+      <span class="mc-icon">⚡</span>
+      <h4>Negative Influence</h4>
+    </div>
+    <div class="mini-card" style="text-align:center;border-left:3px solid var(--blue)">
+      <span class="mc-icon">🔧</span>
+      <h4>Operational Gaps</h4>
+    </div>
+  </div>
+  <div class="info-box info-red" contenteditable="true">
+    <span class="icon">🚨</span>
+    <div><strong>Escalation Flow:</strong> OJT Lead → Training Lead → Relevant Stakeholders → HR Team (if required)</div>
+  </div>
+</div>
+
+<!-- ======================== SECTION 19: FINAL COMPILATION ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">19</div>
+    <h2 contenteditable="true">Final Compilation & Reporting Process</h2>
+  </div>
+  <h3 style="font-size:15px;color:var(--orange);margin-bottom:10px">Final Review Process (End of Every Batch)</h3>
+  <ul class="check-list" contenteditable="true">
+    <li>Final review sheet must be compiled</li>
+    <li>Missing data must be verified</li>
+    <li>Exited interns must be marked clearly</li>
+    <li>Department transition status must be updated</li>
+    <li>Final consolidated report must be shared on mail</li>
+  </ul>
+  <h3 style="font-size:15px;color:var(--purple);margin:16px 0 10px">Reporting Frequency</h3>
+  <table class="purple">
+    <thead><tr><th>Report Type</th><th>Frequency</th><th>Shared With</th></tr></thead>
+    <tbody contenteditable="true">
+      <tr><td><strong>📋 Daily OJT Report</strong></td><td>Daily</td><td>OJT WhatsApp Group</td></tr>
+      <tr><td><strong>📧 Weekly OJT Mail</strong></td><td>Weekly</td><td>Management</td></tr>
+      <tr><td><strong>📊 Final Batch OJT Report</strong></td><td>End of 45 Days</td><td>All Stakeholders</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ======================== SECTION 20: OPERATIONAL GUIDELINES ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">20</div>
+    <h2 contenteditable="true">Operational Guidelines</h2>
+  </div>
+  <ul class="check-list" contenteditable="true">
+    <li>Intern tracking must happen every working day without fail</li>
+    <li>Data entries should always remain updated and accurate</li>
+    <li>Professional behavior should be maintained by all teams</li>
+    <li>All communication should remain transparent and documented</li>
+    <li>Feedback should focus on improvement and readiness</li>
+    <li>OJT is considered successful only when interns can independently handle queries confidently with required quality and productivity</li>
+  </ul>
+</div>
+
+<!-- ======================== SECTION 21: ADDITIONAL TRACKERS ======================== -->
+<div class="page">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">21</div>
+    <h2 contenteditable="true">Additional Suggested Trackers</h2>
+  </div>
+  <p style="color:var(--sub);margin-bottom:14px;font-size:13px"><span class="tag t-blue" style="margin-right:6px">RECOMMENDED</span> These additional trackers are recommended for enhanced OJT management:</p>
+  <div class="card-grid" contenteditable="true">
+    <div class="mini-card" style="border-top:3px solid var(--red)">
+      <span class="mc-icon">🚨</span>
+      <h4>Escalation Tracker</h4>
+      <p>• Repeated errors<br>• Behavioral concerns<br>• Member escalations<br>• Attendance warnings<br>• Exit-risk interns</p>
+    </div>
+    <div class="mini-card" style="border-top:3px solid var(--green)">
+      <span class="mc-icon">📚</span>
+      <h4>Refresher Tracker</h4>
+      <p>• Session topic<br>• Attendance<br>• Feedback<br>• Improvement trend after session</p>
+    </div>
+    <div class="mini-card" style="border-top:3px solid var(--blue)">
+      <span class="mc-icon">🎯</span>
+      <h4>Department Readiness</h4>
+      <p>• Query handling confidence<br>• Communication quality<br>• Productivity readiness<br>• Escalation handling<br>• Live handling independence</p>
+    </div>
+    <div class="mini-card" style="border-top:3px solid var(--purple)">
+      <span class="mc-icon">⭐</span>
+      <h4>OJT Lead Performance</h4>
+      <p>• Audit quality<br>• Timely reporting<br>• Refresher quality<br>• Team improvement trend<br>• Feedback quality<br>• Adherence & ownership</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SECTION 22: CONCLUSION ======================== -->
+<div class="page" style="background:linear-gradient(160deg,#FFFAF7 0%,#FFF0E5 30%,#FFE8D6 60%,#F3EEFF 100%)">
+  <div class="hb-logo"><div class="hb-logo-icon">H</div><div class="hb-logo-text">HABUILD</div></div>
+  <div class="section-header">
+    <div class="section-num">22</div>
+    <h2 contenteditable="true">Conclusion</h2>
+  </div>
+  <p style="color:var(--sub);font-size:14px;line-height:1.8;margin-bottom:18px" contenteditable="true">
+    The OJT process is not only focused on operational productivity but also on building:
+  </p>
+  <div class="flow" style="flex-wrap:wrap;gap:12px" contenteditable="true">
+    <div class="flow-step" style="background:linear-gradient(135deg,#FF6B35,#FF9A4C);border-radius:14px;min-width:140px">🏆 Ownership</div>
+    <div class="flow-step" style="background:linear-gradient(135deg,#7C3AED,#A855F7);border-radius:14px;min-width:140px">💬 Communication</div>
+    <div class="flow-step" style="background:linear-gradient(135deg,#059669,#10B981);border-radius:14px;min-width:140px">💼 Professionalism</div>
+    <div class="flow-step" style="background:linear-gradient(135deg,#2563EB,#3B82F6);border-radius:14px;min-width:140px">📈 Consistency</div>
+    <div class="flow-step" style="background:linear-gradient(135deg,#DB2777,#EC4899);border-radius:14px;min-width:140px">🎯 Confidence</div>
+  </div>
+  <div class="info-box info-green" style="margin-top:20px" contenteditable="true">
+    <span class="icon">✅</span>
+    <div>The entire process should ensure that interns transition smoothly into departments with proper <strong>support, guidance, quality standards, and operational readiness.</strong></div>
+  </div>
+  <div style="text-align:center;margin-top:24px;padding-top:20px;border-top:2px solid var(--orange-border)">
+    <div class="hb-logo" style="position:static;justify-content:center;margin-bottom:8px">
+      <div class="hb-logo-icon" style="width:44px;height:44px;font-size:22px">H</div>
+      <div class="hb-logo-text" style="font-size:18px">HABUILD</div>
+    </div>
+    <p style="font-size:13px;font-weight:600;color:var(--text)" contenteditable="true">Prepared By: Dipti Sahu</p>
+    <p style="font-size:12px;color:var(--sub)" contenteditable="true">Training & Development Lead — HaBuild Healthtech Pvt. Ltd.</p>
+  </div>
+</div>
+
+<div class="doc-footer">
+  <p>© HaBuild Healthtech Pvt. Ltd. | OJT Team SOP | Confidential Document</p>
+  <p style="margin-top:6px;font-size:11px">Click any text to edit • Ctrl+P to print/save as PDF • Upload PDF to Canva for further design</p>
+</div>
+
+</div><!-- end container -->
+
+</body>
+</html>
