@@ -5,211 +5,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OJT Team SOP — Habuild Healthtech Pvt. Ltd.</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-
-:root{
-  --navy:#1E3A5F;
-  --navy-light:#EBF0F7;
-  --navy-border:#C5D3E8;
-  --accent:#E8722A;
-  --accent-light:#FFF4ED;
-  --accent-border:#FFD4B8;
-  --text:#1A1A2E;
-  --sub:#5A6478;
-  --bg:#FAFBFD;
-  --white:#FFFFFF;
-  --border:#E2E6EE;
-  --green:#1B8C5A;
-  --green-light:#EEFBF4;
-  --red:#C0392B;
-  --red-light:#FDF0EE;
-}
-
 body{
-  font-family:'Inter',system-ui,sans-serif;
-  background:var(--bg);color:var(--text);
+  font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;
+  background:#FAFBFD;color:#1A1A2E;
   line-height:1.7;font-size:13.5px;
-  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  -webkit-print-color-adjust:exact!important;
+  print-color-adjust:exact!important;
+  color-adjust:exact!important;
 }
-
-[contenteditable]:focus{outline:2px dashed var(--accent);outline-offset:2px;border-radius:3px}
-
+[contenteditable]:focus{outline:2px dashed #E8722A;outline-offset:2px;border-radius:3px}
 .container{max-width:820px;margin:0 auto;padding:24px 32px}
-
-/* Header */
-.doc-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:20px 0;border-bottom:3px solid var(--navy);margin-bottom:28px;
-}
+.doc-header{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:3px solid #1E3A5F;margin-bottom:28px}
 .logo-area{display:flex;align-items:center;gap:12px}
-.logo-area img{height:40px;filter:drop-shadow(0 2px 6px rgba(30,58,95,0.15))}
-.logo-area .brand{font-size:11px;color:var(--sub);font-weight:500}
-.doc-title-area{text-align:right}
-.doc-title-area h1{font-size:22px;font-weight:800;color:var(--navy)}
-.doc-title-area .doc-sub{font-size:11px;color:var(--sub);font-weight:500}
-
-/* Page logo watermark */
-.page-logo{
-  position:absolute;top:14px;right:18px;opacity:0.06;
-  height:60px;pointer-events:none;
-}
-
-/* Sections */
-.section{
-  background:var(--white);border:1px solid var(--border);
-  border-radius:10px;padding:24px 28px;margin-bottom:18px;
-  position:relative;overflow:hidden;
-  page-break-inside:avoid;
-}
-.section::before{
-  content:'';position:absolute;top:0;left:0;bottom:0;width:4px;
-  background:var(--navy);
-}
-
-.section h2{
-  font-size:16px;font-weight:700;color:var(--navy);
-  margin-bottom:12px;padding-bottom:8px;
-  border-bottom:1px solid var(--border);
-}
-.section h3{font-size:14px;font-weight:700;color:var(--accent);margin:14px 0 8px}
-
-/* Tables */
-table{
-  width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;
-}
-thead{background:var(--navy)}
-thead th{
-  color:#fff;font-weight:600;padding:10px 14px;text-align:left;
-  font-size:11.5px;letter-spacing:0.3px;text-transform:uppercase;
-}
-tbody tr{border-bottom:1px solid var(--border)}
-tbody tr:nth-child(even){background:var(--navy-light)}
-tbody tr:hover{background:#E3EAF3}
+.logo-area img{height:40px}
+.section{background:#FFFFFF;border:1px solid #E2E6EE;border-radius:10px;padding:24px 28px;margin-bottom:18px;position:relative;overflow:hidden;page-break-inside:avoid}
+.section::before{content:'';position:absolute;top:0;left:0;bottom:0;width:4px;background:#1E3A5F}
+.page-logo{position:absolute;top:14px;right:18px;opacity:0.06;height:60px;pointer-events:none}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+thead{background:#1E3A5F!important}
+thead th{color:#fff!important;font-weight:600;padding:10px 14px;text-align:left;font-size:11.5px;letter-spacing:0.3px;text-transform:uppercase}
+tbody tr{border-bottom:1px solid #E2E6EE}
+tbody tr:nth-child(even){background:#EBF0F7!important}
 tbody td{padding:9px 14px;vertical-align:top}
-
-/* Compact list */
 ul.clean{list-style:none;padding:0;margin:8px 0}
-ul.clean li{
-  padding:5px 0 5px 22px;position:relative;font-size:13px;color:var(--text);
-}
-ul.clean li::before{
-  content:'▸';position:absolute;left:4px;color:var(--accent);font-weight:700;
-}
-
-/* Info box */
-.note{
-  padding:12px 16px;border-radius:8px;margin:10px 0;font-size:12.5px;
-  display:flex;gap:10px;align-items:flex-start;
-}
-.note-navy{background:var(--navy-light);border:1px solid var(--navy-border);color:#1A3050}
-.note-accent{background:var(--accent-light);border:1px solid var(--accent-border);color:#8B4513}
-.note-green{background:var(--green-light);border:1px solid #B8E6CE;color:#145A3A}
-.note-red{background:var(--red-light);border:1px solid #F0C4BF;color:#8B1A1A}
-
-/* Tags */
-.tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700}
-.t-navy{background:var(--navy-light);color:var(--navy)}
-.t-accent{background:var(--accent-light);color:var(--accent)}
-.t-green{background:var(--green-light);color:var(--green)}
-.t-red{background:var(--red-light);color:var(--red)}
-
-/* Flow */
+ul.clean li{padding:5px 0 5px 22px;position:relative;font-size:13px;color:#1A1A2E}
+ul.clean li::before{content:'▸';position:absolute;left:4px;color:#E8722A;font-weight:700}
+.note{padding:12px 16px;border-radius:8px;margin:10px 0;font-size:12.5px;display:flex;gap:10px;align-items:flex-start}
 .flow{display:flex;align-items:center;justify-content:center;gap:0;margin:12px 0;flex-wrap:wrap}
-.flow-step{padding:8px 18px;border-radius:8px;font-size:12px;font-weight:600;color:#fff;background:var(--navy)}
-.flow-step.active{background:var(--accent)}
-.flow-arr{margin:0 6px;color:var(--sub);font-size:18px}
-
-/* Trend indicator */
-.trend-up{color:var(--green);font-weight:700}
-.trend-down{color:var(--red);font-weight:700}
-.trend-flat{color:var(--sub);font-weight:700}
-
-/* Share bar */
-.share-bar{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:var(--navy);color:#fff;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:8px 24px;font-size:12px;
-}
-.share-bar button{
-  padding:6px 14px;border-radius:6px;border:none;
-  font-size:11px;font-weight:600;cursor:pointer;
-  font-family:'Inter',sans-serif;transition:transform .15s;
-}
-.share-bar button:hover{transform:scale(1.03)}
-.btn-print{background:#fff;color:var(--navy)}
-.btn-share{background:var(--accent);color:#fff;margin-left:8px}
-.btn-edit{background:rgba(255,255,255,0.15);color:#fff;margin-left:8px}
-
-/* Footer */
-.doc-footer{
-  text-align:center;padding:28px 0 16px;margin-top:12px;
-  border-top:3px solid var(--navy);
-}
-.doc-footer img{height:36px;margin-bottom:8px;filter:drop-shadow(0 2px 6px rgba(30,58,95,0.15))}
-
+.share-bar{position:fixed;top:0;left:0;right:0;z-index:100;background:#1E3A5F;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:8px 24px;font-size:12px}
+.share-bar button{padding:6px 14px;border-radius:6px;border:none;font-size:11px;font-weight:600;cursor:pointer;font-family:'Segoe UI',Arial,sans-serif}
+.doc-footer{text-align:center;padding:28px 0 16px;margin-top:12px;border-top:3px solid #1E3A5F}
+.doc-footer img{height:36px;margin-bottom:8px}
 @media print{
   .share-bar{display:none!important}
-  body{background:#fff}
+  body{background:#fff!important}
   .container{padding:0;max-width:100%}
   .section{box-shadow:none;page-break-inside:avoid}
+  thead{background:#1E3A5F!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  thead th{color:#fff!important}
+  tbody tr:nth-child(even){background:#EBF0F7!important}
+  .note{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
 }
 </style>
 </head>
 <body>
 
-<!-- Top bar with sharing/export controls -->
 <div class="share-bar">
-  <div>📄 OJT Team SOP — Habuild Healthtech Pvt. Ltd.</div>
+  <div style="font-weight:600">OJT Team SOP — Habuild Healthtech Pvt. Ltd.</div>
   <div>
-    <button class="btn-print" onclick="window.print()">🖨️ Print / Save PDF</button>
-    <button class="btn-share" onclick="shareSOP()">📤 Share Link</button>
-    <button class="btn-edit" onclick="toggleEdit()">✏️ Toggle Edit</button>
+    <button style="background:#fff;color:#1E3A5F" onclick="window.print()">Print / Save PDF</button>
+    <button style="background:#E8722A;color:#fff;margin-left:8px" onclick="shareSOP()">Share as Document</button>
+    <button style="background:rgba(255,255,255,0.15);color:#fff;margin-left:8px" onclick="toggleEdit()">Toggle Edit</button>
   </div>
 </div>
 
 <div class="container" style="margin-top:44px">
 
-<!-- ===== DOCUMENT HEADER ===== -->
+<!-- DOCUMENT HEADER -->
 <div class="doc-header">
   <div class="logo-area">
     <img src="habuild-logo.png" alt="Habuild">
-    <div class="brand">Habuild Healthtech Pvt. Ltd.</div>
+    <span style="font-size:11px;color:#5A6478;font-weight:500">Habuild Healthtech Pvt. Ltd.</span>
   </div>
-  <div class="doc-title-area">
-    <h1>OJT Team SOP</h1>
-    <div class="doc-sub">Standard Operating Procedure</div>
+  <div style="text-align:right">
+    <div style="font-size:22px;font-weight:800;color:#1E3A5F">OJT Team SOP</div>
+    <div style="font-size:11px;color:#5A6478;font-weight:500">Standard Operating Procedure</div>
   </div>
 </div>
 
-<!-- ===== 1. OBJECTIVE ===== -->
+<!-- OBJECTIVE -->
 <div class="section">
   <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Objective</h2>
+  <div style="font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #E2E6EE">Objective</div>
   <p contenteditable="true">
     Ensure systematic tracking of interns during their <strong>45-day OJT</strong> period to make them <strong>95% ready</strong> for independently handling member queries with required quality and productivity standards.
   </p>
   <div class="flow" style="margin-top:14px">
-    <div class="flow-step">Classroom Training</div>
-    <span class="flow-arr">→</span>
-    <div class="flow-step active">OJT (45 Days)</div>
-    <span class="flow-arr">→</span>
-    <div class="flow-step">Department Transition</div>
+    <span style="padding:8px 18px;border-radius:8px;font-size:12px;font-weight:600;color:#fff;background:#1E3A5F">Classroom Training</span>
+    <span style="margin:0 6px;color:#5A6478;font-size:18px">→</span>
+    <span style="padding:8px 18px;border-radius:8px;font-size:12px;font-weight:600;color:#fff;background:#E8722A">OJT (45 Days)</span>
+    <span style="margin:0 6px;color:#5A6478;font-size:18px">→</span>
+    <span style="padding:8px 18px;border-radius:8px;font-size:12px;font-weight:600;color:#fff;background:#1E3A5F">Department Transition</span>
   </div>
-  <div class="note note-navy" style="margin-top:12px">
+  <div class="note" style="background:#EBF0F7;border:1px solid #C5D3E8;color:#1A3050;margin-top:12px">
     <span>ℹ️</span>
     <div contenteditable="true"><strong>Outcomes:</strong> Intern is shifted to a department (Support / Calling / Other) or exited based on performance, discipline, or behavioral concerns.</div>
   </div>
 </div>
 
-<!-- ===== 2. TRACKING STRUCTURE ===== -->
+<!-- TRACKING STRUCTURE -->
 <div class="section">
   <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>OJT Tracking Structure</h2>
+  <div style="font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #E2E6EE">OJT Tracking Structure</div>
   <p contenteditable="true">All tracking maintained in one workbook: <strong>"OJT Leads Reporting Tracker"</strong> with separate sheets per batch (Batch 10, 11, 12, etc.)</p>
-
-  <h3>Daily Updates — Mandatory</h3>
+  <div style="font-size:14px;font-weight:700;color:#E8722A;margin:14px 0 8px">Daily Updates — Mandatory</div>
   <table>
     <thead><tr><th>What to Track</th><th>Where to Update</th></tr></thead>
     <tbody contenteditable="true">
@@ -221,10 +111,10 @@ ul.clean li::before{
   </table>
 </div>
 
-<!-- ===== 3. OJT LEAD RESPONSIBILITIES ===== -->
+<!-- OJT LEAD RESPONSIBILITIES -->
 <div class="section">
   <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>OJT Lead Responsibilities</h2>
+  <div style="font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #E2E6EE">OJT Lead Responsibilities</div>
   <ul class="clean" contenteditable="true">
     <li>Daily tracking of assigned interns — attendance, chat count, productivity</li>
     <li>Review chats and provide actionable feedback</li>
@@ -245,7 +135,7 @@ ul.clean li::before{
     <li>Share daily work report in OJT group <strong>without reminders</strong></li>
   </ul>
 
-  <h3>Daily Refresher Sheet — Mandatory Update</h3>
+  <div style="font-size:14px;font-weight:700;color:#E8722A;margin:14px 0 8px">Daily Refresher Sheet — Mandatory Update</div>
   <table>
     <thead><tr><th>Field</th><th>Details</th></tr></thead>
     <tbody contenteditable="true">
@@ -256,8 +146,8 @@ ul.clean li::before{
     </tbody>
   </table>
 
-  <h3>Live Chat Test Schedule</h3>
-  <p contenteditable="true" style="font-size:12.5px;color:var(--sub);margin-bottom:8px">
+  <div style="font-size:14px;font-weight:700;color:#E8722A;margin:14px 0 8px">Live Chat Test Schedule</div>
+  <p contenteditable="true" style="font-size:12.5px;color:#5A6478;margin-bottom:8px">
     OJT Leads act as members — they message from their own number to the support number. Interns must handle the queries as real chats. Questions must be based on topics covered in refresher sessions.
   </p>
   <table>
@@ -268,88 +158,76 @@ ul.clean li::before{
       <tr><td><strong>Last (Week 5–6)</strong></td><td>Once a week</td><td>Final readiness check — intern should handle independently</td></tr>
     </tbody>
   </table>
-  <div class="note note-accent">
+  <div class="note" style="background:#FFF4ED;border:1px solid #FFD4B8;color:#8B4513">
     <span>📌</span>
     <div contenteditable="true"><strong>All questions asked during live chat tests must be recorded</strong> in the Daily Refresher Sheet under "Questions Taken" so performance can be tracked against specific topics.</div>
   </div>
 
-  <h3>Morning & Evening Team Alignment — OJT Lead Huddle</h3>
-  <p contenteditable="true" style="font-size:12.5px;color:var(--sub)">
+  <div style="font-size:14px;font-weight:700;color:#E8722A;margin:14px 0 8px">Morning &amp; Evening Team Alignment — OJT Lead Huddle</div>
+  <p contenteditable="true" style="font-size:12.5px;color:#5A6478">
     Both Morning and Evening OJT Leads must conduct a <strong>5–10 minute huddle</strong> to stay aligned on intern progress, refresher topics, live chat test observations, and any concerns. Frequency: <strong>Daily</strong> (preferred), or weekly / as required based on workload. This ensures consistent training quality across both shifts.
   </p>
 
-  <h3>Daily Report Must Include</h3>
-  <p contenteditable="true" style="font-size:12.5px;color:var(--sub)">
+  <div style="font-size:14px;font-weight:700;color:#E8722A;margin:14px 0 8px">Daily Report Must Include</div>
+  <p contenteditable="true" style="font-size:12.5px;color:#5A6478">
     Team count • Chat count by team • Audit count • Refresher conducted (1-line feedback) • Live chat tests taken (count + topic) • Escalations handled • Sheet updates done • Availability/productivity concerns with remarks if targets are low.
   </p>
 </div>
 
-<!-- ===== 4. WEEKLY SCORECARD ===== -->
+<!-- WEEKLY SCORECARD -->
 <div class="section">
   <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Weekly Scorecard Parameters</h2>
+  <div style="font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #E2E6EE">Weekly Scorecard Parameters</div>
   <p contenteditable="true" style="margin-bottom:10px">Maintained weekly for every intern:</p>
   <table>
     <thead><tr><th>Parameter</th><th>Category</th></tr></thead>
     <tbody contenteditable="true">
-      <tr><td>Intern Name, OJT Lead Name, Shift, Week</td><td><span class="tag t-navy">Identity</span></td></tr>
-      <tr><td>Availability</td><td><span class="tag t-navy">Attendance</span></td></tr>
-      <tr><td>AVG Chat Count, Total Chat Count, Total Chats Scanned, ARST</td><td><span class="tag t-accent">Productivity</span></td></tr>
-      <tr><td>Number of QCs, Error %, Rating by OJT Lead, Rating by AI</td><td><span class="tag t-red">Quality</span></td></tr>
-      <tr><td>Trend, Feedback, Needs Improvement</td><td><span class="tag t-green">Review</span></td></tr>
+      <tr><td>Intern Name, OJT Lead Name, Shift, Week</td><td><span style="background:#EBF0F7;color:#1E3A5F;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700">Identity</span></td></tr>
+      <tr><td>Availability</td><td><span style="background:#EBF0F7;color:#1E3A5F;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700">Attendance</span></td></tr>
+      <tr><td>AVG Chat Count, Total Chat Count, Total Chats Scanned, ARST</td><td><span style="background:#FFF4ED;color:#E8722A;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700">Productivity</span></td></tr>
+      <tr><td>Number of QCs, Error %, Rating by OJT Lead, Rating by AI</td><td><span style="background:#FDF0EE;color:#C0392B;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700">Quality</span></td></tr>
+      <tr><td>Trend, Feedback, Needs Improvement</td><td><span style="background:#EEFBF4;color:#1B8C5A;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700">Review</span></td></tr>
     </tbody>
   </table>
 </div>
 
-<!-- ===== 5. WEEKLY THRESHOLDS & TREND LOGIC ===== -->
+<!-- WEEKLY THRESHOLDS & TREND LOGIC -->
 <div class="section">
   <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Weekly Thresholds & Trend Logic</h2>
+  <div style="font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #E2E6EE">Weekly Thresholds &amp; Trend Logic</div>
   <table>
     <thead><tr><th>Week</th><th>Chat Count</th><th>Error %</th><th>Expected Trend</th></tr></thead>
     <tbody contenteditable="true">
-      <tr><td><strong>Week 1</strong></td><td>Observation</td><td>15–20%</td><td><span class="trend-flat">— Baseline</span></td></tr>
-      <tr><td><strong>Week 2</strong></td><td>60–70</td><td>~15%</td><td><span class="trend-up">↗ Improving</span></td></tr>
-      <tr><td><strong>Week 3</strong></td><td>80+</td><td>~10%</td><td><span class="trend-up">↗ Growing</span></td></tr>
-      <tr><td><strong>Week 4</strong></td><td>100+</td><td>~7–8%</td><td><span class="trend-up">↑ Strong</span></td></tr>
-      <tr><td><strong>Week 5</strong></td><td>120+</td><td>~5%</td><td><span class="trend-up">↑ Ready-Level</span></td></tr>
-      <tr><td><strong>Week 6</strong></td><td>120+ (Squad-level)</td><td>&lt;5%</td><td><span class="trend-up">✓ Transition Ready</span></td></tr>
+      <tr><td><strong>Week 1</strong></td><td>Observation</td><td>15–20%</td><td><span style="color:#5A6478;font-weight:700">— Baseline</span></td></tr>
+      <tr><td><strong>Week 2</strong></td><td>60–70</td><td>~15%</td><td><span style="color:#1B8C5A;font-weight:700">↗ Improving</span></td></tr>
+      <tr><td><strong>Week 3</strong></td><td>80+</td><td>~10%</td><td><span style="color:#1B8C5A;font-weight:700">↗ Growing</span></td></tr>
+      <tr><td><strong>Week 4</strong></td><td>100+</td><td>~7–8%</td><td><span style="color:#1B8C5A;font-weight:700">↑ Strong</span></td></tr>
+      <tr><td><strong>Week 5</strong></td><td>120+</td><td>~5%</td><td><span style="color:#1B8C5A;font-weight:700">↑ Ready-Level</span></td></tr>
+      <tr><td><strong>Week 6</strong></td><td>120+ (Squad-level)</td><td>&lt;5%</td><td><span style="color:#1B8C5A;font-weight:700">✓ Transition Ready</span></td></tr>
     </tbody>
   </table>
 
-  <h3>Trend Logic — How Trend is Determined</h3>
+  <div style="font-size:14px;font-weight:700;color:#E8722A;margin:14px 0 8px">Trend Logic — How Trend is Determined</div>
   <table>
     <thead><tr><th>Trend</th><th>Criteria (Priority Order)</th></tr></thead>
     <tbody contenteditable="true">
-      <tr>
-        <td><span class="trend-up">↑ Improving</span></td>
-        <td>Error % decreasing week-over-week <strong>AND</strong> chat count increasing or stable</td>
-      </tr>
-      <tr>
-        <td><span class="trend-flat">— Stable</span></td>
-        <td>Error % and productivity roughly same as last week (within ±2%)</td>
-      </tr>
-      <tr>
-        <td><span class="trend-down">↓ Declining</span></td>
-        <td>Error % increasing <strong>OR</strong> chat count dropping without valid reason</td>
-      </tr>
-      <tr>
-        <td><span class="trend-down">⚠ At Risk</span></td>
-        <td>Error % above threshold for 2+ weeks <strong>OR</strong> repeated attendance gaps <strong>OR</strong> behavioral concerns</td>
-      </tr>
+      <tr><td><span style="color:#1B8C5A;font-weight:700">↑ Improving</span></td><td>Error % decreasing week-over-week <strong>AND</strong> chat count increasing or stable</td></tr>
+      <tr><td><span style="color:#5A6478;font-weight:700">— Stable</span></td><td>Error % and productivity roughly same as last week (within ±2%)</td></tr>
+      <tr><td><span style="color:#C0392B;font-weight:700">↓ Declining</span></td><td>Error % increasing <strong>OR</strong> chat count dropping without valid reason</td></tr>
+      <tr><td><span style="color:#C0392B;font-weight:700">⚠ At Risk</span></td><td>Error % above threshold for 2+ weeks <strong>OR</strong> repeated attendance gaps <strong>OR</strong> behavioral concerns</td></tr>
     </tbody>
   </table>
 
-  <div class="note note-accent">
+  <div class="note" style="background:#FFF4ED;border:1px solid #FFD4B8;color:#8B4513">
     <span>📌</span>
     <div contenteditable="true"><strong>Priority for trend evaluation:</strong> 1st — Error Rate, 2nd — Productivity (chat count), 3rd — Attendance, ARST, professionalism. Thresholds may vary based on queue load, chat complexity, and operational situations.</div>
   </div>
 </div>
 
-<!-- ===== 6. QC & AUDIT GUIDELINES ===== -->
+<!-- QC & AUDIT -->
 <div class="section">
   <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>QC & Audit Guidelines</h2>
+  <div style="font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #E2E6EE">QC &amp; Audit Guidelines</div>
   <table>
     <thead><tr><th>Requirement</th><th>Details</th></tr></thead>
     <tbody contenteditable="true">
@@ -362,16 +240,16 @@ ul.clean li::before{
       <tr><td><strong>Re-Audits</strong></td><td>Random re-audits may be conducted by Training Lead</td></tr>
     </tbody>
   </table>
-  <div class="note note-navy">
+  <div class="note" style="background:#EBF0F7;border:1px solid #C5D3E8;color:#1A3050">
     <span>🔍</span>
     <div contenteditable="true"><strong>QC Team:</strong> Weekly/15-day audit reports must be shared with OJT Leads and Training Lead so corrective actions and refresher sessions can be planned accordingly.</div>
   </div>
 </div>
 
-<!-- ===== 7. FINAL REVIEW (45 DAYS) ===== -->
+<!-- FINAL REVIEW -->
 <div class="section">
   <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Final Review (After 45 Days)</h2>
+  <div style="font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #E2E6EE">Final Review (After 45 Days)</div>
   <p contenteditable="true" style="margin-bottom:10px">At the end of OJT, a final consolidated review must be prepared with all weekly scorecard parameters plus:</p>
   <table>
     <thead><tr><th>Additional Parameter</th><th>Description</th></tr></thead>
@@ -384,10 +262,10 @@ ul.clean li::before{
   </table>
 </div>
 
-<!-- ===== 8. DEPARTMENT TRANSITION & LEAD RESPONSIBILITIES ===== -->
+<!-- DEPARTMENT TRANSITION -->
 <div class="section">
   <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Department Transition Guidelines</h2>
+  <div style="font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #E2E6EE">Department Transition Guidelines</div>
   <p contenteditable="true" style="margin-bottom:10px">When interns are shifted to a department during or after OJT:</p>
   <ul class="clean" contenteditable="true">
     <li>OJT Team and Department Leads must coordinate continuously</li>
@@ -398,33 +276,31 @@ ul.clean li::before{
     <li>Gradual target progression as per OJT thresholds must be maintained</li>
     <li>Escalations must be highlighted to Training Lead immediately</li>
   </ul>
-  <div class="note note-red">
+  <div class="note" style="background:#FDF0EE;border:1px solid #F0C4BF;color:#8B1A1A">
     <span>⛔</span>
     <div contenteditable="true"><strong>Important:</strong> Any action against interns must only be taken after proper stakeholder discussion and as per OJT criteria.</div>
   </div>
 </div>
 
-<!-- ===== 10. REFRESHER & ESCALATION ===== -->
+<!-- REFRESHER & ESCALATION -->
 <div class="section">
   <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Refresher Sessions & Escalation Handling</h2>
-
-  <h3>Refresher Sessions</h3>
-  <p contenteditable="true" style="font-size:12.5px;color:var(--sub);margin-bottom:6px">
+  <div style="font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #E2E6EE">Refresher Sessions &amp; Escalation Handling</div>
+  <div style="font-size:14px;font-weight:700;color:#E8722A;margin:4px 0 8px">Refresher Sessions</div>
+  <p contenteditable="true" style="font-size:12.5px;color:#5A6478;margin-bottom:6px">
     Conducted based on: error trends, productivity concerns, repeated audit issues, escalation observations. Reports must include session name, attendance, 1-line feedback, key observations, and improvement areas.
   </p>
-
-  <h3>Escalation Handling</h3>
-  <p contenteditable="true" style="font-size:12.5px;color:var(--sub)">
+  <div style="font-size:14px;font-weight:700;color:#E8722A;margin:14px 0 8px">Escalation Handling</div>
+  <p contenteditable="true" style="font-size:12.5px;color:#5A6478">
     Major concerns (performance, behavior, attendance, professionalism, negative influence) must be immediately escalated to:
     <strong>Training Lead → Relevant Stakeholders → HR Team</strong> (if required).
   </p>
 </div>
 
-<!-- ===== 11. REPORTING ===== -->
+<!-- REPORTING -->
 <div class="section">
   <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Reporting Schedule</h2>
+  <div style="font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #E2E6EE">Reporting Schedule</div>
   <table>
     <thead><tr><th>Report</th><th>Frequency</th><th>Shared With</th></tr></thead>
     <tbody contenteditable="true">
@@ -434,16 +310,16 @@ ul.clean li::before{
       <tr><td>Final Batch Report</td><td>End of 45 Days</td><td>All Stakeholders via email</td></tr>
     </tbody>
   </table>
-  <div class="note note-accent">
+  <div class="note" style="background:#FFF4ED;border:1px solid #FFD4B8;color:#8B4513">
     <span>📝</span>
     <div contenteditable="true">Final report must include: compiled review sheet, missing data verified, exited interns marked, transition status updated.</div>
   </div>
 </div>
 
-<!-- ===== 12. KEY GUIDELINES ===== -->
+<!-- KEY GUIDELINES -->
 <div class="section">
   <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Key Operational Guidelines</h2>
+  <div style="font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #E2E6EE">Key Operational Guidelines</div>
   <ul class="clean" contenteditable="true">
     <li>Intern tracking must happen every working day without fail</li>
     <li>Data entries must always remain updated and accurate</li>
@@ -454,17 +330,17 @@ ul.clean li::before{
   </ul>
 </div>
 
-<!-- ===== TRAINING LEAD RESPONSIBILITIES (DIPTI) ===== -->
+<!-- TRAINING LEAD RESPONSIBILITIES — DIPTI -->
 <div class="section">
   <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Training Lead Responsibilities — Dipti Sahu</h2>
+  <div style="font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #E2E6EE">Training Lead Responsibilities — Dipti Sahu</div>
   <table>
     <thead><tr><th>Area</th><th>Responsibilities</th></tr></thead>
     <tbody contenteditable="true">
       <tr><td><strong>OJT Team Management</strong></td><td>Manage OJT operations and adherence, daily hurdles with OJT Leads, weekly feedback discussions, leave approvals, task allocation and monitoring</td></tr>
       <tr><td><strong>Intern Huddles</strong></td><td>Conduct <strong>short huddle with interns daily/weekly</strong> — check-in on progress, concerns, motivation, readiness, and address common issues</td></tr>
       <tr><td><strong>Performance Monitoring</strong></td><td>Monitor intern readiness and department transition, review scorecards and daily reports, identify performance gaps, take corrective actions</td></tr>
-      <tr><td><strong>Quality & Feedback</strong></td><td>Randomly re-audit OJT Lead audits, conduct refresher sessions when required, conduct 1-on-1 intern feedback sessions, maintain all documentation and trackers</td></tr>
+      <tr><td><strong>Quality &amp; Feedback</strong></td><td>Randomly re-audit OJT Lead audits, conduct refresher sessions when required, conduct 1-on-1 intern feedback sessions, maintain all documentation and trackers</td></tr>
       <tr><td><strong>OJT Evaluation</strong></td><td>Coordinate and oversee OJT evaluations conducted by OJT Leads, ensure evaluations are fair and aligned with SOP criteria</td></tr>
       <tr><td><strong>Coordination</strong></td><td>Coordinate with HR (escalations/exits), squads (transitions), department handovers, manage ID creation and yoga subscriptions</td></tr>
       <tr><td><strong>Classroom Training Support</strong></td><td>When OJT team strength is low, support classroom training — prepare training material, take sessions, provide resources as per the situation</td></tr>
@@ -473,19 +349,18 @@ ul.clean li::before{
   </table>
 </div>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <div class="doc-footer">
-  <img src="habuild-logo.png" alt="Habuild" style="filter:drop-shadow(0 2px 8px rgba(30,58,95,0.2))">
-  <p style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:2px" contenteditable="true">Prepared By: Dipti Sahu</p>
-  <p style="font-size:12px;color:var(--sub)" contenteditable="true">Training & Development Lead — Habuild Healthtech Pvt. Ltd.</p>
-  <p style="font-size:10px;color:#AAB0BC;margin-top:8px">Click any text to edit • Ctrl+P → Save as PDF → Upload to Google Drive → Open with Google Docs to share with edit access</p>
+  <img src="habuild-logo.png" alt="Habuild">
+  <p style="font-size:14px;font-weight:700;color:#1E3A5F;margin-bottom:2px" contenteditable="true">Prepared By: Dipti Sahu</p>
+  <p style="font-size:12px;color:#5A6478" contenteditable="true">Training &amp; Development Lead — Habuild Healthtech Pvt. Ltd.</p>
+  <p style="font-size:10px;color:#AAB0BC;margin-top:8px">Click any text to edit directly in browser • Ctrl+P → Save as PDF → Upload to Google Drive → Open with Google Docs to share with edit access</p>
 </div>
 
 </div>
 
 <script>
 let editable = true;
-
 function toggleEdit(){
   editable = !editable;
   document.querySelectorAll('[contenteditable]').forEach(el => {
@@ -493,9 +368,8 @@ function toggleEdit(){
   });
   alert(editable ? 'Editing enabled — click any text to edit' : 'Editing disabled — document is now view-only');
 }
-
 function shareSOP(){
-  alert('To share as Google Document:\\n\\n1. Press Ctrl+P → Save as PDF\\n2. Upload PDF to Google Drive\\n3. Right-click → Open with → Google Docs\\n4. Click Share → Add people with edit access\\n\\nOr share the live link with view-only access.');
+  alert('To share as Google Document:\n\n1. Press Ctrl+P → Save as PDF\n2. Upload PDF to Google Drive\n3. Right-click → Open with → Google Docs\n4. Click Share → Add people with edit access\n\nOr share the live link with view-only access.');
 }
 </script>
 </body>
