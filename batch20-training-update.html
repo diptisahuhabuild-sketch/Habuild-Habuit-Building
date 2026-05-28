@@ -6,37 +6,28 @@
 <title>Batch 20 Training Update — Habuild</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#F5F6FA;color:#1A1A2E;line-height:1.65;font-size:13.5px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
-.container{max-width:860px;margin:0 auto;padding:20px 24px}
-.card{background:#fff;border:1px solid #E2E6EE;border-radius:10px;padding:24px 28px;margin-bottom:16px;position:relative;overflow:hidden;page-break-inside:avoid}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#1E3A5F,#E8722A)}
-.card-plain{background:#fff;border:1px solid #E2E6EE;border-radius:10px;padding:20px 24px;margin-bottom:16px;page-break-inside:avoid}
-h2{font-size:17px;font-weight:700;color:#1E3A5F;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #E2E6EE}
-h3{font-size:14px;font-weight:700;color:#E8722A;margin:12px 0 6px}
-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:12.5px}
+body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#fff;color:#1A1A2E;line-height:1.7;font-size:13.5px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+.container{max-width:780px;margin:0 auto;padding:24px 32px}
+h2{font-size:15px;font-weight:700;color:#1E3A5F;margin:22px 0 8px;padding-bottom:6px;border-bottom:2px solid #1E3A5F}
+h3{font-size:13px;font-weight:700;color:#E8722A;margin:12px 0 4px}
+table{width:100%;border-collapse:collapse;margin:6px 0 12px;font-size:12.5px}
 thead{background:#1E3A5F!important}
-thead th{color:#fff!important;font-weight:600;padding:8px 10px;text-align:left;font-size:11px;letter-spacing:0.3px;text-transform:uppercase}
+thead th{color:#fff!important;font-weight:600;padding:7px 10px;text-align:left;font-size:11px;text-transform:uppercase}
 tbody tr{border-bottom:1px solid #E8EBF0}
 tbody tr:nth-child(even){background:#F5F7FB!important}
-tbody td{padding:7px 10px;vertical-align:top}
-.tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700}
-.t-green{background:#EEFBF4;color:#1B8C5A}
-.t-orange{background:#FFF4ED;color:#E8722A}
-.t-navy{background:#EBF0F7;color:#1E3A5F}
-.t-red{background:#FDF0EE;color:#C0392B}
-.note{padding:10px 14px;border-radius:8px;margin:8px 0;font-size:12px;display:flex;gap:8px;align-items:flex-start}
-.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0}
-.stat-box{text-align:center;padding:14px 10px;border-radius:10px;border:1px solid #E2E6EE;background:#FAFBFD}
-.stat-num{font-size:26px;font-weight:800;color:#1E3A5F}
-.stat-label{font-size:11px;color:#5A6478;font-weight:500;margin-top:2px}
-.perf-bar{height:8px;border-radius:4px;background:#E8EBF0;overflow:hidden;margin-top:4px}
-.perf-fill{height:100%;border-radius:4px}
-.logo-area{display:flex;align-items:center;gap:10px}
-.logo-area img{height:36px}
-.header-bar{display:flex;align-items:center;justify-content:space-between;padding:16px 0;margin-bottom:12px}
-.doc-footer{text-align:center;padding:20px 0 10px;border-top:2px solid #1E3A5F;margin-top:10px}
-.page-logo{position:absolute;top:12px;right:16px;opacity:0.06;height:50px;pointer-events:none}
-@media print{body{background:#fff}.container{padding:0;max-width:100%}.card,.card-plain{box-shadow:none;page-break-inside:avoid}thead{background:#1E3A5F!important;-webkit-print-color-adjust:exact!important}thead th{color:#fff!important}tbody tr:nth-child(even){background:#F5F7FB!important}}
+tbody td{padding:6px 10px;vertical-align:top}
+p{margin:4px 0}
+.highlight{background:#FFF4ED;border-left:3px solid #E8722A;padding:8px 14px;border-radius:0 6px 6px 0;margin:8px 0;font-size:12.5px}
+.stat-row{display:flex;gap:16px;margin:10px 0}
+.stat-box{flex:1;text-align:center;padding:12px 8px;border:1px solid #E2E6EE;border-radius:8px}
+.stat-num{font-size:24px;font-weight:800;color:#1E3A5F}
+.stat-label{font-size:10px;color:#5A6478;margin-top:2px}
+.perf-bar{height:6px;border-radius:3px;background:#E8EBF0;overflow:hidden;display:inline-block;width:60px;vertical-align:middle;margin-left:6px}
+.perf-fill{height:100%;border-radius:3px}
+.logo-row{display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;border-bottom:3px solid #1E3A5F;margin-bottom:8px}
+.logo-row img{height:34px}
+.footer{text-align:center;padding:16px 0 8px;border-top:2px solid #1E3A5F;margin-top:16px;font-size:12px;color:#5A6478}
+@media print{body{background:#fff}thead{background:#1E3A5F!important}thead th{color:#fff!important}tbody tr:nth-child(even){background:#F5F7FB!important}}
 @page{margin:12mm 10mm}
 </style>
 </head>
@@ -44,269 +35,130 @@ tbody td{padding:7px 10px;vertical-align:top}
 <div class="container">
 
 <!-- HEADER -->
-<div class="header-bar">
-  <div class="logo-area">
+<div class="logo-row">
+  <div style="display:flex;align-items:center;gap:10px">
     <img src="habuild-logo.png" alt="Habuild">
     <span style="font-size:11px;color:#5A6478">Habuild Healthtech Pvt. Ltd.</span>
   </div>
   <div style="text-align:right">
-    <div style="font-size:20px;font-weight:800;color:#1E3A5F">Batch 20 — Training Update</div>
-    <div style="font-size:11px;color:#5A6478">New Hire Training (NHT) Completion Report</div>
+    <div style="font-size:18px;font-weight:800;color:#1E3A5F">Batch 20 — Training Update</div>
   </div>
 </div>
 
-<!-- EXECUTIVE SUMMARY -->
-<div class="card">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Executive Summary</h2>
-  <div class="stat-grid">
-    <div class="stat-box">
-      <div class="stat-num">21</div>
-      <div class="stat-label">Interns Onboarded</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num">16</div>
-      <div class="stat-label">Training Days</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num">12</div>
-      <div class="stat-label">Chat Support</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num">9</div>
-      <div class="stat-label">Calling Team</div>
-    </div>
-  </div>
-  <table>
-    <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Training Period</strong></td><td>11 May 2026 — 26 May 2026 (16 days incl. week offs)</td></tr>
-      <tr><td><strong>OJT Start Date</strong></td><td>27 May 2026 (Wednesday)</td></tr>
-      <tr><td><strong>Total Onboarded</strong></td><td>28 interns initially → <strong>21 active</strong> (7 exited during training)</td></tr>
-      <tr><td><strong>Chat Support Team</strong></td><td>12 interns (Morning + Evening shifts)</td></tr>
-      <tr><td><strong>Calling Team</strong></td><td>9 interns (5 Morning + 4 Evening) — coordination with OJT Team</td></tr>
-    </tbody>
-  </table>
+<!-- SUMMARY -->
+<div class="stat-row">
+  <div class="stat-box"><div class="stat-num">21</div><div class="stat-label">Active Interns</div></div>
+  <div class="stat-box"><div class="stat-num">16</div><div class="stat-label">Training Days</div></div>
+  <div class="stat-box"><div class="stat-num">12</div><div class="stat-label">Chat Support</div></div>
+  <div class="stat-box"><div class="stat-num">9</div><div class="stat-label">Calling Team</div></div>
+  <div class="stat-box"><div class="stat-num">7</div><div class="stat-label">Exited</div></div>
 </div>
+
+<p><strong>Training:</strong> 11 May – 26 May 2026 (16 days incl. week offs) &nbsp;|&nbsp; <strong>OJT Started:</strong> 27 May 2026 (Wednesday)</p>
+<p>28 interns onboarded → <strong>21 active</strong> (7 exited during training). 12 assigned to Chat Support, 9 to Calling Team. Calling team coordination managed through OJT Team.</p>
 
 <!-- TEAM ASSIGNMENT -->
-<div class="card">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>OJT Team Assignment</h2>
+<h2>Team Assignment</h2>
 
-  <h3>Calling Team — Morning (5 Interns)</h3>
-  <table>
-    <thead><tr><th>Intern</th><th>Shift</th><th>Team</th></tr></thead>
-    <tbody>
-      <tr><td>Geetika Chopra</td><td>Morning</td><td><span class="tag t-orange">Calling</span></td></tr>
-      <tr><td>Lubdha Bhasme</td><td>Morning</td><td><span class="tag t-orange">Calling</span></td></tr>
-      <tr><td>Samiksha Kshirsagar</td><td>Evening</td><td><span class="tag t-orange">Calling</span></td></tr>
-      <tr><td>Shivam Loige</td><td>Evening</td><td><span class="tag t-orange">Calling</span></td></tr>
-      <tr><td>Pareedhi Sarwan</td><td>Morning</td><td><span class="tag t-orange">Calling</span></td></tr>
-    </tbody>
-  </table>
+<h3>Calling Team (9)</h3>
+<p><strong>Morning (5):</strong> Geetika Chopra, Lubdha Bhasme, Samiksha Kshirsagar, Shivam Loige, Pareedhi Sarwan</p>
+<p><strong>Evening (4):</strong> Pretty Patil, Nitesh S. Hiwase, Prachi Somyani, Prachi Kamble</p>
 
-  <h3>Calling Team — Evening (4 Interns)</h3>
-  <table>
-    <thead><tr><th>Intern</th><th>Shift</th><th>Team</th></tr></thead>
-    <tbody>
-      <tr><td>Pretty Patil</td><td>Evening</td><td><span class="tag t-orange">Calling</span></td></tr>
-      <tr><td>Nitesh Sureshrao Hiwase</td><td>Evening</td><td><span class="tag t-orange">Calling</span></td></tr>
-      <tr><td>Prachi Somyani</td><td>Evening</td><td><span class="tag t-orange">Calling</span></td></tr>
-      <tr><td>Prachi Kamble</td><td>Evening</td><td><span class="tag t-orange">Calling</span></td></tr>
-    </tbody>
-  </table>
+<h3>Chat Support — OJT Lead Mapping (12)</h3>
+<table>
+  <thead><tr><th>Shift</th><th>OJT Lead</th><th>Interns</th></tr></thead>
+  <tbody>
+    <tr><td rowspan="2"><strong>Morning</strong></td><td>Rashi</td><td>Mehak Lokhande, Aditya Jaiswal, Anjali H. Balbudhe</td></tr>
+    <tr><td>Sonali</td><td>Smit Pendor, Papiha Ghube, Kunal J. Fukatkar</td></tr>
+    <tr><td rowspan="3"><strong>Evening</strong></td><td>Samiksha</td><td>Vishal, Mosin Sheikh, Tina Kute</td></tr>
+    <tr><td>Priyanshu</td><td>Syed Khizar Ali, Palak Jain</td></tr>
+    <tr><td>Nilesh</td><td>Babasaheb Kothavale, Jaya Dongare</td></tr>
+  </tbody>
+</table>
 
-  <h3>Chat Support — Morning OJT Leads</h3>
-  <table>
-    <thead><tr><th>OJT Lead</th><th>Assigned Interns</th><th>Count</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Rashi</strong></td><td>Mehak Lokhande, Aditya Jaiswal, Anjali Hansraj Balbudhe</td><td>3</td></tr>
-      <tr><td><strong>Sonali</strong></td><td>Smit Pendor, Papiha Ghube, Kunal Jitendra Fukatkar</td><td>3</td></tr>
-    </tbody>
-  </table>
+<!-- SCORECARD -->
+<h2>Training Scorecard (11 Assessments | Max: 210)</h2>
 
-  <h3>Chat Support — Evening OJT Leads</h3>
-  <table>
-    <thead><tr><th>OJT Lead</th><th>Assigned Interns</th><th>Count</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Samiksha</strong></td><td>Vishal + Mosin Sheikh, Tina Kute</td><td>3</td></tr>
-      <tr><td><strong>Priyanshu</strong></td><td>Syed Khizar Ali, Palak Jain</td><td>2</td></tr>
-      <tr><td><strong>Nilesh</strong></td><td>Babasaheb Kothavale, Jaya Dongare</td><td>2</td></tr>
-    </tbody>
-  </table>
+<table>
+  <thead><tr><th>#</th><th>Intern</th><th>Score</th><th>%</th><th>Visual</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Babasaheb Kothavale</td><td><strong>192</strong></td><td><strong>91.4%</strong></td><td><div class="perf-bar"><div class="perf-fill" style="width:91%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>2</td><td>Mosin Sheikh</td><td>187</td><td>89.1%</td><td><div class="perf-bar"><div class="perf-fill" style="width:89%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>3</td><td>Lubdha Bhasme</td><td>185</td><td>88.1%</td><td><div class="perf-bar"><div class="perf-fill" style="width:88%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>4</td><td>Aditya Jaiswal</td><td>184</td><td>87.6%</td><td><div class="perf-bar"><div class="perf-fill" style="width:88%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>5</td><td>Papiha Ghube</td><td>183</td><td>87.1%</td><td><div class="perf-bar"><div class="perf-fill" style="width:87%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>6</td><td>Pretty Patil</td><td>182</td><td>86.7%</td><td><div class="perf-bar"><div class="perf-fill" style="width:87%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>7</td><td>Nitesh S. Hiwase</td><td>181</td><td>86.2%</td><td><div class="perf-bar"><div class="perf-fill" style="width:86%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>8</td><td>Mehak Lokhande</td><td>180</td><td>85.7%</td><td><div class="perf-bar"><div class="perf-fill" style="width:86%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>9</td><td>Anjali H. Balbudhe</td><td>179</td><td>85.2%</td><td><div class="perf-bar"><div class="perf-fill" style="width:85%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>10</td><td>Prachi Somyani</td><td>173</td><td>82.4%</td><td><div class="perf-bar"><div class="perf-fill" style="width:82%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>11</td><td>Jaya Dongare</td><td>172</td><td>81.9%</td><td><div class="perf-bar"><div class="perf-fill" style="width:82%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>12</td><td>Geetika Chopra</td><td>171</td><td>81.4%</td><td><div class="perf-bar"><div class="perf-fill" style="width:81%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>13</td><td>Tina Kute</td><td>171</td><td>81.4%</td><td><div class="perf-bar"><div class="perf-fill" style="width:81%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>14</td><td>Prachi Kamble</td><td>170</td><td>81.0%</td><td><div class="perf-bar"><div class="perf-fill" style="width:81%;background:#1B8C5A"></div></div></td></tr>
+    <tr><td>15</td><td>Palak Jain</td><td>165</td><td>78.6%</td><td><div class="perf-bar"><div class="perf-fill" style="width:79%;background:#E8722A"></div></div></td></tr>
+    <tr><td>16</td><td>Samiksha Kshirsagar</td><td>164</td><td>78.1%</td><td><div class="perf-bar"><div class="perf-fill" style="width:78%;background:#E8722A"></div></div></td></tr>
+    <tr><td>17</td><td>Kunal J. Fukatkar</td><td>155</td><td>73.8%</td><td><div class="perf-bar"><div class="perf-fill" style="width:74%;background:#E8722A"></div></div></td></tr>
+    <tr><td>18</td><td>Shivam Loige</td><td>153</td><td>72.9%</td><td><div class="perf-bar"><div class="perf-fill" style="width:73%;background:#E8722A"></div></div></td></tr>
+    <tr><td>19</td><td>Smit Pendor</td><td>153</td><td>72.9%</td><td><div class="perf-bar"><div class="perf-fill" style="width:73%;background:#E8722A"></div></div></td></tr>
+    <tr><td>20</td><td>Pareedhi Sarwan</td><td>149</td><td>70.9%</td><td><div class="perf-bar"><div class="perf-fill" style="width:71%;background:#E8722A"></div></div></td></tr>
+    <tr><td>21</td><td>Syed Khizar Ali</td><td>137</td><td>65.2%</td><td><div class="perf-bar"><div class="perf-fill" style="width:65%;background:#C0392B"></div></div></td></tr>
+  </tbody>
+</table>
 
-  <div class="note" style="background:#EBF0F7;border:1px solid #C5D3E8;color:#1A3050">
-    <span>ℹ️</span>
-    <div>Calling team coordination will be managed through OJT Team. All OJT parameters and tracking apply to both Chat Support and Calling interns. Refer to OJT Team SOP for detailed process.</div>
-  </div>
+<p><strong>Batch Average: ~80.8%</strong> &nbsp;|&nbsp; Top: Babasaheb (91.4%) &nbsp;|&nbsp; 14 interns above 80% &nbsp;|&nbsp; 6 in 70–79% &nbsp;|&nbsp; 1 below 70%</p>
+
+<div class="highlight">
+  <strong>Attention needed:</strong> Syed Khizar Ali (65.2%) — needs focused refresher and one-on-one support during OJT Week 1. Interns in 70-74% range (Kunal, Shivam, Smit, Pareedhi) to be monitored closely.
 </div>
 
-<!-- SCORECARD SUMMARY -->
-<div class="card">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Training Scorecard — Active Interns (21)</h2>
-  <p style="font-size:12px;color:#5A6478;margin-bottom:10px">Performance across 11 assessments conducted during training. Total marks: 210 (max for top scorer).</p>
+<!-- TRAINING COVERED -->
+<h2>Topics Covered (16 Days)</h2>
+<p><strong>Week 1 (Day 1–6):</strong> HR Induction, Habuild Overview, Dept Workflow, CRM (Chats, Member Info, OTP, Payments), Paid & Free Member APP/Dashboard, Referrals, Free Rolling Challenge, Payment Deep Dive (QR, UPI, Razorpay, complex scenarios)</p>
+<p><strong>Week 2 (Day 8–13):</strong> Payment QR's, Link Issues & Solutions, Session Link QR's, Remaining Common QR's, All Forms (DM, Payment, Support, Escalation), Community Events, Practical Hands-on with Mentors</p>
+<p><strong>Week 3 (Day 15–16):</strong> Soft Skills ("Own the Member Experience"), Final Assessment, English & Aptitude Test, QC Session (Do's & Don'ts by Rakesh), Fun Farewell, OJT Instructions</p>
 
-  <table>
-    <thead><tr><th>#</th><th>Intern Name</th><th>Shift</th><th>Score</th><th>%</th><th>Performance</th></tr></thead>
-    <tbody>
-      <tr><td>1</td><td>Pareedhi Sarwan</td><td>Morning</td><td>149</td><td>70.95%</td><td><div class="perf-bar"><div class="perf-fill" style="width:71%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>2</td><td>Pretty Patil</td><td>Evening</td><td>182</td><td>86.67%</td><td><div class="perf-bar"><div class="perf-fill" style="width:87%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>3</td><td>Syed Khizar Ali</td><td>Evening</td><td>137</td><td>65.24%</td><td><div class="perf-bar"><div class="perf-fill" style="width:65%;background:#E8722A"></div></div></td></tr>
-      <tr><td>4</td><td>Prachi Kamble</td><td>Evening</td><td>170</td><td>80.95%</td><td><div class="perf-bar"><div class="perf-fill" style="width:81%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>5</td><td>Geetika Chopra</td><td>Morning</td><td>171</td><td>81.43%</td><td><div class="perf-bar"><div class="perf-fill" style="width:81%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>6</td><td>Tina Kute</td><td>Morning</td><td>171</td><td>81.43%</td><td><div class="perf-bar"><div class="perf-fill" style="width:81%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>7</td><td>Babasaheb Kothavale</td><td>Evening</td><td>192</td><td>91.43%</td><td><div class="perf-bar"><div class="perf-fill" style="width:91%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>8</td><td>Jaya Dongare</td><td>Evening</td><td>172</td><td>81.90%</td><td><div class="perf-bar"><div class="perf-fill" style="width:82%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>9</td><td>Shivam Loige</td><td>Evening</td><td>153</td><td>72.86%</td><td><div class="perf-bar"><div class="perf-fill" style="width:73%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>10</td><td>Mehak Lokhande</td><td>Morning</td><td>180</td><td>85.71%</td><td><div class="perf-bar"><div class="perf-fill" style="width:86%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>11</td><td>Aditya Jaiswal</td><td>Morning</td><td>184</td><td>87.62%</td><td><div class="perf-bar"><div class="perf-fill" style="width:88%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>12</td><td>Smit Pendor</td><td>Morning</td><td>153</td><td>72.86%</td><td><div class="perf-bar"><div class="perf-fill" style="width:73%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>13</td><td>Anjali Hansraj Balbudhe</td><td>Morning</td><td>179</td><td>85.24%</td><td><div class="perf-bar"><div class="perf-fill" style="width:85%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>14</td><td>Samiksha Kshirsagar</td><td>Evening</td><td>164</td><td>78.10%</td><td><div class="perf-bar"><div class="perf-fill" style="width:78%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>15</td><td>Mosin Sheikh</td><td>Evening</td><td>187</td><td>89.05%</td><td><div class="perf-bar"><div class="perf-fill" style="width:89%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>16</td><td>Lubdha Bhasme</td><td>Morning</td><td>185</td><td>88.10%</td><td><div class="perf-bar"><div class="perf-fill" style="width:88%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>17</td><td>Nitesh Sureshrao Hiwase</td><td>Evening</td><td>181</td><td>86.19%</td><td><div class="perf-bar"><div class="perf-fill" style="width:86%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>18</td><td>Kunal Jitendra Fukatkar</td><td>Morning</td><td>155</td><td>73.81%</td><td><div class="perf-bar"><div class="perf-fill" style="width:74%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>19</td><td>Papiha Ghube</td><td>Morning</td><td>183</td><td>87.14%</td><td><div class="perf-bar"><div class="perf-fill" style="width:87%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>20</td><td>Palak Jain</td><td>Morning</td><td>165</td><td>78.57%</td><td><div class="perf-bar"><div class="perf-fill" style="width:79%;background:#1B8C5A"></div></div></td></tr>
-      <tr><td>21</td><td>Prachi Somyani</td><td>Evening</td><td>173</td><td>82.38%</td><td><div class="perf-bar"><div class="perf-fill" style="width:82%;background:#1B8C5A"></div></div></td></tr>
-    </tbody>
-  </table>
+<p style="margin-top:6px"><strong>Assessments:</strong> 11 tests conducted — Communication, Product Basics, CRM, APP/Dashboard, Referral, Payment QR's, Session Link QR's, Remaining QR's, All Forms, English & Aptitude, Final Assessment</p>
+<p><strong>Practical:</strong> Daily mentor sitting (both shifts), live chat observation, hands-on practice from Day 4 onwards</p>
+<p><strong>Dept Leads introduced:</strong> Komal, Krishna, Pallavi, Raj, Snehal, Abra, Harshlata, Payal, Divya, Sanovar, Safreen</p>
 
-  <h3>Performance Distribution</h3>
-  <div class="stat-grid">
-    <div class="stat-box" style="border-left:3px solid #1B8C5A">
-      <div class="stat-num" style="color:#1B8C5A">3</div>
-      <div class="stat-label">90%+ (Excellent)</div>
-    </div>
-    <div class="stat-box" style="border-left:3px solid #1E3A5F">
-      <div class="stat-num">11</div>
-      <div class="stat-label">80–89% (Good)</div>
-    </div>
-    <div class="stat-box" style="border-left:3px solid #E8722A">
-      <div class="stat-num" style="color:#E8722A">6</div>
-      <div class="stat-label">70–79% (Average)</div>
-    </div>
-    <div class="stat-box" style="border-left:3px solid #C0392B">
-      <div class="stat-num" style="color:#C0392B">1</div>
-      <div class="stat-label">Below 70%</div>
-    </div>
-  </div>
-
-  <div class="note" style="background:#EEFBF4;border:1px solid #B8E6CE;color:#145A3A">
-    <span>📊</span>
-    <div><strong>Batch Average: ~80.8%</strong> | Top Scorer: Babasaheb Kothavale (91.43%) | Needs attention: Syed Khizar Ali (65.24%)</div>
-  </div>
-</div>
-
-<!-- EXITED INTERNS -->
-<div class="card-plain">
-  <h2>Exited During Training (7 Interns)</h2>
-  <table>
-    <thead><tr><th>#</th><th>Intern</th><th>Reason</th><th>Exit Day</th></tr></thead>
-    <tbody>
-      <tr><td>22</td><td>Khushi Dixit</td><td>Family emergency on Day 11 + performance concerns</td><td>Day 11</td></tr>
-      <tr><td>23</td><td>Aryan Dhube</td><td>Personal reason</td><td>Day 12</td></tr>
-      <tr><td>24</td><td>Vedanshu Sharma</td><td>Growth alignment not met per education</td><td>Day 5</td></tr>
-      <tr><td>25</td><td>Saurabh Chavhan</td><td>Growth alignment not met per education</td><td>Day 5</td></tr>
-      <tr><td>26</td><td>Vrushabh</td><td>Growth alignment not met per education</td><td>Day 5</td></tr>
-      <tr><td>27</td><td>Smita Pardhi</td><td>Personal issues/incidents in office</td><td>Day 3</td></tr>
-      <tr><td>28</td><td>Yakshri Prakash Bagade</td><td>Quit without informing</td><td>Day 3</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- DAY-WISE TRAINING SUMMARY -->
-<div class="card">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Day-Wise Training Summary (16 Days)</h2>
-  <table>
-    <thead><tr><th>Day</th><th>Date</th><th>Key Topics Covered</th><th>Tests / Activities</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Day 1</strong></td><td>Mon, 11 May</td><td>HR Induction, Habuild Overview, Dept Workflow, Support Lead Interaction</td><td>Energizers, Yoga Registration</td></tr>
-      <tr><td><strong>Day 2</strong></td><td>Tue, 12 May</td><td>CRM Introduction (Chats, Member Info Panel, OTP)</td><td>Basics of Product Test</td></tr>
-      <tr><td><strong>Day 3</strong></td><td>Wed, 13 May</td><td>CRM Deep Dive (Program Member, Payments Section, Communicate with Care)</td><td>CRM Test</td></tr>
-      <tr><td><strong>Day 4</strong></td><td>Thu, 14 May</td><td>Mentor Assignment, Paid & Free Member APP, Dashboard</td><td>APP/Dashboard Test</td></tr>
-      <tr><td><strong>Day 5</strong></td><td>Fri, 15 May</td><td>Free Rolling Challenge, 21-Day Challenge, Referrals, Payments</td><td>Referral Test</td></tr>
-      <tr><td><strong>Day 6</strong></td><td>Sat, 16 May</td><td>Payment Deep Dive (QR, UPI, Razorpay screenshots, complex scenarios)</td><td>Payment Revision</td></tr>
-      <tr style="background:#F5F7FB"><td><strong>Day 7</strong></td><td>Sun, 17 May</td><td colspan="2" style="color:#5A6478;font-style:italic">Day Off</td></tr>
-      <tr><td><strong>Day 8</strong></td><td>Mon, 18 May</td><td>Rudra Puja, Payment QR's Deep Drive, Payment Revision</td><td>Payment Test</td></tr>
-      <tr><td><strong>Day 9</strong></td><td>Tue, 19 May</td><td>Link Issues & Solutions, Soft Skills (Empathy)</td><td>Activities + Mentor Sitting</td></tr>
-      <tr><td><strong>Day 10</strong></td><td>Wed, 20 May</td><td>Session Link Issue QR's, Scenarios & Solutions</td><td>Link & Session Issue Test</td></tr>
-      <tr><td><strong>Day 11</strong></td><td>Thu, 21 May</td><td>Remaining Common QR's, Practical Hands-on, Community Events</td><td>Remaining QR Test</td></tr>
-      <tr><td><strong>Day 12</strong></td><td>Fri, 22 May</td><td>All Forms (DM, Payment, Support, Escalation)</td><td>Forms Test</td></tr>
-      <tr><td><strong>Day 13</strong></td><td>Sat, 23 May</td><td>Forms Continuation, Revision, Department Lead Intros</td><td>Yoga + Activities</td></tr>
-      <tr style="background:#F5F7FB"><td><strong>Day 14</strong></td><td>Sun, 24 May</td><td colspan="2" style="color:#5A6478;font-style:italic">Day Off</td></tr>
-      <tr><td><strong>Day 15</strong></td><td>Mon, 25 May</td><td>Soft Skills (Own the Member Experience), Final Assessment</td><td>Final Assessment + English & Aptitude Test</td></tr>
-      <tr><td><strong>Day 16</strong></td><td>Tue, 26 May</td><td>QC Session (Do's & Don'ts), Feedback, Doubts Clearing</td><td>Fun Farewell + OJT Instructions</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- TRAINING HIGHLIGHTS -->
-<div class="card">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Training Highlights</h2>
-  <table>
-    <thead><tr><th>Category</th><th>Details</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Assessments Conducted</strong></td><td>11 tests — Communication Rating, Product Basics, CRM, APP/Dashboard, Referral, Payment & QR's, Session Link QR's, Remaining QR's, All Forms, English & Aptitude, Final Assessment</td></tr>
-      <tr><td><strong>Practical Training</strong></td><td>Daily mentor sitting (Morning + Evening shifts), hands-on observation, live chat handling practice</td></tr>
-      <tr><td><strong>Soft Skills</strong></td><td>2 dedicated sessions — "Empathy that Delights" and "Own the Member Experience"</td></tr>
-      <tr><td><strong>Wellness Integration</strong></td><td>Yoga/breathing sessions, Rudra Puja, free challenge registration</td></tr>
-      <tr><td><strong>Department Introductions</strong></td><td>Komal Tiwari, Krishna, Pallavi, Raj & Snehal, Abra/Harshlata, Payal, Divya Barwad, Sanovar, Safreen</td></tr>
-      <tr><td><strong>QC Orientation</strong></td><td>QC session by Rakesh on Day 16 covering do's & don'ts, professionalism, chat quality standards</td></tr>
-      <tr><td><strong>Engagement Activities</strong></td><td>Daily energizers, team coordination challenges, dance activities, farewell celebration</td></tr>
-    </tbody>
-  </table>
-</div>
+<!-- EXITED -->
+<h2>Exited During Training (7)</h2>
+<p><strong>Day 3:</strong> Smita Pardhi (personal issues), Yakshri P. Bagade (quit without informing)</p>
+<p><strong>Day 5:</strong> Vedanshu Sharma, Saurabh Chavhan, Vrushabh (growth alignment not met)</p>
+<p><strong>Day 11:</strong> Khushi Dixit (family emergency + performance) &nbsp;|&nbsp; <strong>Day 12:</strong> Aryan Dhube (personal reason)</p>
 
 <!-- OJT NEXT STEPS -->
-<div class="card">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>OJT Phase — Next Steps (Starting 27 May 2026)</h2>
-  <table>
-    <thead><tr><th>Action Item</th><th>Owner</th><th>Timeline</th></tr></thead>
-    <tbody>
-      <tr><td>OJT tracking begins for all 21 interns</td><td>OJT Leads</td><td>27 May onwards</td></tr>
-      <tr><td>Daily refresher sessions + live chat tests</td><td>OJT Leads</td><td>Daily</td></tr>
-      <tr><td>Weekly scorecards to be maintained</td><td>OJT Leads</td><td>Weekly</td></tr>
-      <tr><td>QC Team audit coordination</td><td>QC Team + OJT Leads</td><td>Weekly / 15-day</td></tr>
-      <tr><td>First week intern huddle (10 min daily)</td><td>OJT Leads</td><td>Daily at shift start</td></tr>
-      <tr><td>Calling team coordination with OJT</td><td>Calling Leads + OJT Team</td><td>Ongoing</td></tr>
-      <tr><td>First week review with Training Lead</td><td>Dipti</td><td>End of Week 1</td></tr>
-    </tbody>
-  </table>
-  <div class="note" style="background:#FFF4ED;border:1px solid #FFD4B8;color:#8B4513">
-    <span>📌</span>
-    <div><strong>OJT Duration:</strong> 45 days. Target: Interns achieve 95% readiness for independent query handling. Refer to OJT Team SOP for complete process, weekly thresholds, and trend logic.</div>
-  </div>
+<h2>OJT Next Steps (from 27 May 2026)</h2>
+<p>All 21 interns now in OJT phase. Key actions:</p>
+<ul style="margin:6px 0 6px 20px;font-size:13px">
+  <li>OJT tracking started for all interns (chat + calling) — daily attendance, chat count, audit scorecards</li>
+  <li>Daily refresher sessions + live chat tests by OJT Leads</li>
+  <li>10-min huddle with interns at each shift start</li>
+  <li>Calling team leads to coordinate weekly with OJT team</li>
+  <li>QC team audit in Week 1 / every 15 days</li>
+  <li>Week 1 review with Training Lead</li>
+</ul>
+
+<div class="highlight">
+  <strong>OJT SOP Reference:</strong> For detailed OJT process, weekly thresholds, trend logic, audit guidelines, and lead responsibilities — refer to the OJT Team SOP document shared separately.
 </div>
 
 <!-- SUGGESTIONS -->
-<div class="card">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>Suggestions &amp; Recommendations</h2>
-  <table>
-    <thead><tr><th>#</th><th>Suggestion</th><th>Priority</th></tr></thead>
-    <tbody>
-      <tr><td>1</td><td><strong>Focus on Syed Khizar Ali</strong> — scored 65.24%, needs extra refresher sessions and one-on-one guidance during OJT Week 1</td><td><span class="tag t-red">High</span></td></tr>
-      <tr><td>2</td><td><strong>Calling team alignment</strong> — ensure calling team leads conduct weekly sync with OJT team on intern progress, since all 9 calling interns go through OJT tracking</td><td><span class="tag t-red">High</span></td></tr>
-      <tr><td>3</td><td><strong>Mentor feedback loop</strong> — formalize daily mentor feedback (morning + evening) into a simple Google Form for tracking intern confidence and readiness</td><td><span class="tag t-orange">Medium</span></td></tr>
-      <tr><td>4</td><td><strong>Payment topic revision</strong> — payment-related QRs scored lower across the batch; consider a focused refresher in OJT Week 1</td><td><span class="tag t-orange">Medium</span></td></tr>
-      <tr><td>5</td><td><strong>Intern buddy system</strong> — pair lower-scoring interns (65–73%) with top performers (87%+) for peer learning during OJT</td><td><span class="tag t-navy">Suggested</span></td></tr>
-      <tr><td>6</td><td><strong>Weekly confidence survey</strong> — quick 5-question self-assessment by interns to track their own readiness perception alongside objective scores</td><td><span class="tag t-navy">Suggested</span></td></tr>
-    </tbody>
-  </table>
-</div>
+<h2>Suggestions (Separate Action Items)</h2>
+<ol style="margin:6px 0 6px 20px;font-size:13px">
+  <li><strong>Extra support for Syed Khizar Ali</strong> (65.2%) — daily one-on-one + focused refresher in Week 1</li>
+  <li><strong>Payment topic refresher</strong> — scored relatively lower across batch; plan a focused session in OJT Week 1</li>
+  <li><strong>Buddy system</strong> — pair lower scorers (65–74%) with top performers (87%+) for peer learning</li>
+  <li><strong>Mentor feedback form</strong> — simple Google Form for daily mentor feedback on intern confidence & readiness</li>
+  <li><strong>Weekly self-assessment</strong> — quick 5-question survey by interns to track their own readiness perception</li>
+</ol>
 
 <!-- FOOTER -->
-<div class="doc-footer">
-  <img src="habuild-logo.png" alt="Habuild">
-  <p style="font-size:14px;font-weight:700;color:#1E3A5F;margin-bottom:2px">Prepared By: Dipti Sahu</p>
-  <p style="font-size:12px;color:#5A6478">Training &amp; Development Lead — Habuild Healthtech Pvt. Ltd.</p>
+<div class="footer">
+  <img src="habuild-logo.png" alt="Habuild" style="height:30px;margin-bottom:6px"><br>
+  <strong style="color:#1E3A5F">Prepared By: Dipti Sahu</strong><br>
+  Training & Development Lead — Habuild Healthtech Pvt. Ltd.
 </div>
 
 </div>
