@@ -179,7 +179,7 @@ ul.clean li::before{
   </div>
   <div class="doc-title-area">
     <h1>OJT Team SOP</h1>
-    <div class="doc-sub">Standard Operating Procedure • Version 1.0</div>
+    <div class="doc-sub">Standard Operating Procedure</div>
   </div>
 </div>
 
@@ -229,11 +229,19 @@ ul.clean li::before{
     <li>Daily tracking of assigned interns — attendance, chat count, productivity</li>
     <li>Review chats and provide actionable feedback</li>
     <li>Conduct audits (minimum 25–30% of total chats) and maintain scorecards</li>
+    <li>Note all feedback and suggestions on <strong>batch documents under each intern's name</strong> as per the parameters</li>
+    <li>Share QC feedback with interns — mistakes discussed in group, and <strong>one-on-one when required</strong> for each QC (especially in initial days when interns need more guidance)</li>
+    <li>Connect once a day (or when required) to share <strong>consolidated QC error feedback</strong> with the team</li>
     <li>Conduct refresher sessions based on error trends</li>
     <li>Update <strong>Daily Refresher Sheet</strong> with topic, status, and remarks (see below)</li>
     <li>Conduct <strong>Live Chat Tests</strong> as per the schedule below</li>
+    <li><strong>Daily 10-min huddle with interns</strong> at start of shift — share recent updates, common queries expected for the day, and how to solve them faster with quality</li>
+    <li>Help interns with their queries <strong>patiently</strong> while maintaining professional and positive behavior</li>
     <li>Handle escalations and coordinate with Training Lead daily</li>
     <li>Monitor intern discipline, professionalism, and communication</li>
+    <li>Coordinate and conduct <strong>OJT Evaluations</strong> as per schedule</li>
+    <li>When team strength is low, <strong>help in classroom training</strong> — prepare training material, take sessions, etc. as per the situation</li>
+    <li>OJT Leads must maintain <strong>good coordination with each other</strong> for everything — especially refresher sessions. Both leads must be fully updated and take sessions in a consistent, high-quality way</li>
     <li>Share daily work report in OJT group <strong>without reminders</strong></li>
   </ul>
 
@@ -348,7 +356,9 @@ ul.clean li::before{
       <tr><td><strong>OJT Lead Audits</strong></td><td>Minimum 3 times/week per intern, covering 25–30% of total chats</td></tr>
       <tr><td><strong>QC Team Audits</strong></td><td>Must audit intern chats <strong>weekly or every 15 days</strong> and share feedback with the OJT team</td></tr>
       <tr><td><strong>Audit Responsibility</strong></td><td>OJT Leads + Calling Leads + QC Team</td></tr>
-      <tr><td><strong>Feedback</strong></td><td>Practical, actionable, and structured — repeated errors tracked separately</td></tr>
+      <tr><td><strong>Feedback Documentation</strong></td><td>All feedback and suggestions must be noted on <strong>batch documents under each intern's name</strong> as per QC parameters</td></tr>
+      <tr><td><strong>Feedback Sharing</strong></td><td>Mistakes shared in group; <strong>one-on-one feedback for each QC</strong> when required (especially initial days). Consolidated QC error feedback shared daily or when needed</td></tr>
+      <tr><td><strong>Feedback Quality</strong></td><td>Practical, actionable, and structured — repeated errors tracked separately</td></tr>
       <tr><td><strong>Re-Audits</strong></td><td>Random re-audits may be conducted by Training Lead</td></tr>
     </tbody>
   </table>
@@ -452,10 +462,12 @@ ul.clean li::before{
     <thead><tr><th>Area</th><th>Responsibilities</th></tr></thead>
     <tbody contenteditable="true">
       <tr><td><strong>OJT Team Management</strong></td><td>Manage OJT operations and adherence, daily hurdles with OJT Leads, weekly feedback discussions, leave approvals, task allocation and monitoring</td></tr>
-      <tr><td><strong>Intern Huddles</strong></td><td>Conduct <strong>short huddle with interns daily/weekly</strong> — quick check-in on progress, concerns, motivation, and readiness</td></tr>
+      <tr><td><strong>Intern Huddles</strong></td><td>Conduct <strong>short huddle with interns daily/weekly</strong> — check-in on progress, concerns, motivation, readiness, and address common issues</td></tr>
       <tr><td><strong>Performance Monitoring</strong></td><td>Monitor intern readiness and department transition, review scorecards and daily reports, identify performance gaps, take corrective actions</td></tr>
       <tr><td><strong>Quality & Feedback</strong></td><td>Randomly re-audit OJT Lead audits, conduct refresher sessions when required, conduct 1-on-1 intern feedback sessions, maintain all documentation and trackers</td></tr>
+      <tr><td><strong>OJT Evaluation</strong></td><td>Coordinate and oversee OJT evaluations conducted by OJT Leads, ensure evaluations are fair and aligned with SOP criteria</td></tr>
       <tr><td><strong>Coordination</strong></td><td>Coordinate with HR (escalations/exits), squads (transitions), department handovers, manage ID creation and yoga subscriptions</td></tr>
+      <tr><td><strong>Classroom Training Support</strong></td><td>When OJT team strength is low, support classroom training — prepare training material, take sessions, provide resources as per the situation</td></tr>
       <tr><td><strong>Reporting</strong></td><td>Review daily updates in WhatsApp groups, monitor login/breaks/responsiveness, submit weekly and final batch reports to management</td></tr>
     </tbody>
   </table>
@@ -466,7 +478,7 @@ ul.clean li::before{
   <img src="habuild-logo.png" alt="Habuild" style="filter:drop-shadow(0 2px 8px rgba(30,58,95,0.2))">
   <p style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:2px" contenteditable="true">Prepared By: Dipti Sahu</p>
   <p style="font-size:12px;color:var(--sub)" contenteditable="true">Training & Development Lead — Habuild Healthtech Pvt. Ltd.</p>
-  <p style="font-size:10px;color:#AAB0BC;margin-top:8px">Confidential Document • Click any text to edit • Ctrl+P to save as PDF</p>
+  <p style="font-size:10px;color:#AAB0BC;margin-top:8px">Click any text to edit • Ctrl+P → Save as PDF → Upload to Google Drive → Open with Google Docs to share with edit access</p>
 </div>
 
 </div>
@@ -483,14 +495,7 @@ function toggleEdit(){
 }
 
 function shareSOP(){
-  const url = window.location.href;
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(url).then(()=>{
-      alert('Link copied!\\n\\nShare this URL with OJT Leads and stakeholders:\\n' + url + '\\n\\nTo give edit access: Share the HTML file directly or upload PDF to Google Drive with edit permissions.');
-    });
-  } else {
-    prompt('Copy this link to share:', url);
-  }
+  alert('To share as Google Document:\\n\\n1. Press Ctrl+P → Save as PDF\\n2. Upload PDF to Google Drive\\n3. Right-click → Open with → Google Docs\\n4. Click Share → Add people with edit access\\n\\nOr share the live link with view-only access.');
 }
 </script>
 </body>
