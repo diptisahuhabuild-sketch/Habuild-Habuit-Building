@@ -63,8 +63,9 @@ ul.clean li::before{content:'▸';position:absolute;left:4px;color:#E8722A;font-
 <div class="share-bar">
   <div style="font-weight:600">OJT Team SOP — Habuild Healthtech Pvt. Ltd.</div>
   <div>
+    <span id="save-status" style="font-size:10px;opacity:0.7;margin-right:10px"></span>
     <button style="background:#fff;color:#1E3A5F" onclick="window.print()">Print / Save PDF</button>
-    <button style="background:#E8722A;color:#fff;margin-left:8px" onclick="shareSOP()">Share as Document</button>
+    <button style="background:#E8722A;color:#fff;margin-left:8px" onclick="shareSOP()">Share as Google Doc</button>
     <button style="background:rgba(255,255,255,0.15);color:#fff;margin-left:8px" onclick="toggleEdit()">Toggle Edit</button>
   </div>
 </div>
@@ -370,15 +371,61 @@ ul.clean li::before{content:'▸';position:absolute;left:4px;color:#E8722A;font-
 
 <script>
 let editable = true;
+const SAVE_KEY = 'habuild-ojt-sop-v1';
+
+// === AUTO-SAVE: Save all edits to browser localStorage ===
+function saveEdits(){
+  const editables = document.querySelectorAll('[contenteditable]');
+  const data = [];
+  editables.forEach((el, i) => { data.push(el.innerHTML); });
+  localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+  const status = document.getElementById('save-status');
+  if(status){ status.textContent = 'Saved'; setTimeout(()=>{ status.textContent = ''; }, 2000); }
+}
+
+// === AUTO-LOAD: Restore saved edits on page load ===
+function loadEdits(){
+  const saved = localStorage.getItem(SAVE_KEY);
+  if(!saved) return;
+  try{
+    const data = JSON.parse(saved);
+    const editables = document.querySelectorAll('[contenteditable]');
+    editables.forEach((el, i) => { if(data[i] !== undefined) el.innerHTML = data[i]; });
+  } catch(e){}
+}
+
+// Listen for edits — auto-save after 1 second of no typing
+let saveTimer;
+document.addEventListener('input', function(e){
+  if(e.target.closest('[contenteditable]')){
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveEdits, 1000);
+    const status = document.getElementById('save-status');
+    if(status) status.textContent = 'Editing...';
+  }
+});
+
+// Load saved edits on page open
+loadEdits();
+
 function toggleEdit(){
   editable = !editable;
   document.querySelectorAll('[contenteditable]').forEach(el => {
     el.contentEditable = editable;
   });
-  alert(editable ? 'Editing enabled — click any text to edit' : 'Editing disabled — document is now view-only');
+  alert(editable ? 'Editing enabled — click any text to edit.\nAll changes auto-save to your browser.' : 'Editing disabled — document is view-only');
 }
+
 function shareSOP(){
-  alert('To share as Google Document:\n\n1. Press Ctrl+P → Save as PDF\n2. Upload PDF to Google Drive\n3. Right-click → Open with → Google Docs\n4. Click Share → Add people with edit access\n\nOr share the live link with view-only access.');
+  alert('To share as editable Google Document:\n\n1. Press "Print / Save PDF" button\n2. In print dialog → Destination: Save as PDF → Save\n3. Go to drive.google.com\n4. Upload the PDF\n5. Right-click the file → Open with → Google Docs\n6. Click Share button → Add people with Editor access\n\nNow everyone with access can edit the document and changes are saved automatically in Google Docs!');
+}
+
+// Reset saved edits (if needed)
+function resetEdits(){
+  if(confirm('This will remove all your saved edits and restore the original document. Are you sure?')){
+    localStorage.removeItem(SAVE_KEY);
+    location.reload();
+  }
 }
 </script>
 </body>
