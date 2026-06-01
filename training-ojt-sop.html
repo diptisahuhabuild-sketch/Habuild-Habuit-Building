@@ -100,7 +100,7 @@ ul.c li::before{content:'▸';position:absolute;left:2px;color:#E8722A;font-weig
   </div>
 </div>
 
-<div class="ct" style="margin-top:44px">
+<div class="ct" style="margin-top:44px" contenteditable="true">
 
 <!-- HEADER -->
 <div class="doc-hdr">
@@ -459,12 +459,13 @@ ul.c li::before{content:'▸';position:absolute;left:2px;color:#E8722A;font-weig
 </div>
 
 <script>
-let ed=true;const SK='habuild-t-ojt-sop-v2';
-function sv(){const e=document.querySelectorAll('[contenteditable]');const d=[];e.forEach(el=>{d.push(el.innerHTML)});localStorage.setItem(SK,JSON.stringify(d));const s=document.getElementById('ss');if(s){s.textContent='Saved';setTimeout(()=>{s.textContent=''},2000)}}
-function ld(){const s=localStorage.getItem(SK);if(!s)return;try{const d=JSON.parse(s);const e=document.querySelectorAll('[contenteditable]');e.forEach((el,i)=>{if(d[i]!==undefined)el.innerHTML=d[i]})}catch(e){}}
+let ed=true;const SK='habuild-t-ojt-sop-v3';
+const ct=()=>document.querySelector('.ct[contenteditable]');
+function sv(){const el=ct();if(!el)return;localStorage.setItem(SK,el.innerHTML);const s=document.getElementById('ss');if(s){s.textContent='Saved';setTimeout(()=>{s.textContent=''},2000)}}
+function ld(){const s=localStorage.getItem(SK);if(!s)return;const el=ct();if(el)el.innerHTML=s}
 let st;document.addEventListener('input',function(e){if(e.target.closest('[contenteditable]')){clearTimeout(st);st=setTimeout(sv,1000);const s=document.getElementById('ss');if(s)s.textContent='Editing...'}});
 ld();
-function toggleEdit(){ed=!ed;document.querySelectorAll('[contenteditable]').forEach(el=>{el.contentEditable=ed});alert(ed?'Editing enabled':'View only')}
+function toggleEdit(){ed=!ed;const el=ct();if(el)el.contentEditable=ed;alert(ed?'Editing enabled — click any text, heading, or table to edit':'View only mode')}
 </script>
 </body>
 </html>
