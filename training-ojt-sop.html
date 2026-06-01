@@ -8,405 +8,463 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#FAFBFD;color:#1A1A2E;line-height:1.7;font-size:13.5px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
 [contenteditable]:focus{outline:2px dashed #E8722A;outline-offset:2px;border-radius:3px}
-.container{max-width:820px;margin:0 auto;padding:24px 32px}
-.doc-header{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:3px solid #1E3A5F;margin-bottom:28px}
-.logo-area{display:flex;align-items:center;gap:12px}
-.logo-area img{height:40px}
-.section{background:#FFFFFF;border:1px solid #E2E6EE;border-radius:10px;padding:24px 28px;margin-bottom:18px;position:relative;overflow:hidden;page-break-inside:avoid}
-.section::before{content:'';position:absolute;top:0;left:0;bottom:0;width:4px;background:#1E3A5F}
-.page-logo{position:absolute;top:14px;right:18px;opacity:0.06;height:60px;pointer-events:none}
-h2{font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #E2E6EE}
-h3{font-size:14px;font-weight:700;color:#E8722A;margin:14px 0 6px}
-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
+.ct{max-width:840px;margin:0 auto;padding:24px 32px}
+
+/* Header */
+.doc-hdr{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:3px solid #1E3A5F;margin-bottom:20px}
+.doc-hdr img{height:40px}
+
+/* Section cards */
+.sec{background:#fff;border:1px solid #E2E6EE;border-radius:10px;padding:24px 28px;margin-bottom:16px;position:relative;overflow:hidden;page-break-inside:avoid}
+.sec::before{content:'';position:absolute;top:0;left:0;bottom:0;width:4px;background:#1E3A5F}
+.wm{position:absolute;top:14px;right:18px;opacity:0.05;height:55px;pointer-events:none}
+
+h2{font-size:16px;font-weight:700;color:#1E3A5F;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #E2E6EE}
+h3{font-size:13px;font-weight:700;color:#E8722A;margin:12px 0 6px}
+p{margin:4px 0;font-size:13px}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;margin:6px 0;font-size:12.5px}
 thead{background:#1E3A5F!important}
-thead th{color:#fff!important;font-weight:600;padding:8px 12px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.3px}
+thead th{color:#fff!important;font-weight:600;padding:7px 10px;text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.3px}
 tbody tr{border-bottom:1px solid #E2E6EE}
 tbody tr:nth-child(even){background:#EBF0F7!important}
-tbody td{padding:7px 12px;vertical-align:top}
-ul.clean{list-style:none;padding:0;margin:6px 0}
-ul.clean li{padding:4px 0 4px 20px;position:relative;font-size:13px;color:#1A1A2E}
-ul.clean li::before{content:'▸';position:absolute;left:4px;color:#E8722A;font-weight:700}
-.note{padding:10px 14px;border-radius:8px;margin:8px 0;font-size:12.5px;display:flex;gap:8px;align-items:flex-start}
+tbody td{padding:6px 10px;vertical-align:top}
+
+/* Lists */
+ul.c{list-style:none;padding:0;margin:4px 0}
+ul.c li{padding:3px 0 3px 18px;position:relative;font-size:12.5px}
+ul.c li::before{content:'▸';position:absolute;left:2px;color:#E8722A;font-weight:700}
+
+/* Boxes grid */
+.bx-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}
+.bx-grid.g3{grid-template-columns:1fr 1fr 1fr}
+.bx-grid.g4{grid-template-columns:1fr 1fr 1fr 1fr}
+.bx{padding:14px;border-radius:8px;border:1px solid #E2E6EE;background:#FAFBFD}
+.bx-icon{font-size:20px;margin-bottom:4px}
+.bx h4{font-size:12.5px;font-weight:700;color:#1E3A5F;margin-bottom:3px}
+.bx p{font-size:11.5px;color:#5A6478;line-height:1.5}
+.bx-accent{border-left:3px solid #E8722A}
+.bx-navy{border-left:3px solid #1E3A5F}
+
+/* Onboarding boxes */
+.ob-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}
+.ob{padding:12px 14px;border-radius:8px;border:1px solid #E2E6EE;background:#fff}
+.ob .name{font-size:12px;font-weight:700;color:#1E3A5F;margin-bottom:2px}
+.ob .detail{font-size:11.5px;color:#5A6478;line-height:1.5}
+.ob .owner{font-size:10.5px;font-weight:600;color:#E8722A;margin-top:3px}
+
+/* Flow */
 .flow{display:flex;align-items:center;justify-content:center;gap:0;margin:14px 0;flex-wrap:wrap}
-.flow-step{padding:8px 16px;border-radius:8px;font-size:11px;font-weight:600;color:#fff;background:#1E3A5F}
-.flow-step.active{background:#E8722A}
-.flow-arr{margin:0 4px;color:#5A6478;font-size:16px}
-.link-space{display:inline-block;min-width:200px;border-bottom:1px dashed #ccc;color:#999;font-size:12px;padding:2px 6px}
-.share-bar{position:fixed;top:0;left:0;right:0;z-index:100;background:#1E3A5F;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:8px 24px;font-size:12px}
-.share-bar button{padding:6px 14px;border-radius:6px;border:none;font-size:11px;font-weight:600;cursor:pointer;font-family:'Segoe UI',Arial,sans-serif}
-.doc-footer{text-align:center;padding:28px 0 16px;margin-top:12px;border-top:3px solid #1E3A5F}
-.doc-footer img{height:36px;margin-bottom:8px}
-.no-print{display:block}
-@media print{.share-bar,.no-print{display:none!important}body{background:#fff!important}.container{padding:0;max-width:100%}.section{box-shadow:none;page-break-inside:avoid}thead{background:#1E3A5F!important;-webkit-print-color-adjust:exact!important}thead th{color:#fff!important}tbody tr:nth-child(even){background:#EBF0F7!important}}
-@page{margin:14mm 10mm}
+.fs{padding:10px 18px;border-radius:10px;font-size:12px;font-weight:700;color:#fff;background:#1E3A5F;text-align:center;min-width:100px}
+.fs.active{background:#E8722A}
+.fa{margin:0 5px;color:#5A6478;font-size:18px}
+
+/* Notes */
+.note{padding:10px 14px;border-radius:8px;margin:8px 0;font-size:12px;display:flex;gap:8px;align-items:flex-start}
+.hl{background:#FFF4ED;border-left:3px solid #E8722A;padding:8px 12px;border-radius:0 6px 6px 0;margin:8px 0;font-size:12px;color:#7a4a1a}
+
+/* Zero tolerance expandable */
+.zt-examples{margin:6px 0;padding:10px 14px;background:#FDF0EE;border:1px solid #F0C4BF;border-radius:8px;font-size:12px;color:#8B1A1A;display:none}
+.zt-toggle{cursor:pointer;color:#C0392B;font-weight:600;font-size:12px;text-decoration:underline;margin-top:4px;display:inline-block}
+
+/* Tags */
+.tag{display:inline-block;padding:2px 7px;border-radius:5px;font-size:9.5px;font-weight:700}
+.t-g{background:#e8f5e9;color:#2e7d32}
+.t-o{background:#FFF4ED;color:#E8722A}
+
+/* Link space */
+.lnk{display:inline-block;min-width:200px;border-bottom:1px dashed #ccc;color:#999;font-size:12px;padding:2px 6px}
+
+/* Toolbar */
+.tb{position:fixed;top:0;left:0;right:0;z-index:100;background:#1E3A5F;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:8px 24px;font-size:12px}
+.tb button{padding:6px 14px;border-radius:6px;border:none;font-size:11px;font-weight:600;cursor:pointer;font-family:'Segoe UI',Arial,sans-serif}
+
+/* Footer */
+.ft{text-align:center;padding:24px 0 12px;margin-top:12px;border-top:3px solid #1E3A5F}
+.ft img{height:34px;margin-bottom:6px}
+.np{display:block}
+
+@media print{.tb,.np{display:none!important}body{background:#fff!important}.ct{padding:0;max-width:100%}.sec{box-shadow:none;page-break-inside:avoid}thead{background:#1E3A5F!important;-webkit-print-color-adjust:exact!important}thead th{color:#fff!important}tbody tr:nth-child(even){background:#EBF0F7!important}}
+@page{margin:12mm 10mm}
 </style>
 </head>
 <body>
 
-<div class="share-bar">
+<div class="tb">
   <div style="font-weight:600">Training & OJT SOP — Habuild Healthtech Pvt. Ltd.</div>
   <div>
-    <span id="save-status" style="font-size:10px;opacity:0.7;margin-right:10px"></span>
+    <span id="ss" style="font-size:10px;opacity:.7;margin-right:10px"></span>
     <button style="background:#fff;color:#1E3A5F" onclick="window.print()">Print / Save PDF</button>
     <button style="background:#E8722A;color:#fff;margin-left:8px" onclick="toggleEdit()">Toggle Edit</button>
   </div>
 </div>
 
-<div class="container" style="margin-top:44px">
+<div class="ct" style="margin-top:44px">
 
 <!-- HEADER -->
-<div class="doc-header">
-  <div class="logo-area">
+<div class="doc-hdr">
+  <div style="display:flex;align-items:center;gap:12px">
     <img src="habuild-logo.png" alt="Habuild">
-    <span style="font-size:11px;color:#5A6478;font-weight:500">Habuild Healthtech Pvt. Ltd.</span>
+    <span style="font-size:11px;color:#5A6478">Habuild Healthtech Pvt. Ltd.</span>
   </div>
   <div style="text-align:right">
     <div style="font-size:22px;font-weight:800;color:#1E3A5F">Training & OJT SOP</div>
-    <div style="font-size:11px;color:#5A6478;font-weight:500">Standard Operating Procedure — End to End</div>
+    <div style="font-size:11px;color:#5A6478">End-to-End Standard Operating Procedure</div>
   </div>
 </div>
 
-<!-- PROCESS FLOW -->
-<div class="section">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>End-to-End Process Flow</h2>
+<!-- FLOW OVERVIEW -->
+<div class="sec" style="text-align:center;padding:20px 28px">
+  <img src="habuild-logo.png" class="wm" alt="">
   <div class="flow">
-    <span class="flow-step">Hiring</span><span class="flow-arr">→</span>
-    <span class="flow-step">Onboarding</span><span class="flow-arr">→</span>
-    <span class="flow-step active">Classroom Training</span><span class="flow-arr">→</span>
-    <span class="flow-step active">OJT (45 Days)</span><span class="flow-arr">→</span>
-    <span class="flow-step">Squad Transition</span>
+    <span class="fs">Hiring</span><span class="fa">→</span>
+    <span class="fs">Onboarding</span><span class="fa">→</span>
+    <span class="fs active">Classroom Training</span><span class="fa">→</span>
+    <span class="fs active">OJT (45 Days)</span><span class="fa">→</span>
+    <span class="fs">Squad Transition</span>
   </div>
-  <p contenteditable="true" style="font-size:13px;color:#5A6478;text-align:center">This SOP covers the complete journey from hiring to squad transition, ensuring every intern is systematically trained, tracked, and prepared for independent handling.</p>
+  <p contenteditable="true" style="color:#5A6478;font-size:12px;margin-top:6px">Complete journey from hiring to squad — ensuring every intern is systematically trained, tracked, and prepared for independent handling.</p>
 </div>
 
-<!-- 1. HIRING PROCESS -->
-<div class="section">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>1. Hiring Process</h2>
-  <p contenteditable="true">HR team is responsible for sourcing, screening, and onboarding new hires. The following must be ensured before interns join training:</p>
-  <ul class="clean" contenteditable="true">
-    <li>Strengthen LinkedIn and profile background screening during recruitment</li>
-    <li>Assess long-term career alignment during interviews — flag mismatches early</li>
-    <li>Flag candidates with repeated short tenures and frequent switches</li>
-    <li>Closely evaluate technical and specialized degree profiles for retention risk</li>
-    <li>Ensure all documentation is verified before joining date</li>
-    <li>Shift and department allocation finalized during or before classroom training period</li>
-    <li>Final allocation documented and communicated before OJT begins</li>
-    <li>Once finalized, allocation will generally remain frozen unless a business-critical requirement arises</li>
-  </ul>
+<!-- 1. HIRING & HR -->
+<div class="sec">
+  <img src="habuild-logo.png" class="wm" alt="">
+  <h2>1. Hiring & HR Coordination</h2>
+  <div class="bx-grid g3">
+    <div class="bx bx-navy" contenteditable="true">
+      <div class="bx-icon">🔍</div>
+      <h4>Screening</h4>
+      <p>LinkedIn & profile background check, career alignment assessment, flag short tenures & technical degree profiles for retention risk</p>
+    </div>
+    <div class="bx bx-navy" contenteditable="true">
+      <div class="bx-icon">📋</div>
+      <h4>Documentation</h4>
+      <p>Verification before joining, salary processing, Keka attendance, leave management, warning letters, exit process</p>
+    </div>
+    <div class="bx bx-navy" contenteditable="true">
+      <div class="bx-icon">🏢</div>
+      <h4>Training Support</h4>
+      <p>Infra coordination, snacks & activity props, shift & department allocation (finalized during training, frozen before OJT)</p>
+    </div>
+  </div>
 </div>
 
 <!-- 2. ONBOARDING -->
-<div class="section">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>2. Onboarding</h2>
-  <p contenteditable="true">On Day 1 of training, the following onboarding activities must be completed:</p>
-  <ul class="clean" contenteditable="true">
-    <li>Welcome & HR Induction — Rules, regulations, free 14-day challenge registration</li>
-    <li>Habuild overview — company vision, departments, workflow</li>
-    <li>Performers interaction — growth story and motivation</li>
-    <li>Department lead introductions (scheduled across training days)</li>
-    <li>Training plan overview & expectation setting for the entire training period</li>
-    <li>Intern ID creation and system access setup</li>
-    <li>Yoga registration and wellness orientation</li>
-  </ul>
-
-  <h3>HR & Administrative Responsibilities</h3>
-  <table>
-    <thead><tr><th>Area</th><th>Responsibility</th></tr></thead>
-    <tbody contenteditable="true">
-      <tr><td><strong>Salary & Attendance</strong></td><td>Salary processing, Keka attendance management</td></tr>
-      <tr><td><strong>Leave Management</strong></td><td>Leave approvals, shift communication</td></tr>
-      <tr><td><strong>Documentation</strong></td><td>Verification, warning letters, employee records</td></tr>
-      <tr><td><strong>Exit Process</strong></td><td>Exit formalities when applicable</td></tr>
-    </tbody>
-  </table>
+<div class="sec">
+  <img src="habuild-logo.png" class="wm" alt="">
+  <h2>2. Onboarding (Day 1)</h2>
+  <div class="ob-grid" contenteditable="true">
+    <div class="ob">
+      <div class="name">Welcome & HR Induction</div>
+      <div class="detail">Rules, regulations, policies, free 14-day yoga challenge registration</div>
+      <div class="owner">Owner: HR Team</div>
+    </div>
+    <div class="ob">
+      <div class="name">Habuild Overview & Dept Workflow</div>
+      <div class="detail">Company vision, departments, workflow overview, performers interaction (growth story)</div>
+      <div class="owner">Owner: Training Team</div>
+    </div>
+    <div class="ob">
+      <div class="name">Department Lead Introductions</div>
+      <div class="detail">Support, Comms, DM, Calling, Link Issue, QC and other leads introduced across training days</div>
+      <div class="owner">Owner: Dept Leads</div>
+    </div>
+    <div class="ob">
+      <div class="name">Training Plan & Expectation Setting</div>
+      <div class="detail">15–16 day plan overview, daily structure, assessment schedule, expected outcomes</div>
+      <div class="owner">Owner: Training Lead</div>
+    </div>
+    <div class="ob">
+      <div class="name">Work Email & ID Creation</div>
+      <div class="detail">Create Habuild work ID, email setup, system access — completed on Day 1–2</div>
+      <div class="owner">Owner: Trainers</div>
+    </div>
+    <div class="ob">
+      <div class="name">Yoga & Wellness Orientation</div>
+      <div class="detail">Free challenge registration, yoga/breathing intro, mindfulness awareness</div>
+      <div class="owner">Owner: Training Team</div>
+    </div>
+  </div>
 </div>
 
 <!-- 3. CLASSROOM TRAINING -->
-<div class="section">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>3. Classroom Training</h2>
-  <p contenteditable="true">Classroom training runs for approximately <strong>15–16 working days</strong> (including week offs). The training is structured to cover product knowledge, process understanding, soft skills, practical exposure, and assessments.</p>
+<div class="sec">
+  <img src="habuild-logo.png" class="wm" alt="">
+  <h2>3. Classroom Training (15–16 Days)</h2>
 
-  <h3>Training Structure</h3>
+  <h3>Training Components</h3>
+  <div class="bx-grid" contenteditable="true">
+    <div class="bx bx-accent">
+      <h4>Product & Process</h4>
+      <p>CRM, Member APP (Paid & Free), Dashboard, Payments (QR/UPI/Razorpay/scenarios), Link Issues, Session Link QR's, Remaining QR's, All Forms, Community Events, Free Rolling Challenge, Referrals</p>
+    </div>
+    <div class="bx bx-accent">
+      <h4>Soft Skills (3 Sessions)</h4>
+      <p><strong>Communicate with Care</strong> — empathy, tone, clarity (3 hrs)<br><strong>Empathy that Delights</strong> — member emotions, role-play (3 hrs)<br><strong>Own the Member Experience</strong> — ownership, quality vs speed (3 hrs)</p>
+    </div>
+    <div class="bx bx-accent">
+      <h4>Assessments (11 Tests)</h4>
+      <p>Product Basics, CRM, APP/Dashboard, Referral, Payment QR's, Session Link QR's, Remaining QR's, All Forms, English & Aptitude, Communication Rating, Final Assessment</p>
+    </div>
+    <div class="bx bx-accent">
+      <h4>Practical & Mentor</h4>
+      <p>Morning & evening mentor assignment from Day 4, daily 1-hr mentor sitting (both shifts) for live chat observation. Typing speed checked for productivity readiness.</p>
+    </div>
+  </div>
+
+  <h3>Daily Training Flow</h3>
   <table>
-    <thead><tr><th>Component</th><th>Details</th></tr></thead>
+    <thead><tr><th>Time</th><th>Activity</th></tr></thead>
     <tbody contenteditable="true">
-      <tr><td><strong>Product & Process</strong></td><td>CRM, Member APP (Paid & Free), Dashboard, Payments (QR/UPI/Razorpay/scenarios), Link Issues & Solutions, Session Link QR's, Remaining QR's, All Forms (DM, Payment, Support, Escalation), Community Events, Free Rolling Challenge, Referrals</td></tr>
-      <tr><td><strong>Soft Skills (3 Sessions)</strong></td><td><strong>Communicate with Care</strong> — empathy in written communication, tone, clarity (3 hrs)<br><strong>Empathy that Delights</strong> — member emotions, scenario discussions, role-play (3 hrs)<br><strong>Own the Member Experience</strong> — first-contact resolution, ownership, quality vs speed (3 hrs)</td></tr>
-      <tr><td><strong>Assessments (11 Tests)</strong></td><td>Product Basics, CRM, APP/Dashboard, Referral, Payment & QR's, Session Link QR's, Remaining QR's, All Forms, English & Aptitude, Communication Rating, Final Assessment</td></tr>
-      <tr><td><strong>Mentor Assignment</strong></td><td>Morning & evening mentor assignment from Day 4, daily 1-hr mentor sitting (both shifts) for hands-on observation of live chats</td></tr>
-      <tr><td><strong>Dept Lead Introductions</strong></td><td>Support, Comms, DM, Calling, Link Issue, QC, and other department leads introduced across training days</td></tr>
-      <tr><td><strong>Yoga & Wellness</strong></td><td>Yoga/breathing sessions, Yoga Nidra integrated throughout training for mindfulness</td></tr>
-      <tr><td><strong>Energizers & Activities</strong></td><td>Daily energizers, team coordination challenges, dance activities, farewell ceremony for team bonding</td></tr>
-      <tr><td><strong>QC Orientation</strong></td><td>QC session covering do's & don'ts, professionalism, chat quality standards (last day)</td></tr>
+      <tr><td><strong>9:30–10:30</strong></td><td>Welcome, previous day feedback, recap + Q&A</td></tr>
+      <tr><td><strong>10:30–1:00</strong></td><td>Core topic sessions (product/process with live demos)</td></tr>
+      <tr><td><strong>1:00–2:00</strong></td><td>Lunch</td></tr>
+      <tr><td><strong>2:00–4:00</strong></td><td>Continued sessions / Soft skill / Dept lead interaction</td></tr>
+      <tr><td><strong>4:00–4:30</strong></td><td>Energizer / Yoga break</td></tr>
+      <tr><td><strong>4:30–5:00</strong></td><td>Test & review / Task assignment</td></tr>
+      <tr><td><strong>5:00–5:30</strong></td><td>Mentor sitting (evening) / Team activity / Session closer</td></tr>
     </tbody>
   </table>
 
-  <h3>Daily Training Flow (Typical Day)</h3>
-  <table>
-    <thead><tr><th>Time Block</th><th>Activity</th></tr></thead>
-    <tbody contenteditable="true">
-      <tr><td><strong>9:30 – 10:00 AM</strong></td><td>Start of day — welcome, feedback on previous day, task review</td></tr>
-      <tr><td><strong>10:00 – 10:30 AM</strong></td><td>Recap of previous topics + Q&A + doubts clearing</td></tr>
-      <tr><td><strong>10:30 – 1:00 PM</strong></td><td>Core topic sessions (product/process training with live demos)</td></tr>
-      <tr><td><strong>1:00 – 2:00 PM</strong></td><td>Lunch break</td></tr>
-      <tr><td><strong>2:00 – 4:00 PM</strong></td><td>Continued sessions / Soft skill / Revision / Department lead interaction</td></tr>
-      <tr><td><strong>4:00 – 4:30 PM</strong></td><td>Energizer / Activity / Yoga break</td></tr>
-      <tr><td><strong>4:30 – 5:00 PM</strong></td><td>Test & review / Task assignment</td></tr>
-      <tr><td><strong>5:00 – 5:30 PM</strong></td><td>Mentor sitting (evening team) / Team activity / Session closer</td></tr>
-    </tbody>
-  </table>
+  <h3>Additional Activities</h3>
+  <p contenteditable="true" style="font-size:12px;color:#5A6478">QC orientation (Do's & Don'ts) on last day | Daily energizers & team activities | Yoga/breathing sessions | Workplace tour | Department lead introductions throughout | Fun farewell ceremony</p>
 
-  <p contenteditable="true" style="font-size:12.5px;margin-top:8px"><strong>Detail Session Plan Sheet:</strong> &nbsp; <span class="link-space" contenteditable="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+  <p contenteditable="true" style="font-size:12.5px;margin-top:8px"><strong>Detail Session Plan:</strong> &nbsp; <span class="lnk" contenteditable="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
 </div>
 
-<!-- 4. INTERN EXPECTATIONS DURING OJT -->
-<div class="section">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>4. Intern Expectations & Performance Thresholds (OJT)</h2>
-  <p contenteditable="true">Intern performance during OJT will be evaluated on the following KPIs:</p>
-  <ul class="clean" contenteditable="true">
-    <li>Productivity (Chat Count / Calling Outcomes)</li>
-    <li>Quality Score & Error Percentage</li>
-    <li>Attendance & Availability</li>
-    <li>Adherence & Ownership</li>
-    <li>Learning Agility</li>
-    <li>Behavioral Conduct</li>
-  </ul>
+<!-- 4. INTERN EXPECTATIONS -->
+<div class="sec">
+  <img src="habuild-logo.png" class="wm" alt="">
+  <h2>4. Intern Expectations & Performance Thresholds</h2>
+  <p contenteditable="true" style="color:#5A6478;font-size:12.5px;margin-bottom:8px">This section is shared with interns at the start of OJT to set clear expectations.</p>
 
-  <h3>Expected Weekly Thresholds</h3>
+  <h3>Key Performance Indicators</h3>
+  <div class="bx-grid g3" contenteditable="true">
+    <div class="bx"><h4>Productivity</h4><p>Chat Count / Calling Outcomes</p></div>
+    <div class="bx"><h4>Quality</h4><p>Quality Score & Error %</p></div>
+    <div class="bx"><h4>Attendance</h4><p>Availability & Adherence</p></div>
+    <div class="bx"><h4>Ownership</h4><p>Adherence & Accountability</p></div>
+    <div class="bx"><h4>Learning</h4><p>Learning Agility & Growth</p></div>
+    <div class="bx"><h4>Behavior</h4><p>Professional Conduct</p></div>
+  </div>
+
+  <h3>Weekly Thresholds</h3>
   <table>
-    <thead><tr><th>OJT Week</th><th>Productivity Target</th><th>Error % Target</th></tr></thead>
+    <thead><tr><th>Week</th><th>Productivity</th><th>Error %</th></tr></thead>
     <tbody contenteditable="true">
       <tr><td><strong>Week 1</strong></td><td>Observation Phase</td><td>Up to 15–20%</td></tr>
       <tr><td><strong>Week 2</strong></td><td>60–70 Chats Avg</td><td>≤15%</td></tr>
       <tr><td><strong>Week 3</strong></td><td>80+ Chats Avg</td><td>≤10%</td></tr>
       <tr><td><strong>Week 4</strong></td><td>100+ Chats Avg</td><td>≤7–8%</td></tr>
       <tr><td><strong>Week 5</strong></td><td>120+ Chats Avg</td><td>≤5%</td></tr>
-      <tr><td><strong>Week 6</strong></td><td>120+ / Near Squad Benchmark</td><td>Below 5%</td></tr>
+      <tr><td><strong>Week 6</strong></td><td>120+ / Squad Benchmark</td><td>Below 5%</td></tr>
     </tbody>
   </table>
-  <p contenteditable="true" style="font-size:12px;color:#5A6478">Targets may be adjusted based on actual business load and queue availability.</p>
+  <p contenteditable="true" style="font-size:11px;color:#5A6478">Targets may adjust based on business load and queue availability.</p>
 
   <h3>Zero Tolerance Parameters</h3>
-  <div class="note" style="background:#FDF0EE;border:1px solid #F0C4BF;color:#8B1A1A" contenteditable="true">
+  <div class="note" style="background:#FDF0EE;border:1px solid #F0C4BF;color:#8B1A1A">
     <span>⛔</span>
-    <div>Fatal quality errors, incorrect product/process information, data privacy breach, misleading member communication, behavioral misconduct, repeated attendance/adherence violations, intentional policy violations — may result in immediate corrective action.</div>
+    <div contenteditable="true">The following will result in <strong>immediate corrective action</strong>: Fatal quality errors, incorrect product/process information, data privacy breach, misleading member communication, behavioral misconduct, repeated attendance violations, intentional policy violations.</div>
+  </div>
+  <span class="zt-toggle" onclick="document.getElementById('zt-ex').style.display=document.getElementById('zt-ex').style.display==='block'?'none':'block'">View Examples ▾</span>
+  <div class="zt-examples" id="zt-ex">
+    <table style="font-size:11.5px;margin:4px 0">
+      <thead style="background:#C0392B!important"><tr><th>Violation</th><th>Example</th></tr></thead>
+      <tbody contenteditable="true">
+        <tr><td><strong>Fatal Quality Error</strong></td><td>Giving wrong payment refund amount to member, confirming cancellation without checking policy</td></tr>
+        <tr><td><strong>Incorrect Product Info</strong></td><td>Telling member free challenge is 21 days when it's 14 days, wrong batch timing</td></tr>
+        <tr><td><strong>Incorrect Process</strong></td><td>Asking member to uninstall-reinstall app instead of following link issue SOP</td></tr>
+        <tr><td><strong>Data Privacy Breach</strong></td><td>Sharing member phone number, payment details, or personal info with unauthorized person</td></tr>
+        <tr><td><strong>Misleading Communication</strong></td><td>Promising a feature that doesn't exist, making false commitments about timelines</td></tr>
+        <tr><td><strong>Behavioral Misconduct</strong></td><td>Rude or disrespectful tone with member, ignoring member messages intentionally</td></tr>
+        <tr><td><strong>Attendance Violations</strong></td><td>Repeated unapproved absences, leaving shift early without informing, extended unauthorized breaks</td></tr>
+        <tr><td><strong>Policy Violations</strong></td><td>Using personal phone for member data, sharing internal screenshots externally</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
 <!-- 5. OJT ONBOARDING & PROCESS -->
-<div class="section">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>5. OJT Onboarding & Process</h2>
-  <p contenteditable="true">OJT duration is <strong>45 days</strong>. Target: Make interns <strong>minimum 80% ready</strong> for independent query handling with strong product/process understanding, consistent quality, and productivity improvement.</p>
+<div class="sec">
+  <img src="habuild-logo.png" class="wm" alt="">
+  <h2>5. OJT Onboarding & Process (45 Days)</h2>
+  <p contenteditable="true">Target: <strong>Minimum 80% readiness</strong> for independent handling with strong product/process understanding and consistent improvement.</p>
 
-  <h3>OJT Tracking Structure</h3>
-  <p contenteditable="true">All tracking maintained in one workbook: <strong>"OJT Leads Reporting Tracker"</strong> with separate sheets per batch.</p>
-  <table>
-    <thead><tr><th>What to Track</th><th>Where to Update</th></tr></thead>
-    <tbody contenteditable="true">
-      <tr><td>Daily Chat Count</td><td>Support Master Sheet</td></tr>
-      <tr><td>Daily Attendance</td><td>HR Attendance Sheet</td></tr>
-      <tr><td>Daily Audit Scorecard</td><td>OJT Lead Reporting Sheet</td></tr>
-      <tr><td>Feedback / Observations</td><td>OJT Lead Personal Sheet</td></tr>
-    </tbody>
-  </table>
+  <h3>Tracking Structure</h3>
+  <p contenteditable="true" style="font-size:12.5px">All tracking in <strong>"OJT Leads Reporting Tracker"</strong> (separate sheets per batch). Daily updates: Chat Count (Support Master), Attendance (HR Sheet), Audit Scorecard (OJT Reporting), Feedback (OJT Personal Sheet).</p>
 
   <h3>OJT Lead Responsibilities</h3>
-  <ul class="clean" contenteditable="true">
-    <li>Daily tracking of assigned interns — attendance, chat count, productivity</li>
-    <li>Review chats and provide actionable feedback</li>
-    <li>Conduct audits (minimum 25–30% of total chats) and maintain scorecards</li>
-    <li>Note all feedback on <strong>batch documents under each intern's name</strong> as per parameters</li>
-    <li>Share QC feedback with interns — mistakes in group, <strong>one-on-one when required</strong> (especially initial days)</li>
-    <li>Connect daily (or when required) to share <strong>consolidated QC error feedback</strong></li>
-    <li>Conduct refresher sessions based on error trends</li>
-    <li>Update <strong>Daily Refresher Sheet</strong> with topic, status, remarks, and questions taken</li>
-    <li>Conduct <strong>Live Chat Tests</strong> (alternate days → twice/day → once/week)</li>
-    <li><strong>Daily 10-min huddle with interns</strong> at shift start — recent updates, expected queries, faster solutions</li>
-    <li>Help interns with queries <strong>patiently</strong> with professional and positive behavior</li>
-    <li>Handle escalations and coordinate with Training Lead daily</li>
-    <li>Coordinate and conduct <strong>OJT Evaluations</strong></li>
-    <li>When team strength is low, <strong>help in classroom training</strong> — material, sessions as per situation</li>
-    <li>OJT Leads must maintain <strong>good coordination with each other</strong> — especially for refresher sessions</li>
-    <li>Share daily work report in OJT group <strong>without reminders</strong></li>
-  </ul>
+  <div class="bx-grid" contenteditable="true">
+    <div class="bx bx-navy">
+      <h4>Daily Tracking & Audit</h4>
+      <p>Track attendance, chat count, productivity. Audit 25–30% of chats (min 3x/week). Note feedback on batch docs under each intern name. Daily report in OJT group without reminders.</p>
+    </div>
+    <div class="bx bx-navy">
+      <h4>Feedback & QC</h4>
+      <p>Share mistakes in group, one-on-one for each QC when needed (esp. initial days). Daily consolidated QC error feedback. Coordinate with QC team (weekly/15-day audits).</p>
+    </div>
+    <div class="bx bx-navy">
+      <h4>Refresher & Live Tests</h4>
+      <p>Refresher sessions on error trends. Daily refresher sheet (topic, status, remarks, questions). Live chat tests: alternate days (W1–2) → 2x/day (W3–4) → 1x/week (W5–6).</p>
+    </div>
+    <div class="bx bx-navy">
+      <h4>Huddles & Support</h4>
+      <p>10-min intern huddle at shift start. Help interns patiently. Morning/evening OJT lead alignment (5–10 min daily). Good coordination between leads for refreshers.</p>
+    </div>
+    <div class="bx bx-navy">
+      <h4>Evaluation & Training</h4>
+      <p>Conduct OJT evaluations. When team strength low, help classroom training (material, sessions). Coordinate with Training Lead daily.</p>
+    </div>
+    <div class="bx bx-navy">
+      <h4>Audit Rotation (High Load)</h4>
+      <p>Lead A: query support + escalation. Lead B: audits + feedback docs. Rotate every 1–2 hrs. New batch: prioritize floor support, adjust audit bandwidth.</p>
+    </div>
+  </div>
 
-  <h3>Live Chat Test Schedule</h3>
+  <h3>Trend Logic</h3>
   <table>
-    <thead><tr><th>OJT Phase</th><th>Frequency</th><th>Purpose</th></tr></thead>
+    <thead><tr><th>Trend</th><th>Criteria (Priority: Error → Productivity → Others)</th></tr></thead>
     <tbody contenteditable="true">
-      <tr><td><strong>Start (Week 1–2)</strong></td><td>Alternate days</td><td>Build confidence, test basic topic understanding</td></tr>
-      <tr><td><strong>Mid (Week 3–4)</strong></td><td>Twice a day</td><td>Test speed + accuracy under real-like conditions</td></tr>
-      <tr><td><strong>Last (Week 5–6)</strong></td><td>Once a week</td><td>Final readiness check — handle independently</td></tr>
-    </tbody>
-  </table>
-  <p contenteditable="true" style="font-size:12px;color:#5A6478">OJT Leads act as members — message from own number to support number. Interns handle as real chats. All questions recorded in Daily Refresher Sheet.</p>
-
-  <h3>Morning & Evening OJT Lead Huddle</h3>
-  <p contenteditable="true" style="font-size:13px">Both OJT Leads must conduct a <strong>5–10 min huddle daily</strong> (or weekly/as required) to stay aligned on intern progress, refresher topics, live chat test observations, and concerns.</p>
-
-  <h3>Weekly Scorecard Parameters</h3>
-  <p contenteditable="true" style="font-size:13px">Maintained weekly per intern: Intern Name, OJT Lead, Shift, Week, Availability, AVG Chat Count, Total Chat Count, Total Chats Scanned, ARST, Number of QCs, Error %, Rating by OJT Lead, Rating by AI, Trend, Feedback, Needs Improvement.</p>
-
-  <h3>QC & Audit Guidelines</h3>
-  <table>
-    <thead><tr><th>Requirement</th><th>Details</th></tr></thead>
-    <tbody contenteditable="true">
-      <tr><td><strong>OJT Lead Audits</strong></td><td>Minimum 3 times/week per intern, 25–30% of total chats</td></tr>
-      <tr><td><strong>QC Team Audits</strong></td><td>Weekly or every 15 days — share feedback with OJT team</td></tr>
-      <tr><td><strong>Feedback Documentation</strong></td><td>All feedback noted on batch documents under intern name as per parameters</td></tr>
-      <tr><td><strong>Feedback Sharing</strong></td><td>Mistakes in group; one-on-one for each QC when needed. Consolidated QC error feedback daily</td></tr>
-      <tr><td><strong>Re-Audits</strong></td><td>Random re-audits by Training Lead</td></tr>
+      <tr><td style="color:#1B8C5A;font-weight:700">↑ Improving</td><td>Error % decreasing AND chat count increasing/stable</td></tr>
+      <tr><td style="color:#5A6478;font-weight:700">— Stable</td><td>Error % and productivity roughly same (±2%)</td></tr>
+      <tr><td style="color:#C0392B;font-weight:700">↓ Declining</td><td>Error % increasing OR chat count dropping without reason</td></tr>
+      <tr><td style="color:#C0392B;font-weight:700">⚠ At Risk</td><td>Error above threshold 2+ weeks OR attendance gaps OR behavioral concerns</td></tr>
     </tbody>
   </table>
 
-  <h3>OJT Lead Audit & Handholding Model</h3>
-  <p contenteditable="true" style="font-size:13px">During normal operations, OJT Leads balance query support, live guidance, auditing, and feedback. During <strong>high load periods</strong>, responsibilities rotate:</p>
-  <table>
-    <thead><tr><th>OJT Lead A (Rotation 1)</th><th>OJT Lead B (Rotation 1)</th></tr></thead>
-    <tbody contenteditable="true">
-      <tr><td>Query Support, Escalation Support, Floor Assistance</td><td>Audits, Feedback Documentation, Quality Tracking</td></tr>
-    </tbody>
-  </table>
-  <p contenteditable="true" style="font-size:12px;color:#5A6478">After 1–2 hours, responsibilities rotate. During new batch ramp-up, all OJT Leads prioritize floor support. Audit bandwidth adjusted based on operational requirements.</p>
+  <h3>Reporting</h3>
+  <p contenteditable="true" style="font-size:12.5px">Daily OJT Report (WhatsApp group) | Weekly OJT Mail (management) | QC Audit Feedback (weekly/15-day) | Final Batch Report (end of 45 days, all stakeholders)</p>
 
-  <h3>Trend Logic — How Trend is Determined</h3>
-  <table>
-    <thead><tr><th>Trend</th><th>Criteria (Priority: Error Rate → Productivity → Others)</th></tr></thead>
-    <tbody contenteditable="true">
-      <tr><td style="color:#1B8C5A;font-weight:700">↑ Improving</td><td>Error % decreasing week-over-week AND chat count increasing or stable</td></tr>
-      <tr><td style="color:#5A6478;font-weight:700">— Stable</td><td>Error % and productivity roughly same (within ±2%)</td></tr>
-      <tr><td style="color:#C0392B;font-weight:700">↓ Declining</td><td>Error % increasing OR chat count dropping without valid reason</td></tr>
-      <tr><td style="color:#C0392B;font-weight:700">⚠ At Risk</td><td>Error % above threshold for 2+ weeks OR repeated attendance gaps OR behavioral concerns</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Reporting Schedule</h3>
-  <table>
-    <thead><tr><th>Report</th><th>Frequency</th><th>Shared With</th></tr></thead>
-    <tbody contenteditable="true">
-      <tr><td>Daily OJT Report</td><td>Daily</td><td>OJT WhatsApp Group</td></tr>
-      <tr><td>Weekly OJT Mail</td><td>Weekly</td><td>Management</td></tr>
-      <tr><td>QC Audit Feedback</td><td>Weekly / 15 Days</td><td>OJT Leads + Training Lead</td></tr>
-      <tr><td>Final Batch Report</td><td>End of 45 Days</td><td>All Stakeholders via email</td></tr>
-    </tbody>
-  </table>
-
-  <p contenteditable="true" style="font-size:12.5px;margin-top:8px"><strong>OJT Team SOP (Detail):</strong> &nbsp; <span class="link-space" contenteditable="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+  <p contenteditable="true" style="font-size:12.5px;margin-top:8px"><strong>OJT Team SOP (Detail):</strong> &nbsp; <span class="lnk" contenteditable="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
 </div>
 
-<!-- 6. RETRAINING & OJT EXTENSION -->
-<div class="section">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>6. Retraining & OJT Extension Process</h2>
-  <p contenteditable="true">If significant performance gaps are observed during OJT:</p>
-  <ul class="clean" contenteditable="true">
-    <li>Additional handholding and focused refresher sessions will be conducted</li>
-    <li>A focused improvement plan will be created for the intern</li>
-    <li>Additional audits and closer monitoring will be done</li>
-    <li>OJT duration may be extended if required</li>
-  </ul>
-
-  <h3>OJT Extension Guidelines</h3>
-  <ul class="clean" contenteditable="true">
-    <li>Extension should generally <strong>not exceed 2 additional weeks</strong></li>
-    <li>Extension decisions will be taken jointly by: <strong>Training Lead + OJT Lead + Department Stakeholders</strong></li>
-    <li>Final transition decision based on demonstrated improvement and readiness</li>
-  </ul>
+<!-- 6. RETRAINING & EXTENSION -->
+<div class="sec">
+  <img src="habuild-logo.png" class="wm" alt="">
+  <h2>6. Retraining & OJT Extension</h2>
+  <p contenteditable="true">If significant performance gaps are observed:</p>
+  <div class="bx-grid g3" contenteditable="true">
+    <div class="bx bx-accent">
+      <h4>Step 1: Handholding</h4>
+      <p>Additional refresher sessions, focused improvement plan created</p>
+    </div>
+    <div class="bx bx-accent">
+      <h4>Step 2: Monitoring</h4>
+      <p>Additional audits, closer monitoring, daily feedback</p>
+    </div>
+    <div class="bx bx-accent">
+      <h4>Step 3: Extension</h4>
+      <p>OJT extended (max 2 additional weeks). Decision by Training Lead + OJT Lead + Dept Stakeholders jointly</p>
+    </div>
+  </div>
+  <p contenteditable="true" style="font-size:12px;color:#5A6478">Final transition decision based on demonstrated improvement and readiness.</p>
 </div>
 
 <!-- 7. SQUAD TRANSITION -->
-<div class="section">
-  <img src="habuild-logo.png" class="page-logo" alt="">
-  <h2>7. OJT to Squad Transition Framework</h2>
+<div class="sec">
+  <img src="habuild-logo.png" class="wm" alt="">
+  <h2>7. OJT to Squad Transition</h2>
 
   <h3>Final Review (End of 45 Days)</h3>
-  <p contenteditable="true" style="font-size:13px">Final consolidated review prepared with all weekly scorecard parameters plus: OJT Start/End Date, Duration, Shifting Status (Ready/Not Ready/Exited), Squad Name, Final Department.</p>
+  <p contenteditable="true" style="font-size:12.5px">Final consolidated review with all weekly parameters + OJT dates, duration, shifting status (Ready/Not Ready/Exited), squad name, final department.</p>
 
   <h3>Transition Timeline</h3>
-  <table>
-    <thead><tr><th>Phase</th><th>Duration</th><th>Expectations</th></tr></thead>
-    <tbody contenteditable="true">
-      <tr><td><strong>OJT Period</strong></td><td>45 Days</td><td>Minimum 80% readiness, strong product/process understanding, consistent quality & productivity improvement</td></tr>
-      <tr><td><strong>Month 1 (Transition)</strong></td><td>After OJT</td><td>Shift to squad, dedicated mentor support continues, gradual productivity expectations, quality as primary focus. Min 70% of squad benchmark.</td></tr>
-      <tr><td><strong>Month 2 (Stabilization)</strong></td><td>Month 2</td><td>Mentor support as required, productivity continues improving, error % under control. 70%+ of squad benchmark.</td></tr>
-      <tr><td><strong>Post Month 2</strong></td><td>Ongoing</td><td>Same productivity and quality expectations as squad members. Formal PIP applicability begins if required.</td></tr>
-    </tbody>
-  </table>
+  <div class="bx-grid g4" contenteditable="true">
+    <div class="bx bx-navy" style="text-align:center">
+      <h4>OJT (45 Days)</h4>
+      <p>Min 80% readiness, strong product understanding, consistent improvement</p>
+    </div>
+    <div class="bx bx-accent" style="text-align:center">
+      <h4>Month 1 (Transition)</h4>
+      <p>Shift to squad, mentor continues, gradual targets. Min 70% of squad benchmark</p>
+    </div>
+    <div class="bx bx-accent" style="text-align:center">
+      <h4>Month 2 (Stabilize)</h4>
+      <p>Mentor as needed, productivity improving, error under control. 70%+ benchmark</p>
+    </div>
+    <div class="bx bx-navy" style="text-align:center">
+      <h4>Post Month 2</h4>
+      <p>Same expectations as squad. Formal PIP applicable if required</p>
+    </div>
+  </div>
 
   <h3>Department Transition Guidelines</h3>
-  <ul class="clean" contenteditable="true">
-    <li>OJT Team and Department Leads must coordinate continuously</li>
-    <li>All OJT parameters continue to be tracked during transition</li>
-    <li>Department Leads must support interns patiently — no negative influence</li>
-    <li>Gradual target progression as per OJT thresholds maintained</li>
-    <li>Escalations highlighted to Training Lead immediately</li>
+  <ul class="c" contenteditable="true">
+    <li>OJT Team and Department Leads coordinate continuously — all OJT parameters tracked</li>
+    <li>Department Leads support interns patiently — no negative influence</li>
+    <li>Gradual target progression maintained, escalations highlighted immediately</li>
   </ul>
   <div class="note" style="background:#FDF0EE;border:1px solid #F0C4BF;color:#8B1A1A" contenteditable="true">
     <span>⛔</span>
-    <div><strong>Important:</strong> Any action against interns must only be taken after proper stakeholder discussion and as per OJT criteria.</div>
+    <div>Any action against interns only after proper stakeholder discussion and as per OJT criteria.</div>
   </div>
 </div>
 
-<!-- 8. TRAINING LEAD RESPONSIBILITIES -->
-<div class="section">
-  <img src="habuild-logo.png" class="page-logo" alt="">
+<!-- 8. TRAINING LEAD -->
+<div class="sec">
+  <img src="habuild-logo.png" class="wm" alt="">
   <h2>8. Training Lead Responsibilities — Dipti Sahu</h2>
-  <table>
-    <thead><tr><th>Area</th><th>Responsibilities</th></tr></thead>
-    <tbody contenteditable="true">
-      <tr><td><strong>OJT Team Management</strong></td><td>Manage OJT operations and adherence, daily hurdles with OJT Leads, weekly feedback discussions, leave approvals, task allocation</td></tr>
-      <tr><td><strong>Intern Huddles</strong></td><td>Short huddle with interns daily/weekly — progress, concerns, motivation, readiness</td></tr>
-      <tr><td><strong>Performance</strong></td><td>Monitor intern readiness, review scorecards, identify gaps, take corrective actions</td></tr>
-      <tr><td><strong>Quality & Feedback</strong></td><td>Re-audit OJT Lead audits, conduct refresher sessions, 1-on-1 intern feedback, maintain all documentation</td></tr>
-      <tr><td><strong>OJT Evaluation</strong></td><td>Coordinate and oversee OJT evaluations, ensure fair and aligned with SOP criteria</td></tr>
-      <tr><td><strong>Coordination</strong></td><td>HR (escalations/exits), squads (transitions), department handovers, ID creation, yoga subscriptions</td></tr>
-      <tr><td><strong>Classroom Training</strong></td><td>When OJT team strength is low, support classroom training — material, sessions as per situation</td></tr>
-      <tr><td><strong>Reporting</strong></td><td>Review daily updates, monitor login/breaks/responsiveness, submit weekly and final batch reports to management</td></tr>
-    </tbody>
-  </table>
+  <div class="bx-grid g3" contenteditable="true">
+    <div class="bx bx-navy">
+      <h4>Team Management</h4>
+      <p>OJT operations, daily hurdles with leads, weekly feedback, leave approvals, task allocation</p>
+    </div>
+    <div class="bx bx-navy">
+      <h4>Intern Huddles</h4>
+      <p>Short daily/weekly huddle with interns — progress, concerns, motivation, readiness</p>
+    </div>
+    <div class="bx bx-navy">
+      <h4>Performance</h4>
+      <p>Monitor readiness, review scorecards, identify gaps, corrective actions</p>
+    </div>
+    <div class="bx bx-navy">
+      <h4>Quality & Feedback</h4>
+      <p>Re-audit OJT audits, refresher sessions, 1-on-1 feedback, maintain all documentation</p>
+    </div>
+    <div class="bx bx-navy">
+      <h4>Coordination</h4>
+      <p>HR (escalations/exits), squads (transitions), handovers, ID creation, yoga subscriptions</p>
+    </div>
+    <div class="bx bx-navy">
+      <h4>Reporting</h4>
+      <p>Daily updates review, login/breaks monitoring, weekly + final batch reports to management</p>
+    </div>
+  </div>
 </div>
 
-<!-- 9. KEY OPERATIONAL GUIDELINES -->
-<div class="section">
-  <img src="habuild-logo.png" class="page-logo" alt="">
+<!-- 9. KEY GUIDELINES -->
+<div class="sec">
+  <img src="habuild-logo.png" class="wm" alt="">
   <h2>9. Key Operational Guidelines</h2>
-  <ul class="clean" contenteditable="true">
-    <li>Intern tracking must happen every working day without fail</li>
-    <li>Data entries must always remain updated and accurate</li>
-    <li>Professional behavior must be maintained by all teams</li>
-    <li>All communication must be transparent and documented</li>
-    <li>Feedback must focus on improvement and readiness</li>
-    <li>OJT is successful only when interns can independently handle queries with required quality and productivity</li>
+  <ul class="c" contenteditable="true">
+    <li>Intern tracking every working day without fail — data always updated and accurate</li>
+    <li>Professional behavior by all teams — communication transparent and documented</li>
+    <li>Feedback focused on improvement and readiness</li>
+    <li>OJT successful only when interns independently handle queries with required quality and productivity</li>
   </ul>
-
   <h3>Load Crisis Management</h3>
-  <p contenteditable="true" style="font-size:13px">During high member volume: OJT Leads jointly support query handling, audits prioritized by risk and bandwidth, refresher sessions moved to low-load windows, team coordination ensures neither quality nor member experience is impacted.</p>
+  <p contenteditable="true" style="font-size:12.5px;color:#5A6478">High volume: OJT Leads jointly support queries, audits prioritized by risk, refreshers moved to low-load windows, team coordination ensures quality and member experience maintained.</p>
 </div>
 
 <!-- FOOTER -->
-<div class="doc-footer">
+<div class="ft">
   <img src="habuild-logo.png" alt="Habuild">
   <p style="font-size:14px;font-weight:700;color:#1E3A5F;margin-bottom:2px" contenteditable="true">Prepared By: Dipti Sahu</p>
   <p style="font-size:12px;color:#5A6478" contenteditable="true">Training & Development Lead — Habuild Healthtech Pvt. Ltd.</p>
-  <p class="no-print" style="font-size:10px;color:#AAB0BC;margin-top:8px">Click any text to edit • Ctrl+P → Save as PDF</p>
+  <p class="np" style="font-size:10px;color:#AAB0BC;margin-top:8px">Click any text to edit • Ctrl+P → Save as PDF</p>
 </div>
 
 </div>
 
 <script>
-let editable=true;
-const SAVE_KEY='habuild-training-ojt-sop-v1';
-function saveEdits(){const e=document.querySelectorAll('[contenteditable]');const d=[];e.forEach((el,i)=>{d.push(el.innerHTML)});localStorage.setItem(SAVE_KEY,JSON.stringify(d));const s=document.getElementById('save-status');if(s){s.textContent='Saved';setTimeout(()=>{s.textContent=''},2000)}}
-function loadEdits(){const s=localStorage.getItem(SAVE_KEY);if(!s)return;try{const d=JSON.parse(s);const e=document.querySelectorAll('[contenteditable]');e.forEach((el,i)=>{if(d[i]!==undefined)el.innerHTML=d[i]})}catch(e){}}
-let saveTimer;document.addEventListener('input',function(e){if(e.target.closest('[contenteditable]')){clearTimeout(saveTimer);saveTimer=setTimeout(saveEdits,1000);const s=document.getElementById('save-status');if(s)s.textContent='Editing...'}});
-loadEdits();
-function toggleEdit(){editable=!editable;document.querySelectorAll('[contenteditable]').forEach(el=>{el.contentEditable=editable});alert(editable?'Editing enabled':'Editing disabled — view only')}
+let ed=true;const SK='habuild-t-ojt-sop-v2';
+function sv(){const e=document.querySelectorAll('[contenteditable]');const d=[];e.forEach(el=>{d.push(el.innerHTML)});localStorage.setItem(SK,JSON.stringify(d));const s=document.getElementById('ss');if(s){s.textContent='Saved';setTimeout(()=>{s.textContent=''},2000)}}
+function ld(){const s=localStorage.getItem(SK);if(!s)return;try{const d=JSON.parse(s);const e=document.querySelectorAll('[contenteditable]');e.forEach((el,i)=>{if(d[i]!==undefined)el.innerHTML=d[i]})}catch(e){}}
+let st;document.addEventListener('input',function(e){if(e.target.closest('[contenteditable]')){clearTimeout(st);st=setTimeout(sv,1000);const s=document.getElementById('ss');if(s)s.textContent='Editing...'}});
+ld();
+function toggleEdit(){ed=!ed;document.querySelectorAll('[contenteditable]').forEach(el=>{el.contentEditable=ed});alert(ed?'Editing enabled':'View only')}
 </script>
 </body>
 </html>
