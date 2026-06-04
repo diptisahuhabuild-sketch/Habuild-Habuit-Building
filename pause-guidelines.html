@@ -7,6 +7,8 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;width:1280px;height:720px;overflow:hidden;background:#fff;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+[contenteditable]:focus{outline:none}
+[contenteditable] *:hover{outline:1px dashed rgba(232,114,42,0.3);outline-offset:2px;border-radius:3px}
 
 .slide{
   width:1280px;height:720px;position:relative;
@@ -75,7 +77,7 @@ h1 em{font-style:normal;color:#E8722A}
 </style>
 </head>
 <body>
-<div class="slide">
+<div class="slide" contenteditable="true">
   <div class="deco deco-1"></div>
   <div class="deco deco-2"></div>
   <div class="logo"><img src="habuild-logo.png" alt="Habuild"><span>Habuild</span></div>
@@ -151,5 +153,13 @@ h1 em{font-style:normal;color:#E8722A}
     <p>Ensure consistent handling across all team members</p>
   </div>
 </div>
+<script>
+const SK='habuild-pause-guide-v1';
+const sl=document.querySelector('.slide');
+function sv(){localStorage.setItem(SK,sl.innerHTML)}
+function ld(){const s=localStorage.getItem(SK);if(s)sl.innerHTML=s}
+let t;document.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(sv,1000)});
+ld();
+</script>
 </body>
 </html>
