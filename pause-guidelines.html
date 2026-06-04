@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280,height=720">
+<title>Pause Guidelines — Inactive Members</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;width:1280px;height:720px;overflow:hidden;background:#fff;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+
+.slide{
+  width:1280px;height:720px;position:relative;
+  background:linear-gradient(145deg,#FFFAF7 0%,#FFF3EC 35%,#FFF0E5 60%,#F8F4FF 100%);
+  padding:48px 64px;display:flex;flex-direction:column;
+}
+
+/* Top brand bar */
+.slide::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#1E3A5F,#E8722A,#1E3A5F)}
+
+/* Decorative circle */
+.deco{position:absolute;width:300px;height:300px;border-radius:50%;pointer-events:none}
+.deco-1{top:-80px;right:-60px;background:radial-gradient(circle,rgba(232,114,42,0.08),transparent 70%)}
+.deco-2{bottom:-100px;left:-80px;background:radial-gradient(circle,rgba(30,58,95,0.05),transparent 70%)}
+
+/* Logo */
+.logo{position:absolute;top:18px;right:28px;display:flex;align-items:center;gap:8px}
+.logo img{height:28px;opacity:0.7}
+.logo span{font-size:11px;color:#5A6478;font-weight:500}
+
+/* Title area */
+.title-area{text-align:center;margin-bottom:24px;position:relative;z-index:1}
+.badge{display:inline-block;padding:5px 16px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:linear-gradient(135deg,#1E3A5F,#2a4f7a);color:#fff;margin-bottom:10px}
+h1{font-size:34px;font-weight:800;color:#1E3A5F;line-height:1.2}
+h1 em{font-style:normal;color:#E8722A}
+.sub{font-size:14px;color:#5A6478;margin-top:6px}
+
+/* Content */
+.content{flex:1;display:flex;gap:28px;position:relative;z-index:1}
+
+/* Left - main rules */
+.main-col{flex:1;display:flex;flex-direction:column;gap:14px}
+
+/* Rule boxes */
+.rule{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:12px;background:rgba(255,255,255,0.8);border:1px solid #E2E6EE;box-shadow:0 2px 8px rgba(30,58,95,0.04)}
+.rule-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.rule-red{background:#FDF0EE;border:1px solid #F0C4BF}
+.rule-green{background:#e8f5e9;border:1px solid #b8e6ce}
+.rule-amber{background:#FFF8E1;border:1px solid #FFE082}
+.rule h3{font-size:14px;font-weight:700;color:#1E3A5F;margin-bottom:3px}
+.rule p{font-size:12.5px;color:#5A6478;line-height:1.55}
+.rule strong{color:#1E3A5F}
+
+/* Right - key callout */
+.callout-col{width:320px;display:flex;flex-direction:column;gap:14px}
+
+.callout-box{padding:20px;border-radius:12px;border:1px solid;flex:1;display:flex;flex-direction:column;justify-content:center}
+.cb-red{background:#FDF0EE;border-color:#F0C4BF}
+.cb-green{background:#e8f5e9;border-color:#b8e6ce}
+.cb-date{background:linear-gradient(135deg,#1E3A5F,#2a4f7a);color:#fff;text-align:center;border:none}
+
+.callout-box h4{font-size:13px;font-weight:700;margin-bottom:6px}
+.cb-red h4{color:#C0392B}
+.cb-green h4{color:#1B7A45}
+.callout-box p{font-size:12px;line-height:1.6}
+.cb-red p{color:#8B1A1A}
+.cb-green p{color:#145A3A}
+
+.date-big{font-size:42px;font-weight:800;letter-spacing:1px}
+.date-label{font-size:12px;opacity:0.8;margin-top:4px}
+
+/* Footer */
+.slide-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:2px solid #E2E6EE;position:relative;z-index:1}
+.slide-footer p{font-size:11px;color:#8C85A0}
+.slide-footer strong{color:#1E3A5F}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="deco deco-1"></div>
+  <div class="deco deco-2"></div>
+  <div class="logo"><img src="habuild-logo.png" alt="Habuild"><span>Habuild</span></div>
+
+  <!-- TITLE -->
+  <div class="title-area">
+    <div class="badge">Important Update</div>
+    <h1>Pause Guidelines for <em>Inactive Members</em></h1>
+    <div class="sub">21 Gift Days Added — Valid Until 25th June Only</div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- LEFT: Rules -->
+    <div class="main-col">
+      <div class="rule">
+        <div class="rule-icon rule-amber">📋</div>
+        <div>
+          <h3>Context</h3>
+          <p>We have added <strong>21 gift days</strong> to inactive members. These days are valid <strong>only until 25th June</strong> and will expire after that date.</p>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-icon rule-red">🚫</div>
+        <div>
+          <h3>Do NOT Proactively Offer Pause</h3>
+          <p>Do not offer pause days to these members for reasons like <strong>health issues, travel, weddings, bereavement</strong>, or any other situation. We should not initiate the pause conversation.</p>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-icon rule-green">✅</div>
+        <div>
+          <h3>Exception — Member Requests Pause</h3>
+          <p>If a member <strong>specifically mentions a health issue and directly requests a pause</strong>, we can process it. While doing so, <strong>mandatory to inform</strong>: pause days are only usable until 25th June — unused days will expire.</p>
+        </div>
+      </div>
+
+      <div class="rule">
+        <div class="rule-icon rule-amber">💬</div>
+        <div>
+          <h3>Communication Must Be</h3>
+          <p><strong>Clear, consistent, and transparent.</strong> Ensure every team member handling such cases follows the same approach. No exceptions beyond the stated policy.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Callouts -->
+    <div class="callout-col">
+      <div class="callout-box cb-date">
+        <div class="date-big">25th June</div>
+        <div class="date-label">Expiry Deadline for Gift Days</div>
+      </div>
+
+      <div class="callout-box cb-red">
+        <h4>🚫 Do NOT Pause For</h4>
+        <p>Travel plans<br>Weddings / Functions<br>Bereavement<br>General health (proactive)<br>Any other reason (unless member asks)</p>
+      </div>
+
+      <div class="callout-box cb-green">
+        <h4>✅ Pause ONLY When</h4>
+        <p>Member directly mentions health issue<br><strong>AND</strong> specifically requests a pause<br><strong>AND</strong> informed about 25th June expiry</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="slide-footer">
+    <p><strong>Habuild Healthtech Pvt. Ltd.</strong> — Support Team Guidelines</p>
+    <p>Ensure consistent handling across all team members</p>
+  </div>
+</div>
+</body>
+</html>
