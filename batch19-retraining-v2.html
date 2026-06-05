@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280,height=720">
+<title>Batch 19 Retraining — Real QC Review</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;color:#1A1A2E;overflow:hidden;width:100vw;height:100vh}
+[contenteditable]:focus{outline:2px dashed #E8722A;outline-offset:2px}
+.slideshow{width:100vw;height:100vh;position:relative}
+.slide{position:absolute;top:0;left:0;width:100%;height:100%;display:none;flex-direction:column;padding:40px 50px;overflow:hidden}
+.slide.active{display:flex;animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* Backgrounds */
+.bg-dark{background:linear-gradient(145deg,#1E3A5F 0%,#0f2440 100%);color:#fff}
+.bg-light{background:linear-gradient(145deg,#f8f6ff,#f0eeff,#faf8ff)}
+.bg-error{background:linear-gradient(145deg,#fff5f5,#fff0f0,#fff8f8)}
+.bg-good{background:linear-gradient(145deg,#f0fdf4,#eefbf4,#f5fff8)}
+.bg-warm{background:linear-gradient(145deg,#FFFAF7,#FFF3EC,#FFF8F5)}
+
+/* Top bar */
+.slide::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2}
+.bg-dark::before{background:linear-gradient(90deg,#E8722A,#FFB74D)}
+.bg-light::before{background:linear-gradient(90deg,#1E3A5F,#E8722A)}
+.bg-error::before{background:#C0392B}
+.bg-good::before{background:#1B8C5A}
+.bg-warm::before{background:linear-gradient(90deg,#E8722A,#1E3A5F)}
+
+/* Logo */
+.logo{position:absolute;top:14px;right:24px;display:flex;align-items:center;gap:6px;z-index:2}
+.logo img{height:24px}
+.logo span{font-size:10px;font-weight:600;color:#1E3A5F}
+.bg-dark .logo span{color:rgba(255,255,255,.4)}
+.bg-dark .logo img{filter:brightness(10);opacity:.3}
+
+/* Screenshot display */
+.screenshot-area{flex:1;display:flex;gap:24px;align-items:center;margin-top:8px}
+.ss-img{flex:1;display:flex;justify-content:center;align-items:center}
+.ss-img img{max-height:480px;max-width:100%;border-radius:12px;border:2px solid rgba(30,58,95,.12);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.ss-text{width:380px;display:flex;flex-direction:column;justify-content:center}
+
+/* Callout text */
+.callout{padding:16px 20px;border-radius:12px;font-size:14px;line-height:1.6}
+.callout-check{background:rgba(192,57,43,.06);border:1px solid rgba(192,57,43,.12);color:#8B1A1A}
+.callout-good{background:rgba(27,140,90,.06);border:1px solid rgba(27,140,90,.12);color:#145A3A}
+.callout-pin{font-size:16px;font-weight:800;color:#C0392B;margin-bottom:8px}
+.callout-q{font-size:18px;font-weight:700;color:#1E3A5F;line-height:1.4}
+
+/* Sarcastic bottom text */
+.sarc{position:absolute;bottom:24px;left:50px;right:50px;text-align:center;font-size:16px;font-weight:700;color:#C0392B;z-index:2}
+.sarc-navy{color:#1E3A5F}
+
+/* Tags */
+.topic-tag{display:inline-block;padding:5px 14px;border-radius:16px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.tt-pause{background:rgba(232,114,42,.12);color:#E8722A}
+.tt-comm{background:rgba(156,39,176,.1);color:#9C27B0}
+.tt-sub{background:rgba(30,58,95,.1);color:#1E3A5F}
+.tt-link{background:rgba(33,150,243,.1);color:#2196F3}
+.tt-process{background:rgba(96,125,139,.1);color:#607D8B}
+
+/* Guide box */
+.guide{background:rgba(30,58,95,.04);border:1px solid rgba(30,58,95,.08);border-radius:10px;padding:14px 18px;margin:8px 0;font-size:13px;line-height:1.6;color:#333}
+.guide h4{font-size:14px;font-weight:700;color:#1E3A5F;margin-bottom:6px}
+.guide li{margin:3px 0}
+
+/* Navigation */
+.nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;z-index:100;background:rgba(30,58,95,.9);backdrop-filter:blur(8px);border-radius:14px;padding:6px 16px}
+.nav button{width:32px;height:32px;border-radius:8px;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.nav button:hover{background:rgba(255,255,255,.25)}
+.nav button:disabled{opacity:.3}
+.counter{font-size:11px;color:rgba(255,255,255,.6);min-width:46px;text-align:center}
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#1E3A5F,#E8722A);z-index:101;transition:width .3s}
+
+/* Stat cards */
+.stat-row{display:flex;gap:14px;margin:14px 0}
+.stat-c{flex:1;padding:16px;border-radius:12px;background:rgba(255,255,255,.6);border:1px solid rgba(0,0,0,.05);text-align:center}
+.stat-c .n{font-size:28px;font-weight:800}
+.stat-c .l{font-size:11px;color:#5A6478;margin-top:2px}
+
+@media print{.nav,.progress{display:none!important}.slide{position:relative!important;display:flex!important;page-break-after:always;min-height:100vh}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="slideshow" id="slideshow">
+
+<!-- SLIDE 1: TITLE -->
+<div class="slide bg-dark active" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+    <div style="font-size:48px;margin-bottom:10px">🔄</div>
+    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px">Batch 19 — OJT Retraining</div>
+    <h1 style="font-size:36px;font-weight:800;line-height:1.2;max-width:700px">Real Chats. Real Mistakes.<br><span style="color:#E8722A">Let's Fix Them Together.</span></h1>
+    <p style="font-size:14px;color:rgba(255,255,255,.5);margin-top:12px;max-width:500px">QC Review based on actual member conversations from Tanushree, Kalpik, Samyak, Aman & Fuzail</p>
+  </div>
+</div>
+
+<!-- SLIDE 2: PAUSE — Fuzail encouraged instead of processing -->
+<div class="slide bg-light" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <span class="topic-tag tt-pause">Pause Handling</span>
+  <div class="screenshot-area">
+    <div class="ss-img"><img src="retraining-images/image2.png" alt="CRM Chat"></div>
+    <div class="ss-text">
+      <div class="callout callout-check">
+        <div class="callout-pin">📌 Check!</div>
+        <p>Member clearly asked to <strong>pause subscription</strong> from 28th to 30th May as they will be out of station.</p>
+        <p style="margin-top:8px">But instead of processing the pause, the intern <strong>encouraged the member to keep attending</strong> even though the member had already made a clear request.</p>
+        <p style="margin-top:8px;font-weight:700">The member had already decided. Process the request — don't re-pitch.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sarc">When a member says "pause" — it means PAUSE. Not "let me convince you otherwise" 🤔</div>
+</div>
+
+<!-- SLIDE 3: PAUSE — Fuzail wrong dates -->
+<div class="slide bg-error" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <span class="topic-tag tt-pause">Pause Handling</span>
+  <div class="screenshot-area">
+    <div class="ss-img"><img src="retraining-images/image9.png" alt="CRM Chat"></div>
+    <div class="ss-text">
+      <div class="callout callout-check">
+        <div class="callout-pin">📌 Check!</div>
+        <p>Subscription paused from <strong>28 May to 30 May</strong>.</p>
+        <p style="margin-top:6px">But the member clearly said: <strong>"It is 28 to 31. Sunday afternoon I will be returning. 4 days."</strong></p>
+        <p style="margin-top:6px">Pause should have been until <strong>31st May</strong> — not 30th.</p>
+        <p style="margin-top:8px;font-weight:700;color:#C0392B">Wrong dates = member misses a day = trust broken.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sarc">Member said 4 days. We paused 3. Are we counting correctly? 🤔</div>
+</div>
+
+<!-- SLIDE 4: PAUSE — Kalpik asked reason again -->
+<div class="slide bg-light" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <span class="topic-tag tt-pause">Pause Handling</span>
+  <div class="screenshot-area">
+    <div class="ss-img"><img src="retraining-images/image15.png" alt="CRM Chat"></div>
+    <div class="ss-text">
+      <div class="callout callout-check">
+        <div class="callout-pin">📌 Check!</div>
+        <p>Member said: <strong>"Plz pause my subscription till 31 st may"</strong></p>
+        <p style="margin-top:6px">Instead of processing directly, intern asked: <strong>"can you please let us know the reason for the pause?"</strong></p>
+        <p style="margin-top:8px">If you scroll up, the reason was <strong>already shared</strong> in the previous conversation. No need to ask again.</p>
+        <p style="margin-top:8px;font-weight:700">SCROLL UP before replying. Always.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sarc">Are we reading the full chat before responding? The answer was already there! 🤔</div>
+</div>
+
+<!-- SLIDE 5: 24-HR ACCESS — Kalpik (international member) -->
+<div class="slide bg-warm" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <span class="topic-tag tt-sub">Subscription & Features</span>
+  <div class="screenshot-area">
+    <div class="ss-img"><img src="retraining-images/image11.png" alt="CRM Chat"></div>
+    <div class="ss-text">
+      <div class="callout callout-check">
+        <div class="callout-pin">📌 Check!</div>
+        <p>Member is in <strong>Costa Rica</strong> on vacation. Clearly an <strong>international member</strong>.</p>
+        <p style="margin-top:6px">Intern said: <strong>"We will also provide 24-hour access to the session"</strong></p>
+        <p style="margin-top:6px;font-weight:700;color:#C0392B">International members ALREADY have 24-hour access by default!</p>
+        <p style="margin-top:8px">Saying "we will provide" implies they don't have it yet — which is wrong.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sarc">International member = 24hr access is ALREADY ON. We don't "provide" what they already have! 🤔</div>
+</div>
+
+<!-- SLIDE 6: 24-HR ACCESS — Tanushree (same error!) -->
+<div class="slide bg-error" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <span class="topic-tag tt-sub">Subscription & Features</span>
+  <div class="screenshot-area">
+    <div class="ss-img"><img src="retraining-images/image16.png" alt="CRM Chat"></div>
+    <div class="ss-text">
+      <div class="callout callout-check">
+        <div class="callout-pin">📌 Same Error — Different Intern!</div>
+        <p>This member has <strong>254</strong> country code (Kenya). Travelling out of country.</p>
+        <p style="margin-top:6px">Tanushree said: <strong>"we provide 24-hour access to the session for members traveling abroad"</strong></p>
+        <p style="margin-top:6px">Again — this member is <strong>already international</strong>. They already have it.</p>
+        <p style="margin-top:8px;font-weight:700;color:#C0392B">Same mistake by 2 interns = this is a knowledge gap we must fix.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sarc">Two different interns, same wrong statement. Do we know our member features? 🤔</div>
+</div>
+
+<!-- SLIDE 7: EMPATHY — Tanushree (AVN condition) -->
+<div class="slide bg-light" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <span class="topic-tag tt-comm">Communication & Empathy</span>
+  <div class="screenshot-area">
+    <div class="ss-img"><img src="retraining-images/image14.png" alt="CRM Chat"></div>
+    <div class="ss-text">
+      <div class="callout callout-check">
+        <div class="callout-pin">📌 Check!</div>
+        <p>Member shared they have <strong>AVN (Avascular Necrosis)</strong> — a serious medical condition.</p>
+        <p style="margin-top:6px">Tanushree directly jumped to: <strong>"AVN mein gentle, low-impact yoga karein..."</strong></p>
+        <p style="margin-top:6px">Where is the <strong>empathy</strong>? Where is acknowledging their health concern first?</p>
+        <p style="margin-top:8px;font-weight:700">Health concern = Empathy FIRST → then guidance.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sarc">Member shares a serious health condition. We jump straight to solutions. Empathy first, always! 🤔</div>
+</div>
+
+<!-- SLIDE 8: MISSED QUERY — Fuzail (badge + focus) -->
+<div class="slide bg-warm" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <span class="topic-tag tt-process">Incomplete Response</span>
+  <div class="screenshot-area">
+    <div class="ss-img"><img src="retraining-images/image1.png" alt="CRM Chat"></div>
+    <div class="ss-text">
+      <div class="callout callout-check">
+        <div class="callout-pin">📌 Check!</div>
+        <p>Member asked <strong>TWO things</strong>:</p>
+        <p style="margin-top:4px">1. <strong>Download Day 1 Badge</strong></p>
+        <p>2. <strong>Increase focus time — what to do?</strong></p>
+        <p style="margin-top:6px">Fuzail only shared meditation links for focus. <strong>Completely missed the badge request!</strong></p>
+        <p style="margin-top:8px;font-weight:700">Read the FULL message. Count the questions. Answer ALL of them.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sarc">Member asked 2 questions. We answered 1. Are we reading queries completely? 🤔</div>
+</div>
+
+<!-- SLIDE 9: PROCESS — Samyak (friend's link) -->
+<div class="slide bg-light" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <span class="topic-tag tt-process">Process Understanding</span>
+  <div class="screenshot-area">
+    <div class="ss-img"><img src="retraining-images/image13.png" alt="CRM Chat"></div>
+    <div class="ss-text">
+      <div class="callout callout-check">
+        <div class="callout-pin">📌 Check!</div>
+        <p>Member said: <strong>"My friend sent me a link and I joined every morning class"</strong></p>
+        <p style="margin-top:4px">Then asked: <strong>"Please provide me a certificate"</strong></p>
+        <p style="margin-top:6px">Samyak explained certificate eligibility but <strong>completely missed the RED FLAG</strong> — the member joined using someone else's link!</p>
+        <p style="margin-top:8px;font-weight:700;color:#C0392B">This should have been flagged. The member needs their own registration.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sarc">Member admitted using someone else's link. We explained certificates. Did we catch the real issue? 🤔</div>
+</div>
+
+<!-- SLIDE 10: LINK ISSUE — Fuzail (should have escalated) -->
+<div class="slide bg-error" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <span class="topic-tag tt-link">Link & Technical Issues</span>
+  <div class="screenshot-area">
+    <div class="ss-img"><img src="retraining-images/image8.png" alt="CRM Chat"></div>
+    <div class="ss-text">
+      <div class="callout callout-check">
+        <div class="callout-pin">📌 Check!</div>
+        <p>Member reported: <strong>"Website not opening"</strong> and <strong>"Chrome par bhi try kiya"</strong></p>
+        <p style="margin-top:6px">Fuzail asked for a screenshot, which is correct. But then <strong>marked the chat as resolved</strong>!</p>
+        <p style="margin-top:6px">Look at the notes: <strong>"if they are facing website unavailable issue again forward it to link issue team"</strong></p>
+        <p style="margin-top:8px;font-weight:700;color:#C0392B">This was a repeated issue — should have been escalated to the concerned team, not just closed.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sarc">Member couldn't access website. We asked screenshot and closed the chat. Is this resolution? 🤔</div>
+</div>
+
+<!-- SLIDE 11: QUIZ — Fuzail (no acknowledgment) -->
+<div class="slide bg-warm" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <span class="topic-tag tt-comm">Communication</span>
+  <div class="screenshot-area">
+    <div class="ss-img"><img src="retraining-images/image12.png" alt="CRM Chat"></div>
+    <div class="ss-text">
+      <div class="callout callout-check">
+        <div class="callout-pin">📌 Check!</div>
+        <p>Member said: <strong>"Sorry, pressed option A by mistake. Wanted to choose 'Simple, lighter meals'. My answer is option B."</strong></p>
+        <p style="margin-top:6px">Fuzail directly shared the correct answer without saying <strong>"No worries"</strong> or <strong>"That's okay"</strong> first.</p>
+        <p style="margin-top:6px">Also missed informing: <strong>quiz options need to be selected on the same day</strong> for future auto-answers.</p>
+        <p style="margin-top:8px;font-weight:700">Small acknowledgments matter. "No worries" takes 2 seconds.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sarc">Member apologized for a mistake. We jumped straight to the answer. Where's the human touch? 🤔</div>
+</div>
+
+<!-- SLIDE 12: KALPIK — Free member link handling -->
+<div class="slide bg-light" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <span class="topic-tag tt-sub">Free Member Handling</span>
+  <div class="screenshot-area">
+    <div class="ss-img"><img src="retraining-images/image7.png" alt="CRM Chat"></div>
+    <div class="ss-text">
+      <div class="callout callout-check">
+        <div class="callout-pin">📌 Check!</div>
+        <p>Free member asked: <strong>"Any links to join class on Monday"</strong></p>
+        <p style="margin-top:6px">Kalpik said: <strong>"You will receive your personal link 15 minutes before your preferred batch timing."</strong></p>
+        <p style="margin-top:6px;font-weight:700;color:#C0392B">This is WRONG for free members!</p>
+        <p style="margin-top:6px">Free members already have their personal link. It doesn't get sent 15 min before. That's for paid members.</p>
+        <p style="margin-top:8px;font-weight:700">Know the difference between free and paid member features!</p>
+      </div>
+    </div>
+  </div>
+  <div class="sarc">Free member asked for a link. We shared paid member process. Do we know the difference? 🤔</div>
+</div>
+
+<!-- SLIDE 13: STATS -->
+<div class="slide bg-warm" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <h2 style="font-size:26px;font-weight:800;color:#1E3A5F;margin-bottom:4px">📊 The Pattern is Clear</h2>
+  <p style="font-size:13px;color:#5A6478;margin-bottom:10px">These aren't random mistakes — they're repeated patterns that need to stop.</p>
+  <div class="stat-row">
+    <div class="stat-c" style="border-left:4px solid #C0392B"><div class="n" style="color:#C0392B">5+</div><div class="l">Wrong pause dates or<br>unnecessary pause questions</div></div>
+    <div class="stat-c" style="border-left:4px solid #E8722A"><div class="n" style="color:#E8722A">4+</div><div class="l">Incomplete responses —<br>missed part of member's query</div></div>
+    <div class="stat-c" style="border-left:4px solid #9C27B0"><div class="n" style="color:#9C27B0">3+</div><div class="l">No empathy before<br>giving solutions</div></div>
+  </div>
+  <div class="stat-row">
+    <div class="stat-c" style="border-left:4px solid #1E3A5F"><div class="n" style="color:#1E3A5F">2</div><div class="l">International member<br>24hr access confusion</div></div>
+    <div class="stat-c" style="border-left:4px solid #2196F3"><div class="n" style="color:#2196F3">2+</div><div class="l">Chat closed without<br>confirming resolution</div></div>
+    <div class="stat-c" style="border-left:4px solid #607D8B"><div class="n" style="color:#607D8B">2+</div><div class="l">Didn't scroll up /<br>asked already-answered info</div></div>
+  </div>
+  <div style="text-align:center;margin-top:10px;padding:12px;background:rgba(192,57,43,.06);border-radius:10px;font-size:15px;color:#8B1A1A;font-weight:700">
+    Every number = a member who didn't get the experience they deserve. Zero tolerance going forward.
+  </div>
+</div>
+
+<!-- SLIDE 14: GUIDELINES -->
+<div class="slide bg-light" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <h2 style="font-size:24px;font-weight:800;color:#1E3A5F;margin-bottom:12px">📋 Golden Rules — Remember Always</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1">
+    <div class="guide">
+      <h4>🔶 Pause Handling</h4>
+      <ul style="margin-left:16px">
+        <li>Member says pause = process it. Don't re-pitch.</li>
+        <li>Confirm exact dates + number of days</li>
+        <li>Fill DM form EVERY time</li>
+        <li>Share pause instructions after processing</li>
+        <li>For travel — offer 24hr access first (if applicable)</li>
+      </ul>
+    </div>
+    <div class="guide">
+      <h4>🔷 Communication</h4>
+      <ul style="margin-left:16px">
+        <li>Match member's language ALWAYS</li>
+        <li>Health concern = empathy FIRST, then solution</li>
+        <li>Use "we" not "I"</li>
+        <li>Acknowledge small things ("No worries")</li>
+        <li>Don't copy-paste ChatGPT directly</li>
+      </ul>
+    </div>
+    <div class="guide">
+      <h4>🔶 Before Responding</h4>
+      <ul style="margin-left:16px">
+        <li>SCROLL UP — read the full chat history</li>
+        <li>Count all questions in the message</li>
+        <li>Answer EVERY question — not just the first one</li>
+        <li>Verify dates, subscription details in CRM</li>
+        <li>Check: Free vs Paid member? International?</li>
+      </ul>
+    </div>
+    <div class="guide">
+      <h4>🔷 Technical / Link Issues</h4>
+      <ul style="margin-left:16px">
+        <li>Apologize + ask for screenshot</li>
+        <li>NEVER close until issue is confirmed resolved</li>
+        <li>Repeated issue = escalate to concerned team</li>
+        <li>International members = already have 24hr access</li>
+        <li>Know the difference: free vs paid features</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 15: CLOSING -->
+<div class="slide bg-dark" contenteditable="true">
+  <div class="logo"><img src="habuild-logo.png" alt=""><span>Habuild</span></div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+    <div style="font-size:48px;margin-bottom:12px">🎯</div>
+    <h1 style="font-size:34px;font-weight:800;line-height:1.3;max-width:650px">Every Chat is a<br><span style="color:#E8722A">Member's Trust</span> in Us</h1>
+    <p style="font-size:14px;color:rgba(255,255,255,.5);margin-top:12px;max-width:500px">Read completely. Respond empathetically. Verify everything. Process accurately. Close only when resolved.</p>
+    <div style="margin-top:20px;padding:14px 28px;background:rgba(232,114,42,.2);border-radius:12px;font-size:14px;color:#FFB74D;font-weight:600">
+      Zero errors. Complete responses. Empathy first. Always.
+    </div>
+  </div>
+  <div style="position:absolute;bottom:24px;left:0;right:0;text-align:center;font-size:12px;color:rgba(255,255,255,.3)">
+    Prepared By: Dipti Sahu — Training & Development Lead, Habuild Healthtech Pvt. Ltd.
+  </div>
+</div>
+
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button id="prev" onclick="go(-1)">&#8592;</button>
+  <span class="counter" id="counter">1 / 15</span>
+  <button id="next" onclick="go(1)">&#8594;</button>
+</div>
+
+<script>
+const slides=document.querySelectorAll('.slide');let cur=0;
+function show(n){slides[cur].classList.remove('active');cur=Math.max(0,Math.min(n,slides.length-1));slides[cur].classList.add('active');document.getElementById('counter').textContent=(cur+1)+' / '+slides.length;document.getElementById('prev').disabled=cur===0;document.getElementById('next').disabled=cur===slides.length-1;document.getElementById('progress').style.width=((cur+1)/slides.length*100)+'%'}
+function go(d){show(cur+d)}
+document.addEventListener('keydown',e=>{if(e.target.closest('[contenteditable]')&&e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1)});
+show(0);
+</script>
+</body>
+</html>
