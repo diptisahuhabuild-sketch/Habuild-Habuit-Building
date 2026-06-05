@@ -35,10 +35,11 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
 .si{flex:1;display:flex;justify-content:center;align-items:center}
 .si img{max-height:500px;max-width:100%;border-radius:10px;border:2px solid rgba(30,58,95,.1);box-shadow:0 6px 24px rgba(0,0,0,.08);cursor:zoom-in;transition:transform .3s}
 .si img.zoomed{transform:scale(1.6);z-index:50;position:relative;box-shadow:0 12px 48px rgba(0,0,0,.3)}
-/* Privacy blur overlay for screenshots */
+/* Privacy: hide agent identity in screenshots */
 .si-wrap{position:relative;display:inline-block}
-.id-blur{position:absolute;top:0;left:0;right:0;height:48px;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);z-index:3;border-radius:10px 10px 0 0;pointer-events:none}
-.id-blur::after{content:'🔒 ID Hidden';position:absolute;top:14px;left:14px;font-size:10px;color:#999;font-weight:600}
+.id-blur{display:none}
+/* Agent email blur bars — draggable overlays to cover agent names/emails */
+.agent-hide{position:absolute;background:rgba(30,58,95,.85);backdrop-filter:blur(8px);z-index:3;border-radius:4px;cursor:move;min-width:60px;min-height:16px;display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(255,255,255,.6);font-weight:600;letter-spacing:.5px;user-select:none}
 .st{width:400px;display:flex;flex-direction:column;justify-content:center;gap:10px}
 /* Callouts */
 .cb{padding:14px 18px;border-radius:10px;font-size:13px;line-height:1.6}
@@ -91,6 +92,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <button onclick="addSlide()">+ Add Slide</button>
   <button onclick="dupSlide()">Duplicate</button>
   <button onclick="delSlide()">Delete Slide</button>
+  <button onclick="addHideBar()">🔒 Hide Agent ID</button>
   <button onclick="window.print()">Print/PDF</button>
 </div>
 
@@ -551,7 +553,47 @@ document.addEventListener('keydown',e=>{if(e.target.closest('[contenteditable]')
 show(0);
 
 // Click images to zoom
-document.addEventListener('click',e=>{if(e.target.tagName==='IMG'&&e.target.closest('.si')){e.target.classList.toggle('zoomed')}});
+document.addEventListener('click',e=>{if(e.target.tagName==='IMG'&&e.target.closest('.si')&&!e.target.closest('.agent-hide')){e.target.classList.toggle('zoomed')}});
+
+// Add draggable agent-hide bar on current slide's screenshot
+function addHideBar(){
+  const wrap=slides[cur].querySelector('.si-wrap');
+  if(!wrap){alert('No screenshot on this slide');return}
+  const bar=document.createElement('div');
+  bar.className='agent-hide';
+  bar.textContent='AGENT ID HIDDEN';
+  bar.style.cssText='left:40%;top:45%;width:200px;height:18px;position:absolute';
+  bar.ondblclick=function(){if(confirm('Remove this hide bar?'))this.remove()};
+  wrap.appendChild(bar);
+  makeDraggable(bar);makeResizable(bar);
+}
+
+// Make element draggable
+function makeDraggable(el){
+  let ox,oy,sx,sy;
+  el.onmousedown=function(e){
+    if(e.target!==el)return;
+    e.preventDefault();e.stopPropagation();
+    ox=e.clientX;oy=e.clientY;
+    sx=el.offsetLeft;sy=el.offsetTop;
+    document.onmousemove=function(e2){
+      el.style.left=(sx+e2.clientX-ox)+'px';
+      el.style.top=(sy+e2.clientY-oy)+'px';
+    };
+    document.onmouseup=function(){document.onmousemove=null;document.onmouseup=null};
+  };
+}
+
+// Make element resizable via scroll
+function makeResizable(el){
+  el.onwheel=function(e){
+    e.preventDefault();e.stopPropagation();
+    const dw=e.deltaY>0?-10:10;
+    const dh=e.deltaY>0?-2:2;
+    el.style.width=Math.max(60,el.offsetWidth+dw)+'px';
+    el.style.height=Math.max(14,el.offsetHeight+dh)+'px';
+  };
+}
 
 // Add/Duplicate/Delete slides
 function addSlide(){
