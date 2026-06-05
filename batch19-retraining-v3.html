@@ -35,6 +35,10 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
 .si{flex:1;display:flex;justify-content:center;align-items:center}
 .si img{max-height:500px;max-width:100%;border-radius:10px;border:2px solid rgba(30,58,95,.1);box-shadow:0 6px 24px rgba(0,0,0,.08);cursor:zoom-in;transition:transform .3s}
 .si img.zoomed{transform:scale(1.6);z-index:50;position:relative;box-shadow:0 12px 48px rgba(0,0,0,.3)}
+/* Privacy blur overlay for screenshots */
+.si-wrap{position:relative;display:inline-block}
+.id-blur{position:absolute;top:0;left:0;right:0;height:48px;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);z-index:3;border-radius:10px 10px 0 0;pointer-events:none}
+.id-blur::after{content:'🔒 ID Hidden';position:absolute;top:14px;left:14px;font-size:10px;color:#999;font-weight:600}
 .st{width:400px;display:flex;flex-direction:column;justify-content:center;gap:10px}
 /* Callouts */
 .cb{padding:14px 18px;border-radius:10px;font-size:13px;line-height:1.6}
@@ -139,7 +143,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-p">Pause Handling</span>
   <h2 style="font-size:20px;font-weight:700;color:#1E3A5F">🤔 What Would You Reply?</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image2.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image2.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-b">
         <p style="font-size:15px;font-weight:700;color:#1E3A5F">Member says:</p>
@@ -159,7 +163,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-p">Pause Handling</span>
   <h2 style="font-size:20px;font-weight:700;color:#C0392B">❌ What Actually Happened</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image2.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image2.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-r">
         <div class="pin">📌 Check! This is what we delivered.</div>
@@ -183,7 +187,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-p">Pause Handling</span>
   <h2 style="font-size:20px;font-weight:700;color:#1E3A5F">🤔 Check This Chat Carefully</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image9.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image9.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-b">
         <p style="font-size:15px;font-weight:700;color:#1E3A5F">Member says:</p>
@@ -201,7 +205,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-p">Pause Handling</span>
   <h2 style="font-size:20px;font-weight:700;color:#C0392B">❌ Wrong Pause Dates</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image9.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image9.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-r">
         <div class="pin">📌 Member said 4 days (28–31). We paused 3 days (28–30).</div>
@@ -223,7 +227,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-p">Pause Handling — Scroll Up!</span>
   <h2 style="font-size:20px;font-weight:700;color:#1E3A5F">🤔 What Would You Reply?</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image15.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image15.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-b">
         <p style="font-size:15px;font-weight:700;color:#1E3A5F">Member says:</p>
@@ -243,7 +247,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-p">Pause Handling — Scroll Up!</span>
   <h2 style="font-size:20px;font-weight:700;color:#C0392B">❌ Asked Reason That Was Already Shared</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image15.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image15.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-r">
         <div class="pin">📌 Reason was already in the chat history!</div>
@@ -267,7 +271,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-s">24-Hour Access — International Members</span>
   <h2 style="font-size:20px;font-weight:700;color:#1E3A5F">🤔 Spot the Error</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image11.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image11.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-b">
         <p>Member is in <strong>Costa Rica</strong> on vacation. Check the phone number — it's an <strong>international number (17175579812)</strong>.</p>
@@ -285,8 +289,8 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <h2 style="font-size:20px;font-weight:700;color:#C0392B">❌ International Members ALREADY Have 24hr Access!</h2>
   <div class="sa">
     <div class="si" style="flex-direction:column;gap:8px">
-      <img src="retraining-images/image11.png" alt="Kalpik" onclick="this.classList.toggle('zoomed')" style="max-height:230px">
-      <img src="retraining-images/image16.png" alt="Tanushree" onclick="this.classList.toggle('zoomed')" style="max-height:230px">
+      <div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image11.png" alt="Kalpik" onclick="this.classList.toggle('zoomed')" style="max-height:230px"></div>
+      <div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image16.png" alt="Tanushree" onclick="this.classList.toggle('zoomed')" style="max-height:230px"></div>
     </div>
     <div class="st">
       <div class="cb cb-r">
@@ -311,7 +315,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-c">Empathy & Communication</span>
   <h2 style="font-size:20px;font-weight:700;color:#1E3A5F">🤔 How Would You Respond?</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image14.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image14.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-b">
         <p style="font-size:15px;font-weight:700;color:#1E3A5F">Member shares:</p>
@@ -331,7 +335,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-c">Empathy Missing</span>
   <h2 style="font-size:20px;font-weight:700;color:#C0392B">❌ Jumped Straight to Solutions</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image14.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image14.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-r">
         <div class="pin">📌 Check! Where's the empathy?</div>
@@ -357,7 +361,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-x">Incomplete Response</span>
   <h2 style="font-size:20px;font-weight:700;color:#1E3A5F">🤔 How Many Questions Do You See?</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image1.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image1.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-b">
         <p style="font-size:15px;font-weight:700;color:#1E3A5F">Member asks TWO things:</p>
@@ -375,7 +379,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-x">Incomplete Response</span>
   <h2 style="font-size:20px;font-weight:700;color:#C0392B">❌ Answered 1 of 2 Questions</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image1.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image1.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-r">
         <div class="pin">📌 Badge request completely missed!</div>
@@ -399,7 +403,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-x">Process Understanding</span>
   <h2 style="font-size:20px;font-weight:700;color:#1E3A5F">🤔 Spot the Red Flag</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image13.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image13.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-b">
         <p>Member says: <strong>"My friend sent me a link and I joined every morning class. Please provide me a certificate."</strong></p>
@@ -415,7 +419,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-x">Process Understanding</span>
   <h2 style="font-size:20px;font-weight:700;color:#C0392B">❌ Missed the Red Flag</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image13.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image13.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-r">
         <div class="pin">📌 Member is using someone else's link!</div>
@@ -439,7 +443,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-l">Link & Technical Issues</span>
   <h2 style="font-size:20px;font-weight:700;color:#1E3A5F">🤔 What Would You Do?</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image8.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image8.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-b">
         <p>Member: <strong>"Website not opening"</strong> + <strong>"Chrome par bhi try kiya"</strong></p>
@@ -456,7 +460,7 @@ body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#111;co
   <span class="tt tt-l">Link & Technical Issues</span>
   <h2 style="font-size:20px;font-weight:700;color:#C0392B">❌ Asked Screenshot But Closed Chat</h2>
   <div class="sa">
-    <div class="si"><img src="retraining-images/image8.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div>
+    <div class="si"><div class="si-wrap"><div class="id-blur"></div><img src="retraining-images/image8.png" alt="CRM" onclick="this.classList.toggle('zoomed')"></div></div>
     <div class="st">
       <div class="cb cb-r">
         <div class="pin">📌 Repeated issue — should have escalated!</div>
