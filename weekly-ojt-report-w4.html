@@ -6,51 +6,97 @@
 <title>Weekly OJT Report — Week 4 (15–21 June 2026)</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#f4f4f8;color:#1A1A2E;line-height:1.7;font-size:14px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#f0f2f5;color:#1A1A2E;line-height:1.7;font-size:14px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
 [contenteditable]:focus{outline:2px dashed #E8722A;outline-offset:2px;border-radius:3px}
-.ew{max-width:980px;margin:20px auto;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #ddd}
-.eh{background:#1E3A5F;color:#fff;padding:18px 28px;display:flex;align-items:center;justify-content:space-between}
-.eh img{height:32px;filter:brightness(0) invert(1);opacity:.9}
+.ew{max-width:1050px;margin:20px auto;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ddd;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+
+/* Header & Footer with logo */
+.eh{background:linear-gradient(135deg,#1E8C87 0%,#20A39E 50%,#1E8C87 100%);color:#fff;padding:18px 28px;display:flex;align-items:center;justify-content:space-between}
+.eh img{height:34px;filter:brightness(0) invert(1);opacity:.9}
+.ef{background:linear-gradient(135deg,#1E8C87 0%,#20A39E 50%,#1E8C87 100%);padding:12px 28px;display:flex;align-items:center;justify-content:center;gap:10px}
+.ef img{height:24px;filter:brightness(0) invert(1);opacity:.7}
+.ef span{font-size:11px;color:rgba(255,255,255,.7)}
+
 .eb{padding:22px 28px}
 p{margin:5px 0;font-size:13.5px;color:#333}
-h2{font-size:15px;font-weight:700;color:#1E3A5F;margin:22px 0 8px;padding-bottom:5px;border-bottom:2px solid #1E3A5F}
+
+/* Section headers — teal with orange underline */
+h2{font-size:15px;font-weight:700;color:#1E8C87;margin:24px 0 8px;padding-bottom:5px;border-bottom:2.5px solid #E8722A}
 h2:first-of-type{margin-top:10px}
 h3{font-size:13px;font-weight:700;color:#E8722A;margin:12px 0 4px}
-table{width:100%;border-collapse:collapse;margin:6px 0 12px;font-size:11.5px}
-thead{background:#1E3A5F!important}
-thead th{color:#fff!important;font-weight:600;padding:5px 6px;text-align:center;font-size:9.5px;text-transform:uppercase;letter-spacing:.2px}
-tbody tr{border-bottom:1px solid #eee}
-tbody tr:nth-child(even){background:#F7F8FC!important}
-tbody td{padding:5px 6px;vertical-align:middle;text-align:center;font-size:11px}
+
+/* Tables — teal header */
+table{width:100%;border-collapse:collapse;margin:6px 0 12px;font-size:10.5px}
+thead{background:#20A39E!important}
+thead th{color:#fff!important;font-weight:600;padding:5px 4px;text-align:center;font-size:8.5px;text-transform:uppercase;letter-spacing:.2px}
+tbody tr{border-bottom:1px solid #e8eaed}
+tbody tr:nth-child(even){background:#F4FAFA!important}
+tbody tr:nth-child(odd){background:#fff!important}
+tbody td{padding:4px 4px;vertical-align:middle;text-align:center;font-size:10px}
 .tl td,.tl th{text-align:left!important;padding:6px 10px!important;font-size:12px!important}
 .tl thead th{font-size:10.5px!important}
+
+/* Stats boxes */
 .stats{display:flex;gap:8px;margin:10px 0 14px;flex-wrap:wrap}
-.sb{flex:1;min-width:100px;text-align:center;padding:12px 6px;border:1px solid #e2e6ee;border-radius:8px;background:#fafbfd}
-.sb .n{font-size:20px;font-weight:800;color:#1E3A5F}
+.sb{flex:1;min-width:100px;text-align:center;padding:12px 6px;border:1px solid #d4eeec;border-radius:8px;background:#f0fafa}
+.sb .n{font-size:20px;font-weight:800;color:#1E8C87}
 .sb .l{font-size:9px;color:#666;margin-top:1px}
-.hl{background:#FFF4ED;border-left:3px solid #E8722A;padding:8px 12px;border-radius:0 6px 6px 0;margin:8px 0;font-size:12px;color:#7a4a1a}
-.hl-g{background:#EEFBF4;border-left:3px solid #1B8C5A;padding:8px 12px;border-radius:0 6px 6px 0;margin:8px 0;font-size:12px;color:#145A3A}
-.hl-r{background:#FDF0EE;border-left:3px solid #C0392B;padding:8px 12px;border-radius:0 6px 6px 0;margin:8px 0;font-size:12px;color:#8B1A1A}
-.hl-b{background:#EBF0F7;border-left:3px solid #1E3A5F;padding:8px 12px;border-radius:0 6px 6px 0;margin:8px 0;font-size:12px;color:#1A3050}
-.low{background:#fce4ec!important}
-.high{background:#e8f5e9!important}
-.tag{display:inline-block;padding:2px 7px;border-radius:5px;font-size:9px;font-weight:700}
-.t-g{background:#e8f5e9;color:#2e7d32}.t-r{background:#fce4ec;color:#c62828}.t-o{background:#FFF4ED;color:#E8722A}.t-b{background:#e3f2fd;color:#1565c0}
+
+/* Highlight boxes — light teal and light orange only */
+.hl{background:#E8F8F7;border-left:3px solid #20A39E;padding:8px 12px;border-radius:0 6px 6px 0;margin:8px 0;font-size:12px;color:#0F5E5A}
+.hl-o{background:#FFF7ED;border-left:3px solid #FDBA74;padding:8px 12px;border-radius:0 6px 6px 0;margin:8px 0;font-size:12px;color:#7a4a1a}
+
+/* Cell highlights */
+.low{background:#fef2f2!important;color:#991B1B;font-weight:600}
+.high{background:#E8F8F7!important;color:#065F46;font-weight:600}
+.exit-row td{background:#fef2f2!important}
+
 /* Flow chart */
 .flow-box{display:flex;gap:6px;margin:8px 0;align-items:center;justify-content:center;flex-wrap:wrap}
 .fb{padding:8px 14px;border-radius:8px;text-align:center;font-size:12px;font-weight:600;color:#fff;min-width:90px}
-.fb-n{background:#1E3A5F}.fb-o{background:#E8722A}.fb-g{background:#1B8C5A}.fb-r{background:#C0392B}
+.fb-t{background:#20A39E}.fb-o{background:#E8722A}.fb-d{background:#1E3A5F}
 .fa{font-size:16px;color:#999}
+
+/* Note box */
+.note-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;padding:10px 14px;margin:8px 0;font-size:11.5px;color:#92400E}
+
+/* OJT Leads section — with background logo */
+.leads-wrap{position:relative;background:#f0f8ff;border:1px solid #bee3f8;border-radius:10px;padding:16px 18px;margin:12px 0;overflow:hidden}
+.leads-wrap::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:220px;height:220px;background:url('habuild-logo.png') center/contain no-repeat;opacity:.04;pointer-events:none}
+.leads-wrap h3{color:#1E8C87;font-size:14px;font-weight:700;margin:0 0 8px;position:relative;z-index:1}
+.leads-wrap table{position:relative;z-index:1}
+.leads-wrap table thead{background:#3B82F6!important}
+.leads-wrap table thead th{color:#fff!important;font-size:8.5px}
+.leads-wrap table tbody tr:nth-child(even){background:#EFF6FF!important}
+.leads-wrap table tbody tr:nth-child(odd){background:#F8FBFF!important}
+
+/* Calling section header */
+.calling-badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:10px;font-weight:700;background:#E8F8F7;color:#1E8C87;margin-left:6px}
+
+/* Signature */
 .sign{margin-top:20px;padding-top:14px;border-top:1px solid #ddd;font-size:12.5px;color:#555}
-.sign strong{color:#1E3A5F}
-.ef{background:#f5f6fa;padding:10px 28px;text-align:center;font-size:10.5px;color:#999;border-top:1px solid #eee}
-@media print{body{background:#fff}.ew{border:none;margin:0;border-radius:0}thead{background:#1E3A5F!important}thead th{color:#fff!important}tbody tr:nth-child(even){background:#F7F8FC!important}.low{background:#fce4ec!important}.high{background:#e8f5e9!important}}
+.sign strong{color:#1E8C87}
+
+/* Tag */
+.tag{display:inline-block;padding:2px 7px;border-radius:5px;font-size:9px;font-weight:700}
+.t-up{background:#E8F8F7;color:#065F46}.t-dn{background:#fef2f2;color:#991B1B}.t-st{background:#f0f0f0;color:#666}
+
+@media print{
+  body{background:#fff}
+  .ew{border:none;margin:0;border-radius:0;box-shadow:none}
+  thead{background:#20A39E!important}thead th{color:#fff!important}
+  tbody tr:nth-child(even){background:#F4FAFA!important}
+  .low{background:#fef2f2!important}.high{background:#E8F8F7!important}
+  .leads-wrap table thead{background:#3B82F6!important}
+  .ef{background:#20A39E!important}
+}
 @page{margin:8mm}
 </style>
 </head>
 <body>
 <div class="ew">
 
+<!-- TOP HEADER WITH LOGO -->
 <div class="eh">
   <div>
     <div style="font-size:16px;font-weight:700">Weekly OJT Report — Week 4</div>
@@ -63,11 +109,7 @@ tbody td{padding:5px 6px;vertical-align:middle;text-align:center;font-size:11px}
 
 <p>Dear Team,</p>
 <p>Please find below the <strong>Weekly OJT Performance Report</strong> for Week 4 (15th–21st June 2026).</p>
-
-<!-- TOP HIGHLIGHT -->
-<div class="hl-b">
-  <strong>🏆 OJT Team Weekly Contribution:</strong> Total team chat volume this week across all OJT interns and leads — supporting member experience while building the next generation of Habuild support professionals.
-</div>
+<p style="font-size:12px;color:#666;font-style:italic">Both batches maintained strong attendance and AI ratings above 4.0 throughout the week.</p>
 
 <!-- OVERVIEW -->
 <h2>Overall OJT Overview</h2>
@@ -80,119 +122,149 @@ tbody td{padding:5px 6px;vertical-align:middle;text-align:center;font-size:11px}
 </div>
 
 <div class="flow-box">
-  <div class="fb fb-n">Batch 20 (W4)<br>20 Interns</div>
+  <div class="fb fb-d">Batch 20 (W4)<br>20 Interns</div>
   <span class="fa">+</span>
   <div class="fb fb-o">Batch 19 (W10)<br>5 Interns</div>
   <span class="fa">+</span>
-  <div class="fb fb-n">Vishal B15 (W15)</div>
+  <div class="fb fb-d">Vishal B15 (W15)</div>
   <span class="fa">+</span>
-  <div class="fb fb-g">5 OJT Leads</div>
+  <div class="fb fb-t">5 OJT Leads</div>
   <span class="fa">=</span>
   <div class="fb fb-o">26 Total</div>
 </div>
 
 <table class="tl">
   <tbody>
-    <tr><td style="width:120px"><strong>Batch 20</strong></td><td>20 interns (12 Chat + 8 Calling) — OJT Week 4 (started 27 May). 1 intern (Syed Khizar) exited — absconded without intimation (found higher-paying job).</td></tr>
+    <tr><td style="width:120px"><strong>Batch 20</strong></td><td>20 interns (12 Chat + 8 Calling) — OJT Week 4 (started 27 May). 1 intern (Syed Khizar) exited — absconded without intimation.</td></tr>
     <tr><td><strong>Batch 19</strong></td><td>5 interns (Samyak, Tanushree, Kalpik, Fuzail, Aman) — Week 10. <strong>Squad transition ready this week.</strong></td></tr>
     <tr><td><strong>Other</strong></td><td>Vishal (Batch 15) — Week 15, under Samiksha</td></tr>
     <tr><td><strong>OJT Leads</strong></td><td>Sonali, Rashi (Morning) + Priyanshu, Samiksha, Nilesh (Evening)</td></tr>
   </tbody>
 </table>
 
-<!-- BATCH 20 CHAT SUPPORT -->
-<h2>Batch 20 — Week 4: Chat Support (12 Interns)</h2>
+<!-- ============================================================ -->
+<!-- BATCH 20 — ALL INTERNS COMBINED (Chat first, Calling at end) -->
+<!-- ============================================================ -->
+<h2>Batch 20 — Week 4: All Interns Performance (Chat + Calling)</h2>
+
+<div class="note-box">
+  <strong>Note on Error Rates:</strong> This week, chats were picked for QC based on rating flags and weak areas — not through average random sampling. The training team focused specifically on identifying improvement areas. Average-based random audit picks will be handled by the QC team going forward.
+</div>
 
 <table>
-  <thead><tr><th>Intern</th><th>Lead</th><th>Shift</th><th>Avail</th><th>Avg Chat</th><th>Chat Count</th><th>Scanned</th><th>QCs</th><th>Error %</th><th>OJT Rtg</th><th>AI Rtg</th><th>ARST</th><th>Trend</th></tr></thead>
+  <thead><tr><th>Intern</th><th>Lead</th><th>Shift</th><th>Avail</th><th>Avg Chat</th><th>Chat Count</th><th>Scanned</th><th>QCs</th><th>Error %</th><th>OJT Rtg</th><th>Simple Q</th><th>Complex Q</th><th>AI Rtg</th><th>ARST</th><th>Break</th><th>LB Score</th><th>Trend</th></tr></thead>
   <tbody>
-    <tr><td style="text-align:left"><strong>Smit</strong></td><td>Rashi</td><td>AM</td><td>6</td><td>214</td><td>1286</td><td>22</td><td>2</td><td class="high">9.09%</td><td>290%</td><td>4.03</td><td>0.78</td><td>↑</td></tr>
-    <tr><td style="text-align:left"><strong>Mahak</strong></td><td>Rashi</td><td>AM</td><td>6</td><td>114</td><td>686</td><td>20</td><td>1</td><td class="high">5.00%</td><td>297%</td><td>4.29</td><td>1.20</td><td>↑</td></tr>
-    <tr><td style="text-align:left"><strong>Aditya</strong></td><td>Rashi</td><td>AM</td><td>6</td><td>111</td><td>664</td><td>20</td><td>0</td><td class="high">0.00%</td><td>303%</td><td>4.21</td><td>1.72</td><td>↑</td></tr>
-    <tr><td style="text-align:left"><strong>Anjali</strong></td><td>Sonali</td><td>AM</td><td>6</td><td>181</td><td>1091</td><td>15</td><td>5</td><td class="low">33.33%</td><td>250%</td><td>3.96</td><td>1.82</td><td>↓</td></tr>
-    <tr><td style="text-align:left"><strong>Kunal</strong></td><td>Sonali</td><td>AM</td><td>6</td><td>115</td><td>693</td><td>13</td><td>2</td><td>15.38%</td><td>260%</td><td>4.02</td><td>2.16</td><td>↕</td></tr>
-    <tr><td style="text-align:left"><strong>Papiha</strong></td><td>Sonali</td><td>AM</td><td>5</td><td>112</td><td>560</td><td>20</td><td>4</td><td>20.00%</td><td>260%</td><td>4.11</td><td>1.64</td><td>↕</td></tr>
-    <tr><td style="text-align:left"><strong>Palak</strong></td><td>Priyanshu</td><td>PM</td><td>5</td><td>119</td><td>595</td><td>24</td><td>8</td><td class="low">33.33%</td><td>2.63</td><td>3.96</td><td>3.09</td><td>↓</td></tr>
-    <tr><td style="text-align:left"><strong>Syed Khizar</strong></td><td>Priyanshu</td><td>PM</td><td colspan="10" style="color:#C0392B;font-weight:700;text-align:left!important">EXIT — Absconded without intimation (found higher-paying job)</td></tr>
-    <tr><td style="text-align:left"><strong>Mosin</strong></td><td>Samiksha</td><td>PM</td><td>6</td><td>159</td><td>956</td><td>21</td><td>8</td><td class="low">38.10%</td><td>2.64</td><td>4.23</td><td>1.28</td><td>↓</td></tr>
-    <tr><td style="text-align:left"><strong>Tina</strong></td><td>Samiksha</td><td>PM</td><td>6</td><td>147</td><td>884</td><td>20</td><td>4</td><td>20.00%</td><td>2.72</td><td>3.93</td><td>1.89</td><td>↕</td></tr>
-    <tr><td style="text-align:left"><strong>Babasaheb</strong></td><td>Nilesh</td><td>PM</td><td>5</td><td>167</td><td>836</td><td>34</td><td>8</td><td>23.53%</td><td>2.79</td><td>4.39</td><td>1.17</td><td>↕</td></tr>
-    <tr><td style="text-align:left"><strong>Jaya</strong></td><td>Nilesh</td><td>PM</td><td>5.5</td><td>165</td><td>910</td><td>35</td><td>6</td><td>17.14%</td><td>2.82</td><td>4.16</td><td>1.41</td><td>↕</td></tr>
+    <!-- CHAT INTERNS -->
+    <tr><td colspan="17" style="background:#E8F8F7!important;text-align:left!important;font-weight:700;color:#1E8C87;font-size:10px;padding:4px 8px!important">CHAT SUPPORT INTERNS</td></tr>
+    <tr><td style="text-align:left"><strong>Smit</strong></td><td>Rashi</td><td>AM</td><td>6</td><td>214</td><td>1286</td><td>22</td><td>2</td><td class="high">9.09%</td><td>290%</td><td>568</td><td>595</td><td>4.03</td><td>0.78m</td><td>10.98h</td><td>82.51%</td><td><span class="tag t-up">↑</span></td></tr>
+    <tr><td style="text-align:left"><strong>Mahak</strong></td><td>Rashi</td><td>AM</td><td>6</td><td>114</td><td>686</td><td>20</td><td>1</td><td class="high">5.00%</td><td>297%</td><td>356</td><td>253</td><td>4.29</td><td>1.20m</td><td>11.61h</td><td>69.17%</td><td><span class="tag t-up">↑</span></td></tr>
+    <tr><td style="text-align:left"><strong>Aditya</strong></td><td>Rashi</td><td>AM</td><td>6</td><td>111</td><td>664</td><td>20</td><td>0</td><td class="high">0.00%</td><td>303%</td><td>355</td><td>235</td><td>4.21</td><td>1.73m</td><td>16.31h</td><td>67.91%</td><td><span class="tag t-up">↑</span></td></tr>
+    <tr><td style="text-align:left"><strong>Anjali</strong></td><td>Sonali</td><td>AM</td><td>6</td><td>181</td><td>1091</td><td>15</td><td>5</td><td class="low">33.33%</td><td>250%</td><td>257</td><td>683</td><td>3.96</td><td>1.82m</td><td>12.11h</td><td>77.12%</td><td><span class="tag t-dn">↓</span></td></tr>
+    <tr><td style="text-align:left"><strong>Kunal</strong></td><td>Sonali</td><td>AM</td><td>6</td><td>115</td><td>693</td><td>13</td><td>2</td><td>15.38%</td><td>260%</td><td>319</td><td>312</td><td>4.02</td><td>2.16m</td><td>7.71h</td><td>67.45%</td><td><span class="tag t-st">↕</span></td></tr>
+    <tr><td style="text-align:left"><strong>Papiha</strong></td><td>Sonali</td><td>AM</td><td>5</td><td>112</td><td>560</td><td>20</td><td>4</td><td>20.00%</td><td>260%</td><td>296</td><td>212</td><td>4.11</td><td>1.64m</td><td>6.23h</td><td>61.92%</td><td><span class="tag t-st">↕</span></td></tr>
+    <tr><td style="text-align:left"><strong>Palak</strong></td><td>Priyanshu</td><td>PM</td><td>5</td><td>119</td><td>595</td><td>24</td><td>8</td><td class="low">33.33%</td><td>2.63</td><td>177</td><td>330</td><td>3.96</td><td>3.09m</td><td>8.05h</td><td>60.79%</td><td><span class="tag t-dn">↓</span></td></tr>
+    <tr class="exit-row"><td style="text-align:left"><strong>Syed Khizar</strong></td><td>Priyanshu</td><td>PM</td><td colspan="14" style="color:#C0392B;font-weight:700;text-align:left!important">EXIT — Absconded without intimation (found higher-paying job)</td></tr>
+    <tr><td style="text-align:left"><strong>Mosin</strong></td><td>Samiksha</td><td>PM</td><td>6</td><td>159</td><td>956</td><td>21</td><td>8</td><td class="low">38.10%</td><td>2.64</td><td>526</td><td>350</td><td>4.23</td><td>1.28m</td><td>11.52h</td><td>75.98%</td><td><span class="tag t-dn">↓</span></td></tr>
+    <tr><td style="text-align:left"><strong>Tina</strong></td><td>Samiksha</td><td>PM</td><td>6</td><td>147</td><td>884</td><td>20</td><td>4</td><td>20.00%</td><td>2.72</td><td>408</td><td>380</td><td>3.93</td><td>1.89m</td><td>11.33h</td><td>71.37%</td><td><span class="tag t-st">↕</span></td></tr>
+    <tr><td style="text-align:left"><strong>Babasaheb</strong></td><td>Nilesh</td><td>PM</td><td>5</td><td>167</td><td>836</td><td>34</td><td>8</td><td>23.53%</td><td>2.79</td><td>524</td><td>242</td><td>4.39</td><td>1.17m</td><td>7.33h</td><td>71.05%</td><td><span class="tag t-st">↕</span></td></tr>
+    <tr><td style="text-align:left"><strong>Jaya</strong></td><td>Nilesh</td><td>PM</td><td>5.5</td><td>165</td><td>910</td><td>35</td><td>6</td><td>17.14%</td><td>2.82</td><td>378</td><td>409</td><td>4.16</td><td>1.41m</td><td>10.47h</td><td>73.64%</td><td><span class="tag t-st">↕</span></td></tr>
+
+    <!-- CALLING INTERNS (Chat Performance) -->
+    <tr><td colspan="17" style="background:#FFF7ED!important;text-align:left!important;font-weight:700;color:#E8722A;font-size:10px;padding:4px 8px!important">CALLING INTERNS — Chat Performance</td></tr>
+    <tr><td style="text-align:left"><strong>Lubdha</strong></td><td>Sonali</td><td>AM</td><td>6</td><td>78</td><td>472</td><td>19</td><td>4</td><td>21.05%</td><td>240%</td><td>236</td><td>202</td><td>4.28</td><td>1.17m</td><td>19.12h</td><td>63.71%</td><td><span class="tag t-dn">↓</span></td></tr>
+    <tr><td style="text-align:left"><strong>Samiksha K.</strong></td><td>Samiksha</td><td>AM</td><td>6</td><td>82</td><td>490</td><td>20</td><td>5</td><td>25.00%</td><td>2.70</td><td>236</td><td>194</td><td>4.19</td><td>2.38m</td><td>18.28h</td><td>63.32%</td><td><span class="tag t-st">↕</span></td></tr>
+    <tr><td style="text-align:left"><strong>Shivam</strong></td><td>Priyanshu</td><td>AM</td><td>5</td><td>68</td><td>339</td><td>38</td><td>13</td><td class="low">34.21%</td><td>2.63</td><td>171</td><td>157</td><td>4.16</td><td>1.90m</td><td>18.60h</td><td>56.89%</td><td><span class="tag t-st">↕</span></td></tr>
+    <tr><td style="text-align:left"><strong>Pareedhi</strong></td><td>Rashi</td><td>AM</td><td>5</td><td>54</td><td>164</td><td>7</td><td>0</td><td class="high">0.00%</td><td>328%</td><td>160</td><td>153</td><td>4.02</td><td>2.49m</td><td>15.26h</td><td>55.45%</td><td><span class="tag t-up">↑</span></td></tr>
+    <tr><td style="text-align:left"><strong>Geetika</strong></td><td>Nilesh</td><td>AM</td><td>6</td><td>72</td><td>429</td><td>32</td><td>11</td><td class="low">34.38%</td><td>2.42</td><td>173</td><td>242</td><td>4.16</td><td>2.13m</td><td>14.88h</td><td>62.45%</td><td><span class="tag t-dn">↓</span></td></tr>
+    <tr><td style="text-align:left"><strong>Pretty</strong></td><td>Samiksha</td><td>PM</td><td>6</td><td>97</td><td>585</td><td>20</td><td>1</td><td class="high">5.00%</td><td>3.00</td><td>319</td><td>235</td><td>4.36</td><td>1.78m</td><td>12.17h</td><td>67.50%</td><td><span class="tag t-st">↕</span></td></tr>
+    <tr><td style="text-align:left"><strong>Nitesh</strong></td><td>Priyanshu</td><td>PM</td><td>6</td><td>107</td><td>644</td><td>47</td><td>8</td><td>17.02%</td><td>278%</td><td>309</td><td>246</td><td>4.20</td><td>1.28m</td><td>18.58h</td><td>67.29%</td><td><span class="tag t-st">↕</span></td></tr>
+    <tr><td style="text-align:left"><strong>Prachi K.</strong></td><td>Priyanshu</td><td>PM</td><td>5</td><td>110</td><td>550</td><td>47</td><td>8</td><td>17.02%</td><td>2.78</td><td>235</td><td>235</td><td>4.17</td><td>2.30m</td><td>15.33h</td><td>61.53%</td><td><span class="tag t-st">↕</span></td></tr>
   </tbody>
 </table>
 
-<!-- BATCH 20 CALLING -->
-<h2>Batch 20 — Week 4: Calling Team (8 Interns)</h2>
+<!-- ============================================ -->
+<!-- SEPARATE CALLING PERFORMANCE TABLE            -->
+<!-- ============================================ -->
+<h2>Batch 20 — Calling Team Performance <span class="calling-badge">8 Interns</span></h2>
 
 <table>
-  <thead><tr><th>Intern</th><th>Calling Lead</th><th>Shift</th><th>Avail</th><th>Calls Taken</th><th>Avg %</th><th>Audits</th><th>Audit Score</th><th>Audit Feedback</th><th>Chats</th><th>Day Avg %</th><th>Remarks</th></tr></thead>
+  <thead><tr><th>Intern</th><th>Calling Lead</th><th>Shift</th><th>Avail</th><th>Total Calls</th><th>Call Avg %</th><th>Audits</th><th>Audit Score</th><th>Calling Feedback</th></tr></thead>
   <tbody>
-    <tr><td style="text-align:left"><strong>Lubdha</strong></td><td>Harsha/Sonali</td><td>AM</td><td>6</td><td>114</td><td>19%</td><td>18</td><td>3.59</td><td>Actions, resolution</td><td>461</td><td>77%</td><td>Inactive, lacks confidence. Outbound only (medical)</td></tr>
-    <tr><td style="text-align:left"><strong>Samiksha K.</strong></td><td>Harsha/Samiksha</td><td>AM</td><td>6</td><td>102</td><td>17%</td><td>23</td><td>2.64</td><td>Empathy, avg</td><td>479</td><td>80%</td><td>Disciplined, regular, does OT. Sometimes influenced by friends</td></tr>
-    <tr><td style="text-align:left"><strong>Shivam</strong></td><td>Harsha/Priyanshu</td><td>AM</td><td>5</td><td>85</td><td>17%</td><td>17</td><td>3.12</td><td>Closure, ensure</td><td>345</td><td>69%</td><td>Significant improvement. Communicates well, need focus on chat count</td></tr>
-    <tr><td style="text-align:left"><strong>Pareedhi</strong></td><td>—</td><td>AM</td><td>6</td><td>142</td><td>24%</td><td>25</td><td>2.90</td><td>Clarity, troubleshoot</td><td>346</td><td>58%</td><td>Good in chats & calls. Attendance major concern, needs attention</td></tr>
-    <tr><td style="text-align:left"><strong>Geetika</strong></td><td>Harsha/Nilesh</td><td>AM</td><td>5.5</td><td>139</td><td>25.3%</td><td>22</td><td>3.41</td><td>Accurate troubleshoot</td><td>446</td><td>81%</td><td>Good communication, very active. Prefers calling, lacks focus on chat</td></tr>
-    <tr><td style="text-align:left"><strong>Pretty</strong></td><td>Dimple/Samiksha</td><td>PM</td><td>6</td><td>76</td><td>13%</td><td>20</td><td>3.71</td><td>Closure, strong</td><td>585</td><td>98%</td><td>Disciplined, punctual. Started inbound calls, adapting well</td></tr>
-    <tr><td style="text-align:left"><strong>Nitesh</strong></td><td>Dimple/Priyanshu</td><td>PM</td><td>6</td><td>74</td><td>12%</td><td>18</td><td>3.07</td><td>Resolution, avoid</td><td>664</td><td>111%</td><td>Disciplined, punctual. Started inbound, adapting well</td></tr>
-    <tr><td style="text-align:left"><strong>Prachi K.</strong></td><td>Dimple/Priyanshu</td><td>PM</td><td>5</td><td>72</td><td>14%</td><td>16</td><td>3.58</td><td>Ownership, and</td><td>550</td><td>110%</td><td>Good overall. Little attendance concern, otherwise performing well</td></tr>
+    <tr><td style="text-align:left"><strong>Lubdha</strong></td><td>Harsha / Sonali</td><td>AM</td><td>6</td><td>114</td><td>19%</td><td>18</td><td>3.59</td><td>Actions, resolution</td></tr>
+    <tr><td style="text-align:left"><strong>Samiksha K.</strong></td><td>Harsha / Samiksha</td><td>AM</td><td>6</td><td>102</td><td>17%</td><td>23</td><td>2.64</td><td>Empathy, avg</td></tr>
+    <tr><td style="text-align:left"><strong>Shivam</strong></td><td>Harsha / Priyanshu</td><td>AM</td><td>5</td><td>85</td><td>17%</td><td>17</td><td>3.12</td><td>Closure, ensure</td></tr>
+    <tr><td style="text-align:left"><strong>Pareedhi</strong></td><td>—</td><td>AM</td><td>6</td><td>142</td><td>24%</td><td>25</td><td>2.90</td><td>Clarity, troubleshoot</td></tr>
+    <tr><td style="text-align:left"><strong>Geetika</strong></td><td>Harsha / Nilesh</td><td>AM</td><td>5.5</td><td>139</td><td>25.3%</td><td>22</td><td>3.41</td><td>Accurate troubleshoot</td></tr>
+    <tr><td style="text-align:left"><strong>Pretty</strong></td><td>Dimple / Samiksha</td><td>PM</td><td>6</td><td>76</td><td>13%</td><td>20</td><td>3.71</td><td>Closure, strong</td></tr>
+    <tr><td style="text-align:left"><strong>Nitesh</strong></td><td>Dimple / Priyanshu</td><td>PM</td><td>6</td><td>74</td><td>12%</td><td>18</td><td>3.07</td><td>Resolution, avoid</td></tr>
+    <tr><td style="text-align:left"><strong>Prachi K.</strong></td><td>Dimple / Priyanshu</td><td>PM</td><td>5</td><td>72</td><td>14%</td><td>16</td><td>3.58</td><td>Ownership, and</td></tr>
+  </tbody>
+</table>
+<div class="hl">
+  Focused coaching, increased QC monitoring, and quality guideline reinforcement planned for both shifts.
+</div>
+
+<!-- ============================================ -->
+<!-- BATCH 19 + VISHAL                             -->
+<!-- ============================================ -->
+<h2>Batch 19 — Week 10: Squad Transition Ready</h2>
+
+<table>
+  <thead><tr><th>Intern</th><th>Lead</th><th>Shift</th><th>Avail</th><th>Avg Chat</th><th>Chat Count</th><th>Scanned</th><th>QCs</th><th>Error %</th><th>OJT Rtg</th><th>Simple Q</th><th>Complex Q</th><th>AI Rtg</th><th>ARST</th><th>Break</th><th>LB Score</th><th>Trend</th></tr></thead>
+  <tbody>
+    <tr><td style="text-align:left"><strong>Samyak</strong></td><td>Nilesh</td><td>PM</td><td>7</td><td>216</td><td>1514</td><td>34</td><td>2</td><td class="high">5.88%</td><td>3.07</td><td>878</td><td>494</td><td>4.36</td><td>0.98m</td><td>7.22h</td><td>94.95%</td><td><span class="tag t-st">↕</span></td></tr>
+    <tr><td style="text-align:left"><strong>Tanushree</strong></td><td>Rashi</td><td>AM</td><td>5</td><td>167</td><td>835</td><td>20</td><td>5</td><td class="low">25.00%</td><td>2.67</td><td>440</td><td>316</td><td>4.03</td><td>0.79m</td><td>4.76h</td><td>68.28%</td><td><span class="tag t-dn">↓</span></td></tr>
+    <tr><td style="text-align:left"><strong>Kalpik</strong></td><td>Rashi</td><td>AM</td><td>5</td><td>159</td><td>956</td><td>36</td><td>5</td><td>13.89%</td><td>2.80</td><td>544</td><td>349</td><td>4.19</td><td>1.14m</td><td>8.98h</td><td>75.66%</td><td><span class="tag t-dn">↓</span></td></tr>
+    <tr><td style="text-align:left"><strong>Fuzail</strong></td><td>Sonali</td><td>AM</td><td>4</td><td>136</td><td>546</td><td>7</td><td>0</td><td class="high">0.00%</td><td>3.00</td><td>294</td><td>257</td><td>4.38</td><td>1.95m</td><td>5.51h</td><td>64.61%</td><td><span class="tag t-st">↕</span></td></tr>
+    <tr><td style="text-align:left"><strong>Aman</strong></td><td>Diksha</td><td>AM</td><td>6</td><td>149</td><td>894</td><td>22</td><td>0</td><td class="high">0.00%</td><td>3.06</td><td>541</td><td>281</td><td>4.19</td><td>1.18m</td><td>7.80h</td><td>73.84%</td><td><span class="tag t-st">↕</span></td></tr>
   </tbody>
 </table>
 
-<!-- AI PERFORMANCE -->
-<h2>AI Performance & Leaderboard (Week 4)</h2>
-<p style="font-size:12px;color:#666;margin-bottom:6px">Data from AI leaderboard — includes complex/simple query split, break hours, ARST, AI rating, and LB score.</p>
-
-<table>
-  <thead><tr><th>Intern</th><th>Shift</th><th>Dept</th><th>Attend</th><th>Users</th><th>Chats</th><th>Simple Q</th><th>Complex Q</th><th>Avg Msg</th><th>Break</th><th>ARST</th><th>ARpT</th><th>AI Rtg</th><th>LB Score</th></tr></thead>
+<table style="margin-top:4px">
+  <thead><tr><th>Other</th><th>Lead</th><th>Shift</th><th>Week</th><th>Avail</th><th>Avg Chat</th><th>Count</th><th>Scanned</th><th>QCs</th><th>Error %</th><th>OJT Rtg</th><th>Simple Q</th><th>Complex Q</th><th>AI Rtg</th><th>ARST</th><th>Break</th><th>LB Score</th><th>Trend</th></tr></thead>
   <tbody>
-    <tr><td style="text-align:left"><strong>Samyak</strong></td><td>PM</td><td>OJT-Nilesh</td><td>7/7</td><td>1489</td><td>1489</td><td>878</td><td>494</td><td>7.2</td><td>7.22h</td><td>0.98</td><td>1.16h</td><td>4.37⭐</td><td class="high">94.95%</td></tr>
-    <tr><td style="text-align:left"><strong>Smit</strong></td><td>AM</td><td>OJT-Rashi</td><td>6/7</td><td>1231</td><td>1231</td><td>568</td><td>595</td><td>6.6</td><td>10.98h</td><td>0.80</td><td>3.97h</td><td>4.04⭐</td><td>82.51%</td></tr>
-    <tr><td style="text-align:left"><strong>Vishal</strong></td><td>PM</td><td>OJT-Samiksha</td><td>6/7</td><td>1174</td><td>1174</td><td>640</td><td>479</td><td>5.8</td><td>4.43h</td><td>1.77</td><td>2.56h</td><td>4.18⭐</td><td>82.15%</td></tr>
-    <tr><td style="text-align:left"><strong>Anjali</strong></td><td>AM</td><td>OJT-Sonali</td><td>6/7</td><td>1052</td><td>1052</td><td>257</td><td>683</td><td>6.5</td><td>12.11h</td><td>1.82</td><td>1.84h</td><td>3.96⭐</td><td>77.12%</td></tr>
-    <tr><td style="text-align:left"><strong>Kalpik</strong></td><td>AM</td><td>OJT-Rashi</td><td>6/7</td><td>930</td><td>931</td><td>544</td><td>349</td><td>7.0</td><td>8.98h</td><td>1.14</td><td>5.22h</td><td>4.19⭐</td><td>75.66%</td></tr>
-    <tr><td style="text-align:left"><strong>Mosin</strong></td><td>PM</td><td>OJT-Samiksha</td><td>6/7</td><td>930</td><td>930</td><td>526</td><td>350</td><td>8.5</td><td>11.52h</td><td>1.28</td><td>1.75h</td><td>4.23⭐</td><td>75.98%</td></tr>
-    <tr><td style="text-align:left"><strong>Aman</strong></td><td>AM</td><td>OJT-Sonali</td><td>6/7</td><td>862</td><td>862</td><td>541</td><td>281</td><td>7.6</td><td>7.80h</td><td>1.18</td><td>3.45h</td><td>4.19⭐</td><td>73.84%</td></tr>
-    <tr><td style="text-align:left"><strong>Tina</strong></td><td>PM</td><td>OJT-Samiksha</td><td>6/7</td><td>847</td><td>847</td><td>408</td><td>380</td><td>8.0</td><td>11.33h</td><td>1.89</td><td>48.36m</td><td>3.93⭐</td><td>71.37%</td></tr>
-    <tr><td style="text-align:left"><strong>Tanushree</strong></td><td>AM</td><td>OJT-Rashi</td><td>5/7</td><td>811</td><td>811</td><td>440</td><td>316</td><td>6.1</td><td>4.76h</td><td>0.79</td><td>1.42h</td><td>4.03⭐</td><td>68.28%</td></tr>
-    <tr><td style="text-align:left"><strong>Babasaheb</strong></td><td>PM</td><td>OJT-Nilesh</td><td>5/7</td><td>804</td><td>804</td><td>524</td><td>242</td><td>5.6</td><td>7.33h</td><td>1.17</td><td>1.03h</td><td>4.40⭐</td><td>71.05%</td></tr>
-    <tr><td style="text-align:left"><strong>Kunal</strong></td><td>AM</td><td>OJT-Sonali</td><td>6/7</td><td>674</td><td>674</td><td>319</td><td>312</td><td>7.4</td><td>7.71h</td><td>2.16</td><td>4.35h</td><td>4.02⭐</td><td>67.45%</td></tr>
-    <tr><td style="text-align:left"><strong>Mahak</strong></td><td>AM</td><td>OJT-Rashi</td><td>6/7</td><td>659</td><td>659</td><td>356</td><td>253</td><td>6.1</td><td>11.61h</td><td>1.20</td><td>3.00h</td><td>4.29⭐</td><td>69.17%</td></tr>
-    <tr><td style="text-align:left"><strong>Aditya</strong></td><td>AM</td><td>OJT-Rashi</td><td>6/7</td><td>637</td><td>637</td><td>355</td><td>235</td><td>7.0</td><td>16.31h</td><td>1.73</td><td>4.34h</td><td>4.21⭐</td><td>67.91%</td></tr>
-    <tr><td style="text-align:left"><strong>Jaya</strong></td><td>PM</td><td>OJT-Nilesh</td><td>6/7</td><td>864</td><td>864</td><td>378</td><td>409</td><td>6.5</td><td>10.47h</td><td>1.42</td><td>36.58m</td><td>4.16⭐</td><td>73.64%</td></tr>
-    <tr><td style="text-align:left"><strong>Pretty</strong></td><td>PM</td><td>Calling PM</td><td>6/7</td><td>575</td><td>575</td><td>319</td><td>235</td><td>8.1</td><td>12.17h</td><td>1.78</td><td>2.18h</td><td>4.36⭐</td><td>67.50%</td></tr>
-    <tr><td style="text-align:left"><strong>Fuzail</strong></td><td>AM</td><td>OJT-Sonali</td><td>5/7</td><td>570</td><td>570</td><td>294</td><td>257</td><td>6.6</td><td>5.51h</td><td>1.95</td><td>4.91h</td><td>4.38⭐</td><td>64.61%</td></tr>
-    <tr><td style="text-align:left"><strong>Palak</strong></td><td>PM</td><td>OJT-Priyanshu</td><td>5/7</td><td>552</td><td>552</td><td>177</td><td>330</td><td>6.6</td><td>8.05h</td><td>3.09</td><td>42.27m</td><td>3.96⭐</td><td>60.79%</td></tr>
-    <tr><td style="text-align:left"><strong>Papiha</strong></td><td>AM</td><td>OJT-Sonali</td><td>5/7</td><td>548</td><td>548</td><td>296</td><td>212</td><td>6.4</td><td>6.23h</td><td>1.64</td><td>2.92h</td><td>4.11⭐</td><td>61.92%</td></tr>
-    <tr><td style="text-align:left"><strong>Nitesh</strong></td><td>PM</td><td>Calling PM</td><td>6/7</td><td>617</td><td>617</td><td>309</td><td>246</td><td>7.5</td><td>18.58h</td><td>1.28</td><td>1.28h</td><td>4.20⭐</td><td>67.29%</td></tr>
-    <tr><td style="text-align:left"><strong>Prachi K.</strong></td><td>PM</td><td>Calling PM</td><td>5/7</td><td>518</td><td>518</td><td>235</td><td>235</td><td>8.2</td><td>15.33h</td><td>2.30</td><td>1.20h</td><td>4.17⭐</td><td>61.53%</td></tr>
-    <tr><td style="text-align:left"><strong>Samiksha K.</strong></td><td>AM</td><td>Calling AM</td><td>6/7</td><td>470</td><td>470</td><td>236</td><td>194</td><td>6.3</td><td>18.28h</td><td>2.38</td><td>1.99h</td><td>4.19⭐</td><td>63.32%</td></tr>
-    <tr><td style="text-align:left"><strong>Lubdha</strong></td><td>AM</td><td>Calling AM</td><td>6/7</td><td>457</td><td>457</td><td>236</td><td>202</td><td>6.6</td><td>19.12h</td><td>1.17</td><td>2.53h</td><td>4.29⭐</td><td>63.71%</td></tr>
-    <tr><td style="text-align:left"><strong>Geetika</strong></td><td>AM</td><td>Calling AM</td><td>6/7</td><td>443</td><td>443</td><td>173</td><td>242</td><td>7.5</td><td>14.88h</td><td>2.19</td><td>3.94h</td><td>4.18⭐</td><td>62.45%</td></tr>
-    <tr><td style="text-align:left"><strong>Shivam</strong></td><td>AM</td><td>Calling AM</td><td>5/7</td><td>348</td><td>348</td><td>171</td><td>157</td><td>7.4</td><td>18.60h</td><td>1.90</td><td>2.63h</td><td>4.16⭐</td><td>56.89%</td></tr>
-    <tr><td style="text-align:left"><strong>Pareedhi</strong></td><td>AM</td><td>Calling AM</td><td>5/7</td><td>336</td><td>336</td><td>160</td><td>153</td><td>6.1</td><td>15.26h</td><td>2.49</td><td>1.99h</td><td>4.02⭐</td><td>55.45%</td></tr>
+    <tr><td style="text-align:left"><strong>Vishal (B15)</strong></td><td>Samiksha</td><td>PM</td><td>W15</td><td>6</td><td>201</td><td>1206</td><td>21</td><td>5</td><td class="low">23.81%</td><td>2.70</td><td>640</td><td>479</td><td>4.18</td><td>1.77m</td><td>4.43h</td><td>82.15%</td><td><span class="tag t-dn">↓</span></td></tr>
   </tbody>
 </table>
 
-<!-- OJT LEADS -->
-<h2>OJT Leads — Weekly Performance (Add Data Below)</h2>
-
-<table>
-  <thead><tr><th>Lead</th><th>Shift</th><th>Interns Handled</th><th>Team Count</th><th>Audits</th><th>QC Posted</th><th>Own Chats</th><th>Complex Q</th><th>Simple Q</th><th>AI Rating</th></tr></thead>
+<h3>Batch 19 — Squad Movement (This Week)</h3>
+<div class="hl">
+  <strong>Batch 19 is ready for squad transition:</strong>
+</div>
+<table class="tl">
   <tbody>
-    <tr><td style="text-align:left"><strong>Sonali</strong></td><td>AM</td><td>6/7</td><td>257</td><td>123</td><td>129</td><td>6.0</td><td>—</td><td>—</td><td>4.19⭐</td></tr>
-    <tr><td style="text-align:left"><strong>Rashi</strong></td><td>AM</td><td>6/7</td><td>226</td><td>136</td><td>67</td><td>6.3</td><td>—</td><td>—</td><td>4.32⭐</td></tr>
-    <tr><td style="text-align:left"><strong>Priyanshu</strong></td><td>PM</td><td>6/7</td><td>224</td><td>95</td><td>105</td><td>5.9</td><td>—</td><td>—</td><td>4.08⭐</td></tr>
-    <tr><td style="text-align:left"><strong>Samiksha</strong></td><td>PM</td><td>2/7</td><td>87</td><td>39</td><td>41</td><td>6.9</td><td>—</td><td>—</td><td>4.09⭐</td></tr>
-    <tr><td style="text-align:left"><strong>Nilesh</strong></td><td>PM</td><td>6/7</td><td>192</td><td>113</td><td>64</td><td>6.2</td><td>—</td><td>—</td><td>4.20⭐</td></tr>
+    <tr><td><strong>Samyak Kamble</strong></td><td>→ Evening Escalation Squad</td></tr>
+    <tr><td><strong>Tanushree</strong></td><td>→ Morning Squad 1 — Sneha</td></tr>
+    <tr><td><strong>Kalpik</strong></td><td>→ Morning Squad 2 — Karishma</td></tr>
+    <tr><td><strong>Aman</strong></td><td>→ Morning Squad 3 — Namrata</td></tr>
+    <tr><td style="color:#C0392B"><strong>Fuzail</strong></td><td style="color:#C0392B">→ <strong>EXIT</strong> — health issues + work stress (this week)</td></tr>
   </tbody>
 </table>
-<p style="font-size:11px;color:#999">Note: Samiksha attended only 2/7 days this week. Remaining columns (—) to be filled.</p>
+
+<!-- ============================================ -->
+<!-- OJT LEADS — LIGHT BLUE WITH BG LOGO          -->
+<!-- ============================================ -->
+<h2>OJT Leads — Weekly Performance</h2>
+
+<div class="leads-wrap">
+  <h3>Lead Performance Summary</h3>
+  <table>
+    <thead><tr><th>Lead</th><th>Shift</th><th>Attend</th><th>Interns Managed</th><th>Team Chats</th><th>Audits Done</th><th>QC Posted</th><th>Own Chats</th><th>Simple Q</th><th>Complex Q</th><th>AI Rtg</th><th>ARST</th><th>Break</th><th>LB Score</th><th>Remarks</th></tr></thead>
+    <tbody>
+      <tr><td style="text-align:left"><strong>Sonali</strong></td><td>AM</td><td>6/7</td><td>Anjali, Kunal, Papiha, Lubdha, Aman, Fuzail</td><td>257</td><td>123</td><td>129</td><td>257</td><td>123</td><td>129</td><td>4.19</td><td>2.39m</td><td>9.22h</td><td>57.54%</td><td>Strong audit output</td></tr>
+      <tr><td style="text-align:left"><strong>Rashi</strong></td><td>AM</td><td>6/7</td><td>Smit, Mahak, Aditya, Tanushree, Kalpik, Pareedhi</td><td>226</td><td>136</td><td>67</td><td>226</td><td>136</td><td>67</td><td>4.32</td><td>0.51m</td><td>16.74h</td><td>57.81%</td><td>Highest AI rating</td></tr>
+      <tr><td style="text-align:left"><strong>Priyanshu</strong></td><td>PM</td><td>6/7</td><td>Palak, Syed, Nitesh, Prachi, Shivam</td><td>224</td><td>95</td><td>105</td><td>224</td><td>95</td><td>105</td><td>4.08</td><td>1.70m</td><td>8.39h</td><td>55.82%</td><td>Manages calling interns</td></tr>
+      <tr><td style="text-align:left"><strong>Nilesh</strong></td><td>PM</td><td>6/7</td><td>Babasaheb, Jaya, Samyak, Geetika</td><td>192</td><td>113</td><td>64</td><td>192</td><td>113</td><td>64</td><td>4.20</td><td>1.07m</td><td>13.80h</td><td>55.87%</td><td>Consistent performer</td></tr>
+      <tr><td style="text-align:left"><strong>Samiksha</strong></td><td>PM</td><td style="color:#C0392B;font-weight:600">2/7</td><td>Mosin, Tina, Pretty, Vishal</td><td>87</td><td>39</td><td>41</td><td>87</td><td>39</td><td>41</td><td>4.09</td><td>0.76m</td><td>6.10h</td><td>40.75%</td><td>Only 2/7 attendance</td></tr>
+    </tbody>
+  </table>
+</div>
 
 <!-- QC TEAM SUPPORT -->
 <h2>QC Team Audit Support (Batch 19)</h2>
-<p style="font-size:12.5px">Alongside the OJT team, the QC team has been supporting us with audits for Batch 19 interns:</p>
+<p style="font-size:12.5px">Alongside the OJT team, the QC team has been supporting with audits for Batch 19 interns:</p>
 <table>
-  <thead><tr><th>Date</th><th>Agent</th><th>Reviewer</th><th>Chat Date</th><th>Chats</th><th>Weak</th><th>Total Scanned</th><th>Complex</th><th>Regular</th><th>QCs Found</th><th>Error Rate</th><th>QC Score</th><th>AI Rating</th></tr></thead>
+  <thead><tr><th>Date</th><th>Agent</th><th>Reviewer</th><th>Chat Date</th><th>Chats</th><th>Weak</th><th>Scanned</th><th>Complex</th><th>Regular</th><th>QCs</th><th>Error Rate</th><th>QC Score</th><th>AI Rtg</th></tr></thead>
   <tbody>
     <tr><td>28/05</td><td>Kalpik</td><td>Yukta</td><td>24-25 May</td><td>257</td><td>6</td><td>50</td><td>14</td><td>36</td><td>7</td><td>14%</td><td>2.95</td><td>4.25</td></tr>
     <tr><td>29/05</td><td>Fuzail</td><td>Yukta</td><td>25 May</td><td>208</td><td>1</td><td>50</td><td>11</td><td>39</td><td>6</td><td>12%</td><td>3.00</td><td>4.40</td></tr>
@@ -206,67 +278,36 @@ tbody td{padding:5px 6px;vertical-align:middle;text-align:center;font-size:11px}
     <tr><td>16/06</td><td>Fuzail</td><td>Samik</td><td>6-15 Jun</td><td>842</td><td>33</td><td>40</td><td>2</td><td>38</td><td>4</td><td>10%</td><td>3.13</td><td>3.35</td></tr>
   </tbody>
 </table>
-<p style="font-size:11px;color:#666">Batch 20's audit is partially remaining — will add once completed.</p>
-
-<!-- BATCH 19 SCORECARD -->
-<h2>Batch 19 — Week 10: Squad Transition Ready</h2>
-
-<table>
-  <thead><tr><th>Intern</th><th>Lead</th><th>Shift</th><th>Avail</th><th>Avg Chat</th><th>Chat Count</th><th>Scanned</th><th>QCs</th><th>Error %</th><th>OJT Rtg</th><th>AI Rtg</th><th>ARST</th><th>Trend</th></tr></thead>
-  <tbody>
-    <tr><td style="text-align:left"><strong>Samyak</strong></td><td>Nilesh</td><td>PM</td><td>7</td><td>216</td><td>1514</td><td>34</td><td>2</td><td class="high">5.88%</td><td>3.07</td><td>4.36</td><td>0.98</td><td>↕</td></tr>
-    <tr><td style="text-align:left"><strong>Tanushree</strong></td><td>Rashi</td><td>AM</td><td>5</td><td>167</td><td>835</td><td>20</td><td>5</td><td class="low">25.00%</td><td>2.67</td><td>4.03</td><td>0.79</td><td>↓</td></tr>
-    <tr><td style="text-align:left"><strong>Kalpik</strong></td><td>Rashi</td><td>AM</td><td>5</td><td>159</td><td>956</td><td>36</td><td>5</td><td>13.89%</td><td>2.80</td><td>4.19</td><td>1.14</td><td>↓</td></tr>
-    <tr><td style="text-align:left"><strong>Fuzail</strong></td><td>Sonali</td><td>AM</td><td>4</td><td>136</td><td>546</td><td>7</td><td>0</td><td class="high">0.00%</td><td>3.00</td><td>4.28</td><td>2.08</td><td>↕</td></tr>
-    <tr><td style="text-align:left"><strong>Aman</strong></td><td>Diksha</td><td>AM</td><td>6</td><td>149</td><td>894</td><td>22</td><td>0</td><td class="high">0.00%</td><td>3.06</td><td>4.20</td><td>1.18</td><td>↕</td></tr>
-  </tbody>
-</table>
-
-<table style="margin-top:4px">
-  <thead><tr><th>Other</th><th>Lead</th><th>Shift</th><th>Week</th><th>Avail</th><th>Avg Chat</th><th>Count</th><th>Scanned</th><th>QCs</th><th>Error %</th><th>OJT Rtg</th><th>AI Rtg</th><th>ARST</th><th>Trend</th></tr></thead>
-  <tbody>
-    <tr><td style="text-align:left"><strong>Vishal (B15)</strong></td><td>Samiksha</td><td>PM</td><td>W15</td><td>6</td><td>201</td><td>1206</td><td>21</td><td>5</td><td class="low">23.81%</td><td>2.70</td><td>4.18</td><td>1.77</td><td>↓</td></tr>
-  </tbody>
-</table>
-
-<h3>Batch 19 — Squad Movement (This Week)</h3>
-<div class="hl-g">
-  <strong>Batch 19 is ready for squad transition:</strong>
-</div>
-<table class="tl">
-  <tbody>
-    <tr><td><strong>Samyak Kamble</strong></td><td>→ Evening Escalation Squad</td></tr>
-    <tr><td><strong>Tanushree</strong></td><td>→ Morning Squad 1 — Sneha</td></tr>
-    <tr><td><strong>Kalpik</strong></td><td>→ Morning Squad 2 — Karishma</td></tr>
-    <tr><td><strong>Aman</strong></td><td>→ Morning Squad 3 — Namrata</td></tr>
-    <tr><td style="color:#C0392B"><strong>Fuzail</strong></td><td style="color:#C0392B">→ <strong>EXIT</strong> — health issues + work stress (this week)</td></tr>
-  </tbody>
-</table>
 
 <!-- KEY HIGHLIGHTS -->
 <h2>Key Highlights & Focus Areas</h2>
-<div class="hl-g">
-  <strong>Positive:</strong> Aditya at 0% error (W4 champion). Mahak at 5% error. Smit handling 214 avg chats. Fuzail & Aman at 0% error in B19 final week.
+<div class="hl">
+  <strong>Positive:</strong> Aditya & Pareedhi at 0% error. Mahak & Pretty at 5% error. Smit handling 214 avg chats. Fuzail & Aman at 0% error in B19 final week. Samyak LB score 94.95%.
 </div>
-<div class="hl-r">
-  <strong>Concerns:</strong> Mosin (38.10%), Anjali (33.33%), Palak (33.33%), Geetika (34.38%) — high error rates need immediate refresher focus. Syed Khizar exited. Prachi Somyani still not reporting.
+<div class="hl-o">
+  <strong>Concerns:</strong> Mosin (38.10%), Geetika (34.38%), Shivam (34.21%), Anjali (33.33%), Palak (33.33%) — high error rates need immediate refresher focus. Syed Khizar exited. Samiksha (Lead) attended only 2/7 days.
 </div>
 <div class="hl">
   <strong>Batch 19 transition:</strong> 4 interns moving to squads, 1 exit (Fuzail). Retraining completed. QC team audit support was instrumental in validating readiness.
 </div>
 
-<!-- TRAINING LEAD — PERSONAL WORK -->
-<h2>Training Lead Work Summary — Dipti Sahu</h2>
-<p style="font-size:12.5px;color:#666;margin-bottom:6px">Key activities this week (editable — add your personal work details below):</p>
+<!-- REFRESHER & PERSONAL WORK -->
+<h2>Refresher & Personal Work Summary</h2>
 <ul style="margin:6px 0 6px 18px;font-size:13px">
-  <li><strong>[Add your personal work items here]</strong></li>
-  <li>Coordinated Batch 19 squad transition with all squad leads</li>
-  <li>Managed Fuzail's exit process (health + stress)</li>
-  <li>Handled Syed Khizar absconding case</li>
-  <li>Daily hurdles with OJT leads</li>
-  <li>Reviewed weekly scorecards and QC reports</li>
-  <li>Coordinated with QC team for Batch 19 audits</li>
-  <li>Planning Batch 20 half-audit completion</li>
+  <li>Morning Shift Communication & Empathy refresher conducted. Attendance: 43 agents.</li>
+  <li>7-day Voice Support training completed covering call flow, escalation, payments, and subscriptions.</li>
+  <li>Updated all operational sheets. Handled 20 Wati chats. Training feedback forms created and reviewed.</li>
+  <li>Attended: SB-Komal Ma'am meeting, Payment team refresher, and Raj's refresher. Sync with Prince done.</li>
+  <li>Disha handled ~800 Beetu QC responses and 479 email QC scans separately this week.</li>
+</ul>
+
+<!-- WAY FORWARD -->
+<h2>Way Forward | Next Week</h2>
+<ul style="margin:6px 0 6px 18px;font-size:13px">
+  <li><strong>Calling:</strong> Continue audits and 1:1 feedback; expand coverage to Payment & Link Issue teams.</li>
+  <li><strong>Chat:</strong> Evening team Communication & Empathy Training.</li>
+  <li><strong>Session:</strong> Team Collaboration & Communication Training.</li>
+  <li><strong>OJT:</strong> Audit analysis for Batch 19 & 20 progress review.</li>
 </ul>
 
 <!-- SIGNATURE -->
@@ -279,9 +320,10 @@ tbody td{padding:5px 6px;vertical-align:middle;text-align:center;font-size:11px}
 
 </div>
 
+<!-- BOTTOM FOOTER WITH LOGO -->
 <div class="ef">
-  <img src="habuild-logo.png" alt="Habuild" style="height:22px;margin-bottom:4px;display:block;margin:0 auto 4px"><br>
-  Habuild Healthtech Pvt. Ltd. | Training & Development
+  <img src="habuild-logo.png" alt="Habuild">
+  <span>Habuild Healthtech Pvt. Ltd. | Training & Development</span>
 </div>
 
 </div>
